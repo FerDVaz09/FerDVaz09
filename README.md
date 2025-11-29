@@ -1,4 +1,4 @@
-# 👋 Hola, soy Ferdu Vásquez
+# 👋 Hola, soy Ferdy Vásquez
 
 ## 🤖 Automation Engineer | Python Developer | API Integration Specialist
 
