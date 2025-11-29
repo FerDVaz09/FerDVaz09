@@ -19,13 +19,14 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 **Automation & Integration**
 - ⚡ API REST Development & Integration
 - 🤖 Bot Development (Slack SDK, Discord.py, WhatsApp via Evolution API)
-- 💬 Customer Support Platforms (Chatwoot)
-- 🔄 Process Automation (Threading, Background Jobs, Async)
+- 💬 Customer Support Platforms (Chatwoot, Evolution API)
+- 🔄 Process Automation (Threading, Background Jobs, Async, N8N Workflows)
 - 📈 Data Processing at Scale (Pandas, Excel/CSV)
 - ⏱️ Rate Limiting & Retry Logic
-- 🧠 AI Integration (OpenAI GPT-4, Chat Completions)
+- 🧠 AI Integration (OpenAI GPT-4, Chat Completions, Vector Embeddings)
 - 📅 Appointment & Consultation Systems
 - 🎫 Ticketing & Escalation Workflows
+- 🗄️ Vector Databases (PGVector, RAG implementations)
 
 **Tools & Platforms**
 
@@ -45,6 +46,8 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 ![EasyPanel](https://img.shields.io/badge/EasyPanel-00C7B7?style=flat&logo=docker&logoColor=white)
 ![Evolution API](https://img.shields.io/badge/Evolution_API-25D366?style=flat&logo=whatsapp&logoColor=white)
 ![Chatwoot](https://img.shields.io/badge/Chatwoot-1F93FF?style=flat&logo=chat&logoColor=white)
+![N8N](https://img.shields.io/badge/N8N-EA4B71?style=flat&logo=n8n&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
 
 ---
 
@@ -85,6 +88,27 @@ Bot automatizado de gestión masiva de usuarios para plataforma LMS Thinkific
 **Impacto:** Automatiza proceso manual que tomaba ~8 horas → **15 minutos**
 
 **Tech Stack**: Python · Flask 3.1 · Slack SDK 3.35 · REST APIs · Threading · Pandas · Heroku
+
+---
+
+#### 💬 Bots de Soporte Inteligente con WhatsApp
+Sistema avanzado de automatización de soporte al cliente con IA conversacional, construido con N8N y Evolution API
+
+**Características principales:**
+- 🤖 **IA Conversacional**: Agente GPT-4 con memoria contextual y base de conocimientos vectorial (PostgreSQL + PGVector)
+- 📱 **WhatsApp Business**: Integración completa con Evolution API para mensajería empresarial
+- 🧠 **Memoria Persistente**: Historial de conversaciones por usuario con PostgreSQL Chat Memory
+- 🎙️ **Multi-modal**: Soporte para texto, audio (transcripción automática) e imágenes (análisis con GPT-4 Vision)
+- 🔄 **Buffer inteligente**: Sistema de cola con Redis para agrupar mensajes rápidos
+- 📊 **Extracción de datos**: Captura automática de información del cliente (nombre, correo, programa) con JSON estructurado
+- 🎫 **Escalamiento automático**: Notificaciones a Slack cuando se requiere intervención humana
+- 🏷️ **Integración Chatwoot**: Sincronización bidireccional con plataforma de soporte
+- ⏱️ **Gestión de horarios**: Lógica de disponibilidad y routing según horas laborales
+- 🔍 **RAG (Retrieval Augmented Generation)**: Consultas a base de conocimiento vectorial para respuestas precisas
+
+**Impacto:** Automatiza 80%+ de consultas de soporte, reduciendo tiempo de respuesta de horas a segundos
+
+**Tech Stack**: N8N · Evolution API · OpenAI GPT-4 · PostgreSQL · PGVector · Redis · Chatwoot · Slack API · Whisper API
 
 ---
 
