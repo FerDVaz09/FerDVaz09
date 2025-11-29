@@ -50,19 +50,20 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 
 ### 🚀 Featured Projects
 
-#### 🤖 [Discord Bot con IA para Soporte Técnico](https://github.com/FerDVaz09/ABACUS-AI-DISCORD)
-Bot inteligente de Discord con integración de OpenAI GPT-4 para soporte técnico automatizado
+#### 🤖 [Discord Bots con IA Personalizados](https://github.com/FerDVaz09/abacus-gpt)
+Suite de bots inteligentes de Discord con integración de OpenAI GPT-4 para soporte técnico automatizado y personalizado
 
 **Características principales:**
 - 🧠 **Integración OpenAI**: GPT-4 para respuestas inteligentes y contextuales
 - 🔒 **Hilos privados**: Conversaciones 1:1 aisladas por usuario
 - 💾 **Persistencia**: Base de datos SQLite para historial y gestión de sesiones
 - ⏰ **Auto-limpieza**: Eliminación automática de hilos después de 24 horas
-- 📚 **Base de conocimiento**: Sistema de contexto enriquecido con documentación técnica
+- 📚 **Base de conocimiento**: Sistema de contexto enriquecido con documentación técnica personalizada
 - ⚡ **Async/Await**: Arquitectura asíncrona para alto rendimiento
 - 🛡️ **Manejo de errores**: Sistema robusto de fallback y recuperación
+- 🎯 **Personalización**: Bots configurables para diferentes dominios y casos de uso
 
-**Impacto:** Automatiza soporte técnico 24/7 con respuestas de calidad humana
+**Impacto:** Automatiza soporte técnico 24/7 con respuestas de calidad humana y contexto especializado
 
 **Tech Stack**: Python · Discord.py 2.4 · OpenAI GPT-4 · SQLite · Async/Await · dotenv
 
