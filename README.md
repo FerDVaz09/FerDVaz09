@@ -18,11 +18,14 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 
 **Automation & Integration**
 - ⚡ API REST Development & Integration
-- 🤖 Bot Development (Slack SDK, Discord.py)
+- 🤖 Bot Development (Slack SDK, Discord.py, WhatsApp via Evolution API)
+- 💬 Customer Support Platforms (Chatwoot)
 - 🔄 Process Automation (Threading, Background Jobs, Async)
 - 📈 Data Processing at Scale (Pandas, Excel/CSV)
 - ⏱️ Rate Limiting & Retry Logic
 - 🧠 AI Integration (OpenAI GPT-4, Chat Completions)
+- 📅 Appointment & Consultation Systems
+- 🎫 Ticketing & Escalation Workflows
 
 **Tools & Platforms**
 
@@ -30,9 +33,18 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 ![Heroku](https://img.shields.io/badge/Heroku-430098?style=flat&logo=heroku&logoColor=white)
 ![Slack](https://img.shields.io/badge/Slack-4A154B?style=flat&logo=slack&logoColor=white)
 ![Discord](https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white)
+![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=flat&logo=whatsapp&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
+
+**Infrastructure & Deployment**
+
+![Hostinger](https://img.shields.io/badge/Hostinger-673DE6?style=flat&logo=hostinger&logoColor=white)
+![VPS](https://img.shields.io/badge/VPS-0078D4?style=flat&logo=linux&logoColor=white)
+![EasyPanel](https://img.shields.io/badge/EasyPanel-00C7B7?style=flat&logo=docker&logoColor=white)
+![Evolution API](https://img.shields.io/badge/Evolution_API-25D366?style=flat&logo=whatsapp&logoColor=white)
+![Chatwoot](https://img.shields.io/badge/Chatwoot-1F93FF?style=flat&logo=chat&logoColor=white)
 
 ---
 
@@ -146,10 +158,12 @@ current_projects = {
 
 Desarrollo soluciones de automatización y bots inteligentes para diferentes sectores, enfocándome en:
 
-- **Integración de APIs**: Conexión fluida entre plataformas (Slack, Discord, Thinkific, OpenAI)
+- **Bots de Soporte Técnico**: Atención 24/7 con IA para resolver consultas y tickets
+- **Sistemas de Agendas y Consultas**: Automatización de citas y seguimiento de clientes
+- **Bots de Escalamiento**: Gestión inteligente de tickets con priorización y routing
+- **Integración de APIs**: Conexión fluida entre plataformas (Slack, Discord, WhatsApp, Chatwoot, Thinkific, OpenAI)
+- **Infraestructura Cloud**: Gestión de VPS, despliegues con EasyPanel y Hostinger
 - **Procesamiento de datos**: Manejo eficiente de grandes volúmenes de información
-- **Experiencia de usuario**: Interfaces intuitivas y flujos de trabajo optimizados
-- **Escalabilidad**: Arquitecturas preparadas para crecer con la demanda
 - **Inteligencia Artificial**: Implementación práctica de modelos GPT para automatización cognitiva
 
 ---
