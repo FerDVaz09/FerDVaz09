@@ -1,6 +1,6 @@
 # 👋 Hola, soy Ferdy Vásquez
 
-## 🤖 Automation Engineer | Python Developer | QA Tester Junior
+## 🤖 Automation Engineer | QA Tester Junior | Python Developer Junior
 
 Especializado en automatización de procesos, integración de APIs y desarrollo de bots inteligentes para optimizar operaciones empresariales. Con 1 año de experiencia en testing de aplicaciones web y APIs, combino desarrollo y calidad de software para crear soluciones robustas y confiables.
 
