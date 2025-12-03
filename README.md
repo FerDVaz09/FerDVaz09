@@ -1,8 +1,8 @@
 # 👋 Hola, soy Ferdy Vásquez
 
-## 🤖 Automation Engineer | Python Developer | API Integration Specialist
+## 🤖 Automation Engineer | Python Developer | QA Tester Junior
 
-Especializado en automatización de procesos, integración de APIs y desarrollo de bots inteligentes para optimizar operaciones empresariales. Transformo procesos manuales en soluciones automatizadas escalables y eficientes.
+Especializado en automatización de procesos, integración de APIs y desarrollo de bots inteligentes para optimizar operaciones empresariales. Con 1 año de experiencia en testing de aplicaciones web y APIs, combino desarrollo y calidad de software para crear soluciones robustas y confiables.
 
 ---
 
@@ -16,6 +16,13 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
 ![Discord.py](https://img.shields.io/badge/Discord.py-5865F2?style=flat&logo=discord&logoColor=white)
 
+**Testing & Quality Assurance**
+
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=flat&logo=selenium&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=flat&logo=pytest&logoColor=white)
+![Chrome DevTools](https://img.shields.io/badge/Chrome_DevTools-4285F4?style=flat&logo=googlechrome&logoColor=white)
+
 **Automation & Integration**
 - ⚡ API REST Development & Integration
 - 🤖 Bot Development (Slack SDK, Discord.py, WhatsApp via Evolution API)
@@ -27,6 +34,15 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 - 📅 Appointment & Consultation Systems
 - 🎫 Ticketing & Escalation Workflows
 - 🗄️ Vector Databases (PGVector, RAG implementations)
+
+**QA Testing & Validation (1 año de experiencia)**
+- 🔍 Testing Manual de Aplicaciones Web (UI/UX, Funcional, Regresión)
+- 🌐 API Testing con Postman (REST APIs, validación de respuestas JSON)
+- 🤖 Automatización básica con Selenium WebDriver
+- 📝 Documentación de casos de prueba y reportes de bugs
+- 🐛 Identificación y seguimiento de defectos
+- 🔄 Pruebas de integración entre sistemas
+- ✅ Validación de flujos de usuario end-to-end
 
 **Tools & Platforms**
 
@@ -153,6 +169,28 @@ current_projects = {
 }
 ```
 
+### 🧪 QA Testing Experience
+
+**1 año como QA Tester Junior** enfocado en garantizar la calidad de aplicaciones web y APIs.
+
+**Áreas de Testing:**
+- 🌐 **Web Testing**: Validación de interfaces, formularios, navegación y responsividad
+- 🔌 **API Testing**: Pruebas con Postman de endpoints REST, validación de status codes y payloads JSON
+- 🔄 **Testing de Integración**: Verificación de flujos entre diferentes sistemas y servicios
+- 📱 **Cross-browser Testing**: Validación de compatibilidad en Chrome, Firefox, Edge
+- 📋 **Casos de Prueba**: Creación y ejecución de test cases detallados
+- 🐛 **Bug Tracking**: Documentación clara de defectos con pasos de reproducción y evidencia
+- 🔍 **Exploratory Testing**: Pruebas ad-hoc para descubrir casos edge no documentados
+
+**Herramientas Utilizadas:**
+- Postman para pruebas de APIs y colecciones de tests
+- Selenium WebDriver para automatización básica de pruebas web
+- Chrome DevTools para debugging y análisis de red
+- Pytest para tests unitarios y de integración en Python
+- Git para control de versiones de scripts de prueba
+
+---
+
 ### 💡 Automation Philosophy
 
 > *"La mejor automatización es la que nadie nota que existe - simplemente funciona"*
@@ -164,6 +202,7 @@ current_projects = {
 - 🛡️ Garantizar robustez con manejo de errores completo
 - 🤖 Integrar IA de forma práctica y efectiva
 - ⚡ Optimizar rendimiento con programación asíncrona
+- ✅ Asegurar calidad desde el desarrollo hasta el deployment
 
 ---
 
