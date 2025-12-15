@@ -496,9 +496,9 @@ section {
     display: flex;
     gap: 1.5rem;
     padding: 2rem;
-    background: rgba(26, 26, 26, 0.8);
+    background: rgba(30, 30, 35, 0.6);
     border-radius: 20px;
-    border: 2px solid rgba(0, 217, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s;
     cursor: pointer;
     width: 100%;
@@ -507,10 +507,10 @@ section {
 }
 
 .contact-item:hover {
-    background: rgba(0, 217, 255, 0.05);
-    border-color: var(--primary-color);
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 217, 255, 0.4);
+    background: rgba(40, 40, 50, 0.8);
+    border-color: rgba(0, 217, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
 }
 
 .contact-item i {
@@ -519,25 +519,25 @@ section {
 }
 
 .contact-item h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
-    color: var(--text-primary);
+    color: #ffffff;
     font-weight: 600;
 }
 
 .contact-item p {
-    color: var(--text-secondary);
+    color: #999999;
     transition: color 0.3s;
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .contact-item:hover h3 {
-    color: var(--primary-color);
+    color: #ffffff;
 }
 
 .contact-item:hover p {
-    color: var(--text-primary);
+    color: var(--primary-color);
 }
 
 /* Footer */
