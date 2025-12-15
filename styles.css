@@ -500,11 +500,16 @@ section {
     border-radius: 15px;
     border: 1px solid rgba(0, 217, 255, 0.1);
     transition: all 0.3s;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    align-items: center;
 }
 
 .contact-item:hover {
     border-color: var(--primary-color);
     transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
 }
 
 .contact-item i {
@@ -517,13 +522,13 @@ section {
     margin-bottom: 0.3rem;
 }
 
-.contact-item a {
+.contact-item p {
     color: var(--text-secondary);
-    text-decoration: none;
     transition: color 0.3s;
+    margin: 0;
 }
 
-.contact-item a:hover {
+.contact-item:hover p {
     color: var(--primary-color);
 }
 

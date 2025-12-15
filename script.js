@@ -106,35 +106,50 @@ window.addEventListener('load', () => {
 });
 
 // Copy email to clipboard
-const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-emailLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        const email = link.textContent;
-        navigator.clipboard.writeText(email).then(() => {
-            // Create temporary notification
-            const notification = document.createElement('div');
-            notification.textContent = '✓ Email copiado al portapapeles';
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background: var(--primary-color);
-                color: var(--dark-bg);
-                padding: 15px 25px;
-                border-radius: 50px;
-                font-weight: 600;
-                z-index: 9999;
-                animation: slideIn 0.3s ease;
-            `;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            }, 2000);
-        });
+const contactItems = document.querySelectorAll('.contact-item');
+contactItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+        const action = item.getAttribute('data-action');
+        const value = item.getAttribute('data-value');
+        
+        if (action === 'email') {
+            // Copy email to clipboard
+            navigator.clipboard.writeText(value).then(() => {
+                showNotification('✓ Email copiado al portapapeles');
+            });
+        } else if (action === 'phone') {
+            // Open phone dialer
+            window.location.href = value;
+        } else if (action === 'link') {
+            // Open link in new tab
+            window.open(value, '_blank');
+        }
     });
 });
+
+// Notification function
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: var(--dark-bg);
+        padding: 15px 25px;
+        border-radius: 50px;
+        font-weight: 600;
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 2000);
+}
 
 // Add CSS animation for notifications
 const style = document.createElement('style');
