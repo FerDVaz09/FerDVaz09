@@ -1,20 +1,19 @@
 // Carousel functionality
-let currentSlide = 0;
+let currentPage = 0;
 const track = document.querySelector('.carousel-track');
 const slides = document.querySelectorAll('.carousel-track .project-card-link');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const dotsContainer = document.getElementById('carouselDots');
-const slidesToShow = 3;
-const totalSlides = slides.length;
-const maxSlide = totalSlides - slidesToShow;
+const slidesPerPage = 3;
+const totalPages = Math.ceil(slides.length / slidesPerPage);
 
-// Create dots
-for (let i = 0; i <= maxSlide; i++) {
+// Create dots for pages
+for (let i = 0; i < totalPages; i++) {
     const dot = document.createElement('div');
     dot.classList.add('dot');
     if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(i));
+    dot.addEventListener('click', () => goToPage(i));
     dotsContainer.appendChild(dot);
 }
 
@@ -22,42 +21,34 @@ const dots = document.querySelectorAll('.dot');
 
 function updateCarousel() {
     const slideWidth = slides[0].offsetWidth + 32; // width + gap
-    const offset = currentSlide * slideWidth;
+    const offset = currentPage * slidesPerPage * slideWidth;
     track.style.transform = `translateX(-${offset}px)`;
     
     dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
+        dot.classList.toggle('active', index === currentPage);
     });
 }
 
-function goToSlide(index) {
-    currentSlide = Math.max(0, Math.min(index, maxSlide));
+function goToPage(page) {
+    currentPage = page;
     updateCarousel();
 }
 
-function nextSlide() {
-    if (currentSlide < maxSlide) {
-        currentSlide++;
-    } else {
-        currentSlide = 0;
-    }
+function nextPage() {
+    currentPage = (currentPage + 1) % totalPages;
     updateCarousel();
 }
 
-function prevSlide() {
-    if (currentSlide > 0) {
-        currentSlide--;
-    } else {
-        currentSlide = maxSlide;
-    }
+function prevPage() {
+    currentPage = (currentPage - 1 + totalPages) % totalPages;
     updateCarousel();
 }
 
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextPage);
+prevBtn.addEventListener('click', prevPage);
 
 // Auto-play carousel
-let autoplayInterval = setInterval(nextSlide, 5000);
+let autoplayInterval = setInterval(nextPage, 5000);
 
 // Pause autoplay on hover
 const carouselContainer = document.querySelector('.carousel-container');
@@ -66,7 +57,7 @@ carouselContainer.addEventListener('mouseenter', () => {
 });
 
 carouselContainer.addEventListener('mouseleave', () => {
-    autoplayInterval = setInterval(nextSlide, 5000);
+    autoplayInterval = setInterval(nextPage, 5000);
 });
 
 // Update carousel on window resize
