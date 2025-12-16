@@ -7,9 +7,9 @@ const nextBtn = document.getElementById('nextBtn');
 const dotsContainer = document.getElementById('carouselDots');
 const slidesToShow = 3;
 const totalSlides = slides.length;
-const maxSlide = Math.ceil(totalSlides / slidesToShow) - 1;
+const maxSlide = totalSlides - slidesToShow;
 
-// Create dots based on number of pages
+// Create dots
 for (let i = 0; i <= maxSlide; i++) {
     const dot = document.createElement('div');
     dot.classList.add('dot');
@@ -22,7 +22,7 @@ const dots = document.querySelectorAll('.dot');
 
 function updateCarousel() {
     const slideWidth = slides[0].offsetWidth + 32; // width + gap
-    const offset = currentSlide * slidesToShow * slideWidth;
+    const offset = currentSlide * slideWidth;
     track.style.transform = `translateX(-${offset}px)`;
     
     dots.forEach((dot, index) => {
