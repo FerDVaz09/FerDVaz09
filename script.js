@@ -49,10 +49,11 @@ if (track && prevBtn && nextBtn && dotsContainer) {
     nextBtn.addEventListener('click', nextPage);
     prevBtn.addEventListener('click', prevPage);
 
-    // Drag functionality - mueve de 3 en 3
+    // Drag functionality - mueve de 3 en 3 con movimiento fluido
     let isDragging = false;
     let startPos = 0;
-    let startPagePos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
 
     track.addEventListener('mousedown', dragStart);
     track.addEventListener('mouseup', dragEnd);
@@ -65,7 +66,12 @@ if (track && prevBtn && nextBtn && dotsContainer) {
         
         isDragging = true;
         startPos = event.pageX;
-        startPagePos = currentPage;
+        
+        // Guardar la posición actual traducida
+        const slideWidth = slides[0].offsetWidth + 24;
+        prevTranslate = -currentPage * slidesPerPage * slideWidth;
+        currentTranslate = prevTranslate;
+        
         track.style.cursor = 'grabbing';
         track.style.transition = 'none';
         event.preventDefault();
@@ -73,7 +79,14 @@ if (track && prevBtn && nextBtn && dotsContainer) {
 
     function drag(event) {
         if (!isDragging) return;
+        
         event.preventDefault();
+        const currentPosition = event.pageX;
+        const diff = currentPosition - startPos;
+        
+        // Mover el track mientras arrastra
+        currentTranslate = prevTranslate + diff;
+        track.style.transform = `translateX(${currentTranslate}px)`;
     }
 
     function dragEnd(event) {
@@ -83,14 +96,13 @@ if (track && prevBtn && nextBtn && dotsContainer) {
         track.style.cursor = 'grab';
         track.style.transition = 'transform 0.5s ease-in-out';
 
-        const endPos = event.pageX || startPos;
-        const diff = startPos - endPos;
+        const movedBy = currentTranslate - prevTranslate;
 
-        // Si arrastró más de 50px, cambiar página
-        if (diff > 50 && currentPage < totalPages - 1) {
+        // Si arrastró más de 100px, cambiar página
+        if (movedBy < -100 && currentPage < totalPages - 1) {
             // Arrastró a la izquierda -> siguiente página (3 proyectos)
             nextPage();
-        } else if (diff < -50 && currentPage > 0) {
+        } else if (movedBy > 100 && currentPage > 0) {
             // Arrastró a la derecha -> página anterior (3 proyectos)
             prevPage();
         } else {
