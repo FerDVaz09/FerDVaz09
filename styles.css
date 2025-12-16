@@ -345,9 +345,9 @@ section {
 
 .carousel-container {
     position: relative;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 80px;
 }
 
 .projects-carousel {
@@ -362,7 +362,7 @@ section {
 }
 
 .carousel-track .project-card-link {
-    min-width: 100%;
+    min-width: calc((100% - 4rem) / 3);
     flex-shrink: 0;
 }
 
@@ -392,11 +392,11 @@ section {
 }
 
 .carousel-btn.prev {
-    left: 0;
+    left: 10px;
 }
 
 .carousel-btn.next {
-    right: 0;
+    right: 10px;
 }
 
 .carousel-dots {
@@ -688,6 +688,10 @@ section {
 
     .carousel-container {
         padding: 0 50px;
+    }
+
+    .carousel-track .project-card-link {
+        min-width: 100%;
     }
 
     .carousel-btn {

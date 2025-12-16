@@ -5,21 +5,25 @@ const slides = document.querySelectorAll('.carousel-track .project-card-link');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const dotsContainer = document.getElementById('carouselDots');
+const slidesToShow = 3;
+const totalSlides = slides.length;
+const maxSlide = Math.ceil(totalSlides / slidesToShow) - 1;
 
-// Create dots
-slides.forEach((_, index) => {
+// Create dots based on number of pages
+for (let i = 0; i <= maxSlide; i++) {
     const dot = document.createElement('div');
     dot.classList.add('dot');
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(index));
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
     dotsContainer.appendChild(dot);
-});
+}
 
 const dots = document.querySelectorAll('.dot');
 
 function updateCarousel() {
     const slideWidth = slides[0].offsetWidth + 32; // width + gap
-    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    const offset = currentSlide * slidesToShow * slideWidth;
+    track.style.transform = `translateX(-${offset}px)`;
     
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSlide);
@@ -27,24 +31,32 @@ function updateCarousel() {
 }
 
 function goToSlide(index) {
-    currentSlide = index;
+    currentSlide = Math.max(0, Math.min(index, maxSlide));
     updateCarousel();
 }
 
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
+    if (currentSlide < maxSlide) {
+        currentSlide++;
+    } else {
+        currentSlide = 0;
+    }
     updateCarousel();
 }
 
 function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    if (currentSlide > 0) {
+        currentSlide--;
+    } else {
+        currentSlide = maxSlide;
+    }
     updateCarousel();
 }
 
 nextBtn.addEventListener('click', nextSlide);
 prevBtn.addEventListener('click', prevSlide);
 
-// Auto-play carousel (optional)
+// Auto-play carousel
 let autoplayInterval = setInterval(nextSlide, 5000);
 
 // Pause autoplay on hover
@@ -56,6 +68,9 @@ carouselContainer.addEventListener('mouseenter', () => {
 carouselContainer.addEventListener('mouseleave', () => {
     autoplayInterval = setInterval(nextSlide, 5000);
 });
+
+// Update carousel on window resize
+window.addEventListener('resize', updateCarousel);
 
 // Mobile menu toggle
 const burger = document.querySelector('.burger');
