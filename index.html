@@ -36,9 +36,16 @@
             </div>
             <h1 class="hero-title">Ferdy Placencia Vásquez</h1>
             <p class="subtitle">Automation Engineer | QA Tester | Python Developer</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">Ver Proyectos</a>
-                <a href="#contact" class="btn btn-secondary">Contáctame</a>
+            <div class="hero-cta">
+                <div class="cta-badge">
+                    <i class="fas fa-bolt"></i> Disponible para Proyectos
+                </div>
+                <h2 class="cta-title">¿Necesitas automatización o QA para tu proyecto?</h2>
+                <p class="cta-text">Transformo procesos manuales en soluciones automatizadas que ahorran tiempo y dinero</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-cta">💬 Contáctame Ya</a>
+                    <a href="#projects" class="btn btn-secondary">Ver Proyectos</a>
+                </div>
             </div>
             <div class="social-links">
                 <a href="https://github.com/FerDVaz09" target="_blank"><i class="fab fa-github"></i></a>
@@ -98,139 +105,148 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2 class="section-title">Proyectos Destacados</h2>
-            <div class="projects-grid">
-                <a href="#contact" class="project-card-link">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fab fa-whatsapp"></i>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <a href="projects/whatsapp-bot.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3>Bot de Soporte en WhatsApp</h3>
+                            <p>
+                                Bot automatizado de soporte con agrupación de mensajes, persistencia en Supabase, 
+                                control de sesiones con Redis y escalamiento a soporte humano.
+                            </p>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Evolution API</span>
+                                <span>Supabase</span>
+                                <span>Redis</span>
+                            </div>
+                            <div class="project-demo">
+                                <i class="fas fa-arrow-right"></i> Ver Detalles
+                            </div>
                         </div>
-                        <h3>Bot de Soporte en WhatsApp</h3>
-                        <p>
-                            Bot automatizado de soporte con agrupación de mensajes, persistencia en Supabase, 
-                            control de sesiones con Redis y escalamiento a soporte humano.
-                        </p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Evolution API</span>
-                            <span>Supabase</span>
-                            <span>Redis</span>
-                        </div>
-                        <div class="project-demo">
-                            <i class="fas fa-arrow-right"></i> Ver Proyecto
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a href="#contact" class="project-card-link">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fab fa-slack"></i>
+                    <a href="projects/slack-thinkific.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-icon">
+                                <i class="fab fa-slack"></i>
+                            </div>
+                            <h3>App Slack + Thinkific</h3>
+                            <p>
+                                Comandos /acceso y /fix con formularios interactivos. Otorga y edita accesos a cursos 
+                                automáticamente con manejo de fechas de expiración.
+                            </p>
+                            <div class="tech-stack">
+                                <span>Python</span>
+                                <span>Flask</span>
+                                <span>Slack API</span>
+                                <span>Thinkific API</span>
+                            </div>
+                            <div class="project-demo">
+                                <i class="fas fa-arrow-right"></i> Ver Detalles
+                            </div>
                         </div>
-                        <h3>App Slack + Thinkific</h3>
-                        <p>
-                            Comandos /acceso y /fix con formularios interactivos. Otorga y edita accesos a cursos 
-                            automáticamente con manejo de fechas de expiración.
-                        </p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Flask</span>
-                            <span>Slack API</span>
-                            <span>Thinkific API</span>
-                        </div>
-                        <div class="project-demo">
-                            <i class="fas fa-arrow-right"></i> Ver Proyecto
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a href="#contact" class="project-card-link">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-graduation-cap"></i>
+                    <a href="projects/agente-academico.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Agente IA Soporte Académico</h3>
+                            <p>
+                                Bot en Slack con base de datos de conocimiento, detección de preguntas no respondibles, 
+                                escalamiento automático y registro de casos.
+                            </p>
+                            <div class="tech-stack">
+                                <span>N8N</span>
+                                <span>Slack API</span>
+                                <span>IA</span>
+                                <span>Google Sheets</span>
+                            </div>
+                            <div class="project-demo">
+                                <i class="fas fa-arrow-right"></i> Ver Detalles
+                            </div>
                         </div>
-                        <h3>Agente IA Soporte Académico</h3>
-                        <p>
-                            Bot en Slack con base de datos de conocimiento, detección de preguntas no respondibles, 
-                            escalamiento automático y registro de casos.
-                        </p>
-                        <div class="tech-stack">
-                            <span>N8N</span>
-                            <span>Slack API</span>
-                            <span>IA</span>
-                            <span>Google Sheets</span>
-                        </div>
-                        <div class="project-demo">
-                            <i class="fas fa-arrow-right"></i> Ver Proyecto
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a href="#contact" class="project-card-link">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fab fa-discord"></i>
+                    <a href="projects/discord-tickets.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-icon">
+                                <i class="fab fa-discord"></i>
+                            </div>
+                            <h3>Sistema de Tickets Discord</h3>
+                            <p>
+                                Creación automática de tickets por hilos, respuestas automáticas con IA, 
+                                cierre por tiempo y registro de casos para análisis.
+                            </p>
+                            <div class="tech-stack">
+                                <span>N8N</span>
+                                <span>Discord API</span>
+                                <span>IA</span>
+                                <span>Google Sheets</span>
+                            </div>
+                            <div class="project-demo">
+                                <i class="fas fa-arrow-right"></i> Ver Detalles
+                            </div>
                         </div>
-                        <h3>Sistema de Tickets Discord</h3>
-                        <p>
-                            Creación automática de tickets por hilos, respuestas automáticas con IA, 
-                            cierre por tiempo y registro de casos para análisis.
-                        </p>
-                        <div class="tech-stack">
-                            <span>N8N</span>
-                            <span>Discord API</span>
-                            <span>IA</span>
-                            <span>Google Sheets</span>
-                        </div>
-                        <div class="project-demo">
-                            <i class="fas fa-arrow-right"></i> Ver Proyecto
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a href="#contact" class="project-card-link">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fab fa-telegram"></i>
+                    <a href="projects/trading-assistant.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <h3>Asistente de Trading</h3>
+                            <p>
+                                Bot en Telegram para registro automático de trades (ganancias/pérdidas), 
+                                consultas financieras y generación de journal en Excel.
+                            </p>
+                            <div class="tech-stack">
+                                <span>Telegram API</span>
+                                <span>N8N</span>
+                                <span>Excel</span>
+                                <span>Python</span>
+                            </div>
+                            <div class="project-demo">
+                                <i class="fas fa-arrow-right"></i> Ver Detalles
+                            </div>
                         </div>
-                        <h3>Asistente de Trading</h3>
-                        <p>
-                            Bot en Telegram para registro automático de trades (ganancias/pérdidas), 
-                            consultas financieras y generación de journal en Excel.
-                        </p>
-                        <div class="tech-stack">
-                            <span>Telegram API</span>
-                            <span>N8N</span>
-                            <span>Excel</span>
-                            <span>Python</span>
-                        </div>
-                        <div class="project-demo">
-                            <i class="fas fa-arrow-right"></i> Ver Proyecto
-                        </div>
-                    </div>
-                </a>
+                    </a>
 
-                <a href="#contact" class="project-card-link">
-                    <div class="project-card">
-                        <div class="project-icon">
-                            <i class="fas fa-calendar-check"></i>
+                    <a href="projects/agente-citas.html" class="project-card-link">
+                        <div class="project-card">
+                            <div class="project-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h3>Agente de Citas y Consultas</h3>
+                            <p>
+                                Agente automatizado vía Telegram para gestión de citas y consultas. Integración con 
+                                Notion, Google Sheets y emails personalizados automáticos.
+                            </p>
+                            <div class="tech-stack">
+                                <span>Telegram API</span>
+                                <span>Notion</span>
+                                <span>Google Sheets</span>
+                                <span>N8N</span>
+                            </div>
+                            <div class="project-demo">
+                                <i class="fas fa-arrow-right"></i> Ver Detalles
+                            </div>
                         </div>
-                        <h3>Agente de Citas y Consultas</h3>
-                        <p>
-                            Agente automatizado vía Telegram para gestión de citas y consultas. Integración con 
-                            Notion, Google Sheets y emails personalizados automáticos.
-                        </p>
-                        <div class="tech-stack">
-                            <span>Telegram API</span>
-                            <span>Notion</span>
-                            <span>Google Sheets</span>
-                            <span>N8N</span>
-                        </div>
-                        <div class="project-demo">
-                            <i class="fas fa-arrow-right"></i> Ver Proyecto
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
     </section>
 
@@ -298,12 +314,21 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Contáctame</h2>
+            <p class="section-subtitle">¿Listo para automatizar tus procesos? Escríbeme por tu canal preferido</p>
             <div class="contact-content">
                 <div class="contact-info">
-                    <button class="contact-item" data-action="email" data-value="ferdyv59@gmail.com">
-                        <i class="fas fa-envelope"></i>
+                    <button class="contact-item contact-primary" data-action="whatsapp" data-value="https://wa.me/18094769759">
+                        <i class="fab fa-whatsapp"></i>
                         <div>
-                            <h3>Email</h3>
+                            <h3>WhatsApp</h3>
+                            <p>Chatea conmigo ahora</p>
+                        </div>
+                        <span class="contact-badge">Recomendado</span>
+                    </button>
+                    <button class="contact-item contact-primary" data-action="email-compose" data-value="ferdyv59@gmail.com">
+                        <i class="fas fa-paper-plane"></i>
+                        <div>
+                            <h3>Redactar Email</h3>
                             <p>ferdyv59@gmail.com</p>
                         </div>
                     </button>

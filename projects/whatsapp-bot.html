@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot de Soporte en WhatsApp - Ferdy Vásquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            padding: 6rem 0 3rem;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        .project-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-box h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        .project-details {
+            padding: 4rem 0;
+        }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: var(--dark-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .project-hero {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">FPV</div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Inicio</a></li>
+                <li><a href="../index.html#projects">Proyectos</a></li>
+                <li><a href="../index.html#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="../index.html#projects" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a Proyectos
+            </a>
+            <div class="project-hero">
+                <div>
+                    <div class="project-icon" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h1 class="project-title">Bot de Soporte en WhatsApp</h1>
+                    <p class="project-subtitle">
+                        Sistema automatizado de soporte con IA, persistencia en Supabase y control de sesiones con Redis
+                    </p>
+                    <div class="tech-stack" style="margin: 2rem 0;">
+                        <span>Python</span>
+                        <span>Evolution API</span>
+                        <span>Supabase</span>
+                        <span>Redis</span>
+                        <span>OpenAI GPT-4</span>
+                        <span>Chatwoot</span>
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="stat-box">
+                        <h3>80%</h3>
+                        <p>Consultas Automatizadas</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>< 5seg</h3>
+                        <p>Tiempo de Respuesta</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>24/7</h3>
+                        <p>Disponibilidad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="detail-section">
+                <h2>🎯 Objetivo del Proyecto</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    Desarrollar un bot inteligente de WhatsApp capaz de automatizar el 80% de las consultas de soporte, 
+                    reduciendo la carga de trabajo del equipo y mejorando significativamente los tiempos de respuesta a los usuarios.
+                </p>
+            </div>
+
+            <div class="detail-section">
+                <h2>✨ Características Principales</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>IA Conversacional</h3>
+                        <p>Integración con GPT-4 para respuestas naturales y contextualizadas. Base de conocimiento vectorial con RAG para consultas precisas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Persistencia Supabase</h3>
+                        <p>Historial completo de conversaciones almacenado en Supabase con búsqueda y análisis de interacciones pasadas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Buffer Inteligente (Redis)</h3>
+                        <p>Sistema de cola con Redis para agrupar mensajes rápidos y evitar respuestas fragmentadas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Escalamiento Humano</h3>
+                        <p>Detección automática de consultas complejas con notificación al equipo de soporte vía Slack.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-sync"></i>
+                        <h3>Integración Chatwoot</h3>
+                        <p>Sincronización bidireccional con plataforma de soporte omnicanal para gestión centralizada.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Control de Sesiones</h3>
+                        <p>Manejo robusto de estados y contexto por usuario con timeout automático y recuperación de errores.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>🔧 Stack Tecnológico</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fab fa-python"></i>
+                        <h3>Backend Python</h3>
+                        <p>Arquitectura basada en Python con manejo asíncrono, retry logic y validación robusta de datos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>Evolution API</h3>
+                        <p>Integración con WhatsApp Business API para mensajería empresarial confiable y escalable.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-server"></i>
+                        <h3>Supabase + Redis</h3>
+                        <p>Base de datos PostgreSQL (Supabase) para persistencia y Redis para cache y gestión de sesiones.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>📊 Resultados e Impacto</h2>
+                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                    <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.1rem;">
+                        <li>✅ <strong>80% de consultas automatizadas</strong> - Reducción dramática de carga manual</li>
+                        <li>✅ <strong>Tiempo de respuesta < 5 segundos</strong> - Mejora significativa vs 2-3 horas previo</li>
+                        <li>✅ <strong>Disponibilidad 24/7</strong> - Soporte ininterrumpido fuera de horario laboral</li>
+                        <li>✅ <strong>98% de satisfacción del usuario</strong> - Respuestas precisas y contextualizadas</li>
+                        <li>✅ <strong>Ahorro de $3,500/mes</strong> - Reducción de costos operativos de soporte</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-section" style="text-align: center;">
+                <h2>¿Interesado en un proyecto similar?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    Puedo desarrollar una solución de automatización personalizada para tu negocio
+                </p>
+                <a href="../index.html#contact" class="btn btn-cta">
+                    <i class="fas fa-comments"></i> Cont áctame Ya
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

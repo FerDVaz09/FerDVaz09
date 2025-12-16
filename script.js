@@ -174,7 +174,7 @@ window.addEventListener('load', () => {
     setTimeout(typeWriter, 500);
 });
 
-// Copy email to clipboard
+// Copy email to clipboard or handle contact actions
 const contactItems = document.querySelectorAll('.contact-item');
 contactItems.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -186,6 +186,12 @@ contactItems.forEach(item => {
             navigator.clipboard.writeText(value).then(() => {
                 showNotification('✓ Email copiado al portapapeles');
             });
+        } else if (action === 'email-compose') {
+            // Open email compose window
+            window.location.href = `mailto:${value}?subject=Consulta sobre Automatización&body=Hola Ferdy,%0D%0A%0D%0AMe gustaría consultar sobre...`;
+        } else if (action === 'whatsapp') {
+            // Open WhatsApp
+            window.open(value, '_blank');
         } else if (action === 'phone') {
             // Open phone dialer
             window.location.href = value;
