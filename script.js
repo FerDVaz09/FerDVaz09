@@ -337,35 +337,99 @@ const chatbotResponse = document.getElementById('chatbot-response');
 const chatbotMenu = document.querySelector('.chatbot-menu');
 
 const responses = {
-    experiencia: `
-        <p><strong>💼 Mi Experiencia:</strong></p>
-        <p>Tengo más de 3 años de experiencia como QA Testing y Automation Engineer. He trabajado en:</p>
+    metodologia: `
+        <p><strong>🧪 Mi Metodología QA:</strong></p>
+        <p><strong>1. Análisis de Requisitos</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>✅ Automatización de procesos (80% de eficiencia)</li>
-            <li>✅ Desarrollo de bots y agentes inteligentes</li>
-            <li>✅ Integración de APIs y sistemas</li>
-            <li>✅ Testing automatizado con Selenium y Pytest</li>
+            <li>📋 Revisión detallada de user stories</li>
+            <li>🎯 Identificación de criterios de aceptación</li>
+            <li>❓ Clarificación de casos edge y escenarios negativos</li>
         </ul>
+        <p><strong>2. Diseño de Test Cases</strong></p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>✍️ Test cases manuales con precondiciones y pasos detallados</li>
+            <li>🔄 Casos de regresión para features críticas</li>
+            <li>⚡ Scripts automatizados con Selenium + Pytest</li>
+        </ul>
+        <p><strong>3. Ejecución y Reporte</strong></p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>🐞 Documentación de bugs con severidad y prioridad</li>
+            <li>📸 Screenshots + logs + pasos de reproducción</li>
+            <li>📊 Métricas: cobertura, pass rate, defect density</li>
+        </ul>
+    `,
+    bugs: `
+        <p><strong>🐞 Ejemplo Real de Bug Detectado:</strong></p>
+        <div style="background: rgba(255, 0, 0, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #e74c3c; margin: 1rem 0;">
+            <p><strong>ID:</strong> BUG-2024-0157</p>
+            <p><strong>Severidad:</strong> 🔴 CRÍTICA</p>
+            <p><strong>Módulo:</strong> Sistema de pagos - Slack App</p>
+        </div>
+        <p><strong>📝 Descripción:</strong></p>
+        <p>El comando /acceso permite otorgar accesos a cursos sin validar si el usuario ya tiene un acceso activo, causando duplicación de registros en Thinkific y cobros dobles.</p>
+        <p><strong>🔄 Pasos de Reproducción:</strong></p>
+        <ol style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>Ejecutar <code>/acceso</code> para usuario existente</li>
+            <li>Seleccionar curso ya asignado</li>
+            <li>Sistema NO valida duplicación</li>
+            <li>Se crea segundo enrollment → cobro doble</li>
+        </ol>
+        <p><strong>✅ Solución Implementada:</strong></p>
+        <p>Agregué validación previa que verifica enrollments activos antes de crear nuevos accesos. Tiempo de fix: 2 horas. Impacto: evitó ~$2,400 en cobros erróneos.</p>
     `,
     proyectos: `
-        <p><strong>🚀 Proyectos Destacados:</strong></p>
+        <p><strong>🚀 Proyectos Testeados y Automatizados:</strong></p>
+        <div style="background: rgba(0, 217, 255, 0.05); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0;">
+            <p><strong>📱 Bot de WhatsApp - Evolution API</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">Testing de integración API, manejo de sesiones Redis, validación de persistencia en Supabase</p>
+        </div>
+        <div style="background: rgba(0, 217, 255, 0.05); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0;">
+            <p><strong>💬 Sistema de Tickets Discord</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">Automatización Selenium para UI de Discord, validación de hilos y respuestas IA</p>
+        </div>
+        <div style="background: rgba(0, 217, 255, 0.05); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0;">
+            <p><strong>🔗 Slack + Thinkific Integration</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">Test cases para comandos slash, validación de enrollments, testing de edge cases</p>
+        </div>
+        <p style="margin-top: 1rem;"><strong>🧪 Cobertura promedio:</strong> 85% | <strong>🤖 Automatización:</strong> 80%</p>
+    `,
+    herramientas: `
+        <p><strong>🛠️ Herramientas QA y Automatización:</strong></p>
+        <p><strong>Testing Automatizado:</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>📱 Bot de WhatsApp con IA y persistencia en Supabase</li>
-            <li>💬 Sistema de tickets Discord con respuestas automáticas</li>
-            <li>🎓 Agente de soporte académico con base de conocimiento</li>
-            <li>📊 Asistente de trading en Telegram con journal automático</li>
-            <li>🔗 Apps Slack + Thinkific para gestión de cursos</li>
-            <li>📅 Agente de citas con Notion y Google Sheets</li>
+            <li>🐍 <strong>Selenium + Pytest</strong> - UI automation</li>
+            <li>📬 <strong>Postman + Newman</strong> - API testing & CI/CD</li>
+            <li>🔄 <strong>N8N</strong> - Workflow automation & monitoring</li>
+        </ul>
+        <p><strong>Gestión QA:</strong></p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>📋 <strong>Jira</strong> - Bug tracking & test management</li>
+            <li>📊 <strong>TestRail</strong> - Test case documentation</li>
+            <li>🐙 <strong>Git/GitHub</strong> - Version control & code review</li>
+        </ul>
+        <p><strong>Performance & Monitoring:</strong></p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>⚡ <strong>Redis</strong> - Cache testing & session management</li>
+            <li>📊 <strong>Supabase</strong> - Database validation & logs</li>
         </ul>
     `,
-    tecnologias: `
-        <p><strong>💻 Stack Tecnológico:</strong></p>
-        <p><strong>Lenguajes:</strong> Python, JavaScript, SQL</p>
-        <p><strong>Backend:</strong> Flask, Evolution API, Redis, Supabase</p>
-        <p><strong>Automatización:</strong> N8N, Selenium, Pytest</p>
-        <p><strong>APIs:</strong> Slack, Discord, Telegram, WhatsApp, Thinkific</p>
-        <p><strong>IA/ML:</strong> OpenAI, LangChain, RAG, Prompt Engineering</p>
-        <p><strong>Testing:</strong> Postman, Selenium, Pytest, Automation</p>
+    experiencia: `
+        <p><strong>💼 Experiencia Profesional QA:</strong></p>
+        <p><strong>Especialista TI - Abacus Exchange</strong> (Actual)</p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>🧪 Testing de sistemas de pago y transferencias</li>
+            <li>🤖 Automatización de procesos (80% eficiencia)</li>
+            <li>🐞 Detección proactiva de bugs críticos</li>
+        </ul>
+        <p><strong>QA & Automation Engineer</strong> (3+ años)</p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>✅ +10 proyectos testeados end-to-end</li>
+            <li>🔧 Desarrollo de frameworks de testing custom</li>
+            <li>📊 Implementación de CI/CD con Pytest + GitHub Actions</li>
+            <li>🧠 Integration testing con APIs REST y WebSockets</li>
+        </ul>
+        <p><strong>📈 Logros clave:</strong></p>
+        <p>• Reducción 60% en bugs de producción<br>• 80% de cobertura automatizada<br>• Ahorro de $5k+ detectando bugs críticos pre-launch</p>
     `,
     contacto: `
         <p><strong>📧 Contáctame:</strong></p>
@@ -374,18 +438,6 @@ const responses = {
         <p>💼 LinkedIn: <a href="https://linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315" target="_blank" style="color: var(--primary-color);">Ver perfil</a></p>
         <p>💻 GitHub: <a href="https://github.com/FerDVaz09" target="_blank" style="color: var(--primary-color);">@FerDVaz09</a></p>
         <p style="margin-top: 1rem;">¡Puedes usar los botones de contacto arriba para copiar mi email o abrir WhatsApp directamente! 📲</p>
-    `,
-    disponibilidad: `
-        <p><strong>✅ Disponibilidad:</strong></p>
-        <p>Actualmente trabajo como <strong>Especialista TI</strong> en Abacus Exchange, pero estoy abierto a nuevas oportunidades freelance y proyectos interesantes.</p>
-        <p><strong>Puedo ayudarte con:</strong></p>
-        <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>🤖 Desarrollo de bots y automatizaciones</li>
-            <li>🔗 Integración de APIs y sistemas</li>
-            <li>🧪 Testing y QA automation</li>
-            <li>🧠 Soluciones con IA y ML</li>
-        </ul>
-        <p style="margin-top: 1rem;">¡Contáctame y hablemos de tu proyecto! 🚀</p>
     `
 };
 
