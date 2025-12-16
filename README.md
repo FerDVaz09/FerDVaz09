@@ -67,64 +67,103 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 
 ---
 
-### 🚀 Featured Projects
+### 🚀 Proyectos Destacados
 
-#### 🤖 [Discord Bots con IA Personalizados](https://github.com/FerDVaz09/abacus-gpt)
-Suite de bots inteligentes de Discord con integración de OpenAI GPT-4 para soporte técnico automatizado y personalizado
+#### 📱 Bot de Soporte en WhatsApp
+Bot automatizado de soporte con agrupación de mensajes, persistencia en Supabase, control de sesiones con Redis y escalamiento a soporte humano.
 
 **Características principales:**
-- 🧠 **Integración OpenAI**: GPT-4 para respuestas inteligentes y contextuales
-- 🔒 **Hilos privados**: Conversaciones 1:1 aisladas por usuario
-- 💾 **Persistencia**: Base de datos SQLite para historial y gestión de sesiones
-- ⏰ **Auto-limpieza**: Eliminación automática de hilos después de 24 horas
-- 📚 **Base de conocimiento**: Sistema de contexto enriquecido con documentación técnica personalizada
-- ⚡ **Async/Await**: Arquitectura asíncrona para alto rendimiento
-- 🛡️ **Manejo de errores**: Sistema robusto de fallback y recuperación
-- 🎯 **Personalización**: Bots configurables para diferentes dominios y casos de uso
+- 🤖 **IA Conversacional**: GPT-4 con memoria contextual y base de conocimientos
+- 📱 **WhatsApp Business**: Integración con Evolution API
+- 🧠 **Memoria Persistente**: Historial en Supabase con control de sesiones Redis
+- 🔄 **Buffer inteligente**: Sistema de cola para agrupar mensajes rápidos
+- 🎫 **Escalamiento automático**: Notificaciones cuando se requiere soporte humano
+- 🏷️ **Integración Chatwoot**: Sincronización bidireccional
+- 🔍 **RAG**: Consultas a base de conocimiento vectorial
 
-**Impacto:** Automatiza soporte técnico 24/7 con respuestas de calidad humana y contexto especializado
+**Impacto:** Automatiza 80%+ de consultas de soporte, tiempo de respuesta: segundos
 
-**Tech Stack**: Python · Discord.py 2.4 · OpenAI GPT-4 · SQLite · Async/Await · dotenv
+**Tech Stack**: Python · Evolution API · Supabase · Redis · OpenAI GPT-4 · Chatwoot
 
 ---
 
-#### 🎯 [Slack Bot - Thinkific Integration](https://github.com/FerDVaz09/Slaack-bot-Thinkific)
-Bot automatizado de gestión masiva de usuarios para plataforma LMS Thinkific
+#### 🔗 App Slack + Thinkific
+Comandos /acceso y /fix con formularios interactivos. Otorga y edita accesos a cursos automáticamente con manejo de fechas de expiración.
 
 **Características principales:**
 - ✅ **Procesamiento masivo**: 700+ usuarios en minutos con batch processing
 - 🔄 **Integración dual**: Slack SDK + Thinkific REST API v1
 - 📊 **Reportes automáticos**: Generación de Excel con pandas
 - ⚡ **Resiliencia**: Rate limiting inteligente con exponential backoff
-- 🎨 **UX avanzada**: Modales interactivos multi-programa con validación en tiempo real
-- 🌍 **Timezone aware**: Manejo correcto de fechas (UTC-6)
+- 🎨 **UX avanzada**: Modales interactivos con validación en tiempo real
 - 🔐 **Validación robusta**: Detección de duplicados y control de errores
-- 🧵 **Multithreading**: Procesamiento paralelo para operaciones de alto volumen
 
-**Impacto:** Automatiza proceso manual que tomaba ~8 horas → **15 minutos**
+**Impacto:** Automatiza proceso manual de 8 horas → **15 minutos**
 
-**Tech Stack**: Python · Flask 3.1 · Slack SDK 3.35 · REST APIs · Threading · Pandas · Heroku
+**Tech Stack**: Python · Flask · Slack API · Thinkific API · Heroku
 
 ---
 
-#### 💬 Bots de Soporte Inteligente con WhatsApp
-Sistema avanzado de automatización de soporte al cliente con IA conversacional, construido con N8N y Evolution API
+#### 🎓 Agente IA Soporte Académico
+Bot en Slack con base de datos de conocimiento, detección de preguntas no respondibles, escalamiento automático y registro de casos.
 
 **Características principales:**
-- 🤖 **IA Conversacional**: Agente GPT-4 con memoria contextual y base de conocimientos vectorial (PostgreSQL + PGVector)
-- 📱 **WhatsApp Business**: Integración completa con Evolution API para mensajería empresarial
-- 🧠 **Memoria Persistente**: Historial de conversaciones por usuario con PostgreSQL Chat Memory
-- 🎙️ **Multi-modal**: Soporte para texto, audio (transcripción automática) e imágenes (análisis con GPT-4 Vision)
-- 🔄 **Buffer inteligente**: Sistema de cola con Redis para agrupar mensajes rápidos
-- 📊 **Extracción de datos**: Captura automática de información del cliente (nombre, correo, programa) con JSON estructurado
-- 🎫 **Escalamiento automático**: Notificaciones a Slack cuando se requiere intervención humana
-- 🏷️ **Integración Chatwoot**: Sincronización bidireccional con plataforma de soporte
-- ⏱️ **Gestión de horarios**: Lógica de disponibilidad y routing según horas laborales
-- 🔍 **RAG (Retrieval Augmented Generation)**: Consultas a base de conocimiento vectorial para respuestas precisas
+- 🧠 **Base de conocimiento**: Sistema RAG con documentación técnica
+- 🎯 **Detección inteligente**: Identifica preguntas fuera de alcance
+- 🎫 **Escalamiento automático**: Crea tickets cuando es necesario
+- 📊 **Registro de casos**: Tracking en Google Sheets para análisis
+- 🔄 **Integración N8N**: Workflows automatizados
 
-**Impacto:** Automatiza 80%+ de consultas de soporte, reduciendo tiempo de respuesta de horas a segundos
+**Impacto:** Soporte académico 24/7 con respuestas contextualizadas
 
-**Tech Stack**: N8N · Evolution API · OpenAI GPT-4 · PostgreSQL · PGVector · Redis · Chatwoot · Slack API · Whisper API
+**Tech Stack**: N8N · Slack API · IA · Google Sheets
+
+---
+
+#### 💬 Sistema de Tickets Discord
+Creación automática de tickets por hilos, respuestas automáticas con IA, cierre por tiempo y registro de casos para análisis.
+
+**Características principales:**
+- 🔒 **Hilos privados**: Conversaciones 1:1 aisladas por usuario
+- 🤖 **Respuestas IA**: GPT-4 con contexto personalizado
+- ⏰ **Auto-limpieza**: Cierre automático de hilos inactivos
+- 📊 **Analytics**: Registro de casos en Google Sheets
+- 🛡️ **Manejo de errores**: Sistema robusto de fallback
+
+**Impacto:** Gestión automatizada de tickets con IA y escalamiento inteligente
+
+**Tech Stack**: N8N · Discord API · IA · Google Sheets
+
+---
+
+#### 📊 Asistente de Trading
+Bot en Telegram para registro automático de trades (ganancias/pérdidas), consultas financieras y generación de journal en Excel.
+
+**Características principales:**
+- 📈 **Registro automático**: Captura de trades con ganancias/pérdidas
+- 💰 **Consultas financieras**: Balance, estadísticas, performance
+- 📊 **Journal automático**: Generación de reportes en Excel
+- 🎯 **Análisis de patrones**: Identificación de tendencias
+
+**Impacto:** Automatiza registro y análisis de operaciones de trading
+
+**Tech Stack**: Telegram API · N8N · Excel · Python
+
+---
+
+#### 📅 Agente de Citas y Consultas
+Agente automatizado vía Telegram para gestión de citas y consultas. Integración con Notion, Google Sheets y emails personalizados automáticos.
+
+**Características principales:**
+- 📅 **Gestión de citas**: Scheduling automático con validación de disponibilidad
+- 📧 **Emails personalizados**: Confirmaciones automáticas
+- 🗂️ **Integración Notion**: Base de datos centralizada
+- 📊 **Tracking en Sheets**: Registro y reportes
+- 🔔 **Recordatorios**: Notificaciones automáticas
+
+**Impacto:** Automatiza proceso completo de agendamiento y seguimiento
+
+**Tech Stack**: Telegram API · Notion · Google Sheets · N8N
 
 ---
 
