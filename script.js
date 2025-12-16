@@ -1,67 +1,71 @@
-// Carousel functionality
-let currentPage = 0;
+// Carousel functionality (only if elements exist)
 const track = document.querySelector('.carousel-track');
-const slides = document.querySelectorAll('.carousel-track .project-card-link');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const dotsContainer = document.getElementById('carouselDots');
-const slidesPerPage = 3;
-const totalPages = Math.ceil(slides.length / slidesPerPage);
 
-// Create dots for pages
-for (let i = 0; i < totalPages; i++) {
-    const dot = document.createElement('div');
-    dot.classList.add('dot');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToPage(i));
-    dotsContainer.appendChild(dot);
-}
+if (track && prevBtn && nextBtn && dotsContainer) {
+    let currentPage = 0;
+    const slides = document.querySelectorAll('.carousel-track .project-card-link');
+    const slidesPerPage = 3;
+    const totalPages = Math.ceil(slides.length / slidesPerPage);
 
-const dots = document.querySelectorAll('.dot');
+    // Create dots for pages
+    for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+    }
 
-function updateCarousel() {
-    const slideWidth = slides[0].offsetWidth + 32; // width + gap
-    const offset = currentPage * slidesPerPage * slideWidth;
-    track.style.transform = `translateX(-${offset}px)`;
-    
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentPage);
+    const dots = document.querySelectorAll('.dot');
+
+    function updateCarousel() {
+        const slideWidth = slides[0].offsetWidth + 32; // width + gap
+        const offset = currentPage * slidesPerPage * slideWidth;
+        track.style.transform = `translateX(-${offset}px)`;
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentPage);
+        });
+    }
+
+    function goToPage(page) {
+        currentPage = page;
+        updateCarousel();
+    }
+
+    function nextPage() {
+        currentPage = (currentPage + 1) % totalPages;
+        updateCarousel();
+    }
+
+    function prevPage() {
+        currentPage = (currentPage - 1 + totalPages) % totalPages;
+        updateCarousel();
+    }
+
+    nextBtn.addEventListener('click', nextPage);
+    prevBtn.addEventListener('click', prevPage);
+
+    // Auto-play carousel
+    let autoplayInterval = setInterval(nextPage, 5000);
+
+    // Pause autoplay on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
     });
+
+    carouselContainer.addEventListener('mouseleave', () => {
+        autoplayInterval = setInterval(nextPage, 5000);
+    });
+
+    // Update carousel on window resize
+    window.addEventListener('resize', updateCarousel);
 }
 
-function goToPage(page) {
-    currentPage = page;
-    updateCarousel();
-}
-
-function nextPage() {
-    currentPage = (currentPage + 1) % totalPages;
-    updateCarousel();
-}
-
-function prevPage() {
-    currentPage = (currentPage - 1 + totalPages) % totalPages;
-    updateCarousel();
-}
-
-nextBtn.addEventListener('click', nextPage);
-prevBtn.addEventListener('click', prevPage);
-
-// Auto-play carousel
-let autoplayInterval = setInterval(nextPage, 5000);
-
-// Pause autoplay on hover
-const carouselContainer = document.querySelector('.carousel-container');
-carouselContainer.addEventListener('mouseenter', () => {
-    clearInterval(autoplayInterval);
-});
-
-carouselContainer.addEventListener('mouseleave', () => {
-    autoplayInterval = setInterval(nextPage, 5000);
-});
-
-// Update carousel on window resize
-window.addEventListener('resize', updateCarousel);
 
 // Mobile menu toggle
 const burger = document.querySelector('.burger');
