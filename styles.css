@@ -433,7 +433,7 @@ section {
 
 .carousel-container {
     position: relative;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 80px;
 }
@@ -446,11 +446,12 @@ section {
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .carousel-track .project-card-link {
-    min-width: calc((100% - 4rem) / 3);
+    min-width: 350px;
+    max-width: 350px;
     flex-shrink: 0;
 }
 
@@ -968,10 +969,6 @@ section {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .btn-nav-cta {
-        display: none;
-    }
-
     .nav-links {
         position: fixed;
         right: -100%;
