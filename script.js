@@ -49,6 +49,76 @@ if (track && prevBtn && nextBtn && dotsContainer) {
     nextBtn.addEventListener('click', nextPage);
     prevBtn.addEventListener('click', prevPage);
 
+    // Drag functionality
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+
+    track.addEventListener('mousedown', dragStart);
+    track.addEventListener('mouseup', dragEnd);
+    track.addEventListener('mouseleave', dragEnd);
+    track.addEventListener('mousemove', drag);
+    track.addEventListener('touchstart', dragStart);
+    track.addEventListener('touchend', dragEnd);
+    track.addEventListener('touchmove', drag);
+
+    function dragStart(event) {
+        isDragging = true;
+        startPos = getPositionX(event);
+        animationID = requestAnimationFrame(animation);
+        track.style.cursor = 'grabbing';
+    }
+
+    function drag(event) {
+        if (isDragging) {
+            const currentPosition = getPositionX(event);
+            currentTranslate = prevTranslate + currentPosition - startPos;
+        }
+    }
+
+    function dragEnd() {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        track.style.cursor = 'grab';
+
+        const movedBy = currentTranslate - prevTranslate;
+
+        // Si se arrastró más de 100px, cambiar de página
+        if (movedBy < -100 && currentPage < totalPages - 1) {
+            nextPage();
+        }
+
+        if (movedBy > 100 && currentPage > 0) {
+            prevPage();
+        }
+
+        // Resetear para la próxima vez
+        const slideWidth = slides[0].offsetWidth + 24;
+        prevTranslate = -currentPage * slidesPerPage * slideWidth;
+        currentTranslate = prevTranslate;
+    }
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+
+    function animation() {
+        if (isDragging) {
+            track.style.transform = `translateX(${currentTranslate}px)`;
+            requestAnimationFrame(animation);
+        }
+    }
+
+    // Inicializar valores de arrastre
+    const slideWidth = slides[0].offsetWidth + 24;
+    prevTranslate = -currentPage * slidesPerPage * slideWidth;
+    currentTranslate = prevTranslate;
+
+    // Establecer cursor
+    track.style.cursor = 'grab';
+
     // Auto-play carousel
     let autoplayInterval = setInterval(nextPage, 5000);
 

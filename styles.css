@@ -442,6 +442,7 @@ section {
 .projects-carousel {
     overflow: hidden;
     border-radius: 20px;
+    user-select: none;
 }
 
 .carousel-track {
