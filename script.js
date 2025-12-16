@@ -22,7 +22,7 @@ if (track && prevBtn && nextBtn && dotsContainer) {
     const dots = document.querySelectorAll('.dot');
 
     function updateCarousel() {
-        const slideWidth = slides[0].offsetWidth + 32; // width + gap
+        const slideWidth = slides[0].offsetWidth + 19.2; // width + gap (1.2rem = ~19.2px)
         const offset = currentPage * slidesPerPage * slideWidth;
         track.style.transform = `translateX(-${offset}px)`;
         
