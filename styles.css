@@ -49,16 +49,17 @@ body {
 .btn-nav-cta {
     background: linear-gradient(135deg, #00d9ff, #7b2cbf);
     color: white;
-    padding: 10px 25px;
+    padding: 8px 20px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    margin-left: 1rem;
 }
 
 .btn-nav-cta:hover {
@@ -433,9 +434,9 @@ section {
 
 .carousel-container {
     position: relative;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 80px;
+    padding: 0 60px;
 }
 
 .projects-carousel {
@@ -446,7 +447,7 @@ section {
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 .carousel-track .project-card-link {
