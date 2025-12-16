@@ -49,72 +49,55 @@ if (track && prevBtn && nextBtn && dotsContainer) {
     nextBtn.addEventListener('click', nextPage);
     prevBtn.addEventListener('click', prevPage);
 
-    // Drag functionality
+    // Drag functionality - mueve de 3 en 3
     let isDragging = false;
     let startPos = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    let animationID = 0;
+    let startPagePos = 0;
 
     track.addEventListener('mousedown', dragStart);
     track.addEventListener('mouseup', dragEnd);
     track.addEventListener('mouseleave', dragEnd);
     track.addEventListener('mousemove', drag);
-    track.addEventListener('touchstart', dragStart);
-    track.addEventListener('touchend', dragEnd);
-    track.addEventListener('touchmove', drag);
 
     function dragStart(event) {
+        // Solo si es clic izquierdo
+        if (event.button !== 0) return;
+        
         isDragging = true;
-        startPos = getPositionX(event);
-        animationID = requestAnimationFrame(animation);
+        startPos = event.pageX;
+        startPagePos = currentPage;
         track.style.cursor = 'grabbing';
+        track.style.transition = 'none';
+        event.preventDefault();
     }
 
     function drag(event) {
-        if (isDragging) {
-            const currentPosition = getPositionX(event);
-            currentTranslate = prevTranslate + currentPosition - startPos;
-        }
+        if (!isDragging) return;
+        event.preventDefault();
     }
 
-    function dragEnd() {
+    function dragEnd(event) {
+        if (!isDragging) return;
+        
         isDragging = false;
-        cancelAnimationFrame(animationID);
         track.style.cursor = 'grab';
+        track.style.transition = 'transform 0.5s ease-in-out';
 
-        const movedBy = currentTranslate - prevTranslate;
+        const endPos = event.pageX || startPos;
+        const diff = startPos - endPos;
 
-        // Si se arrastró más de 100px, cambiar de página
-        if (movedBy < -100 && currentPage < totalPages - 1) {
+        // Si arrastró más de 50px, cambiar página
+        if (diff > 50 && currentPage < totalPages - 1) {
+            // Arrastró a la izquierda -> siguiente página (3 proyectos)
             nextPage();
-        }
-
-        if (movedBy > 100 && currentPage > 0) {
+        } else if (diff < -50 && currentPage > 0) {
+            // Arrastró a la derecha -> página anterior (3 proyectos)
             prevPage();
-        }
-
-        // Resetear para la próxima vez
-        const slideWidth = slides[0].offsetWidth + 24;
-        prevTranslate = -currentPage * slidesPerPage * slideWidth;
-        currentTranslate = prevTranslate;
-    }
-
-    function getPositionX(event) {
-        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-    }
-
-    function animation() {
-        if (isDragging) {
-            track.style.transform = `translateX(${currentTranslate}px)`;
-            requestAnimationFrame(animation);
+        } else {
+            // No arrastró suficiente, volver a la página actual
+            updateCarousel();
         }
     }
-
-    // Inicializar valores de arrastre
-    const slideWidth = slides[0].offsetWidth + 24;
-    prevTranslate = -currentPage * slidesPerPage * slideWidth;
-    currentTranslate = prevTranslate;
 
     // Establecer cursor
     track.style.cursor = 'grab';
