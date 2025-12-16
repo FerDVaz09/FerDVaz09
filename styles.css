@@ -437,6 +437,7 @@ section {
 /* Projects Section */
 .projects {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+    overflow: visible;
 }
 
 .carousel-container {
@@ -459,9 +460,10 @@ section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    padding-inline: 24px;
 }
 
 .project-card-link {
@@ -476,7 +478,6 @@ section {
     border-radius: 15px;
     border: 1px solid rgba(0, 217, 255, 0.1);
     transition: all 0.3s;
-    cursor: pointer;
     display: flex;
     flex-direction: column;
     height: 100%;
