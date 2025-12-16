@@ -59,7 +59,7 @@ body {
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
     font-size: 0.9rem;
-    margin-left: 0.5rem;
+    margin-left: 0;
 }
 
 .btn-nav-cta:hover {
@@ -86,7 +86,7 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .nav-links a {
@@ -434,9 +434,9 @@ section {
 
 .carousel-container {
     position: relative;
-    max-width: 1200px;
+    max-width: 1080px;
     margin: 0 auto;
-    padding: 0 70px;
+    padding: 0 60px;
 }
 
 .projects-carousel {
@@ -448,12 +448,12 @@ section {
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .carousel-track .project-card-link {
-    min-width: 340px;
-    max-width: 340px;
+    min-width: 320px;
+    max-width: 320px;
     flex-shrink: 0;
 }
 
