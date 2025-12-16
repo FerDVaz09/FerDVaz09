@@ -134,11 +134,11 @@ if (track && prevBtn && nextBtn && dotsContainer) {
 
 // Mobile menu toggle
 const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
+const navRight = document.querySelector('.nav-right');
 const navLinks = document.querySelectorAll('.nav-links li');
 
 burger.addEventListener('click', () => {
-    nav.classList.toggle('active');
+    navRight.classList.toggle('active');
     
     // Burger animation
     burger.classList.toggle('toggle');
@@ -147,7 +147,7 @@ burger.addEventListener('click', () => {
 // Close mobile menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        nav.classList.remove('active');
+        navRight.classList.remove('active');
         burger.classList.remove('toggle');
     });
 });
