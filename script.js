@@ -18,6 +18,54 @@ navLinks.forEach(link => {
     });
 });
 
+// Projects Carousel
+const track = document.querySelector('.projects-track');
+const cards = document.querySelectorAll('.project-card-link');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+
+let currentIndex = 0;
+
+function getCardsPerView() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+}
+
+function updateCarousel() {
+    const perView = getCardsPerView();
+    const maxIndex = cards.length - perView;
+    currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+    const percent = (100 / perView) * currentIndex;
+    track.style.transform = `translateX(-${percent}%)`;
+    
+    // Update button states
+    prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+    prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+    nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+    nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+}
+
+nextBtn.addEventListener('click', () => {
+    const perView = getCardsPerView();
+    currentIndex += perView;
+    updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+    const perView = getCardsPerView();
+    currentIndex -= perView;
+    updateCarousel();
+});
+
+window.addEventListener('resize', () => {
+    currentIndex = 0;
+    updateCarousel();
+});
+
+// Initialize carousel
+updateCarousel();
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

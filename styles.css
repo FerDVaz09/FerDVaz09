@@ -42,7 +42,7 @@ body {
 
 .navbar .container {
     display: flex;
-    justify-content: space-between;
+        justify-content: space-between;
     align-items: center;
 }
 
@@ -437,39 +437,31 @@ section {
 /* Projects Section */
 .projects {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
-    overflow: visible;
 }
 
-.carousel-container {
-    display: none;
-}
-
-.carousel-track {
-    display: none;
-}
-
-.carousel-btn {
-    display: none;
-}
-
-.carousel-dots {
-    display: none;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    width: 100%;
+.projects-carousel {
     max-width: 1200px;
     margin: 0 auto;
-    padding-inline: 24px;
+    position: relative;
+    padding: 0 60px;
+}
+
+.projects-viewport {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.projects-track {
+    display: flex;
+    transition: transform 0.4s ease;
 }
 
 .project-card-link {
+    flex: 0 0 calc(100% / 3);
+    padding: 12px;
+    box-sizing: border-box;
     text-decoration: none;
     color: inherit;
-    display: block;
 }
 
 .project-card {
@@ -481,6 +473,47 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 217, 255, 0.1);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.carousel-arrow:hover {
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+    left: 0;
+}
+
+.carousel-arrow.next {
+    right: 0;
+}
+
+.carousel-container,
+.carousel-track,
+.carousel-btn,
+.carousel-dots,
+.projects-grid {
+    display: none;
 }
 
 .project-card-link:hover .project-card {
@@ -916,7 +949,31 @@ section {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .project-card-link {
+        flex: 0 0 calc(100% / 2);
+    }
+}
+
 @media (max-width: 768px) {
+    .project-card-link {
+        flex: 0 0 100%;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .carousel-arrow.prev {
+        left: 10px;
+    }
+
+    .carousel-arrow.next {
+        right: 10px;
+    }
+
     .nav-right {
         position: fixed;
         right: -100%;
