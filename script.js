@@ -322,3 +322,105 @@ document.head.appendChild(rainbowStyle);
 
 console.log('%c¡Hola Developer! 👋', 'font-size: 20px; font-weight: bold; color: #00d9ff;');
 console.log('%c¿Buscando algo interesante? Prueba el Konami Code 🎮', 'font-size: 14px; color: #7b2cbf;');
+
+// Chatbot functionality
+const chatbotToggle = document.getElementById('chatbot-toggle');
+const chatbotWindow = document.getElementById('chatbot-window');
+const chatbotClose = document.getElementById('chatbot-close');
+const chatbotReset = document.getElementById('chatbot-reset');
+const menuOptions = document.querySelectorAll('.menu-option');
+const chatbotResponse = document.getElementById('chatbot-response');
+const chatbotMenu = document.querySelector('.chatbot-menu');
+
+const responses = {
+    experiencia: `
+        <p><strong>💼 Mi Experiencia:</strong></p>
+        <p>Tengo más de 3 años de experiencia como QA Testing y Automation Engineer. He trabajado en:</p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>✅ Automatización de procesos (80% de eficiencia)</li>
+            <li>✅ Desarrollo de bots y agentes inteligentes</li>
+            <li>✅ Integración de APIs y sistemas</li>
+            <li>✅ Testing automatizado con Selenium y Pytest</li>
+        </ul>
+    `,
+    proyectos: `
+        <p><strong>🚀 Proyectos Destacados:</strong></p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>📱 Bot de WhatsApp con IA y persistencia en Supabase</li>
+            <li>💬 Sistema de tickets Discord con respuestas automáticas</li>
+            <li>🎓 Agente de soporte académico con base de conocimiento</li>
+            <li>📊 Asistente de trading en Telegram con journal automático</li>
+            <li>🔗 Apps Slack + Thinkific para gestión de cursos</li>
+            <li>📅 Agente de citas con Notion y Google Sheets</li>
+        </ul>
+    `,
+    tecnologias: `
+        <p><strong>💻 Stack Tecnológico:</strong></p>
+        <p><strong>Lenguajes:</strong> Python, JavaScript, SQL</p>
+        <p><strong>Backend:</strong> Flask, Evolution API, Redis, Supabase</p>
+        <p><strong>Automatización:</strong> N8N, Selenium, Pytest</p>
+        <p><strong>APIs:</strong> Slack, Discord, Telegram, WhatsApp, Thinkific</p>
+        <p><strong>IA/ML:</strong> OpenAI, LangChain, RAG, Prompt Engineering</p>
+        <p><strong>Testing:</strong> Postman, Selenium, Pytest, Automation</p>
+    `,
+    contacto: `
+        <p><strong>📧 Contáctame:</strong></p>
+        <p>📩 Email: <strong>ferdypruebass@gmail.com</strong></p>
+        <p>📱 Teléfono: <strong>(809) 476-9759</strong></p>
+        <p>💼 LinkedIn: <a href="https://linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315" target="_blank" style="color: var(--primary-color);">Ver perfil</a></p>
+        <p>💻 GitHub: <a href="https://github.com/FerDVaz09" target="_blank" style="color: var(--primary-color);">@FerDVaz09</a></p>
+        <p style="margin-top: 1rem;">¡Puedes usar los botones de contacto arriba para copiar mi email o abrir WhatsApp directamente! 📲</p>
+    `,
+    disponibilidad: `
+        <p><strong>✅ Disponibilidad:</strong></p>
+        <p>Actualmente trabajo como <strong>Especialista TI</strong> en Abacus Exchange, pero estoy abierto a nuevas oportunidades freelance y proyectos interesantes.</p>
+        <p><strong>Puedo ayudarte con:</strong></p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>🤖 Desarrollo de bots y automatizaciones</li>
+            <li>🔗 Integración de APIs y sistemas</li>
+            <li>🧪 Testing y QA automation</li>
+            <li>🧠 Soluciones con IA y ML</li>
+        </ul>
+        <p style="margin-top: 1rem;">¡Contáctame y hablemos de tu proyecto! 🚀</p>
+    `
+};
+
+// Toggle chatbot
+chatbotToggle.addEventListener('click', () => {
+    chatbotWindow.classList.toggle('active');
+});
+
+// Close chatbot
+chatbotClose.addEventListener('click', () => {
+    chatbotWindow.classList.remove('active');
+});
+
+// Reset to menu
+chatbotReset.addEventListener('click', () => {
+    chatbotResponse.classList.remove('active');
+    chatbotResponse.innerHTML = '';
+    chatbotMenu.style.display = 'flex';
+});
+
+// Handle menu options
+menuOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        const question = option.getAttribute('data-question');
+        const answer = responses[question];
+        
+        // Hide menu and show response
+        chatbotMenu.style.display = 'none';
+        chatbotResponse.innerHTML = answer;
+        chatbotResponse.classList.add('active');
+        
+        // Scroll to top of response
+        chatbotResponse.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+});
+
+// Close chatbot when clicking outside
+document.addEventListener('click', (e) => {
+    if (!chatbotWindow.contains(e.target) && !chatbotToggle.contains(e.target)) {
+        chatbotWindow.classList.remove('active');
+    }
+});
