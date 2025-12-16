@@ -46,6 +46,26 @@ body {
     align-items: center;
 }
 
+.btn-nav-cta {
+    background: linear-gradient(135deg, #00d9ff, #7b2cbf);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
+    font-size: 0.95rem;
+}
+
+.btn-nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 217, 255, 0.6);
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -948,6 +968,10 @@ section {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .btn-nav-cta {
+        display: none;
+    }
+
     .nav-links {
         position: fixed;
         right: -100%;
