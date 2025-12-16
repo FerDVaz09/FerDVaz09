@@ -450,8 +450,8 @@ section {
 }
 
 .carousel-track .project-card-link {
-    min-width: 350px;
-    max-width: 350px;
+    min-width: 320px;
+    max-width: 320px;
     flex-shrink: 0;
 }
 
