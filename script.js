@@ -1,3 +1,62 @@
+// Carousel functionality
+let currentSlide = 0;
+const track = document.querySelector('.carousel-track');
+const slides = document.querySelectorAll('.carousel-track .project-card-link');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dotsContainer = document.getElementById('carouselDots');
+
+// Create dots
+slides.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function updateCarousel() {
+    const slideWidth = slides[0].offsetWidth + 32; // width + gap
+    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+}
+
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+// Auto-play carousel (optional)
+let autoplayInterval = setInterval(nextSlide, 5000);
+
+// Pause autoplay on hover
+const carouselContainer = document.querySelector('.carousel-container');
+carouselContainer.addEventListener('mouseenter', () => {
+    clearInterval(autoplayInterval);
+});
+
+carouselContainer.addEventListener('mouseleave', () => {
+    autoplayInterval = setInterval(nextSlide, 5000);
+});
+
 // Mobile menu toggle
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav-links');
