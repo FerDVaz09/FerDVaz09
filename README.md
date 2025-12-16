@@ -35,7 +35,7 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 - 🎫 Ticketing & Escalation Workflows
 - 🗄️ Vector Databases (PGVector, RAG implementations)
 
-**QA Testing & Validation (1 año de experiencia)**
+**QA Testing & Validation (3 años de experiencia)**
 - 🔍 Testing Manual de Aplicaciones Web (UI/UX, Funcional, Regresión)
 - 🌐 API Testing con Postman (REST APIs, validación de respuestas JSON)
 - 🤖 Automatización básica con Selenium WebDriver
@@ -210,7 +210,7 @@ current_projects = {
 
 ### 🧪 QA Testing Experience
 
-**1 año como QA Tester Junior** enfocado en garantizar la calidad de aplicaciones web y APIs.
+**3 años como QA Tester & Automation Engineer** enfocado en garantizar la calidad de aplicaciones web y APIs.
 
 **Áreas de Testing:**
 - 🌐 **Web Testing**: Validación de interfaces, formularios, navegación y responsividad
