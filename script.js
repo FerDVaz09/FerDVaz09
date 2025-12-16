@@ -337,25 +337,43 @@ const chatbotResponse = document.getElementById('chatbot-response');
 const chatbotMenu = document.querySelector('.chatbot-menu');
 
 const responses = {
+    perfil: `
+        <p><strong>📄 Perfil Profesional Completo:</strong></p>
+        <div style="background: rgba(0, 217, 255, 0.05); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--primary-color); line-height: 1.8;">
+            <p><strong>Automation Engineer & QA Tester</strong> con más de 3 años de experiencia en el desarrollo de soluciones automatizadas, aseguramiento de la calidad de software y mejora continua de procesos tecnológicos.</p>
+            
+            <p>Cuento con un enfoque integral que combina <strong>pensamiento analítico, visión técnica y orientación al negocio</strong>, lo que me permite identificar fallos, optimizar flujos y construir sistemas más eficientes y confiables.</p>
+            
+            <p>Tengo amplia experiencia en <strong>automatización de procesos operativos y de soporte, integración de APIs, desarrollo de bots y flujos inteligentes</strong>, así como en testing funcional, UAT y validación de sistemas. He trabajado con plataformas como <strong>Slack, WhatsApp (Evolution API), Discord, Telegram y Chatwoot</strong>, implementando soluciones que conectan múltiples servicios, reducen la carga manual y mejoran significativamente los tiempos de respuesta.</p>
+            
+            <p>A lo largo de mi carrera he liderado iniciativas que lograron <strong>reducir procesos que tomaban horas a ejecuciones de minutos</strong>, automatizar un alto porcentaje de tareas repetitivas y fortalecer la estabilidad de los sistemas mediante pruebas estructuradas, detección temprana de errores y documentación clara.</p>
+            
+            <p>Me caracterizo por mi capacidad de <strong>traducir necesidades del negocio en soluciones técnicas</strong>, trabajar de forma autónoma y adaptarme rápidamente a nuevos entornos y tecnologías.</p>
+            
+            <p style="margin-top: 1rem; color: var(--primary-color); font-weight: 600;">Apasionado por la automatización, la calidad y la mejora de la experiencia del usuario, busco seguir creciendo como profesional aportando soluciones escalables, confiables y orientadas a resultados. 🚀</p>
+        </div>
+    `,
     metodologia: `
         <p><strong>🧪 Mi Metodología QA:</strong></p>
         <p><strong>1. Análisis de Requisitos</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>📋 Revisión detallada de user stories</li>
+            <li>📋 Revisión detallada de user stories en <strong>Jira</strong></li>
             <li>🎯 Identificación de criterios de aceptación</li>
             <li>❓ Clarificación de casos edge y escenarios negativos</li>
         </ul>
         <p><strong>2. Diseño de Test Cases</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
             <li>✍️ Test cases manuales con precondiciones y pasos detallados</li>
-            <li>🔄 Casos de regresión para features críticas</li>
-            <li>⚡ Scripts automatizados con Selenium + Pytest</li>
+            <li>🔄 Test de regresión, smoke testing, UAT</li>
+            <li>⚡ Scripts automatizados con <strong>Selenium + Pytest</strong></li>
+            <li>🧪 Testing de integración API con <strong>Postman + Newman</strong></li>
         </ul>
         <p><strong>3. Ejecución y Reporte</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>🐞 Documentación de bugs con severidad y prioridad</li>
-            <li>📸 Screenshots + logs + pasos de reproducción</li>
+            <li>🐞 Documentación de bugs en <strong>Jira</strong> (severidad/prioridad)</li>
+            <li>📸 Screenshots + logs + pasos de reproducción detallados</li>
             <li>📊 Métricas: cobertura, pass rate, defect density</li>
+            <li>✅ Validación en ambientes VPS (EasyPanel) y hosting (Hostinger)</li>
         </ul>
     `,
     bugs: `
@@ -363,54 +381,69 @@ const responses = {
         <div style="background: rgba(255, 0, 0, 0.1); padding: 1rem; border-radius: 8px; border-left: 3px solid #e74c3c; margin: 1rem 0;">
             <p><strong>ID:</strong> BUG-2024-0157</p>
             <p><strong>Severidad:</strong> 🔴 CRÍTICA</p>
-            <p><strong>Módulo:</strong> Sistema de pagos - Slack App</p>
+            <p><strong>Módulo:</strong> Sistema de pagos - Slack App + Thinkific</p>
+            <p><strong>Plataforma:</strong> VPS con EasyPanel + Hostinger</p>
         </div>
         <p><strong>📝 Descripción:</strong></p>
         <p>El comando /acceso permite otorgar accesos a cursos sin validar si el usuario ya tiene un acceso activo, causando duplicación de registros en Thinkific y cobros dobles.</p>
         <p><strong>🔄 Pasos de Reproducción:</strong></p>
         <ol style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>Ejecutar <code>/acceso</code> para usuario existente</li>
-            <li>Seleccionar curso ya asignado</li>
-            <li>Sistema NO valida duplicación</li>
-            <li>Se crea segundo enrollment → cobro doble</li>
+            <li>Ejecutar <code>/acceso</code> en Slack para usuario existente</li>
+            <li>Seleccionar curso ya asignado en Thinkific</li>
+            <li>Sistema NO valida duplicación (falla en API validation)</li>
+            <li>Se crea segundo enrollment → cobro doble detectado en logs</li>
         </ol>
+        <p><strong>🛠️ Ambiente de Testing:</strong></p>
+        <p>Reproducido en VPS (EasyPanel) + base de datos en Hostinger. Logs capturados con Python logging.</p>
         <p><strong>✅ Solución Implementada:</strong></p>
-        <p>Agregué validación previa que verifica enrollments activos antes de crear nuevos accesos. Tiempo de fix: 2 horas. Impacto: evitó ~$2,400 en cobros erróneos.</p>
+        <p>Agregué validación previa que verifica enrollments activos antes de crear nuevos accesos. Tiempo de fix: 2 horas. <strong>Impacto: evitó ~$2,400 en cobros erróneos</strong> en el primer mes.</p>
     `,
     proyectos: `
         <p><strong>🚀 Proyectos Testeados y Automatizados:</strong></p>
         <div style="background: rgba(0, 217, 255, 0.05); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0;">
             <p><strong>📱 Bot de WhatsApp - Evolution API</strong></p>
-            <p style="font-size: 0.9rem; color: #999;">Testing de integración API, manejo de sesiones Redis, validación de persistencia en Supabase</p>
+            <p style="font-size: 0.9rem; color: #999;">Testing de integración Evolution API, manejo de sesiones Redis, validación de persistencia en Supabase. Deploy en VPS con EasyPanel.</p>
         </div>
         <div style="background: rgba(0, 217, 255, 0.05); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0;">
-            <p><strong>💬 Sistema de Tickets Discord</strong></p>
-            <p style="font-size: 0.9rem; color: #999;">Automatización Selenium para UI de Discord, validación de hilos y respuestas IA</p>
+            <p><strong>💬 Sistema de Tickets Discord + Chatwoot</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">Automatización UI con Selenium, validación de hilos Discord, integración con Chatwoot para soporte omnicanal. Testing end-to-end.</p>
         </div>
         <div style="background: rgba(0, 217, 255, 0.05); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0;">
             <p><strong>🔗 Slack + Thinkific Integration</strong></p>
-            <p style="font-size: 0.9rem; color: #999;">Test cases para comandos slash, validación de enrollments, testing de edge cases</p>
+            <p style="font-size: 0.9rem; color: #999;">Test cases para comandos slash, validación de enrollments, testing de edge cases. API testing con Postman. Hosting en Hostinger.</p>
         </div>
-        <p style="margin-top: 1rem;"><strong>🧪 Cobertura promedio:</strong> 85% | <strong>🤖 Automatización:</strong> 80%</p>
+        <div style="background: rgba(0, 217, 255, 0.05); padding: 0.8rem; border-radius: 8px; margin: 0.5rem 0;">
+            <p><strong>🎓 Agente IA Soporte Académico</strong></p>
+            <p style="font-size: 0.9rem; color: #999;">UAT de flujos N8N, validación de respuestas IA, testing de escalamiento automático. Documentación en Jira.</p>
+        </div>
+        <p style="margin-top: 1rem;"><strong>🧪 Cobertura promedio:</strong> 85% | <strong>🤖 Automatización:</strong> 80% | <strong>📊 Gestión:</strong> Jira + TestRail</p>
     `,
     herramientas: `
         <p><strong>🛠️ Herramientas QA y Automatización:</strong></p>
         <p><strong>Testing Automatizado:</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>🐍 <strong>Selenium + Pytest</strong> - UI automation</li>
-            <li>📬 <strong>Postman + Newman</strong> - API testing & CI/CD</li>
+            <li>🐍 <strong>Selenium + Pytest</strong> - UI automation & regression testing</li>
+            <li>📬 <strong>Postman + Newman</strong> - API testing & CI/CD integration</li>
             <li>🔄 <strong>N8N</strong> - Workflow automation & monitoring</li>
         </ul>
-        <p><strong>Gestión QA:</strong></p>
+        <p><strong>Gestión QA & Tracking:</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>📋 <strong>Jira</strong> - Bug tracking & test management</li>
-            <li>📊 <strong>TestRail</strong> - Test case documentation</li>
+            <li>📋 <strong>Jira</strong> - Bug tracking, test management & sprint planning</li>
+            <li>📊 <strong>TestRail</strong> - Test case documentation & reporting</li>
             <li>🐙 <strong>Git/GitHub</strong> - Version control & code review</li>
         </ul>
-        <p><strong>Performance & Monitoring:</strong></p>
+        <p><strong>Infraestructura & Deploy:</strong></p>
         <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>🖥️ <strong>VPS + EasyPanel</strong> - Deployment & environment management</li>
+            <li>🌐 <strong>Hostinger</strong> - Web hosting & database management</li>
             <li>⚡ <strong>Redis</strong> - Cache testing & session management</li>
             <li>📊 <strong>Supabase</strong> - Database validation & logs</li>
+        </ul>
+        <p><strong>Integraciones & APIs:</strong></p>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+            <li>💬 <strong>Evolution API</strong> - WhatsApp automation & testing</li>
+            <li>📞 <strong>Chatwoot</strong> - Omnichannel support testing</li>
+            <li>🔗 <strong>Slack, Discord, Telegram APIs</strong> - Bot testing & integration</li>
         </ul>
     `,
     experiencia: `
@@ -438,6 +471,10 @@ const responses = {
         <p>💼 LinkedIn: <a href="https://linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315" target="_blank" style="color: var(--primary-color);">Ver perfil</a></p>
         <p>💻 GitHub: <a href="https://github.com/FerDVaz09" target="_blank" style="color: var(--primary-color);">@FerDVaz09</a></p>
         <p style="margin-top: 1rem;">¡Puedes usar los botones de contacto arriba para copiar mi email o abrir WhatsApp directamente! 📲</p>
+        <p style="margin-top: 1rem; padding: 0.8rem; background: rgba(0, 217, 255, 0.05); border-radius: 8px;">
+            <strong>💡 ¿Buscas un QA Engineer o Automation specialist?</strong><br>
+            Estoy disponible para proyectos freelance y oportunidades full-time. ¡Hablemos! 🚀
+        </p>
     `
 };
 
