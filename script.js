@@ -22,7 +22,7 @@ if (track && prevBtn && nextBtn && dotsContainer) {
     const dots = document.querySelectorAll('.dot');
 
     function updateCarousel() {
-        const slideWidth = slides[0].offsetWidth + 24; // width + gap (1.5rem = 24px)
+        const slideWidth = slides[0].offsetWidth + 19.2; // width + gap (1.2rem = 19.2px)
         const offset = currentPage * slidesPerPage * slideWidth;
         track.style.transform = `translateX(-${offset}px)`;
         
@@ -68,7 +68,7 @@ if (track && prevBtn && nextBtn && dotsContainer) {
         startPos = event.pageX;
         
         // Guardar la posición actual traducida
-        const slideWidth = slides[0].offsetWidth + 24; // 1.5rem = 24px
+        const slideWidth = slides[0].offsetWidth + 19.2; // 1.2rem = 19.2px
         prevTranslate = -currentPage * slidesPerPage * slideWidth;
         currentTranslate = prevTranslate;
         

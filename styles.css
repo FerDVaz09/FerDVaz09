@@ -434,9 +434,9 @@ section {
 
 .carousel-container {
     position: relative;
-    max-width: 1180px;
+    max-width: 1150px;
     margin: 0 auto;
-    padding: 0 70px;
+    padding: 0 60px;
 }
 
 .projects-carousel {
@@ -448,12 +448,12 @@ section {
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 .carousel-track .project-card-link {
-    min-width: 350px;
-    max-width: 350px;
+    min-width: 340px;
+    max-width: 340px;
     flex-shrink: 0;
 }
 
