@@ -466,7 +466,7 @@ const responses = {
     `,
     contacto: `
         <p><strong>📧 Contáctame:</strong></p>
-        <p>📩 Email: <strong>ferdypruebass@gmail.com</strong></p>
+        <p>📩 Email: <strong>ferdyv59@gmail.com</strong></p>
         <p>📱 Teléfono: <strong>(809) 476-9759</strong></p>
         <p>💼 LinkedIn: <a href="https://linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315" target="_blank" style="color: var(--primary-color);">Ver perfil</a></p>
         <p>💻 GitHub: <a href="https://github.com/FerDVaz09" target="_blank" style="color: var(--primary-color);">@FerDVaz09</a></p>
