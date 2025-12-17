@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agente IA de Soporte Académico - Ferdy Vásquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            padding: 6rem 0 3rem;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        .project-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-box h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        .project-details {
+            padding: 4rem 0;
+        }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: var(--dark-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .project-hero {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Modal Formulario */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .contact-modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--dark-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        .modal-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(0, 217, 255, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+        .form-success {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 10px;
+            color: var(--primary-color);
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+        .form-success.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Inicio</a></li>
+                    <li><a href="../index.html#projects">Proyectos</a></li>
+                </ul>
+                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Contáctame Ya
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="../index.html#projects" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a Proyectos
+            </a>
+            <div class="project-hero">
+                <div>
+                    <div class="project-icon" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h1 class="project-title">Agente IA de Soporte Académico</h1>
+                    <p class="project-subtitle">
+                        Herramienta interna de soporte inteligente para equipos y organizaciones
+                    </p>
+                    <div class="tech-stack" style="margin: 2rem 0;">
+                        <span>n8n</span>
+                        <span>Python</span>
+                        <span>Slack API</span>
+                        <span>IA</span>
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="stat-box">
+                        <h3>70%</h3>
+                        <p>Consultas Resueltas</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>< 10seg</h3>
+                        <p>Tiempo de Respuesta</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>24/7</h3>
+                        <p>Disponibilidad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="detail-section">
+                <h2>🤖 ¿Qué es este agente?</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Agente de inteligencia artificial diseñado para operar en Slack o Microsoft Teams, enfocado en consultas internas, soporte operativo y gestión del conocimiento institucional.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    El sistema mantiene memoria conversacional y contexto programable, permitiendo respuestas coherentes, búsquedas avanzadas de información, gestión de agendas y asistencia continua a colaboradores, reduciendo la carga del soporte humano.
+                </p>
+            </div>
+
+            <div class="detail-section">
+                <h2>🎯 ¿Por qué existe?</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    Las organizaciones enfrentan interrupciones constantes por consultas repetitivas: políticas internas, procedimientos, horarios, accesos, documentación. El agente centraliza este conocimiento y lo hace accesible de forma instantánea, liberando al equipo humano para tareas estratégicas.
+                </p>
+            </div>
+
+            <div class="detail-section">
+                <h2>💡 Problemas Internos que Resuelve</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-redo"></i>
+                        <h3>Consultas Repetitivas</h3>
+                        <p>Responde automáticamente preguntas frecuentes sobre procedimientos, políticas y recursos institucionales.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-slash"></i>
+                        <h3>Interrupciones Constantes</h3>
+                        <p>Reduce la carga del equipo de soporte interno al manejar consultas básicas de forma autónoma.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-search-minus"></i>
+                        <h3>Información Dispersa</h3>
+                        <p>Centraliza el conocimiento organizacional y lo hace accesible desde las herramientas de trabajo diarias.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-history"></i>
+                        <h3>Pérdida de Contexto</h3>
+                        <p>Mantiene memoria conversacional para dar seguimiento a consultas complejas sin perder el hilo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>⚙️ Cómo Asiste a los Equipos</h2>
+                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                    <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.1rem; list-style: none; padding-left: 0;">
+                        <li>✅ Responde consultas internas sobre políticas, procedimientos y recursos</li>
+                        <li>✅ Busca información en bases de conocimiento institucionales</li>
+                        <li>✅ Mantiene contexto de conversaciones para consultas multi-paso</li>
+                        <li>✅ Escala a soporte humano cuando detecta consultas complejas</li>
+                        <li>✅ Registra interacciones para análisis y mejora continua</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>📊 Beneficios Operativos</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Productividad</h3>
+                        <p>Reduce interrupciones y permite que los equipos se enfoquen en tareas de mayor valor.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Disponibilidad Continua</h3>
+                        <p>Opera 24/7 sin horarios, proporcionando asistencia inmediata en cualquier momento.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Escalabilidad</h3>
+                        <p>Atiende múltiples consultas simultáneamente sin degradar la calidad del servicio.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Centralización</h3>
+                        <p>Concentra el conocimiento organizacional en un único punto de acceso inteligente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>📋 Casos de Uso</h2>
+                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+                    <ul style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem;">
+                        <li><strong>Equipos Académicos:</strong> Consultas sobre programas, calendario, políticas institucionales</li>
+                        <li><strong>Equipos Administrativos:</strong> Procedimientos internos, solicitudes, permisos y gestiones</li>
+                        <li><strong>RRHH:</strong> Políticas laborales, beneficios, procedimientos de nómina</li>
+                        <li><strong>Operaciones:</strong> Protocolos técnicos, documentación de procesos, soporte interno</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-section" style="text-align: center;">
+                <h2>🚀 ¿Listo para implementar soporte interno inteligente?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Puedo desarrollar agentes de IA personalizados que se integren con tus herramientas de trabajo y centralicen el conocimiento de tu organización.
+                </p>
+                <p style="color: var(--primary-color); margin-bottom: 2rem; font-size: 1.2rem; font-weight: 600;">
+                    Un colaborador digital dentro de tus herramientas.
+                </p>
+                <button onclick="openContactModal()" class="btn btn-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Implementa Soporte Interno Inteligente
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Contacto -->
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h3><i class="fas fa-envelope"></i> Contáctame</h3>
+            <form id="contactForm" action="https://formsubmit.co/ferdyv59@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Consulta desde Agente Académico - Portfolio">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" value="https://ferdvaz09.github.io/FerDVaz09/projects/agente-academico.html?success=true">
+                
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Teléfono (opcional)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1234567890">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto o consulta..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+                
+                <div class="form-success" id="formSuccess">
+                    <i class="fas fa-check-circle"></i> ¡Mensaje enviado! Te responderé pronto.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+
+        if (window.location.search.includes('success=true')) {
+            openContactModal();
+            document.getElementById('formSuccess').classList.add('show');
+            setTimeout(() => {
+                closeContactModal();
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }, 3000);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+    </script>
+</body>
+</html>
