@@ -83,7 +83,9 @@
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="logo">FPV</div>
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
             <ul class="nav-links">
                 <li><a href="../index.html#home">Inicio</a></li>
                 <li><a href="../index.html#projects">Proyectos</a></li>
@@ -102,9 +104,9 @@
                     <div class="project-icon" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;">
                         <i class="fab fa-whatsapp"></i>
                     </div>
-                    <h1 class="project-title">Bot de Soporte en WhatsApp</h1>
+                    <h1 class="project-title">🤖 Bot de Soporte Técnico con IA</h1>
                     <p class="project-subtitle">
-                        Sistema automatizado de soporte con IA, persistencia en Supabase y control de sesiones con Redis
+                        Sistema inteligente de automatización para soporte técnico y atención al cliente, diseñado para empresas que buscan eficiencia, continuidad y una experiencia de usuario natural, sin parecer un bot.
                     </p>
                     <div class="tech-stack" style="margin: 2rem 0;">
                         <span>Python</span>
@@ -136,10 +138,19 @@
     <section class="project-details">
         <div class="container">
             <div class="detail-section">
+                <h2>🧠 ¿Qué es este sistema?</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Es una solución de automatización de soporte que responde consultas técnicas y de atención al cliente de forma inteligente, contextual y progresiva, simulando el comportamiento real de un agente humano.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    El sistema está pensado para operar en entornos empresariales donde la confianza, la naturalidad y la estabilidad son clave, evitando patrones que puedan ser detectados como automatización agresiva.
+                </p>
+            </div>
+
+            <div class="detail-section">
                 <h2>🎯 Objetivo del Proyecto</h2>
                 <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
-                    Desarrollar un bot inteligente de WhatsApp capaz de automatizar el 80% de las consultas de soporte, 
-                    reduciendo la carga de trabajo del equipo y mejorando significativamente los tiempos de respuesta a los usuarios.
+                    Optimizar el área de soporte técnico mediante automatización inteligente, permitiendo a las empresas atender consultas de manera continua, organizada y eficiente, sin saturar al equipo humano y manteniendo una comunicación fluida y natural con los usuarios.
                 </p>
             </div>
 
@@ -147,79 +158,133 @@
                 <h2>✨ Características Principales</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <i class="fas fa-brain"></i>
-                        <h3>IA Conversacional</h3>
-                        <p>Integración con GPT-4 para respuestas naturales y contextualizadas. Base de conocimiento vectorial con RAG para consultas precisas.</p>
+                        <i class="fas fa-user-circle"></i>
+                        <h3>Atención con IA Humanizada</h3>
+                        <p>Las respuestas se generan de forma progresiva y natural, imitando el ritmo y estilo de un agente humano, lo que reduce fricciones, evita bloqueos de plataforma y mejora la percepción del servicio.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Tiempo de Respuesta Natural</h3>
+                        <p>El sistema utiliza tiempos de respuesta estratégicos y variables, diseñados para mantener una interacción fluida sin activar alertas por comportamiento automatizado o sospechoso.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Respuestas Contextuales</h3>
+                        <p>Cada conversación mantiene su contexto, permitiendo que el usuario haga preguntas seguidas sin recibir respuestas fragmentadas o incoherentes.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-database"></i>
-                        <h3>Persistencia Supabase</h3>
-                        <p>Historial completo de conversaciones almacenado en Supabase con búsqueda y análisis de interacciones pasadas.</p>
+                        <h3>Base de Conocimiento Inteligente</h3>
+                        <p>Las respuestas se apoyan en una base de datos vectorial que permite consultar información técnica, procedimientos y respuestas frecuentes de forma precisa y relevante.</p>
                     </div>
                     <div class="feature-card">
-                        <i class="fas fa-bolt"></i>
-                        <h3>Buffer Inteligente (Redis)</h3>
-                        <p>Sistema de cola con Redis para agrupar mensajes rápidos y evitar respuestas fragmentadas.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Escalamiento Humano</h3>
-                        <p>Detección automática de consultas complejas con notificación al equipo de soporte vía Slack.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-sync"></i>
-                        <h3>Integración Chatwoot</h3>
-                        <p>Sincronización bidireccional con plataforma de soporte omnicanal para gestión centralizada.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-user-cog"></i>
                         <h3>Control de Sesiones</h3>
-                        <p>Manejo robusto de estados y contexto por usuario con timeout automático y recuperación de errores.</p>
+                        <p>Cada usuario mantiene su propia sesión, lo que permite retomar conversaciones pasadas, recordar solicitudes previas y ofrecer una experiencia personalizada.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-friends"></i>
+                        <h3>Escalamiento Humano</h3>
+                        <p>Cuando una consulta requiere análisis profundo o intervención directa, el sistema detecta la complejidad y deriva la conversación a un agente humano sin romper el flujo de atención.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-plug"></i>
+                        <h3>Integración con Plataformas</h3>
+                        <p>El bot puede conectarse con sistemas de gestión de tickets y plataformas omnicanal para centralizar la atención y dar seguimiento a los casos.</p>
                     </div>
                 </div>
             </div>
 
             <div class="detail-section">
-                <h2>🔧 Stack Tecnológico</h2>
+                <h2>🔧 Arquitectura del Sistema</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <i class="fab fa-python"></i>
-                        <h3>Backend Python</h3>
-                        <p>Arquitectura basada en Python con manejo asíncrono, retry logic y validación robusta de datos.</p>
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>Automatización con n8n</h3>
+                        <p>Orquestación de flujos de trabajo complejos, webhooks y triggers automáticos para gestión de eventos y mensajes.</p>
                     </div>
                     <div class="feature-card">
-                        <i class="fab fa-whatsapp"></i>
-                        <h3>Evolution API</h3>
-                        <p>Integración con WhatsApp Business API para mensajería empresarial confiable y escalable.</p>
+                        <i class="fas fa-brain"></i>
+                        <h3>IA Avanzada</h3>
+                        <p>Procesamiento de lenguaje natural con modelos de última generación para comprensión contextual y respuestas inteligentes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Base Vectorial</h3>
+                        <p>Supabase u Oracle con búsqueda semántica para recuperación precisa de información técnica y procedimientos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-memory"></i>
+                        <h3>Cache con Redis</h3>
+                        <p>Sistema de sesiones en memoria para respuestas rápidas, control de estado y manejo eficiente de conversaciones activas.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-server"></i>
-                        <h3>Supabase + Redis</h3>
-                        <p>Base de datos PostgreSQL (Supabase) para persistencia y Redis para cache y gestión de sesiones.</p>
+                        <h3>Infraestructura VPS</h3>
+                        <p>Hosting dedicado o VPS para garantizar estabilidad, seguridad y control total sobre el entorno de producción.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-link"></i>
+                        <h3>Integraciones</h3>
+                        <p>Conexión con canales de mensajería (WhatsApp, Telegram) y plataformas de soporte para gestión unificada.</p>
                     </div>
                 </div>
             </div>
 
             <div class="detail-section">
-                <h2>📊 Resultados e Impacto</h2>
+                <h2>📊 Resultados y Beneficios</h2>
                 <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
-                    <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.1rem;">
-                        <li>✅ <strong>80% de consultas automatizadas</strong> - Reducción dramática de carga manual</li>
-                        <li>✅ <strong>Tiempo de respuesta < 5 segundos</strong> - Mejora significativa vs 2-3 horas previo</li>
-                        <li>✅ <strong>Disponibilidad 24/7</strong> - Soporte ininterrumpido fuera de horario laboral</li>
-                        <li>✅ <strong>98% de satisfacción del usuario</strong> - Respuestas precisas y contextualizadas</li>
-                        <li>✅ <strong>Ahorro de $3,500/mes</strong> - Reducción de costos operativos de soporte</li>
+                    <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.1rem; list-style: none; padding-left: 0;">
+                        <li>✅ Reducción significativa de la carga operativa del equipo de soporte</li>
+                        <li>✅ Atención continua sin depender de horarios laborales</li>
+                        <li>✅ Respuestas naturales que generan confianza en el usuario</li>
+                        <li>✅ Disminución de errores humanos en respuestas repetitivas</li>
+                        <li>✅ Mayor organización y trazabilidad de las conversaciones</li>
+                        <li>✅ Escalabilidad para equipos pequeños y grandes</li>
                     </ul>
                 </div>
             </div>
 
+            <div class="detail-section">
+                <h2>🧩 ¿Para quién es esta solución?</h2>
+                <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div style="background: rgba(0, 217, 255, 0.05); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-headset" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <p style="color: var(--text-primary); font-weight: 600;">Oficinas de Soporte Técnico</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-laptop-code" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <p style="color: var(--text-primary); font-weight: 600;">Empresas de Tecnología</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <p style="color: var(--text-primary); font-weight: 600;">Instituciones Educativas</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <p style="color: var(--text-primary); font-weight: 600;">Alto Volumen de Consultas</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-users" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <p style="color: var(--text-primary); font-weight: 600;">Equipos de Atención al Cliente</p>
+                    </div>
+                    <div style="background: rgba(0, 217, 255, 0.05); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                        <i class="fas fa-rocket" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                        <p style="color: var(--text-primary); font-weight: 600;">Startups en Crecimiento</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="detail-section" style="text-align: center;">
-                <h2>¿Interesado en un proyecto similar?</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                    Puedo desarrollar una solución de automatización personalizada para tu negocio
+                <h2>🚀 ¿Interesado en una solución similar?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Puedo desarrollar sistemas de automatización de soporte técnico adaptados a las necesidades de tu empresa, integrando inteligencia artificial, control de conversaciones y escalamiento humano de forma segura y eficiente.
+                </p>
+                <p style="color: var(--primary-color); margin-bottom: 2rem; font-size: 1.2rem; font-weight: 600;">
+                    Contáctame y llevemos tu soporte al siguiente nivel.
                 </p>
                 <a href="../index.html#contact" class="btn btn-cta">
-                    <i class="fas fa-comments"></i> Cont áctame Ya
+                    <i class="fas fa-comments"></i> Contáctame Ya
                 </a>
             </div>
         </div>
