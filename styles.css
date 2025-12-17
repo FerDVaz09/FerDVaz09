@@ -443,17 +443,21 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding: 0 60px;
+    padding: 0 24px;
 }
 
 .projects-viewport {
     overflow: hidden;
+    width: 100%;
     border-radius: 15px;
 }
 
 .projects-track {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     transition: transform 0.4s ease;
+    will-change: transform;
 }
 
 .project-card-link {
@@ -955,7 +959,7 @@ section {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .project-card-link {
         flex: 0 0 100%;
     }
@@ -967,11 +971,15 @@ section {
     }
 
     .carousel-arrow.prev {
-        left: 10px;
+        left: 5px;
     }
 
     .carousel-arrow.next {
-        right: 10px;
+        right: 5px;
+    }
+
+    .projects-carousel {
+        padding: 0 50px;
     }
 
     .nav-right {
