@@ -409,31 +409,57 @@ const responses = {
     `,
     herramientas: `
         <p><strong>🛠️ Herramientas QA y Automatización:</strong></p>
-        <p><strong>Testing Automatizado:</strong></p>
-        <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>🐍 <strong>Selenium + Pytest</strong> - UI automation & regression testing</li>
-            <li>📬 <strong>Postman + Newman</strong> - API testing & CI/CD integration</li>
-            <li>🔄 <strong>N8N</strong> - Workflow automation & monitoring</li>
-        </ul>
-        <p><strong>Gestión QA & Tracking:</strong></p>
-        <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>📋 <strong>Jira</strong> - Bug tracking, test management & sprint planning</li>
-            <li>📊 <strong>TestRail</strong> - Test case documentation & reporting</li>
-            <li>🐙 <strong>Git/GitHub</strong> - Version control & code review</li>
-        </ul>
-        <p><strong>Infraestructura & Deploy:</strong></p>
-        <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>🖥️ <strong>VPS + EasyPanel</strong> - Deployment & environment management</li>
-            <li>🌐 <strong>Hostinger</strong> - Web hosting & database management</li>
-            <li>⚡ <strong>Redis</strong> - Cache testing & session management</li>
-            <li>📊 <strong>Supabase</strong> - Database validation & logs</li>
-        </ul>
-        <p><strong>Integraciones & APIs:</strong></p>
-        <ul style="margin-left: 1.5rem; line-height: 1.8;">
-            <li>💬 <strong>Evolution API</strong> - WhatsApp automation & testing</li>
-            <li>📞 <strong>Chatwoot</strong> - Omnichannel support testing</li>
-            <li>🔗 <strong>Slack, Discord, Telegram APIs</strong> - Bot testing & integration</li>
-        </ul>
+        
+        <div style="background: rgba(0, 217, 255, 0.08); padding: 1rem; border-radius: 10px; margin: 1rem 0; border-left: 3px solid var(--primary-color);">
+            <p><strong>🔌 API Testing & Postman:</strong></p>
+            <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                <li>📬 <strong>Postman</strong> - Colecciones automatizadas, variables de entorno, tests scripts</li>
+                <li>⚡ <strong>Newman</strong> - Ejecución de tests en CLI y CI/CD pipelines</li>
+                <li>🔗 <strong>Thunder Client</strong> - Testing integrado en VS Code</li>
+                <li>✅ Validación de status codes, headers, JSON responses y schemas</li>
+                <li>🔐 Testing de autenticación OAuth 2.0, JWT y API Keys</li>
+                <li>📊 Reportes automáticos HTML con métricas de ejecución</li>
+            </ul>
+        </div>
+
+        <div style="background: rgba(0, 217, 255, 0.08); padding: 1rem; border-radius: 10px; margin: 1rem 0; border-left: 3px solid var(--primary-color);">
+            <p><strong>🔧 Web Dev Tools & Debugging:</strong></p>
+            <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                <li>🌐 <strong>Chrome DevTools</strong> - Network, Console, Elements, Performance</li>
+                <li>🦊 <strong>Firefox Developer Tools</strong> - Inspector, Debugger, Storage</li>
+                <li>💡 <strong>Lighthouse</strong> - Auditorías de performance, SEO y accesibilidad</li>
+                <li>🐞 Debugging avanzado de JavaScript, CSS y requests HTTP</li>
+                <li>📡 Análisis de Network waterfall y tiempos de carga</li>
+                <li>🎯 Inspección de LocalStorage, Cookies y Session Storage</li>
+            </ul>
+        </div>
+
+        <div style="background: rgba(0, 217, 255, 0.08); padding: 1rem; border-radius: 10px; margin: 1rem 0; border-left: 3px solid var(--primary-color);">
+            <p><strong>🤖 Pruebas Automatizadas:</strong></p>
+            <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                <li>🐍 <strong>Selenium WebDriver</strong> - Testing end-to-end cross-browser</li>
+                <li>🎭 <strong>Playwright</strong> - Automatización moderna para Chrome, Firefox, Safari</li>
+                <li>🧪 <strong>Pytest</strong> - Framework de testing con fixtures y parametrización</li>
+                <li>📝 <strong>Page Object Model (POM)</strong> - Arquitectura escalable de tests</li>
+                <li>⚙️ Scripts de smoke tests, regression y validación de flujos críticos</li>
+                <li>🔄 Integración con CI/CD (GitHub Actions, Jenkins)</li>
+            </ul>
+        </div>
+
+        <div style="background: rgba(0, 217, 255, 0.08); padding: 1rem; border-radius: 10px; margin: 1rem 0; border-left: 3px solid var(--primary-color);">
+            <p><strong>📊 Gestión QA & Performance:</strong></p>
+            <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                <li>📋 <strong>Jira</strong> - Bug tracking, test cases y seguimiento de sprints</li>
+                <li>📈 <strong>TestRail</strong> - Gestión de test plans y matriz de trazabilidad</li>
+                <li>⚡ <strong>JMeter</strong> - Load testing y stress testing de APIs</li>
+                <li>🔄 <strong>N8N</strong> - Workflow automation y testing de integraciones</li>
+                <li>📊 <strong>Grafana + Prometheus</strong> - Monitoreo de performance en tiempo real</li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 1.5rem; padding: 1rem; background: rgba(123, 44, 191, 0.1); border-radius: 8px;">
+            <strong>🎯 Metodologías:</strong> Agile/Scrum • Test-Driven Development (TDD) • Behavior-Driven Development (BDD) • Continuous Testing en CI/CD
+        </p>
     `,
     experiencia: `
         <p><strong>💼 Experiencia Profesional QA:</strong></p>
