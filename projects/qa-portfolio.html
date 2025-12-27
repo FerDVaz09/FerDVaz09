@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio QA & Testing - Ferdy Vásquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            padding: 6rem 0 3rem;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        .project-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .stat-box {
+            text-align: center;
+            background: rgba(0, 217, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            min-width: 150px;
+        }
+        .stat-box h3 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .stat-box p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .project-details {
+            padding: 4rem 0;
+        }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: var(--dark-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-card ul li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .feature-card ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        .evidence-section {
+            margin: 3rem 0;
+        }
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .evidence-card {
+            background: var(--dark-card);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            text-align: center;
+        }
+        .evidence-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        .timeline-section {
+            margin: 3rem 0;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 2rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 22px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 3px solid var(--dark-bg);
+        }
+        .timeline-content {
+            background: var(--dark-card);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        .case-study-section {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08), rgba(123, 44, 191, 0.08));
+            border: 1px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        .case-badge {
+            background: #FFD700;
+            color: #000;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .case-metrics {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .metric {
+            text-align: center;
+        }
+        .metric-val {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        @media (max-width: 768px) {
+            .project-hero {
+                grid-template-columns: 1fr;
+            }
+            .project-stats {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="project-header">
+        <div class="container">
+            <a href="../index.html#qa-testing" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver al Portfolio
+            </a>
+            <div class="project-hero">
+                <div>
+                    <h1 class="project-title">QA & Testing Portfolio</h1>
+                    <p class="project-subtitle">
+                        Aseguramiento de calidad integral con herramientas modernas, automatización de tests y metodologías ágiles
+                    </p>
+                    <div class="tech-stack">
+                        <span>Postman</span>
+                        <span>Selenium</span>
+                        <span>Pytest</span>
+                        <span>Chrome DevTools</span>
+                        <span>JMeter</span>
+                        <span>Jira</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="project-stats">
+                        <div class="stat-box">
+                            <h3>3+</h3>
+                            <p>Años de Experiencia</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>10+</h3>
+                            <p>Proyectos Testeados</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>200+</h3>
+                            <p>Test Cases Creados</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>70%</h3>
+                            <p>Tests Automatizados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <!-- Áreas de Especialización -->
+            <div class="detail-section">
+                <h2><i class="fas fa-star"></i> Áreas de Especialización QA</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-plug"></i>
+                        <h3>API Testing</h3>
+                        <p>Validación exhaustiva de endpoints REST y servicios web</p>
+                        <ul>
+                            <li>Postman - Colecciones automatizadas</li>
+                            <li>Thunder Client en VS Code</li>
+                            <li>Validación de status codes y responses</li>
+                            <li>Tests de autenticación OAuth/JWT</li>
+                            <li>Documentación con Swagger/OpenAPI</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-wrench"></i>
+                        <h3>Web Dev Tools</h3>
+                        <p>Inspección y debugging avanzado en navegadores</p>
+                        <ul>
+                            <li>Chrome DevTools - Network, Console, Elements</li>
+                            <li>Firefox Developer Tools</li>
+                            <li>Análisis de performance y Lighthouse</li>
+                            <li>Debugging de JavaScript y CSS</li>
+                            <li>Inspección de requests/responses</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Pruebas Automatizadas</h3>
+                        <p>Automatización de testing funcional y regresión</p>
+                        <ul>
+                            <li>Selenium WebDriver - Testing end-to-end</li>
+                            <li>Playwright - Automatización cross-browser</li>
+                            <li>Pytest - Framework de testing en Python</li>
+                            <li>Scripts de validación y smoke tests</li>
+                            <li>CI/CD integration para testing continuo</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Testing Funcional</h3>
+                        <p>Validación manual de flujos y casos de uso</p>
+                        <ul>
+                            <li>Diseño de casos de prueba y test plans</li>
+                            <li>Testing exploratorio y validación UAT</li>
+                            <li>Validación de flujos críticos de negocio</li>
+                            <li>Reportes de bugs y seguimiento en Jira</li>
+                            <li>Documentación de resultados y evidencias</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Performance Testing</h3>
+                        <p>Evaluación de rendimiento y carga del sistema</p>
+                        <ul>
+                            <li>JMeter - Load testing y stress testing</li>
+                            <li>Lighthouse - Auditorías de performance web</li>
+                            <li>Análisis de tiempos de carga y respuesta</li>
+                            <li>Identificación de cuellos de botella</li>
+                            <li>Optimización de recursos y assets</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Metodologías QA</h3>
+                        <p>Prácticas y estándares de aseguramiento de calidad</p>
+                        <ul>
+                            <li>Metodología Agile/Scrum en QA</li>
+                            <li>Test-Driven Development (TDD)</li>
+                            <li>Behavior-Driven Development (BDD)</li>
+                            <li>Smoke, Regression y Sanity testing</li>
+                            <li>Control de versiones con Git para tests</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evidencia Visual -->
+            <div class="evidence-section">
+                <h2><i class="fas fa-camera"></i> Evidencia Visual de Proyectos</h2>
+                <div class="evidence-grid">
+                    <div class="evidence-card">
+                        <i class="fas fa-plug" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h3>API Automation Suite</h3>
+                        <p>Scripts en Postman validando Status 200 y JSON Schema</p>
+                        <img src="../assets/postman-proof.png" alt="Postman Tests" class="evidence-img" onerror="this.style.display='none'">
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">
+                            Colecciones automatizadas con más de 50 endpoints testeados
+                        </p>
+                    </div>
+
+                    <div class="evidence-card">
+                        <i class="fas fa-bug" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h3>Bug Reporting</h3>
+                        <p>Reporte de error en Jira con pasos y severidad</p>
+                        <img src="../assets/jira-ticket.png" alt="Jira Ticket" class="evidence-img" onerror="this.style.display='none'">
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">
+                            Documentación clara con pasos de reproducción y evidencias
+                        </p>
+                    </div>
+
+                    <div class="evidence-card">
+                        <i class="fas fa-robot" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        <h3>Selenium Python</h3>
+                        <p>Código de automatización con Page Object Model</p>
+                        <img src="../assets/selenium-code.png" alt="Selenium Code" class="evidence-img" onerror="this.style.display='none'">
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">
+                            Suite de tests automatizados con arquitectura escalable
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experiencia Timeline -->
+            <div class="timeline-section">
+                <h2><i class="fas fa-history"></i> Experiencia QA Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Automatizador de Procesos</h3>
+                            <p><strong>Abacus Exchange</strong> | 2025</p>
+                            <p style="margin-top: 1rem; color: var(--text-secondary);">
+                                Implementación de pruebas automatizadas para flujos de soporte y validación de integraciones con APIs. Desarrollo de bots con testing exhaustivo antes de producción.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Soporte Técnico</h3>
+                            <p><strong>Abacus Exchange</strong> | 2024 – 2025</p>
+                            <p style="margin-top: 1rem; color: var(--text-secondary);">
+                                Testing de incidencias reportadas por usuarios, validación de fixes en entorno de staging, documentación de casos de prueba para problemas recurrentes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>QA Tester / O/A Tester</h3>
+                            <p><strong>UNPHU (Pasantía)</strong> | 2023 – 2024</p>
+                            <p style="margin-top: 1rem; color: var(--text-secondary);">
+                                Ejecución de casos de prueba, testing funcional de aplicaciones web, validación de flujos críticos, reportes de defectos y seguimiento en Jira.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Desarrollador Web</h3>
+                            <p><strong>Ultron Tech</strong> | 2022 – 2023</p>
+                            <p style="margin-top: 1rem; color: var(--text-secondary);">
+                                Testing manual de aplicaciones desarrolladas, validación de responsive design, pruebas cross-browser, detección de bugs en fase de desarrollo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caso de Éxito -->
+            <div class="case-study-section">
+                <div class="case-badge">🏆 CASO DE ÉXITO</div>
+                <h2>Sistema de Soporte: De 8 horas a 15 minutos</h2>
+                <p><strong>Desafío:</strong> Atención manual de tickets repetitivos con tiempos de respuesta lentos.</p>
+                <p style="margin-top: 1rem;"><strong>Solución:</strong> Bot con IA y escalamiento automático que resuelve consultas comunes al instante.</p>
+                <div class="case-metrics">
+                    <div class="metric">
+                        <span class="metric-val">95%</span>
+                        <span class="metric-label">Reducción de Tiempo</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-val">80%</span>
+                        <span class="metric-label">Casos Automatizados</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-val">150+</span>
+                        <span class="metric-label">Bugs Detectados</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-val">200+</span>
+                        <span class="metric-label">Test Cases</span>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; padding: 1rem; background: rgba(0, 217, 255, 0.05); border-radius: 10px;">
+                    <strong>Tecnologías:</strong> Python, n8n, Evolution API, Selenium, Pytest, Postman, Redis, PostgreSQL
+                </p>
+            </div>
+
+            <!-- Logros Destacados -->
+            <div class="detail-section">
+                <h2><i class="fas fa-trophy"></i> Logros QA Destacados</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-bug"></i>
+                        <h3>Detección Temprana</h3>
+                        <p>Identificación de bugs críticos antes de producción, reduciendo costos de corrección post-lanzamiento y mejorando la experiencia del usuario final.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Mejora de Calidad</h3>
+                        <p>Implementación de procesos QA que mejoraron la estabilidad del software en un 85%, reduciendo incidencias en producción.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Automatización de Tests</h3>
+                        <p>Desarrollo de suites automatizadas que redujeron el tiempo de testing en 70%, permitiendo releases más frecuentes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Documentación Técnica</h3>
+                        <p>Creación de documentación QA completa: test cases, bug reports, matriz de trazabilidad y guías de testing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Final -->
+            <div style="text-align: center; margin: 4rem 0;">
+                <h2 style="margin-bottom: 1rem;">¿Necesitas QA para tu proyecto?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    Puedo ayudarte a asegurar la calidad de tu software con testing exhaustivo y automatización
+                </p>
+                <a href="../index.html#contact" style="display: inline-block; background: linear-gradient(135deg, #00d9ff, #7b2cbf); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600;">
+                    <i class="fas fa-envelope"></i> Contáctame
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
