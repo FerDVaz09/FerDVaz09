@@ -591,13 +591,111 @@
                     </div>
                 </div>
 
-                <!-- Placeholder para Proyecto 3 -->
-                <div class="feature-card" style="margin-bottom: 2rem; border: 2px dashed rgba(0, 217, 255, 0.3); text-align: center; padding: 3rem;">
-                    <div style="font-size: 3rem; color: rgba(0, 217, 255, 0.3); margin-bottom: 1rem;">
-                        <i class="fas fa-plus-circle"></i>
+                <!-- Proyecto 3: QA Log Sentinel -->
+                <div class="feature-card" style="margin-bottom: 2rem; border: 2px solid rgba(0, 255, 0, 0.3);">
+                    <div style="display: flex; align-items: start; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem; color: #0f0;">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">QA Log Sentinel</h3>
+                            <div class="tech-stack" style="margin: 1rem 0;">
+                                <span>Python</span>
+                                <span>Flask</span>
+                                <span>HTML5 / CSS3</span>
+                                <span>JavaScript</span>
+                                <span>Fetch API</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 style="color: var(--text-secondary);">Próximo Proyecto QA</h3>
-                    <p style="color: var(--text-secondary); opacity: 0.7;">En desarrollo...</p>
+                    
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                        Sistema profesional de <strong>monitoreo visual de logs en tiempo real</strong> con interfaz tipo terminal/hacker inspirada en Matrix. Simula y visualiza eventos del sistema como errores críticos, advertencias y mensajes informativos con actualización automática cada 2 segundos.
+                    </p>
+
+                    <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #0f0; margin-bottom: 1.5rem;">
+                        <h4 style="color: #0f0; margin-bottom: 1rem;"><i class="fas fa-check-circle"></i> Características Clave:</h4>
+                        <ul style="color: var(--text-secondary); line-height: 2;">
+                            <li>📊 <strong>Monitoreo en Tiempo Real:</strong> Polling automático cada 2 segundos sin WebSockets</li>
+                            <li>🎨 <strong>Interfaz Matrix:</strong> Diseño CRT con efectos de scanlines, flicker y glow verde fosforescente</li>
+                            <li>🚨 <strong>Simulación de Eventos:</strong> Genera errores críticos, advertencias y mensajes INFO con IDs únicos</li>
+                            <li>🎯 <strong>Colores Diferenciados:</strong> Rojo para [ERROR], Naranja para [WARNING], Cyan para [INFO]</li>
+                            <li>📈 <strong>Estadísticas Visuales:</strong> Panel de métricas actualizado en tiempo real</li>
+                            <li>🔄 <strong>Auto-scroll Inteligente:</strong> Siempre muestra la actividad más reciente</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                        <h4 style="color: #0f0; margin-bottom: 1rem;"><i class="fas fa-flask"></i> Flujo de Funcionamiento:</h4>
+                        <ol style="color: var(--text-secondary); line-height: 2;">
+                            <li><strong>Inicialización:</strong> Flask crea archivo server.log si no existe</li>
+                            <li><strong>Polling:</strong> Cliente consulta /get_logs cada 2 segundos</li>
+                            <li><strong>Simulación:</strong> Usuario genera eventos mediante botones del panel de control</li>
+                            <li><strong>Escritura:</strong> Backend escribe en server.log con timestamps y niveles</li>
+                            <li><strong>Renderizado:</strong> JavaScript aplica colores y efectos según tipo de log</li>
+                            <li><strong>Métricas:</strong> Contadores actualizados automáticamente (Total, Errors, Warnings, Info)</li>
+                        </ol>
+                    </div>
+
+                    <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                        <h4 style="color: #0f0; margin-bottom: 1rem;"><i class="fas fa-bullseye"></i> Tipos de Mensajes Generados:</h4>
+                        <div style="color: var(--text-secondary); line-height: 2;">
+                            <p><strong>🔴 Errores Críticos [ERROR]:</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                                <li>Critical Database Connection Failed #DB1234</li>
+                                <li>Memory Overflow Detected #MEM5678</li>
+                                <li>API Authentication Failed #AUTH9012</li>
+                                <li>SSL Certificate Validation Failed #SSL2345</li>
+                            </ul>
+                            
+                            <p><strong>🟠 Advertencias [WARNING]:</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                                <li>High CPU usage detected (85%)</li>
+                                <li>Low memory available (150MB free)</li>
+                                <li>Slow database query detected (5.2s)</li>
+                                <li>Rate limit approaching threshold</li>
+                            </ul>
+                            
+                            <p><strong>🔵 Información [INFO]:</strong></p>
+                            <ul style="margin-left: 2rem;">
+                                <li>User login successful</li>
+                                <li>Data backup completed</li>
+                                <li>Database sync completed</li>
+                                <li>Health check passed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(0, 0, 0, 0.5); border: 2px solid #0f0; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h4 style="color: #0f0; margin-bottom: 1rem;">🎨 Efectos Visuales Especiales</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            La interfaz incluye efectos únicos tipo terminal: <strong>Scanlines CRT</strong> (líneas horizontales animadas), 
+                            <strong>Flicker Effect</strong> (parpadeo sutil), <strong>Text Glow</strong> (resplandor verde fosforescente), 
+                            y <strong>Hover Animations</strong> con transiciones suaves. El scrollbar está personalizado con colores Matrix 
+                            y las notificaciones usan toast messages animadas.
+                        </p>
+                    </div>
+
+                    <div class="case-metrics" style="justify-content: center;">
+                        <div class="metric">
+                            <span class="metric-val">2s</span>
+                            <span class="metric-label">Polling</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-val">15</span>
+                            <span class="metric-label">Líneas Visibles</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-val">6</span>
+                            <span class="metric-label">API Endpoints</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="qa-log-sentinel.html" style="display: inline-flex; align-items: center; gap: 0.8rem; background: linear-gradient(135deg, #0f0, #0a0); color: #000; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+                            <i class="fas fa-arrow-right"></i> Ver Proyecto Completo
+                        </a>
+                    </div>
                 </div>
             </div>
 
