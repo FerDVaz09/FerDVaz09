@@ -13,6 +13,22 @@ Script de auditoría automática para detección de enlaces rotos en sitios web.
 - **Tech Stack:** Python, BeautifulSoup, Requests, Pandas, Colorama
 - **Features:** Escaneo automático, verificación de status, reportes CSV
 
+### 1️⃣ [Exterminador de Enlaces Rotos](https://ferdvaz09.github.io/FerDVaz09/projects/broken-link-checker.html) 🔗 [🚀 DEMO LIVE](https://exterminador-enlaces-rotos.onrender.com)
+
+**Aplicación web para auditoría automática de enlaces rotos en sitios web**
+
+#### Características principales:
+- 📊 **Escaneo Automático:** Extrae y verifica todos los enlaces de una página
+- ✅ **Verificación de Status:** Detecta códigos HTTP (200, 404, 500) y timeouts
+- 📊 **Reportes Visuales:** Muestra estadísticas en tiempo real con interfaz web
+- 🎨 **Interfaz Moderna:** Diseño morado/gradiente profesional
+- 📊 **Análisis Rápido:** Resultados en segundos con tabla interactiva
+- 🌐 **Versión Web:** Accesible desde cualquier navegador, sin instalación
+
+**Tech Stack:** `Python` · `Flask` · `BeautifulSoup` · `Requests` · `HTML5/CSS3`
+
+**🌐 Live Demo:** [exterminador-enlaces-rotos.onrender.com](https://exterminador-enlaces-rotos.onrender.com)
+
 ### 2️⃣ [QA Fuzz Master](https://ferdvaz09.github.io/FerDVaz09/projects/qa-fuzz-master.html) 🎯
 Herramienta avanzada de fuzzing para pruebas de seguridad automatizadas.
 - **Tech Stack:** Python, Flask, Selenium, Chrome Driver, Faker
