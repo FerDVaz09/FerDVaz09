@@ -11,3 +11,16 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
+
+  # Exterminador de Enlaces Rotos
+  - type: web
+    name: exterminador-enlaces-rotos
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "cd 'Exterminador de Enlaces Rotos' && pip install -r requirements.txt"
+    startCommand: "cd 'Exterminador de Enlaces Rotos' && gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
