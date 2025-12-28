@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QA Fuzz Master - Herramienta de Fuzzing Avanzada | Ferdy Placencia Vásquez</title>
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
@@ -13,6 +14,74 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+        }
+
+        .navbar {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff41;
+        }
+
+        .btn-nav-cta {
+            background: linear-gradient(135deg, #00ff41, #ff00ff);
+            color: #0a0a0a;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.4);
         }
 
         .project-header {
@@ -273,10 +342,31 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
+
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Inicio</a></li>
+                    <li><a href="../index.html#projects">Proyectos</a></li>
+                </ul>
+                <a href="../index.html#contact" class="btn-nav-cta" style="text-decoration: none;">
+                    <i class="fas fa-comments"></i> Contáctame Ya
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <div class="project-header">
         <h1>🎯 QA Fuzz Master</h1>
         <p>Herramienta Avanzada de Fuzzing para Seguridad Web</p>
