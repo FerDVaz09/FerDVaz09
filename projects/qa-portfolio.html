@@ -491,13 +491,104 @@
                     </div>
                 </div>
 
-                <!-- Placeholder para Proyecto 2 -->
-                <div class="feature-card" style="margin-bottom: 2rem; border: 2px dashed rgba(0, 217, 255, 0.3); text-align: center; padding: 3rem;">
-                    <div style="font-size: 3rem; color: rgba(0, 217, 255, 0.3); margin-bottom: 1rem;">
-                        <i class="fas fa-plus-circle"></i>
+                <!-- Proyecto 2: QA Fuzz Master -->
+                <div class="feature-card" style="margin-bottom: 2rem; border: 2px solid rgba(0, 255, 65, 0.2);">
+                    <div style="display: flex; align-items: start; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="font-size: 3rem; color: #00ff41;">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">QA Fuzz Master</h3>
+                            <div class="tech-stack" style="margin: 1rem 0;">
+                                <span>Python</span>
+                                <span>Flask</span>
+                                <span>Selenium</span>
+                                <span>Chrome Driver</span>
+                                <span>Faker</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3 style="color: var(--text-secondary);">Próximo Proyecto QA</h3>
-                    <p style="color: var(--text-secondary); opacity: 0.7;">En desarrollo...</p>
+                    
+                    <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                        Aplicación web profesional para realizar <strong>pruebas de seguridad automatizadas mediante fuzzing</strong>, identificando vulnerabilidades como SQL Injection, Buffer Overflow y Cross-Site Scripting (XSS) en aplicaciones web.
+                    </p>
+
+                    <div style="background: rgba(0, 255, 65, 0.05); padding: 1.5rem; border-radius: 10px; border-left: 4px solid #00ff41; margin-bottom: 1.5rem;">
+                        <h4 style="color: #00ff41; margin-bottom: 1rem;"><i class="fas fa-check-circle"></i> Características Clave:</h4>
+                        <ul style="color: var(--text-secondary); line-height: 2;">
+                            <li>🔒 <strong>SQL Injection Testing:</strong> Detecta vulnerabilidades con payloads como "' OR '1'='1"</li>
+                            <li>💥 <strong>Buffer Overflow:</strong> Prueba límites de validación con cadenas de 500+ caracteres</li>
+                            <li>🎭 <strong>XSS (Cross-Site Scripting):</strong> Inyecta scripts y caracteres especiales para probar filtros</li>
+                            <li>📸 <strong>Screenshots Automáticos:</strong> Captura evidencia visual antes y después de cada prueba</li>
+                            <li>🤖 <strong>Selenium WebDriver:</strong> Automatización completa de browser con Chrome headless</li>
+                            <li>🎨 <strong>Interfaz Cyberpunk:</strong> Diseño visual futurista con efectos glitch y animaciones</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0, 255, 65, 0.05); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                        <h4 style="color: #00ff41; margin-bottom: 1rem;"><i class="fas fa-flask"></i> Flujo de Testing:</h4>
+                        <ol style="color: var(--text-secondary); line-height: 2;">
+                            <li><strong>Configuración:</strong> Usuario introduce URL objetivo y selecciona tipo de prueba</li>
+                            <li><strong>Setup Selenium:</strong> Se inicializa Chrome Driver en modo headless</li>
+                            <li><strong>Inyección de Payloads:</strong> Faker genera datos maliciosos específicos para cada test</li>
+                            <li><strong>Ejecución:</strong> Selenium automatiza la interacción con formularios inyectando payloads</li>
+                            <li><strong>Captura:</strong> Screenshots automáticos documentan el comportamiento del sistema</li>
+                            <li><strong>Reporte:</strong> Resultados en tabla con evidencias visuales y estado de cada prueba</li>
+                        </ol>
+                    </div>
+
+                    <div style="background: rgba(0, 255, 65, 0.05); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                        <h4 style="color: #00ff41; margin-bottom: 1rem;"><i class="fas fa-bullseye"></i> Tipos de Ataques Simulados:</h4>
+                        <div style="color: var(--text-secondary); line-height: 2;">
+                            <p><strong>🔐 SQL Injection:</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                                <li>Payloads: <code>' OR '1'='1</code>, <code>admin'--</code>, <code>'; DROP TABLE users--</code></li>
+                                <li>Objetivo: Bypasear autenticación y acceso a datos no autorizados</li>
+                            </ul>
+                            
+                            <p><strong>💥 Buffer Overflow:</strong></p>
+                            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                                <li>Genera cadenas de 500+ caracteres aleatorios</li>
+                                <li>Objetivo: Probar validación de longitud máxima en campos</li>
+                            </ul>
+                            
+                            <p><strong>🎭 Cross-Site Scripting (XSS):</strong></p>
+                            <ul style="margin-left: 2rem;">
+                                <li>Payloads: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code>, emojis especiales 💀🔥💻</li>
+                                <li>Objetivo: Inyectar código JavaScript y caracteres Unicode maliciosos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(255, 0, 255, 0.1); border: 2px solid #ff00ff; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                        <h4 style="color: #ff00ff; margin-bottom: 1rem;">⚠️ Uso Ético y Responsable</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Esta herramienta está diseñada exclusivamente para <strong>testing autorizado en entornos controlados</strong>. 
+                            Solo debe usarse en aplicaciones para las que se tenga permiso explícito. El uso indebido puede violar 
+                            leyes locales e internacionales de ciberseguridad.
+                        </p>
+                    </div>
+
+                    <div class="case-metrics" style="justify-content: center;">
+                        <div class="metric">
+                            <span class="metric-val">3</span>
+                            <span class="metric-label">Tipos de Ataque</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-val">Auto</span>
+                            <span class="metric-label">Screenshots</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-val">Flask</span>
+                            <span class="metric-label">Web App</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="qa-fuzz-master.html" style="display: inline-flex; align-items: center; gap: 0.8rem; background: linear-gradient(135deg, #00ff41, #ff00ff); color: #0a0a0a; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+                            <i class="fas fa-arrow-right"></i> Ver Proyecto Completo
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Placeholder para Proyecto 3 -->
