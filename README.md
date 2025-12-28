@@ -6,6 +6,25 @@ Especializado en automatización de procesos, integración de APIs y desarrollo 
 
 ---
 
+## 🎯 Proyectos QA Destacados
+
+### 1️⃣ [Exterminador de Enlaces Rotos](https://ferdvaz09.github.io/FerDVaz09/projects/broken-link-checker.html) 🔗
+Script de auditoría automática para detección de enlaces rotos en sitios web.
+- **Tech Stack:** Python, BeautifulSoup, Requests, Pandas, Colorama
+- **Features:** Escaneo automático, verificación de status, reportes CSV
+
+### 2️⃣ [QA Fuzz Master](https://ferdvaz09.github.io/FerDVaz09/projects/qa-fuzz-master.html) 🎯
+Herramienta avanzada de fuzzing para pruebas de seguridad automatizadas.
+- **Tech Stack:** Python, Flask, Selenium, Chrome Driver, Faker
+- **Features:** SQL Injection, Buffer Overflow, XSS Testing, Screenshots automáticos
+
+### 3️⃣ [QA Log Sentinel](https://ferdvaz09.github.io/FerDVaz09/projects/qa-log-sentinel.html) 🛡️
+Sistema de monitoreo de logs en tiempo real con interfaz Matrix/Terminal.
+- **Tech Stack:** Python, Flask, HTML5, CSS3, JavaScript, Fetch API
+- **Features:** Polling 2s, efectos CRT, simulación de eventos, estadísticas visuales
+
+---
+
 ### 🛠️ Tech Stack
 
 **Languages & Frameworks**
