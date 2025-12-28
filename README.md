@@ -18,10 +18,11 @@ Herramienta avanzada de fuzzing para pruebas de seguridad automatizadas.
 - **Tech Stack:** Python, Flask, Selenium, Chrome Driver, Faker
 - **Features:** SQL Injection, Buffer Overflow, XSS Testing, Screenshots automáticos
 
-### 3️⃣ [QA Log Sentinel](https://ferdvaz09.github.io/FerDVaz09/projects/qa-log-sentinel.html) 🛡️
+### 3️⃣ [QA Log Sentinel](https://ferdvaz09.github.io/FerDVaz09/projects/qa-log-sentinel.html) 🛡️ [🚀 DEMO LIVE](https://qa-log-sentinel.onrender.com)
 Sistema de monitoreo de logs en tiempo real con interfaz Matrix/Terminal.
 - **Tech Stack:** Python, Flask, HTML5, CSS3, JavaScript, Fetch API
 - **Features:** Polling 2s, efectos CRT, simulación de eventos, estadísticas visuales
+- **🌐 Live Demo:** [qa-log-sentinel.onrender.com](https://qa-log-sentinel.onrender.com)
 
 ---
 
