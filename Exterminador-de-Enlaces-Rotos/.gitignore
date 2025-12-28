@@ -1,0 +1,30 @@
+# Archivos del entorno virtual
+.venv/
+venv/
+env/
+ENV/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Reportes generados (opcional, puedes incluir un ejemplo)
+reporte_errores.csv
+reporte_errores_qa.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
