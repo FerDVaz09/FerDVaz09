@@ -1,0 +1,13 @@
+services:
+  # QA Log Sentinel
+  - type: web
+    name: qa-log-sentinel
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "cd 'QA Log Sentinel' && pip install -r requirements.txt"
+    startCommand: "cd 'QA Log Sentinel' && gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
