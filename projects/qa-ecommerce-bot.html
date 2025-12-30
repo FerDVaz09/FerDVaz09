@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA E-Commerce Bot - Fernando Vázquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero-section .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tech-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .demo-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            margin-top: 20px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 25px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+        }
+
+        .code-block pre {
+            margin: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button.primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .workflow-steps {
+            counter-reset: step-counter;
+            margin-top: 40px;
+        }
+
+        .workflow-step {
+            counter-increment: step-counter;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            position: relative;
+            padding-left: 100px;
+        }
+
+        .workflow-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .workflow-step h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .workflow-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2em;
+            }
+
+            .workflow-step {
+                padding-left: 30px;
+                padding-top: 70px;
+            }
+
+            .workflow-step::before {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">Fernando Vázquez</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#projects">Proyectos</a></li>
+                <li><a href="../index.html#about">Sobre Mí</a></li>
+                <li><a href="../index.html#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1>🤖 QA E-Commerce Test Bot</h1>
+        <p class="subtitle">Automatización End-to-End con Selenium, Page Object Model y Reportes Visuales</p>
+        <div class="badge-container">
+            <span class="badge">Python 3.8+</span>
+            <span class="badge">Selenium WebDriver</span>
+            <span class="badge">Flask</span>
+            <span class="badge">Page Object Model</span>
+            <span class="badge">Faker</span>
+        </div>
+    </section>
+
+    <div class="content-wrapper">
+        <!-- Descripción -->
+        <section class="section">
+            <h2>📋 Descripción del Proyecto</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; color: #555;">
+                Bot de automatización QA profesional que simula un flujo completo de compra en <strong>SauceDemo.com</strong>, 
+                la plataforma estándar mundial para practicar testing de e-commerce. Este proyecto implementa las mejores 
+                prácticas de la industria: <strong>Page Object Model</strong> para código mantenible, <strong>esperas explícitas</strong> 
+                para estabilidad, y <strong>generación automática de reportes</strong> con evidencia visual de cada paso.
+            </p>
+        </section>
+
+        <!-- Por qué es importante -->
+        <section class="section">
+            <h2>💼 ¿Por Qué Este Proyecto Te Consigue Trabajo?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🏗️</div>
+                    <h3>Page Object Model</h3>
+                    <p>Arquitectura profesional que separa la lógica de prueba de la lógica de página, haciendo el código mantenible y escalable.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏱️</div>
+                    <h3>Esperas Inteligentes</h3>
+                    <p>WebDriverWait en lugar de time.sleep(), demostrando conocimiento de elementos dinámicos y timing correcto.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📸</div>
+                    <h3>Evidencia Automatizada</h3>
+                    <p>Screenshots con timestamp en cada paso, proporcionando documentación visual para debugging y auditorías.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Reportes Profesionales</h3>
+                    <p>Interfaz web moderna con Flask que muestra resultados, métricas y evidencia visual de forma clara.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎭</div>
+                    <h3>Datos Sintéticos</h3>
+                    <p>Generación de datos de prueba realistas con Faker, simulando usuarios reales sin hardcodear valores.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔄</div>
+                    <h3>Full-Stack</h3>
+                    <p>Combina backend (Flask), frontend (HTML/CSS/JS) y automatización (Selenium) en un solo proyecto.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flujo de Prueba -->
+        <section class="section">
+            <h2>🧪 Flujo de Prueba Automatizado</h2>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <h3>Login en SauceDemo</h3>
+                    <p><strong>Validación:</strong> Verifica redirección exitosa a /inventory.html y ausencia de mensajes de error.</p>
+                </div>
+                <div class="workflow-step">
+                    <h3>Agregar Producto al Carrito</h3>
+                    <p><strong>Validación:</strong> El badge del carrito debe mostrar "1" después de agregar el Backpack.</p>
+                </div>
+                <div class="workflow-step">
+                    <h3>Navegar al Carrito</h3>
+                    <p><strong>Validación:</strong> El carrito debe contener exactamente 1 producto en la lista.</p>
+                </div>
+                <div class="workflow-step">
+                    <h3>Proceder a Checkout</h3>
+                    <p><strong>Validación:</strong> Formulario de información personal se carga correctamente.</p>
+                </div>
+                <div class="workflow-step">
+                    <h3>Llenar Información</h3>
+                    <p><strong>Validación:</strong> Datos generados con Faker son aceptados y se avanza al resumen.</p>
+                </div>
+                <div class="workflow-step">
+                    <h3>Revisar y Finalizar</h3>
+                    <p><strong>Validación:</strong> El total es correcto (>$0) y el botón "Finish" está disponible.</p>
+                </div>
+                <div class="workflow-step">
+                    <h3>Confirmación de Orden</h3>
+                    <p><strong>Validación:</strong> Aparece el mensaje "THANK YOU FOR YOUR ORDER" confirmando el éxito.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suite de Pruebas QA -->
+        <section class="section">
+            <h2 style="color:#00ff41; border-bottom:3px solid #ff00ff;">🧪 Suite de Pruebas QA</h2>
+            <div style="margin-bottom: 40px;">
+                <h3 style="color:#00ff41;">🟢 Nivel 1: Smoke Testing (Lo Vital)</h3>
+                <ul style="margin-left:20px;">
+                    <li><b>TC-01: Flujo de Compra Exitoso (Happy Path)</b><br>
+                        <i>Objetivo:</i> Verificar que un usuario puede comprar un producto de principio a fin.<br>
+                        <b>Pasos:</b> Login con <code>standard_user</code> → Agregar "Sauce Labs Backpack" al carrito → Ir al carrito → Checkout → Llenar formulario → Finish.<br>
+                        <b>Validación:</b> El mensaje final debe ser exactamente: <span style="color:#ff00ff">"THANK YOU FOR YOUR ORDER"</span>.
+                    </li>
+                    <li><b>TC-02: Login Fallido (Negative Testing)</b><br>
+                        <i>Objetivo:</i> Verificar que el sistema bloquea intrusos.<br>
+                        <b>Pasos:</b> Login con <code>standard_user</code> y password <code>incorrecto123</code>.<br>
+                        <b>Validación:</b> Mensaje de error rojo: <span style="color:#ff00ff">"Epic sadface: Username and password do not match any user in this service"</span>.
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-bottom: 40px;">
+                <h3 style="color:#ffd600;">🟡 Nivel 2: Validaciones de Lógica (Functional Testing)</h3>
+                <ul style="margin-left:20px;">
+                    <li><b>TC-03: Validación de Carrito Vacío</b><br>
+                        <i>Objetivo:</i> Verificar que el contador del carrito funciona.<br>
+                        <b>Pasos:</b> Login → Agregar 2 productos distintos → Verificar icono del carrito "2" → Remover 1 producto.<br>
+                        <b>Validación:</b> El icono del carrito debe mostrar "1" tras remover.
+                    </li>
+                    <li><b>TC-04: Validación de Formulario (Boundary Testing)</b><br>
+                        <i>Objetivo:</i> Verificar que no se puede comprar sin datos de envío.<br>
+                        <b>Pasos:</b> Login → Agregar producto → Checkout → Dejar "Zip/Postal Code" vacío → Continue.<br>
+                        <b>Validación:</b> Error: <span style="color:#ff00ff">"Error: Postal Code is required"</span>.
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color:#ff0066;">🔴 Nivel 3: QA Pro (Advanced Automation)</h3>
+                <ul style="margin-left:20px;">
+                    <li><b>TC-05: Ordenamiento de Productos (Sorting Logic)</b><br>
+                        <i>Objetivo:</i> Verificar que el filtro de precios funciona.<br>
+                        <b>Pasos:</b> Login → Seleccionar "Price (low to high)" → Capturar precio del primer y último producto.<br>
+                        <b>Validación:</b> El primer precio debe ser menor que el último (comparación float).
+                    </li>
+                    <li><b>TC-06: Usuario Bloqueado (Security)</b><br>
+                        <i>Objetivo:</i> Verificar el manejo de estados de usuario.<br>
+                        <b>Pasos:</b> Login con <code>locked_out_user</code> y <code>secret_sauce</code>.<br>
+                        <b>Validación:</b> Error: <span style="color:#ff00ff">"Epic sadface: Sorry, this user has been locked out."</span>.
+                    </li>
+                    <li><b>TC-07: Cálculo de Impuestos (Math Validation)</b><br>
+                        <i>Objetivo:</i> Verificar que la suma total es correcta.<br>
+                        <b>Pasos:</b> Agregar producto de $29.99 → Checkout Overview → Extraer "Item total", "Tax" y "Total".<br>
+                        <b>Validación:</b> <span style="color:#00ff41">(Item Total + Tax) == Total</span> mostrado en pantalla.
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Fin Suite de Pruebas QA -->
+
+        <!-- Stack Tecnológico -->
+        <section class="section">
+            <h2>🛠️ Stack Tecnológico</h2>
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.8+</div>
+                <div class="tech-item">Selenium WebDriver 4.15</div>
+                <div class="tech-item">Flask 3.0</div>
+                <div class="tech-item">Faker 20.1</div>
+                <div class="tech-item">HTML5 / CSS3</div>
+                <div class="tech-item">JavaScript ES6</div>
+                <div class="tech-item">Chrome WebDriver</div>
+            </div>
+        </section>
+
+        <!-- Code Example -->
+        <section class="section">
+            <h2>💻 Ejemplo de Código: Page Object Model</h2>
+            <p style="margin-bottom: 20px;">Implementación profesional del patrón Page Object:</p>
+            <div class="code-block">
+<pre>class LoginPage(BasePage):
+    """Page Object para la página de Login"""
+    
+    USERNAME_INPUT = (By.ID, "user-name")
+    PASSWORD_INPUT = (By.ID, "password")
+    LOGIN_BUTTON = (By.ID, "login-button")
+    
+    def login(self, username, password):
+        """Realiza el login con esperas explícitas"""
+        self.enter_text(*self.USERNAME_INPUT, username)
+        self.enter_text(*self.PASSWORD_INPUT, password)
+        self.click_element(*self.LOGIN_BUTTON)
+    
+    def is_login_successful(self):
+        """Verifica si el login fue exitoso"""
+        try:
+            self.wait.until(EC.url_contains("/inventory.html"))
+            return True
+        except TimeoutException:
+            return False</pre>
+            </div>
+            <p style="margin-top: 20px; color: #666; line-height: 1.6;">
+                <strong>Beneficios de esta arquitectura:</strong> Código reutilizable, fácil de mantener, 
+                y permite cambios en la UI sin reescribir toda la lógica de prueba.
+            </p>
+        </section>
+
+        <!-- Estadísticas -->
+        <section class="section">
+            <h2>📊 Métricas del Proyecto</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">8</div>
+                    <div class="label">Pasos Validados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">5</div>
+                    <div class="label">Page Objects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">~15s</div>
+                    <div class="label">Tiempo de Ejecución</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">100%</div>
+                    <div class="label">Cobertura de Evidencia</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo -->
+        <section class="section">
+            <div class="demo-section">
+                <h2 style="color: #667eea; margin-bottom: 20px;">🎬 Demo del Reporte</h2>
+                <p style="margin-bottom: 20px;">
+                    Interfaz web profesional con resultados en tiempo real, métricas de rendimiento 
+                    y capturas de pantalla de cada paso del test.
+                </p>
+                <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+                    <p style="color: #999; font-style: italic;">
+                        [Aquí puedes agregar una captura de pantalla del reporte]
+                    </p>
+                    <p style="margin-top: 15px; color: #667eea; font-weight: 600;">
+                        Características del Reporte:
+                    </p>
+                    <ul style="text-align: left; max-width: 600px; margin: 20px auto; color: #666;">
+                        <li>✓ Indicadores de estado en tiempo real</li>
+                        <li>✓ Métricas de éxito/fallo</li>
+                        <li>✓ Duración de ejecución</li>
+                        <li>✓ Screenshots expandibles</li>
+                        <li>✓ Timestamps de cada acción</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instalación -->
+        <section class="section">
+            <h2>⚙️ Instalación y Uso</h2>
+            <div class="code-block">
+<pre># 1. Clonar repositorio
+git clone &lt;tu-repo&gt;
+cd QA E-Commerce Bot
+
+# 2. Instalar dependencias
+pip install -r requirements.txt
+
+# 3. Ejecutar servidor web
+python app.py
+
+# 4. Abrir navegador
+http://localhost:5000
+
+# 5. Hacer clic en "Ejecutar Prueba" y disfrutar 🚀</pre>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <h2 style="margin-bottom: 20px;">🚀 ¿Listo para Ver el Código?</h2>
+            <p style="font-size: 1.1em; opacity: 0.9; max-width: 700px; margin: 0 auto;">
+                Explora el código fuente completo, clona el repositorio y ejecuta las pruebas 
+                en tu propia máquina. Todo está documentado y listo para usar.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://qa-ecommerce-bot.onrender.com" class="cta-button primary" target="_blank">
+                    ▶ Ver Demo en Vivo
+                </a>
+                <a href="https://github.com/tu-usuario/qa-ecommerce-bot" class="cta-button" style="background:#ffffff; color:#333;" target="_blank">
+                    📂 Ver en GitHub
+                </a>
+                <a href="../index.html#contact" class="cta-button secondary">
+                    💬 Contactar
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer style="background: #2d2d2d; color: white; text-align: center; padding: 40px 20px; margin-top: 60px;">
+        <p>&copy; 2025 Fernando Vázquez - QA Automation Engineer</p>
+        <p style="margin-top: 10px; opacity: 0.7;">
+            <a href="https://github.com/tu-usuario" style="color: white; text-decoration: none; margin: 0 10px;">GitHub</a> |
+            <a href="https://linkedin.com/in/tu-perfil" style="color: white; text-decoration: none; margin: 0 10px;">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>
