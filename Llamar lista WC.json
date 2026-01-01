@@ -1,0 +1,131 @@
+{
+  "name": "Llamar lista WC",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7475bb31-9454-4556-b673-de6539024b6a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1mjKfFUqXtkyG3K4Ivh2kRX-5bpmJlHqB3JXeIQtfVR0",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 923777903,
+          "mode": "list",
+          "cachedResultName": "LPTR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mjKfFUqXtkyG3K4Ivh2kRX-5bpmJlHqB3JXeIQtfVR0/edit#gid=923777903"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Fecha 1er Contacto",
+              "lookupValue": "="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f8ed3ac4-b650-44e3-bf53-53fdf23749b4",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (Run Once for All Items)\n\nconst COUNTRY_CODE = '1'; // adapt if your leads come from a different country\n\nconst result = [];\nfor (const item of items) {\n\tif (result.length >= 10) break;\n\n\tconst row = item.json;\n\n\tconst nameRaw = (row.Nombre || '').trim();\n\tconst phoneRaw = (row['Teléfono'] || '').toString().trim();\n\tconst emailRaw = (row.Correo || '').trim();\n\n\tif (!nameRaw || !phoneRaw || !emailRaw) continue;\n\n\t// --- Name extraction ---\n\tconst parts = nameRaw.split(/\\s+/);\n\tconst firstName = parts[0] || '';\n\tconst lastName = parts.slice(1).join(' ') || '';\n\n\t// --- Phone to E.164 ---\n\tconst digits = phoneRaw.replace(/\\D/g, '');\n\tif (!digits) continue;\n\n\tlet e164;\n\tif (digits.startsWith(COUNTRY_CODE)) {\n\t\te164 = `+${digits}`;\n\t} else {\n\t\te164 = `+${COUNTRY_CODE}${digits}`;\n\t}\n\n\tresult.push({\n\t\tjson: {\n\t\t\tfirst_name: firstName,\n\t\t\tlast_name: lastName,\n\t\t\temail: emailRaw,\n\t\t\tphone_e164: e164,\n\t\t\trow_number: row.row_number ?? row['row_number'],\n\t\t},\n\t});\n}\n\nreturn result;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "0c58f4f2-44e8-4b7f-b92b-65b8c19cbefb",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        624,
+        0
+      ],
+      "id": "698c7028-e10a-476e-a7dd-f43e848583a6",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2dae34d7-c0aa-4950-953e-44fc2e60c3e6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "333d4106fe2cf963566ed5d1eeaf9f0f0379018b587589d52f23bbdfdf15501a"
+  },
+  "id": "22S34lC6AEZbArZz",
+  "tags": []
+}

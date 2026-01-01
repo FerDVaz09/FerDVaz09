@@ -1,0 +1,732 @@
+{
+  "name": "Travieso Cabarete",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -496,
+        272
+      ],
+      "id": "65f0ce67-e3a0-4bde-87cb-2025c1f49074",
+      "name": "Cada 10 Minutos"
+    },
+    {
+      "parameters": {
+        "jsCode": "const timeOptions = { \n    timeZone: 'America/Santo_Domingo', \n    hour: 'numeric', \n    hour12: false \n};\n\nconst hour = parseInt(new Date().toLocaleString('en-US', timeOptions));\n\n// --- MODO PRUEBA ACTIVADO ---\n// Está configurado de 0 a 25 para que funcione a cualquier hora.\n// IMPORTANTE: Cuando termines de probar, cambia el 0 por 8 y el 25 por 20.\nif (hour >= 0 && hour < 25) {\n    return items;\n} else {\n    // Si está fuera de horario, detiene la ejecución enviando lista vacía\n    return [];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -272,
+        272
+      ],
+      "id": "04d981bd-6a18-46e7-ae97-412329304e3b",
+      "name": "control Horario 8am-8pm"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer datos y FILTRAR por Estado = 'Nuevo Lead'\nconst COUNTRY_CODE = '1';\n\nconst result = [];\nfor (const item of items) {\n\tconst row = item.json;\n\n\t// --- FILTRO PRINCIPAL ---\n\t// Solo dejamos pasar si el Estado es \"Nuevo Lead\"\n\t// Si dice \"Contactado\", \"Broker\", \"Cita Virtual\", lo ignoramos.\n    const estado = (row['Estado'] || '').trim();\n\tif (estado !== 'Nuevo Lead') continue;\n\n\tconst nameRaw = (row.Nombre || '').trim();\n\tconst phoneRaw = (row['Teléfono'] || '').toString().trim();\n\tconst emailRaw = (row.Correo || '').trim();\n\n    // Si no tiene teléfono, lo saltamos\n\tif (!phoneRaw) continue;\n\n\t// --- Separar Nombre y Apellido ---\n\tconst parts = nameRaw.split(/\\s+/);\n\tconst firstName = parts[0] || '';\n\tconst lastName = parts.slice(1).join(' ') || '';\n\n\t// --- Formatear Teléfono (E.164) ---\n\tconst digits = phoneRaw.replace(/\\D/g, '');\n\tlet e164;\n    // Si tiene menos de 7 dígitos es inválido, saltar\n    if (digits.length < 7) continue; \n\n\tif (digits.startsWith(COUNTRY_CODE)) {\n\t\te164 = `+${digits}`;\n\t} else {\n\t\te164 = `+${COUNTRY_CODE}${digits}`;\n\t}\n\n\tresult.push({\n\t\tjson: {\n\t\t\tfirst_name: firstName,\n\t\t\tlast_name: lastName,\n\t\t\temail: emailRaw,\n\t\t\tphone: e164, // Ojo: Revisa si tu CRM pide 'phone' o 'phone_e164'\n\t\t\trow_number: row.row_number,\n\t\t\tdocId: row.docId,\n\t\t\tsheetName: row.sheetName\n\t\t},\n\t});\n}\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        272
+      ],
+      "id": "95f75198-eb45-4a08-8107-52c0ed1a3daa",
+      "name": "Limpiar y Filtrar Nuevos"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $json.docId }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $json.sheetName }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Llamada Realizada": "TRUE"
+          },
+          "matchingColumns": [
+            "Llamada Realizada"
+          ],
+          "schema": [
+            {
+              "id": "Llamada Realizada",
+              "displayName": "Llamada Realizada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        848,
+        272
+      ],
+      "id": "84664fe2-db16-4133-bdbf-98dbf7cfebec",
+      "name": "Marcar x",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "_",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        624,
+        272
+      ],
+      "id": "4102b78c-a4d9-4dc9-8b46-5a7038dde4d4",
+      "name": "llamada /confi josue",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 923777903,
+          "mode": "list",
+          "cachedResultName": "LPTR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q/edit#gid=923777903"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Llamada Ai",
+              "lookupValue": "x"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        -208
+      ],
+      "id": "9daaac51-72e5-42d1-954d-02d7e1fdbb2b",
+      "name": "LPTR",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1483693905,
+          "mode": "list",
+          "cachedResultName": "METATR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q/edit#gid=1483693905"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Llamada Ai",
+              "lookupValue": "x"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        -16
+      ],
+      "id": "97cfb434-8434-4e79-9701-198ebc646ca6",
+      "name": "METATR",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 420719677,
+          "mode": "list",
+          "cachedResultName": "IGTR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q/edit#gid=420719677"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Llamada Ai",
+              "lookupValue": "x"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        176
+      ],
+      "id": "24b50eee-3406-4a1c-b4bc-27c15e62fabc",
+      "name": "IGTR",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1099846853,
+          "mode": "list",
+          "cachedResultName": "FERIA RSVP",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q/edit#gid=1099846853"
+        },
+        "filtersUI": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        368
+      ],
+      "id": "6a3efe67-c7dc-4675-9871-cc607a326402",
+      "name": "FERIA RSVP",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 456234937,
+          "mode": "list",
+          "cachedResultName": "CONVERSACIONES WHATSAPP",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q/edit#gid=456234937"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        560
+      ],
+      "id": "53fd7b45-ce24-489b-a7fa-42cc5e1709d2",
+      "name": "CONVERSACIONES WHATSAPP",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 33079009,
+          "mode": "list",
+          "cachedResultName": "VIEJOS LEADS TR",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q/edit#gid=33079009"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        752
+      ],
+      "id": "94711ede-050d-47cb-9c43-6d8eb1855295",
+      "name": "VIEJOS LEADS TR",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "LPTR",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        -208
+      ],
+      "id": "bc041e9a-64ec-4f32-9302-45f31e8c9027",
+      "name": "Config: LPTR"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "METATR",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        -16
+      ],
+      "id": "3284dad1-df73-4d89-800f-92d7c12a572c",
+      "name": "Config: METATR"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "IGTR",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        176
+      ],
+      "id": "096c8ad0-bba6-46ab-8925-edf29fe1ed61",
+      "name": "Config: IGTR"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "FERIA RSVP",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        368
+      ],
+      "id": "0385d37e-6aef-4436-998f-f47f586f4893",
+      "name": "Config: FERIA RSVP"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "VIEJOS LEADS TR",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        752
+      ],
+      "id": "de32f7fc-80ff-4aa0-98c6-8545dd0a74e5",
+      "name": "Config: VIEJOS LEADS TR"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "15Wx4Zjr0Yo_teF5a6t3zhsH1c0U9nimcFvHZhJ8Gu7Q",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "CONVERSACIONES WHATSAPP",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        560
+      ],
+      "id": "38749b05-dd74-4ef8-ba7f-5c3bbd2690e8",
+      "name": "Config: CONVERSACIONES WHATSAPP1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Cada 10 Minutos": {
+      "main": [
+        [
+          {
+            "node": "control Horario 8am-8pm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpiar y Filtrar Nuevos": {
+      "main": [
+        [
+          {
+            "node": "llamada /confi josue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "llamada /confi josue": {
+      "main": [
+        [
+          {
+            "node": "Marcar x",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LPTR": {
+      "main": [
+        [
+          {
+            "node": "Config: LPTR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IGTR": {
+      "main": [
+        [
+          {
+            "node": "Config: IGTR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "control Horario 8am-8pm": {
+      "main": [
+        [
+          {
+            "node": "LPTR",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "METATR",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IGTR",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "FERIA RSVP",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "CONVERSACIONES WHATSAPP",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "VIEJOS LEADS TR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: LPTR": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "METATR": {
+      "main": [
+        [
+          {
+            "node": "Config: METATR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FERIA RSVP": {
+      "main": [
+        [
+          {
+            "node": "Config: FERIA RSVP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CONVERSACIONES WHATSAPP": {
+      "main": [
+        [
+          {
+            "node": "Config: CONVERSACIONES WHATSAPP1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VIEJOS LEADS TR": {
+      "main": [
+        [
+          {
+            "node": "Config: VIEJOS LEADS TR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: METATR": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: IGTR": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: FERIA RSVP": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: CONVERSACIONES WHATSAPP1": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: VIEJOS LEADS TR": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b69a2056-f44c-4669-a4fd-06ca480dff10",
+  "meta": {
+    "instanceId": "333d4106fe2cf963566ed5d1eeaf9f0f0379018b587589d52f23bbdfdf15501a"
+  },
+  "id": "GkTtIiURXwC8Z3EF",
+  "tags": []
+}

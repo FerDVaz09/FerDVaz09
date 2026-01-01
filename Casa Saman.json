@@ -1,0 +1,613 @@
+{
+  "name": "Casa Saman",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -496,
+        -16
+      ],
+      "id": "5f4388e3-2c60-4331-bbc4-7dcdf31b3b07",
+      "name": "Cada 10 Minutos"
+    },
+    {
+      "parameters": {
+        "jsCode": "const timeOptions = { \n    timeZone: 'America/Santo_Domingo', \n    hour: 'numeric', \n    hour12: false \n};\n\nconst hour = parseInt(new Date().toLocaleString('en-US', timeOptions));\n\n// --- MODO PRUEBA ACTIVADO ---\n// Está configurado de 0 a 25 para que funcione a cualquier hora.\n// IMPORTANTE: Cuando termines de probar, cambia el 0 por 8 y el 25 por 20.\nif (hour >= 0 && hour < 25) {\n    return items;\n} else {\n    // Si está fuera de horario, detiene la ejecución enviando lista vacía\n    return [];\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -272,
+        -16
+      ],
+      "id": "09f94603-0921-4dd9-9188-4a9b171e744d",
+      "name": "control Horario 8am-8pm"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extraer datos, FORMATEAR E.164 y añadir NOMBRE DEL PROYECTO\nconst COUNTRY_CODE = '1';\n\nconst result = [];\nfor (const item of items) {\n\tconst row = item.json;\n\n    // --- FILTRO DE SEGURIDAD ---\n    // Aunque el Sheet ya filtra las vacías, esto asegura que no se cuele una 'x'\n    const llamadaAi = (row['Llamada Ai'] || '').toString().trim().toLowerCase();\n    if (llamadaAi === 'x') continue;\n\n\tconst nameRaw = (row.Nombre || '').trim();\n\tconst phoneRaw = (row['Teléfono'] || '').toString().trim();\n\tconst emailRaw = (row.Correo || '').trim();\n\n    // Si no tiene teléfono, lo saltamos\n\tif (!phoneRaw) continue;\n\n\t// --- FORMATO DE TELÉFONO BLINDADO ---\n\t// 1. Dejar solo números (quita guiones, paréntesis, espacios)\n\tlet digits = phoneRaw.replace(/\\D/g, ''); \n\n    // 2. Si tiene menos de 10 dígitos, probablemente no es válido\n    if (digits.length < 10) continue; \n\n\tlet e164;\n    // Caso 1: 10 dígitos (Ej: 809...) -> Agrega +1\n    if (digits.length === 10) {\n        e164 = `+${COUNTRY_CODE}${digits}`;\n    }\n    // Caso 2: 11 dígitos y empieza por 1 (Ej: 1809...) -> Agrega solo +\n    else if (digits.length === 11 && digits.startsWith('1')) {\n        e164 = `+${digits}`;\n    }\n    // Caso 3: Formato internacional u otros -> Agrega solo +\n    else {\n        e164 = `+${digits}`;\n    }\n\n\t// --- Separar Nombre y Apellido ---\n\tconst parts = nameRaw.split(/\\s+/);\n\tconst firstName = parts[0] || '';\n\tconst lastName = parts.slice(1).join(' ') || '';\n\n\tresult.push({\n\t\tjson: {\n            project: 'Travieso Playa Nueva Romana', // <--- ETIQUETA DEL PROYECTO\n\t\t\tfirst_name: firstName,\n\t\t\tlast_name: lastName,\n\t\t\temail: emailRaw,\n\t\t\tphone: e164,\n\t\t\trow_number: row.row_number,\n\t\t\tdocId: row.docId,\n\t\t\tsheetName: row.sheetName\n\t\t},\n\t});\n}\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        -16
+      ],
+      "id": "ecf9f6a2-71c3-4673-9049-17b2fbab9a3f",
+      "name": "Limpiar y Filtrar Nuevos"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $json.sheetName }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Llamada Ai": "x"
+          },
+          "matchingColumns": [
+            "Llamada Ai"
+          ],
+          "schema": [
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Fecha Creación",
+              "displayName": "Fecha Creación",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Formulario",
+              "displayName": "Formulario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Correo",
+              "displayName": "Correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Mensaje",
+              "displayName": "Mensaje",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Fecha 1er Contacto",
+              "displayName": "Fecha 1er Contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Modo 1er Contacto",
+              "displayName": "Modo 1er Contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Comentarios",
+              "displayName": "Comentarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Fecha 2do Contacto ",
+              "displayName": "Fecha 2do Contacto ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Modo 2do Contacto",
+              "displayName": "Modo 2do Contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Comentarios 2do Contacto",
+              "displayName": "Comentarios 2do Contacto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Llamada Ai",
+              "displayName": "Llamada Ai",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        848,
+        -16
+      ],
+      "id": "53f5694e-2d98-41f7-afcd-c72dcd0dd04e",
+      "name": "Marcar x",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "_",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "=httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        624,
+        -16
+      ],
+      "id": "61b4692d-22ea-48b3-a2a4-7146ed7d4542",
+      "name": "llamada /confi josue",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 923777903,
+          "mode": "list",
+          "cachedResultName": "LPCS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U/edit#gid=923777903"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Llamada Ai"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        -208
+      ],
+      "id": "e426053b-4a5e-402b-83d7-1b46672101aa",
+      "name": "LPCS",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "LPCS",
+              "type": "string"
+            },
+            {
+              "id": "b466c95a-8b48-46e0-b90b-473c753e3c9b",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        -208
+      ],
+      "id": "1b73f350-3780-4a8d-880d-8bfd1993a3cc",
+      "name": "Config: LPCS"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1483693905,
+          "mode": "list",
+          "cachedResultName": "METACS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U/edit#gid=1483693905"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Llamada Ai"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        -16
+      ],
+      "id": "f82241d7-f4c6-49d3-8f9c-d876282d95f1",
+      "name": "METACS",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "METACS",
+              "type": "string"
+            },
+            {
+              "id": "47bd1092-cf07-4a30-8c8c-64466af16b35",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        -16
+      ],
+      "id": "29c1640f-2e90-4135-a523-6f8d1582ddd5",
+      "name": "Config: METACS"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 420719677,
+          "mode": "list",
+          "cachedResultName": "IGCS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U/edit#gid=420719677"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Llamada Ai"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -48,
+        176
+      ],
+      "id": "c295e883-bc53-4d55-8aac-f19408ffefeb",
+      "name": "IGCS",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FcAJhZWPXeqxUVO0",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b31b0992-6cb3-4d2f-9efe-fbff5aac1dc9",
+              "name": "docId",
+              "value": "1q1KZPFnYF1tJtgwIHbbpcrEVAjLvbnveY_WgQJJ9Z4U",
+              "type": "string"
+            },
+            {
+              "id": "48c5296a-332f-4757-8306-4c636ba53b92",
+              "name": "sheetName",
+              "value": "IGCS",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        176
+      ],
+      "id": "f76e6a37-2456-4274-b992-9eb69791f3ae",
+      "name": "Config: IGCS"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Cada 10 Minutos": {
+      "main": [
+        [
+          {
+            "node": "control Horario 8am-8pm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limpiar y Filtrar Nuevos": {
+      "main": [
+        [
+          {
+            "node": "llamada /confi josue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "llamada /confi josue": {
+      "main": [
+        [
+          {
+            "node": "Marcar x",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "control Horario 8am-8pm": {
+      "main": [
+        [
+          {
+            "node": "LPCS",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "METACS",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IGCS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LPCS": {
+      "main": [
+        [
+          {
+            "node": "Config: LPCS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: LPCS": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "METACS": {
+      "main": [
+        [
+          {
+            "node": "Config: METACS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: METACS": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IGCS": {
+      "main": [
+        [
+          {
+            "node": "Config: IGCS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config: IGCS": {
+      "main": [
+        [
+          {
+            "node": "Limpiar y Filtrar Nuevos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8fe3ff20-0be4-4245-85a2-fce1625c3dc8",
+  "meta": {
+    "instanceId": "333d4106fe2cf963566ed5d1eeaf9f0f0379018b587589d52f23bbdfdf15501a"
+  },
+  "id": "LEb2CwN918XlJtpW",
+  "tags": []
+}
