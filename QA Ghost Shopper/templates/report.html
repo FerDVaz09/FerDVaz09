@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Ghost Shopper - Reporte de Pruebas E2E</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Consolas, monospace;
+            background: #0a0a0a;
+            color: #00ff41;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 65, 0.03) 2px, rgba(0, 255, 65, 0.03) 4px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 65, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(0, 255, 65, 0.6); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            text-align: center;
+            animation: pulse-border 2s infinite;
+        }
+
+        header h1 {
+            color: #00ff41;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ff41, 0 0 40px #00ff41;
+            letter-spacing: 0.3rem;
+        }
+
+        header p {
+            color: #ff00ff;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 5px;
+            background: rgba(0, 255, 65, 0.2);
+            border: 1px solid #00ff41;
+            color: #00ff41;
+        }
+
+        .control-section {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            text-align: center;
+            animation: pulse-border 2s infinite;
+        }
+
+        .control-section h3 {
+            color: #00ff41;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff41;
+            font-size: 1.3em;
+        }
+
+        .url-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .url-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ff00ff;
+            border-radius: 5px;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            transition: all 0.3s;
+            box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.2);
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5), inset 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .url-input::placeholder {
+            color: #00ff41;
+            opacity: 0.5;
+        }
+
+        .btn-execute {
+            background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+            color: #000;
+            border: 2px solid #00ff41;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .btn-execute:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+            background: linear-gradient(135deg, #00ff41 0%, #00ff41 100%);
+        }
+
+        .btn-execute:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .status-message {
+            font-size: 1em;
+            margin-top: 15px;
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: none;
+            border: 2px solid;
+        }
+
+        .status-message.loading {
+            background: rgba(0, 255, 65, 0.2);
+            color: #00ff41;
+            display: block;
+            border-color: #00ff41;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .status-message.success {
+            background: rgba(0, 255, 65, 0.2);
+            color: #00ff41;
+            display: block;
+            border-color: #00ff41;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .status-message.error {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0055;
+            display: block;
+            border-color: #ff0055;
+            text-shadow: 0 0 10px #ff0055;
+        }
+
+        .results-section {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            margin-bottom: 30px;
+            display: none;
+            animation: pulse-border 2s infinite;
+        }
+
+        .results-section.show {
+            display: block;
+            animation: slideIn 0.5s ease-out, pulse-border 2s infinite;
+        }
+
+        .results-section h2 {
+            color: #00ff41;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #ff00ff;
+            padding-bottom: 10px;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .execution-info {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff00ff;
+        }
+
+        .execution-info p {
+            margin: 8px 0;
+            color: #00ff41;
+            font-size: 0.95em;
+        }
+
+        .execution-info strong {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        .steps-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .steps-table thead {
+            background: linear-gradient(90deg, rgba(0, 255, 65, 0.2) 0%, rgba(255, 0, 255, 0.2) 100%);
+            border-bottom: 2px solid #00ff41;
+        }
+
+        .steps-table th {
+            padding: 15px;
+            text-align: left;
+            color: #00ff41;
+            font-weight: bold;
+            text-shadow: 0 0 5px #00ff41;
+        }
+
+        .steps-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+        }
+
+        .step-number {
+            font-weight: bold;
+            color: #ff00ff;
+            min-width: 50px;
+        }
+
+        .step-description {
+            color: #00ff41;
+            font-weight: 500;
+        }
+
+        .status-success {
+            color: #00ff41;
+            text-shadow: 0 0 5px #00ff41;
+        }
+
+        .status-error {
+            color: #ff0055;
+            text-shadow: 0 0 5px #ff0055;
+        }
+
+        .image-thumbnail {
+            max-width: 120px;
+            max-height: 80px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #00ff41;
+            box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .image-thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ff00ff;
+        }
+
+        .image-item img {
+            width: 100%;
+            border-radius: 8px;
+            border: 2px solid #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .image-item-label {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #ff00ff;
+            font-weight: 500;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #00ff41;
+            box-shadow: 0 0 50px rgba(0, 255, 65, 0.8);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: #00ff41;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .modal-close:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            color: #00ff41;
+            font-size: 0.95em;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #ff00ff;
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .loader {
+            display: none;
+            border: 4px solid rgba(0, 255, 65, 0.3);
+            border-top: 4px solid #00ff41;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        .loader.show {
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🤖 QA Ghost Shopper</h1>
+            <p>Automatización de Pruebas E2E | Flujo de Compra SauceDemo</p>
+            <span class="badge badge-success">Selenium WebDriver</span>
+            <span class="badge badge-success">Flask + Gunicorn</span>
+            <span class="badge badge-success">Render.com</span>
+        </header>
+
+        <!-- Control Section -->
+        <div class="control-section">
+            <h3>» CONFIGURAR PRUEBA E2E</h3>
+            <form class="url-form" onsubmit="executeTest(event)">
+                <input type="url" class="url-input" id="targetUrl" name="target_url" 
+                       placeholder="https://www.saucedemo.com" 
+                       value="https://www.saucedemo.com" required>
+                <button type="submit" class="btn-execute" id="executeBtn">
+                    ▶ INICIAR PRUEBA
+                </button>
+            </form>
+            <div class="loader" id="loader"></div>
+            <div class="status-message" id="statusMessage"></div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection">
+            <h2>📊 Resultados de la Prueba</h2>
+            
+            <div class="execution-info" id="executionInfo">
+                <!-- Información de ejecución se cargará aquí -->
+            </div>
+
+            <table class="steps-table" id="stepsTable">
+                <thead>
+                    <tr>
+                        <th>Paso</th>
+                        <th>Descripción</th>
+                        <th>Evidencia</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="stepsTableBody">
+                    <!-- Filas se cargarán dinámicamente -->
+                </tbody>
+            </table>
+
+            <div class="image-gallery" id="imageGallery">
+                <!-- Las imágenes se cargarán aquí -->
+            </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults">
+            <p>👆 Ingresa la URL objetivo y haz clic en "INICIAR PRUEBA"</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>✨ <strong>DEPLOYED ON RENDER</strong> | QA Ghost Shopper v1.0 | Automatización de Pruebas 🚀</p>
+        <p style="margin-top: 10px; font-size: 0.85em;">© 2026 | Pruebas End-to-End Automatizadas con Selenium</p>
+        <p style="margin-top: 8px; font-size: 0.9em; color: #ff00ff; text-shadow: 0 0 8px #ff00ff;">Hecho por Ferdy Placencia</p>
+    </footer>
+
+    <!-- Modal para ver imágenes en grande -->
+    <div class="modal" id="imageModal" onclick="closeImageModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeImageModal()">×</span>
+            <img id="modalImage" src="" alt="Evidencia">
+        </div>
+    </div>
+
+    <script>
+        function executeTest(event) {
+            event.preventDefault();
+            const targetUrl = document.getElementById('targetUrl').value || 'https://www.saucedemo.com';
+            const executeBtn = document.getElementById('executeBtn');
+            const loader = document.getElementById('loader');
+            const statusMessage = document.getElementById('statusMessage');
+            const resultsSection = document.getElementById('resultsSection');
+            const noResults = document.getElementById('noResults');
+
+            // Desactivar botón y mostrar loader
+            executeBtn.disabled = true;
+            loader.classList.add('show');
+            statusMessage.textContent = '⏳ Ejecutando prueba... esto puede tomar algunos minutos';
+            statusMessage.className = 'status-message loading';
+
+            // Crear formulario para POST
+            const form = new FormData();
+            form.append('target_url', targetUrl);
+
+            // Realizar petición POST
+            fetch('/run_test', {
+                method: 'POST',
+                body: form
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Mostrar resultados
+                    displayResults(data.results, data.execution_time);
+                    resultsSection.classList.add('show');
+                    noResults.style.display = 'none';
+
+                    statusMessage.textContent = '✅ Prueba completada exitosamente';
+                    statusMessage.className = 'status-message success';
+                } else {
+                    statusMessage.textContent = `❌ Error: ${data.message}`;
+                    statusMessage.className = 'status-message error';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                statusMessage.textContent = `❌ Error: ${error.message}`;
+                statusMessage.className = 'status-message error';
+            })
+            .finally(() => {
+                loader.classList.remove('show');
+                executeBtn.disabled = false;
+            });
+        }
+
+        function displayResults(results, executionTime) {
+            const stepsTableBody = document.getElementById('stepsTableBody');
+            const imageGallery = document.getElementById('imageGallery');
+            const executionInfo = document.getElementById('executionInfo');
+
+            // Limpiar tabla y galería
+            stepsTableBody.innerHTML = '';
+            imageGallery.innerHTML = '';
+
+            // Mostrar información de ejecución
+            executionInfo.innerHTML = `
+                <p><strong>Hora de ejecución:</strong> ${new Date().toLocaleString()}</p>
+                <p><strong>Tiempo total:</strong> ${executionTime}</p>
+                <p><strong>Total de pasos:</strong> ${results.length}</p>
+            `;
+
+            // Llenar tabla de resultados
+            results.forEach((result, index) => {
+                const row = document.createElement('tr');
+                const statusClass = result.estado.includes('✓') ? 'status-success' : 'status-error';
+                
+                let imagenHTML = '';
+                if (result.imagen) {
+                    imagenHTML = `<img src="${result.imagen}" class="image-thumbnail" alt="Step ${result.step}" onclick="openImageModal('${result.imagen}')">`;
+                }
+
+                row.innerHTML = `
+                    <td class="step-number">${result.step}</td>
+                    <td class="step-description">${result.descripcion}</td>
+                    <td>${imagenHTML || '—'}</td>
+                    <td class="step-status ${statusClass}">${result.estado}</td>
+                `;
+                stepsTableBody.appendChild(row);
+
+                // Agregar imagen a la galería
+                if (result.imagen) {
+                    const imageItem = document.createElement('div');
+                    imageItem.className = 'image-item';
+                    imageItem.innerHTML = `
+                        <img src="${result.imagen}" alt="Step ${result.step}" onclick="openImageModal('${result.imagen}')">
+                        <div class="image-item-label">Paso ${result.step}</div>
+                    `;
+                    imageGallery.appendChild(imageItem);
+                }
+            });
+        }
+
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modal.classList.add('show');
+        }
+
+        function closeImageModal(event) {
+            const modal = document.getElementById('imageModal');
+            if (event && event.target !== modal) return;
+            modal.classList.remove('show');
+        }
+
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>
