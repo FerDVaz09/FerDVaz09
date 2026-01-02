@@ -176,76 +176,9 @@ def internal_error(error):
     }), 500
 
 
-def setup_chrome_driver(self):
-    """
-    Configura Chrome Driver inteligentemente según el SO.
-    Linux (Render): Headless + Stealth
-    Windows/Mac (Local): GUI + Limpio y simple
-    """
-    chrome_options = ChromeOptions()
-    os_type = platform.system()
-    
-    print(f"[*] Detectado SO: {os_type}")
-    
-    # ====== CONFIGURACIÓN PARA LINUX (RENDER) ======
-    if os_type == "Linux":
-        print("[*] Configurando para RENDER (Linux Headless)")
-        
-        # Stealth mode para evitar detección
-        chrome_options.add_argument("--disable-blink-features=AutomationControlled")
-        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        chrome_options.add_experimental_option('useAutomationExtension', False)
-        
-        # Argumentos para servidor Linux
-        chrome_options.add_argument("--headless=new")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--window-size=1920,1080")
-        
-        # User-Agent fijo
-        chrome_options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36")
-    
-    # ====== CONFIGURACIÓN PARA WINDOWS/MAC (LOCAL) ======
-    else:
-        print(f"[*] Configurando para LOCAL ({os_type} GUI)")
-        
-        # Limpio y simple para local
-        chrome_options.add_argument("--start-maximized")
-        chrome_options.add_argument("--disable-notifications")
-        chrome_options.add_argument("--disable-popup-blocking")
-        
-        # SIN headless, SIN stealth, SIN user-agent forzado
-        # Dejar que Chrome use su configuración nativa
-    
-    # ====== INICIALIZACIÓN DEL DRIVER ======
-    try:
-        print("[*] Descargando ChromeDriver...")
-        driver_path = ChromeDriverManager().install()
-        print(f"[✓] ChromeDriver: {driver_path}")
-        
-        service = Service(driver_path)
-        self.driver = webdriver.Chrome(service=service, options=chrome_options)
-        print("[✓] Chrome Driver iniciado correctamente")
-        
-    except Exception as e:
-        print(f"[!] Error con Service: {e}")
-        print("[*] Fallback: Intentando sin Service explícito...")
-        try:
-            self.driver = webdriver.Chrome(options=chrome_options)
-            print("[✓] Chrome Driver iniciado (fallback)")
-        except Exception as e2:
-            print(f"[✗] Error crítico: {e2}")
-            import traceback
-            traceback.print_exc()
-            raise
-    
-    # ====== TIMEOUTS ======
-    self.driver.set_page_load_timeout(60)
-    self.driver.implicitly_wait(15)
-    
-    print("[✓] Configuración completada\n")
-
+if __name__ == '__main__':
+    # Development mode (no usar en producción - Render usa Gunicorn)
+    app.run(debug=False, host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
 
 if __name__ == '__main__':
     # Para desarrollo local
