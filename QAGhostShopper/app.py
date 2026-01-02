@@ -103,6 +103,10 @@ def run_test():
         print("✓ Test ejecutado exitosamente")
         print("="*50 + "\n")
         
+        # Validar que los resultados no sean None
+        if test_results is None:
+            test_results = []
+        
         return jsonify({
             'success': True,
             'message': 'Test ejecutado correctamente',
@@ -113,6 +117,8 @@ def run_test():
 
     except Exception as e:
         print(f"\n✗ Error al ejecutar el test: {str(e)}\n")
+        import traceback
+        traceback.print_exc()
         return jsonify({
             'success': False,
             'message': f'Error al ejecutar el test: {str(e)}',

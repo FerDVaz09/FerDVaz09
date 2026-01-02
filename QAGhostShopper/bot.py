@@ -159,6 +159,8 @@ class QAGhostShopper:
         filepath = os.path.join(self.evidence_path, filename)
 
         try:
+            # Asegurar que el directorio existe
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)
             self.driver.save_screenshot(filepath)
             # Convertir ruta para que funcione en URL (Windows usa backslashes)
             relative_path = os.path.join("evidence", filename).replace(os.sep, "/")
@@ -166,7 +168,7 @@ class QAGhostShopper:
             return relative_path
         except Exception as e:
             print(f"[-] Error al capturar screenshot: {e}")
-            return None
+            return f"error: {str(e)}"
 
     def run(self, base_url="https://www.saucedemo.com"):
         """Ejecuta el flujo completo de la prueba de compra."""
