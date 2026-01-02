@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Ghost Shopper - Automatización E2E Selenium | Ferdy Placencia Vásquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover .logo-img {
+            transform: scale(1.05);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ff41;
+        }
+
+        .btn-nav-cta {
+            background: linear-gradient(135deg, #00ff41, #ff00ff);
+            color: #0a0a0a;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.4);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #00ff41 0%, #00d9ff 100%);
+            padding: 100px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .project-header h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            animation: pulse-text 2s infinite;
+        }
+
+        @keyframes pulse-text {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 65, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(0, 217, 255, 0.7); }
+        }
+
+        .project-header p {
+            position: relative;
+            z-index: 2;
+            font-size: 1.3em;
+            margin-top: 20px;
+            color: #00ff41;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00ff41, #ff00ff);
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .back-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 0, 255, 0.5);
+        }
+
+        .section {
+            background: rgba(30, 30, 50, 0.8);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+
+        .section h2 {
+            color: #00ff41;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #ff00ff;
+            padding-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .section h3 {
+            color: #ff00ff;
+            font-size: 1.6em;
+            margin: 30px 0 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+            border-color: #ff00ff;
+        }
+
+        .feature-card h4 {
+            color: #00ff41;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .code-block {
+            background: #000;
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 25px;
+            overflow-x: auto;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .code-block code {
+            color: #00ff41;
+        }
+
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding: 25px 30px 25px 80px;
+            margin-bottom: 20px;
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 4px solid #00ff41;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .steps-list li:hover {
+            background: rgba(0, 255, 65, 0.1);
+            transform: translateX(10px);
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00ff41, #00d9ff);
+            color: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, #00ff41, #00d9ff);
+            color: #0a0a0a;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.95em;
+            box-shadow: 0 4px 15px rgba(0, 255, 65, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 255, 65, 0.5);
+        }
+
+        .info-box {
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .info-box h4 {
+            color: #00ff41;
+            margin-top: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: #0a0a0a;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #00d9ff, #7b2cbf);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 217, 255, 0.5);
+        }
+
+        footer {
+            background: rgba(10, 10, 10, 0.95);
+            color: #e0e0e0;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid rgba(0, 255, 65, 0.2);
+            margin-top: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid #00ff41;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #00ff41;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .stat-label {
+            color: #e0e0e0;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2em;
+            }
+            .section {
+                padding: 25px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="../index.html#projects">Proyectos</a></li>
+                    <li><a href="../index.html#skills">Skills</a></li>
+                    <li><a href="../index.html#contact">Contacto</a></li>
+                </ul>
+                <a href="../index.html#contact" class="btn-nav-cta">Contrátame</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="project-header">
+        <h1>🤖 QA Ghost Shopper</h1>
+        <p>Automatización E2E con Selenium | Testing de Flujos Complejos</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <a href="qa-portfolio.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Volver al Portfolio QA
+        </a>
+
+        <!-- Overview Section -->
+        <section class="section">
+            <h2><i class="fas fa-robot"></i> Descripción General</h2>
+            <p>
+                <strong>QA Ghost Shopper</strong> es una plataforma web profesional para ejecutar <strong>pruebas end-to-end automatizadas</strong> 
+                del flujo completo de compra en aplicaciones e-commerce. Combina la potencia de Selenium WebDriver con una interfaz 
+                cyberpunk interactiva que permite validar automáticamente cada paso de la experiencia de compra.
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Pasos Automatizados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30s</div>
+                    <div class="stat-label">Tiempo de Ejecución</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Headless</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Auto</div>
+                    <div class="stat-label">Screenshots</div>
+                </div>
+            </div>
+
+            <h3>Stack Tecnológico</h3>
+            <div class="tech-stack">
+                <span class="tech-badge"><i class="fab fa-python"></i> Python 3.13</span>
+                <span class="tech-badge"><i class="fas fa-spider"></i> Selenium 4</span>
+                <span class="tech-badge"><i class="fas fa-flask"></i> Flask</span>
+                <span class="tech-badge"><i class="fas fa-chrome"></i> Chrome Driver</span>
+                <span class="tech-badge"><i class="fas fa-server"></i> Gunicorn</span>
+                <span class="tech-badge"><i class="fas fa-cloud"></i> Render.com</span>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="section">
+            <h2><i class="fas fa-star"></i> Características Principales</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4><i class="fas fa-headless"></i> Selenium Headless</h4>
+                    <p>Automatización invisible con Chrome Driver optimizado para producción, sin ventanas del navegador visibles.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-repeat"></i> Retry Logic</h4>
+                    <p>Manejo robusto de timeouts, elementos dinámicos y fallos temporales con reintentos automáticos.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-shopping-cart"></i> Flujo E2E Completo</h4>
+                    <p>Automatiza login, selección de productos, validación de carrito y checkout con datos realistas.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-camera"></i> Evidencia Visual</h4>
+                    <p>Screenshots automáticos de cada paso con galería modal interactiva para inspección detallada.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-globe"></i> Interfaz Web</h4>
+                    <p>Panel cyberpunk con diseño futurista, ejecución con un clic y resultados en tiempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-rocket"></i> Deployed Render</h4>
+                    <p>Aplicación web lista para producción, accesible desde cualquier navegador sin instalación local.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section">
+            <h2><i class="fas fa-cogs"></i> Flujo de Ejecución</h2>
+            <p>
+                El sistema sigue un proceso automatizado desde la inicialización hasta la generación de reportes, 
+                con manejo robusto de errores en cada etapa:
+            </p>
+            
+            <ol class="steps-list">
+                <li>
+                    <strong>Inicialización del Driver</strong><br>
+                    Setup de Chrome con opciones headless, desactivación de notificaciones y optimizaciones de rendimiento
+                </li>
+                <li>
+                    <strong>Navegación al Sitio</strong><br>
+                    Acceso a SauceDemo y captura de screenshot inicial para validar carga de página
+                </li>
+                <li>
+                    <strong>Autenticación</strong><br>
+                    Login automático con retry logic en caso de elementos no disponibles inmediatamente
+                </li>
+                <li>
+                    <strong>Selección de Producto</strong><br>
+                    Búsqueda y agregación al carrito con validación de visibilidad de elementos
+                </li>
+                <li>
+                    <strong>Validación de Carrito</strong><br>
+                    Verificación de items agregados y cálculos de precios con screenshots
+                </li>
+                <li>
+                    <strong>Checkout Automático</strong><br>
+                    Relleno de formulario con datos faker (nombre, apellido, código postal) con error handling
+                </li>
+                <li>
+                    <strong>Confirmación Final</strong><br>
+                    Validación de orden completada y captura de confirmación con reporte detallado
+                </li>
+            </ol>
+        </section>
+
+        <!-- Technical Details -->
+        <section class="section">
+            <h2><i class="fas fa-code"></i> Detalles Técnicos</h2>
+            
+            <h3>Arquitectura de la Aplicación</h3>
+            <p>
+                La aplicación está construida con una arquitectura cliente-servidor clara:
+            </p>
+            
+            <div class="info-box">
+                <h4><i class="fas fa-server"></i> Backend (Python + Flask)</h4>
+                <ul>
+                    <li><strong>bot.py:</strong> Orquestador principal con lógica de Selenium y retry helpers</li>
+                    <li><strong>app.py:</strong> Servidor Flask con ruta POST /run_test para ejecutar pruebas</li>
+                    <li><strong>Retry Helpers:</strong> Funciones click_with_retry() y fill_field_with_retry() para manejo robusto</li>
+                    <li><strong>Screenshot Manager:</strong> Captura automática con timestamps en directorio static/evidence</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4><i class="fas fa-desktop"></i> Frontend (HTML + JavaScript)</h4>
+                <ul>
+                    <li><strong>report.html:</strong> Interfaz cyberpunk con tema verde/magenta y animaciones</li>
+                    <li><strong>executeTest():</strong> Función JavaScript que realiza fetch POST a /run_test</li>
+                    <li><strong>displayResults():</strong> Renderiza tabla dinámica y galería de screenshots</li>
+                    <li><strong>Modal Interactivo:</strong> Visualización fullscreen de evidencias con zoom</li>
+                </ul>
+            </div>
+
+            <h3>Manejo de Timeouts y Errores</h3>
+            <div class="code-block">
+                <pre><code>def click_with_retry(element, driver, retries=3):
+    <span class="comment"># Reintenta hacer click hasta 3 veces</span>
+    for attempt in range(retries):
+        try:
+            WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable(element)
+            )
+            driver.execute_script("arguments[0].click();", element)
+            return True
+        except:
+            if attempt < retries - 1:
+                time.sleep(2)  <span class="comment"># Espera antes de reintentar</span>
+            else:
+                return False</code></pre>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="section">
+            <h2><i class="fas fa-target"></i> Casos de Uso en QA</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4><i class="fas fa-check"></i> Smoke Testing</h4>
+                    <p>Validación rápida post-deployment para asegurar que la funcionalidad crítica está operativa.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-sync"></i> Regression Testing</h4>
+                    <p>Verificación automática de que cambios recientes no rompieron el flujo de compra principal.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-desktop"></i> Cross-browser Testing</h4>
+                    <p>Ejecución en diferentes configuraciones de Chrome para validar compatibilidad.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-tachometer-alt"></i> Performance Monitoring</h4>
+                    <p>Medición de tiempos de respuesta en cada paso del flujo de compra.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-code-branch"></i> CI/CD Integration</h4>
+                    <p>Automatización en pipelines de desarrollo para testing continuo en cada commit.</p>
+                </div>
+                <div class="feature-card">
+                    <h4><i class="fas fa-graduation-cap"></i> Training & Demo</h4>
+                    <p>Demostración interactiva de automatización con Selenium para capacitación del equipo QA.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deployment Info -->
+        <section class="section">
+            <h2><i class="fas fa-cloud-upload-alt"></i> Información de Deployment</h2>
+            <p>
+                La aplicación está deployada en <strong>Render.com</strong>, una plataforma de hosting moderna 
+                que soporta aplicaciones Python con escalado automático:
+            </p>
+            
+            <div class="info-box">
+                <h4><i class="fas fa-rocket"></i> Stack de Deployment</h4>
+                <ul>
+                    <li><strong>Plataforma:</strong> Render.com</li>
+                    <li><strong>Runtime:</strong> Python 3.13.4</li>
+                    <li><strong>Server:</strong> Gunicorn (production WSGI)</li>
+                    <li><strong>Build Command:</strong> pip install -r requirements.txt</li>
+                    <li><strong>Start Command:</strong> gunicorn app:app</li>
+                    <li><strong>Repositorio:</strong> GitHub - FerDVaz09/FerDVaz09</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h4><i class="fas fa-link"></i> URL Activa</h4>
+                <p><strong>Demo en Vivo:</strong> <a href="https://qa-ghost-shopper-v2.onrender.com" target="_blank" style="color: #00ff41; text-decoration: underline;">https://qa-ghost-shopper-v2.onrender.com</a></p>
+            </div>
+        </section>
+
+        <!-- Lessons Learned -->
+        <section class="section">
+            <h2><i class="fas fa-lightbulb"></i> Lecciones Aprendidas</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>Chrome Headless Configuration</h4>
+                    <p>El modo headless requiere configuración específica (desactivar sandbox, disable-gpu) para funcionar en servers.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Manejo de Waits</h4>
+                    <p>WebDriverWait con custom conditions es más robusto que time.sleep() para elementos dinámicos.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Retry Logic Crítico</h4>
+                    <p>Los timeouts son inevitables en ambientes compartidos, los reintentos previenen falsos negativos.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Captura de Evidencia</h4>
+                    <p>Screenshots en puntos clave son esenciales para debugging y documentación de resultados.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Interfaz Responsiva</h4>
+                    <p>Una buena UX facilita la adopción y uso de herramientas de testing por otros QA.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Documentación Web</h4>
+                    <p>Incluir instrucciones en la misma aplicación reduce barreras de entrada para nuevos usuarios.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="text-align: center;">
+            <h2><i class="fas fa-arrow-right"></i> ¿Interesado en QA Automation?</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">
+                Puedo ayudarte a implementar automatización de testing en tu proyecto, desde E2E hasta security testing.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="https://qa-ghost-shopper-v2.onrender.com" target="_blank" class="btn-primary">
+                    <i class="fas fa-rocket"></i> Probar Demo
+                </a>
+                <a href="../index.html#contact" class="btn-secondary">
+                    <i class="fas fa-envelope"></i> Contáctame
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        <p style="font-size: 0.9em; color: #888;">Hecho con <i class="fas fa-heart" style="color: #ff00ff;"></i> para QA Automation</p>
+    </footer>
+</body>
+</html>
