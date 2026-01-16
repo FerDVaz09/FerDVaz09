@@ -800,6 +800,77 @@ section {
     line-height: 1.5;
 }
 
+/* Certifications Section */
+.certifications {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.certifications::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.certification-card {
+    background: rgba(26, 26, 26, 0.8);
+    border: 2px solid rgba(0, 217, 255, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.certification-card:hover {
+    border-color: var(--primary-color);
+    background: rgba(26, 26, 26, 0.95);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 217, 255, 0.2);
+}
+
+.cert-year {
+    background: linear-gradient(135deg, #00d9ff, #7b2cbf);
+    color: #0a0a0a;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    min-width: 65px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.cert-content h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
 /* Contact Section */
 .contact {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
