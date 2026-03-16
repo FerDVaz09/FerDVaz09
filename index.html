@@ -1,1010 +1,225 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="dark" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ferdy Placencia - Especialista en IA, Automatización de Procesos y QA | 4+ años de experiencia">
-    <title>Ferdy Placencia Vásquez - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- SEO & Social Media Meta Tags -->
-    <link rel="canonical" href="https://ferdvaz09.github.io/FerDVaz09/">
-    <meta property="og:title" content="Ferdy Placencia Vásquez - Portfolio">
-    <meta property="og:description" content="Especialista en IA, Automatización de Procesos y QA | 4+ años de experiencia. Transformo procesos manuales en soluciones automatizadas.">
-    <meta property="og:image" content="https://ferdvaz09.github.io/FerDVaz09/logo.jpg">
-    <meta property="og:url" content="https://ferdvaz09.github.io/FerDVaz09/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#0a0a0a">
-    <style>
-        /* Modal Formulario */
-        .contact-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Ferdy Placencia | AI & Automation Engineer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00d9ff",
+                        "secondary": "#7b2cbf",
+                        "background-dark": "#0a0a0c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
         }
-        .contact-modal.active {
-            display: flex;
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary: #00d9ff;
+            --secondary: #7b2cbf;
         }
-        .modal-content {
-            background: var(--dark-card);
-            padding: 2.5rem;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
+        body {
+            font-family: 'Manrope', sans-serif;
         }
-        @keyframes modalSlideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.8rem;
-            cursor: pointer;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s;
+        .gradient-text {
+            background: linear-gradient(135deg, #00d9ff 0%, #7b2cbf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: rotate(90deg);
-        }
-        .modal-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            background: rgba(0, 217, 255, 0.05);
+        .glow-border {
             border: 1px solid rgba(0, 217, 255, 0.2);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background: rgba(0, 217, 255, 0.1);
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .btn-submit {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
-        }
-        .form-success {
-            background: rgba(0, 217, 255, 0.1);
-            border: 1px solid var(--primary-color);
-            padding: 1rem;
-            border-radius: 10px;
-            color: var(--primary-color);
-            text-align: center;
-            margin-top: 1rem;
-            display: none;
-        }
-        .form-success.show {
-            display: block;
+        .glow-border:hover {
+            border-color: rgba(0, 217, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
         }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="logo.jpg" alt="FPV Logo" class="logo-img">
-            </div>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#about">Sobre Mí</a></li>
-                    <li><a href="#experience">Experiencia</a></li>
-                    <li><a href="#projects">Proyectos</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                </ul>
-                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
-                    <i class="fas fa-comments"></i> Contáctame Ya
-                </button>
-            </div>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        </div>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-avatar">
-                <div class="avatar-circle">
-                    <img src="assets/profile.jpg" alt="Ferdy Placencia Vásquez">
-                </div>
-            </div>
-            <h1 class="hero-title">Ferdy Placencia</h1>
-            <p class="subtitle">AI & Automation Engineer | n8n · CRM · APIs · Agentes de IA</p>
-            <div class="hero-cta">
-                <div class="cta-badge">
-                    <i class="fas fa-bolt"></i> Disponible para Proyectos
-                </div>
-                <h2 class="cta-title">¿Necesitas automatización o QA para tu proyecto?</h2>
-                <p class="cta-text">Transformo procesos manuales en soluciones automatizadas que ahorran tiempo y dinero</p>
-                <div class="hero-buttons">
-                    <button onclick="openContactModal()" class="btn btn-cta" style="border: none; cursor: pointer;">💬 Contáctame Ya</button>
-                    <a href="#projects" class="btn btn-secondary">Ver Proyectos</a>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/FerDVaz09" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:ferdyv59@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">Sobre Mí</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        <strong>Especialista en Automatización con IA</strong> con más de 4 años de experiencia diseñando e implementando soluciones de automatización para empresas usando <strong>n8n, Python y APIs REST</strong>. Experto en integración de CRM (GoHighLevel, Salesforce), bases de datos SQL, agentes de IA autónomos y chatbots inteligentes para ventas, reclutamiento y soporte.
-                    </p>
-                    <p>
-                        Orientado a resultados de negocio: reduje procesos de <strong>8 horas a 15 minutos</strong>. Trabajo 100% remoto, autónomo, orientado a entregables y con experiencia ejecutando proyectos reales para clientes desde el día uno. Capacidad demostrada para reducir tiempos operativos hasta en un 90% mediante arquitecturas de software inteligentes.
-                    </p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <h3>4+</h3>
-                            <p>Años de Experiencia</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>3</h3>
-                            <p>Agentes IA en Producción</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>96%</h3>
-                            <p>Reducción de Tiempo</p>
-                        </div>
+<body class="bg-background-dark text-slate-100 antialiased transition-colors duration-300">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/80 backdrop-blur-md">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+                <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-secondary text-white">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-extrabold tracking-tight text-white leading-none">FERDY PLACENCIA</h2>
+                        <span class="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Vásquez</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nueva Sección: Perfil Profesional -->
-    <section id="experience" class="professional-profile">
-        <div class="container">
-            <div class="profile-header">
-                <div class="profile-badge">
-                    <i class="fas fa-brain"></i> Perfil Profesional
-                </div>
-                <h2 class="profile-title">Especialista en IA, Automatización de Procesos y QA</h2>
-                <p class="profile-description">
-                    Soy un profesional especializado en <strong>desarrollo de agentes de IA autónomos, automatización de procesos empresariales y aseguramiento de calidad</strong>, con experiencia práctica en entornos reales de operación, donde la estabilidad, la eficiencia y la optimización son prioritarias.
-                </p>
-                <p class="profile-description">
-                    Mi perfil combina <strong>inteligencia artificial, automatización con n8n/Zapier, desarrollo, QA y optimización de CRMs</strong>, lo que me permite diseñar soluciones completas y escalables, desde la lógica del agente inteligente hasta su integración en ecosistemas empresariales complejos.
-                </p>
-            </div>
-
-            <!-- Experiencia Laboral -->
-            <div class="experience-section">
-                <h3 class="subsection-title">
-                    <i class="fas fa-briefcase"></i> Experiencia Laboral
-                </h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h4>AI & Automation Engineer</h4>
-                                <span class="timeline-company">Abacus Exchange</span>
-                                <span class="timeline-date">Nov 2025 - Presente</span>
-                            </div>
-                            <ul class="timeline-description" style="list-style-type: none; padding: 0;">
-                                <li>• Diseño de dashboards automatizados para monitoreo operativo y comercial en tiempo real.</li>
-                                <li>• Creación de agentes de IA para reclutamiento, soporte al cliente y prospección (setters).</li>
-                                <li>• Automatización end-to-end con n8n + Python + APIs — reduciendo tiempos operativos hasta 90%.</li>
-                                <li>• Integración CRM: GoHighLevel y Salesforce conectados con sistemas internos y WhatsApp / Instagram API.</li>
-                                <li>• Arquitectura de soluciones completas: desde requisitos hasta despliegue en producción.</li>
-                            </ul>
-                            <div class="tech-stack" style="margin-top: 10px;">
-                                <span>n8n</span> <span>Python</span> <span>GoHighLevel</span> <span>Salesforce</span> <span>APIs</span> <span>Agentes IA</span> <span>WhatsApp API</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h4>Especialista en TI / Analista de Sistemas</h4>
-                                <span class="timeline-company">Abacus Exchange</span>
-                                <span class="timeline-date">Oct 2024 - Presente</span>
-                            </div>
-                            <ul class="timeline-description" style="list-style-type: none; padding: 0;">
-                                <li>• Automatización de tareas repetitivas internas con Python y n8n, liberando horas de trabajo manual.</li>
-                                <li>• Administración de bases de datos y generación de reportes SQL para decisiones operativas.</li>
-                                <li>• Integración de sistemas internos con plataformas externas vía API.</li>
-                            </ul>
-                            <div class="tech-stack" style="margin-top: 10px;">
-                                <span>Python</span> <span>n8n</span> <span>SQL</span> <span>APIs</span> <span>Administración de BD</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h4>Analista de QA & Automation</h4>
-                                <span class="timeline-company">UNPHU / Freelance</span>
-                                <span class="timeline-date">Oct 2022 - Mayo 2024</span>
-                            </div>
-                            <p class="timeline-description">
-                                Desarrollo de scripts de automatización para pruebas de regresión y validación de bases de datos SQL. Configuración de integraciones iniciales entre plataformas educativas y herramientas de comunicación masiva. Documentación técnica de arquitecturas de integración y casos de prueba para sistemas de alta demanda.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h4>Web Developer & Automation Junior</h4>
-                                <span class="timeline-company">Ultron Tech</span>
-                                <span class="timeline-date">Feb 2021 - Sept 2022</span>
-                            </div>
-                            <p class="timeline-description">
-                                Desarrollo de aplicaciones web y scripts iniciales en Python para automatización de tareas repetitivas de backend. Integración de formularios web con sistemas de gestión de contactos y correos automatizados.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Habilidades Clave -->
-            <div class="key-skills-section">
-                <h3 class="subsection-title">
-                    <i class="fas fa-star"></i> Habilidades Clave
-                </h3>
-                <div class="key-skills-grid">
-                    <div class="key-skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h4>Automatización de Procesos</h4>
-                        <p>Transformación de tareas manuales repetitivas en flujos inteligentes</p>
-                    </div>
-                    <div class="key-skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h4>Garantía de Calidad</h4>
-                        <p>Testing exhaustivo y validación de sistemas antes de producción</p>
-                    </div>
-                    <div class="key-skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-puzzle-piece"></i>
-                        </div>
-                        <h4>Integración de Sistemas</h4>
-                        <p>Conexión fluida entre múltiples plataformas y servicios</p>
-                    </div>
-                    <div class="key-skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h4>Resolución Analítica</h4>
-                        <p>Identificación y solución eficiente de problemas complejos</p>
-                    </div>
-                    <div class="key-skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h4>Documentación Técnica</h4>
-                        <p>Documentación clara y funcional para equipos técnicos</p>
-                    </div>
-                    <div class="key-skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>Trabajo Colaborativo</h4>
-                        <p>Colaboración efectiva en entornos técnicos multidisciplinarios</p>
-                    </div>
-                    <div class="key-skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h4>Aprendizaje Continuo</h4>
-                        <p>Adaptación constante a nuevas tecnologías y metodologías</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Conocimientos Técnicos -->
-            <div class="tech-knowledge-section">
-                <h3 class="subsection-title">
-                    <i class="fas fa-laptop-code"></i> Conocimientos Técnicos
-                </h3>
-                <div class="tech-cards">
-                    <div class="tech-card">
-                        <div class="tech-card-header">
-                            <i class="fas fa-project-diagram"></i>
-                            <h4>Desarrollo & Automatización</h4>
-                        </div>
-                        <ul class="tech-list">
-                            <li><i class="fas fa-check-circle"></i> Desarrollo de aplicaciones basadas en datos</li>
-                            <li><i class="fas fa-check-circle"></i> Automatización de procesos empresariales</li>
-                            <li><i class="fas fa-check-circle"></i> Integración de sistemas y APIs REST</li>
-                            <li><i class="fas fa-check-circle"></i> Desarrollo de bots conversacionales con IA</li>
-                            <li><i class="fas fa-check-circle"></i> Implementación de IA aplicada a soporte</li>
-                        </ul>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-card-header">
-                            <i class="fas fa-database"></i>
-                            <h4>Datos & Calidad</h4>
-                        </div>
-                        <ul class="tech-list">
-                            <li><i class="fas fa-check-circle"></i> Bases de datos relacionales y vectoriales</li>
-                            <li><i class="fas fa-check-circle"></i> Desarrollo de reportes automáticos</li>
-                            <li><i class="fas fa-check-circle"></i> Testing funcional y validación de flujos</li>
-                            <li><i class="fas fa-check-circle"></i> Metodologías QA y aseguramiento de calidad</li>
-                            <li><i class="fas fa-check-circle"></i> Análisis operativo y métricas</li>
-                        </ul>
-                    </div>
-
-                    <div class="tech-card">
-                        <div class="tech-card-header">
-                            <i class="fas fa-chart-line"></i>
-                            <h4>Finanzas & Reportes</h4>
-                        </div>
-                        <ul class="tech-list">
-                            <li><i class="fas fa-check-circle"></i> Metodologías financieras y trading</li>
-                            <li><i class="fas fa-check-circle"></i> Automatización de reportes financieros</li>
-                            <li><i class="fas fa-check-circle"></i> Análisis de métricas operativas</li>
-                            <li><i class="fas fa-check-circle"></i> Seguimiento de KPIs y resultados</li>
-                            <li><i class="fas fa-check-circle"></i> Toma de decisiones basada en datos</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="profile-cta">
-                <div class="cta-content">
-                    <h3>¿Listo para optimizar tus procesos?</h3>
-                    <p>Transformo operaciones manuales en sistemas automatizados que ahorran tiempo y reducen errores</p>
-                    <button onclick="openContactModal()" class="btn-profile-cta">
-                        <i class="fas fa-rocket"></i> Hablemos de tu proyecto
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-bold text-primary transition-colors" href="index.html">Home</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="about.html">About</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="projects.html">Projects</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="project-detail.html">Latest Case Study</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="hidden sm:flex items-center justify-center rounded-full bg-white text-black px-6 py-2 text-sm font-bold transition-all hover:bg-primary hover:text-white">
+                        Start Automating
                     </button>
+                    <div class="h-10 w-10 overflow-hidden rounded-full border border-primary/30 p-0.5">
+                        <img alt="Ferdy Placencia" class="h-full w-full rounded-full object-cover" src="logo.jpg"/>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Proyectos Destacados</h2>
-            <div class="projects-carousel">
-                <button class="carousel-arrow prev" id="prevBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
-                <div class="projects-viewport">
-                    <div class="projects-track">
-                    <a href="projects/whatsapp-bot.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <h3>Bot de Soporte Técnico con IA</h3>
-                            <p>
-                                Bot automatizado de soporte con agrupación de mensajes, persistencia en Supabase, 
-                                control de sesiones con Redis y escalamiento a soporte humano.
-                            </p>
-                            <div class="tech-stack">
-                                <span>n8n</span>
-                                <span>Evolution API</span>
-                                <span>Hostinger</span>
-                                <span>Easy Panel</span>
-                                <span>Redis</span>
-                            </div>
-                            <div class="project-demo">
-                                <i class="fas fa-arrow-right"></i> Ver Detalles
-                            </div>
+        <main class="mx-auto w-full max-w-7xl px-6 py-12 lg:px-10">
+            <section class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:py-20">
+                <div class="flex flex-col gap-8">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="h-px w-8 bg-primary"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-primary">
+                                AI & Automation Engineer
+                            </span>
                         </div>
-                    </a>
-
-                    <a href="projects/slack-thinkific.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fab fa-slack"></i>
-                            </div>
-                            <h3>App Slack + Thinkific</h3>
-                            <p>
-                                Solución de automatización que conecta Slack con plataformas de formación tipo Thinkific, permitiendo la administración centralizada de accesos, usuarios y programas desde entornos internos de trabajo.
-                            </p>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Flask</span>
-                                <span>Slack API</span>
-                                <span>Thinkific API</span>
-                            </div>
-                            <div class="project-demo">
-                                <i class="fas fa-arrow-right"></i> Ver Detalles
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="projects/agente-academico.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <h3>Agente IA de Soporte Académico</h3>
-                            <p>
-                                Agente de inteligencia artificial para Slack o Teams, enfocado en consultas internas, soporte operativo y gestión del conocimiento institucional con memoria conversacional y contexto programable.
-                            </p>
-                            <div class="tech-stack">
-                                <span>n8n</span>
-                                <span>Python</span>
-                                <span>Slack API</span>
-                                <span>IA</span>
-                            </div>
-                            <div class="project-demo">
-                                <i class="fas fa-arrow-right"></i> Ver Detalles
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="projects/discord-tickets.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fab fa-discord"></i>
-                            </div>
-                            <h3>Sistema de Tickets en Discord</h3>
-                            <p>
-                                Sistema para creación y administración automática de tickets mediante hilos, permitiendo organizar solicitudes, responder con IA y cerrar casos de forma controlada.
-                            </p>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>Discord API</span>
-                                <span>PostgreSQL</span>
-                                <span>IA</span>
-                            </div>
-                            <div class="project-demo">
-                                <i class="fas fa-arrow-right"></i> Ver Detalles
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="projects/trading-assistant.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fab fa-telegram"></i>
-                            </div>
-                            <h3>Asistente de Trading</h3>
-                            <p>
-                                Bot inteligente para registro estructurado de operaciones, consultas financieras y generación automática de reportes, centralizando información en formatos fáciles de analizar.
-                            </p>
-                            <div class="tech-stack">
-                                <span>n8n</span>
-                                <span>Notion</span>
-                                <span>Excel</span>
-                                <span>IA</span>
-                            </div>
-                            <div class="project-demo">
-                                <i class="fas fa-arrow-right"></i> Ver Detalles
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="projects/agente-citas.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fas fa-calendar-check"></i>
-                            </div>
-                            <h3>Agente de Citas y Consultas</h3>
-                            <p>
-                                Sistema automatizado especializado en WhatsApp para atender consultas, organizar agendas y coordinar citas de forma automática con inteligencia artificial.
-                            </p>
-                            <div class="tech-stack">
-                                <span>WhatsApp</span>
-                                <span>n8n</span>
-                                <span>IA</span>
-                                <span>Notion</span>
-                            </div>
-                            <div class="project-demo">
-                                <i class="fas fa-arrow-right"></i> Ver Detalles
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="projects/broken-link-checker.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fas fa-link"></i>
-                            </div>
-                            <h3>Exterminador de Enlaces Rotos</h3>
-                            <p>
-                                Herramienta profesional de QA para auditar sitios web y detectar enlaces rotos en segundos. Genera reportes CSV/Excel listos para presentar.
-                            </p>
-                            <div class="tech-stack">
-                                <span>Python</span>
-                                <span>BeautifulSoup</span>
-                                <span>Requests</span>
-                                <span>QA Testing</span>
-                            </div>
-                            <div class="project-demo">
-                                <i class="fas fa-arrow-right"></i> Ver Detalles
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="projects/qa-ecommerce-bot.html" class="project-card-link">
-                        <div class="project-card">
-                            <div class="project-icon">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <h3>QA E-Commerce Test Bot</h3>
-                            <p>
-                                Bot de automatización end-to-end con Selenium y Page Object Model. Simula flujos de compra reales con reportes visuales y evidencia fotográfica.
-                            </p>
-                            <div class="tech-stack">
-                                <span>Selenium</span>
-                                <span>Flask</span>
-                                <span>Page Object Model</span>
-                                <span>Python</span>
-                            </div>
-                                <div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-top:12px;">
-                                    <a href="https://qa-ecommerce-bot.onrender.com" target="_blank" style="background:#00c853;color:white;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600;">Live</a>
-                                    <div class="project-demo">
-                                        <i class="fas fa-arrow-right"></i> Ver Detalles
-                                    </div>
+                        <h1 class="text-5xl font-black leading-[1.1] tracking-tight text-white md:text-6xl lg:text-7xl">
+                            Engineering <span class="gradient-text">Autonomous Growth</span> through IA & Precisión
+                        </h1>
+                        <p class="max-w-xl text-lg text-slate-400 leading-relaxed">
+                            n8n · CRM · APIs · Agentes de IA. Arquitecto de flujos inteligentes que eliminan cuellos de botella y escalan operaciones con fiabilidad 24/7.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="projects.html" class="group flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-bold text-black transition-all hover:scale-[1.02] active:scale-95">
+                            Ver Soluciones
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </a>
+                        <button class="flex h-14 items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 text-base font-bold text-white hover:bg-white/10 transition-all">
+                            Technical Stack
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 rounded-full bg-primary/10 blur-[100px]"></div>
+                    <div class="absolute -inset-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-secondary/10 blur-[100px]"></div>
+                    <div class="relative aspect-square w-full overflow-hidden rounded-3xl border border-white/10 bg-slate-900/50 p-4 shadow-2xl backdrop-blur-3xl">
+                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-secondary"></div>
+                        <img alt="AI Automation Dashboard" class="h-full w-full rounded-2xl object-cover opacity-60 mix-blend-luminosity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUvQbFY5fvWn0LiKX1jdYlwNxhW_thLDYokYuwdH6UWlAcLg_owOhBJ8zNCe8BoZ5nfJByD5TszFAnidUyIAtqWvafHdzFwPGVls1vlWJOwJ_wGT6a8dCfm9AE_HpCIPF6EMLP_x8JIFjG8TtqG5BB6W2yAgyhTunTR_2dhkPQR5vNgQe7KGhH-Yvwo4tBSyJr73GvpJsxWqsKKldeJbwqdTTUCFHjoj9xHllBvZPJgINJMagZazsdDrTS4ZX_UI4T00xkCorkQK5i"/>
+                        <div class="absolute inset-0 flex flex-col justify-end p-8 gap-4 bg-gradient-to-t from-background-dark via-transparent to-transparent">
+                            <div class="flex items-center gap-3 rounded-2xl bg-white/5 p-4 backdrop-blur-xl border border-white/10">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/20 text-primary">
+                                    <span class="material-symbols-outlined">hub</span>
                                 </div>
+                                <div>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Current Node</p>
+                                    <p class="text-sm font-semibold text-white">n8n Execution Engine v2.4</p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+                <div class="glow-border flex flex-col gap-2 rounded-3xl bg-white/5 p-8 transition-colors">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
+                        <span class="material-symbols-outlined">acute</span>
+                    </div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Time Reduction</p>
+                    <p class="text-5xl font-black tracking-tighter text-white">96%</p>
+                    <div class="mt-2 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary w-[96%]"></div>
+                    </div>
+                </div>
+                <div class="glow-border flex flex-col gap-2 rounded-3xl bg-white/5 p-8 transition-colors">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary mb-4">
+                        <span class="material-symbols-outlined">verified</span>
+                    </div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Reliability</p>
+                    <p class="text-5xl font-black tracking-tighter text-white">99.9%</p>
+                    <p class="text-xs text-secondary font-bold">Enterprise Grade Uptime</p>
+                </div>
+                <div class="glow-border flex flex-col gap-2 rounded-3xl bg-white/5 p-8 transition-colors">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
+                        <span class="material-symbols-outlined">deployed_code</span>
+                    </div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Active Agents</p>
+                    <p class="text-5xl font-black tracking-tighter text-white">3+</p>
+                    <p class="text-xs text-primary font-bold">In Production Environments</p>
+                </div>
+            </section>
+
+            <section class="py-24">
+                <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div class="flex flex-col gap-4">
+                        <h2 class="text-4xl font-black tracking-tight text-white md:text-5xl">Autonomous <span class="text-primary">AI Agents</span></h2>
+                        <p class="max-w-2xl text-slate-400">Personas de IA personalizadas diseñadas para manejar lógica de negocio compleja e interacción con usuarios de forma autónoma.</p>
+                    </div>
+                    <a class="text-primary font-bold flex items-center gap-2 hover:underline" href="projects.html">
+                        Ver todas las capacidades <span class="material-symbols-outlined text-sm">open_in_new</span>
                     </a>
-                    </div>
                 </div>
-
-                <button class="carousel-arrow next" id="nextBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Lenguajes</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">JavaScript</div>
-                        <div class="skill-item">SQL</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> Ecosistema IA</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Agentes de IA</div>
-                        <div class="skill-item">Prompt Engineering</div>
-                        <div class="skill-item">Agentes Autónomos</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-robot"></i> Automatización</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Zapier</div>
-                        <div class="skill-item">n8n</div>
-                        <div class="skill-item">GoHighLevel (GHL)</div>
-                        <div class="skill-item">Flujos WhatsApp & Instagram API</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-building"></i> CRMs</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Salesforce</div>
-                        <div class="skill-item">GoHighLevel</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-vial"></i> Testing & QA</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Python Testing</div>
-                        <div class="skill-item">Selenium</div>
-                        <div class="skill-item">Pytest</div>
-                        <div class="skill-item">Postman</div>
-                        <div class="skill-item">Jira</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Herramientas</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">Git</div>
-                        <div class="skill-item">Docker</div>
-                        <div class="skill-item">Agile/Scrum</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección QA & Testing Detallado -->
-    <section id="qa-testing" class="qa-testing">
-        <div class="container">
-            <h2 class="section-title">QA & Testing</h2>
-            <p class="section-subtitle">4+ años de experiencia en aseguramiento de calidad y automatización de pruebas</p>
-            
-            <!-- Preview QA - 4 tarjetas principales -->
-            <div class="qa-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 1200px; margin: 0 auto;">
-                <div class="qa-card">
-                    <div class="qa-icon">
-                        <i class="fas fa-plug"></i>
-                    </div>
-                    <h3>API Testing</h3>
-                    <p class="qa-description">Postman, Thunder Client, validación de endpoints REST</p>
-                </div>
-
-                <div class="qa-card">
-                    <div class="qa-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Automatización</h3>
-                    <p class="qa-description">Selenium, Playwright, Pytest para testing continuo</p>
-                </div>
-
-                <div class="qa-card">
-                    <div class="qa-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <h3>Web Dev Tools</h3>
-                    <p class="qa-description">Chrome DevTools, Lighthouse, performance testing</p>
-                </div>
-
-                <a href="projects/broken-link-checker.html" class="qa-card" style="text-decoration: none; color: inherit; cursor: pointer; transition: all 0.3s;">
-                    <div class="qa-icon">
-                        <i class="fas fa-link"></i>
-                    </div>
-                    <h3>Exterminador de Enlaces Rotos</h3>
-                    <p class="qa-description">Herramienta QA para auditar sitios y detectar enlaces rotos con reportes CSV</p>
-                    <div style="margin-top: 1rem; padding: 0.5rem 1rem; background: rgba(0, 217, 255, 0.1); border-radius: 20px; font-size: 0.85rem; color: var(--primary-color); display: inline-block;">
-                        <i class="fas fa-arrow-right"></i> Ver Proyecto
-                    </div>
-                </a>
-            </div>
-
-            <!-- Stats rápidas -->
-            <div style="display: flex; justify-content: center; gap: 3rem; margin: 3rem 0; flex-wrap: wrap;">
-                <div style="text-align: center;">
-                    <h3 style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 0.5rem;">15+</h3>
-                    <p style="color: var(--text-secondary);">Proyectos Completados</p>
-                </div>
-                <div style="text-align: center;">
-                    <h3 style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 0.5rem;">200+</h3>
-                    <p style="color: var(--text-secondary);">Test Cases</p>
-                </div>
-                <div style="text-align: center;">
-                    <h3 style="color: var(--primary-color); font-size: 2.5rem; margin-bottom: 0.5rem;">99.9%</h3>
-                    <p style="color: var(--text-secondary);">Confiabilidad QA</p>
-                </div>
-            </div>
-
-            <!-- CTA hacia la página completa -->
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="projects/qa-portfolio.html" style="display: inline-flex; align-items: center; gap: 0.8rem; background: linear-gradient(135deg, #00d9ff, #7b2cbf); color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0, 217, 255, 0.3);">
-                    <i class="fas fa-vial"></i>
-                    Ver Portfolio QA Completo
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.95rem;">
-                    Metodologías, evidencias, casos de éxito y más →
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="case-study">
-        <div class="container">
-            <div class="case-study-box">
-                <div class="case-content">
-                    <div class="case-badge">🏆 CASO DE ÉXITO</div>
-                    <h2>Procesamiento de Datos: De 8 horas a 15 minutos (96% de Mejora)</h2>
-                    <p><strong>Desafío:</strong> Extracción, validación y reporte de datos críticos con procesos completamente manuales que tomaban 8 horas diarias.</p>
-                    <p><strong>Solución:</strong> Scripts robustos en Python con arquitectura inteligente que automatiza validación, transformación y reporte de datos en tiempo real.</p>
-                    <div class="case-metrics">
-                        <div class="metric">
-                            <span class="metric-val">96%</span>
-                            <span class="metric-label">Reducción de Tiempo</span>
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                    <div class="group relative rounded-3xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.05] hover:border-primary/30">
+                        <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-transparent text-primary">
+                            <span class="material-symbols-outlined text-3xl">person_search</span>
                         </div>
-                        <div class="metric">
-                            <span class="metric-val">99.9%</span>
-                            <span class="metric-label">Fiabilidad QA</span>
+                        <h3 class="text-xl font-bold text-white mb-3">Recruitment Agent</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">
+                            Sourcing automatizado, filtrado inicial vía LLMs y agendamiento de entrevistas integrado con sistemas ATS.
+                        </p>
+                    </div>
+                    <div class="group relative rounded-3xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.05] hover:border-secondary/30">
+                        <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-secondary/20 to-transparent text-secondary">
+                            <span class="material-symbols-outlined text-3xl">chat_bubble</span>
                         </div>
-                        <div class="metric">
-                            <span class="metric-val">100+</span>
-                            <span class="metric-label">Casos Automatizados</span>
+                        <h3 class="text-xl font-bold text-white mb-3">Sales Setter</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">
+                            Engagement 24/7 vía WhatsApp y Email. Califica prospectos y agenda citas directamente en tu calendario.
+                        </p>
+                    </div>
+                    <div class="group relative rounded-3xl border border-white/5 bg-white/[0.02] p-8 transition-all hover:bg-white/[0.05] hover:border-primary/30">
+                        <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-transparent text-primary">
+                            <span class="material-symbols-outlined text-3xl">support_agent</span>
                         </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Support Agent</h3>
+                        <p class="text-sm leading-relaxed text-slate-400">
+                            Consulta inteligente en bases de conocimiento para resolver el 80% de las consultas comunes al instante.
+                        </p>
                     </div>
                 </div>
-                <div class="case-visual">
-                    <i class="fas fa-rocket rocket-icon"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
+        </main>
 
-    <!-- Sección Certificaciones -->
-    <section class="certifications">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-certificate"></i> Certificaciones</h2>
-            <div class="certifications-grid">
-                <div class="certification-card">
-                    <div class="cert-year">2025</div>
-                    <div class="cert-content">
-                        <h4>N8N Intermedio: Construcción de Chatbots de IA</h4>
-                        <p>Desarrollo de agentes de IA avanzados y automatización de flujos conversacionales complejos</p>
+        <footer class="mt-auto border-t border-white/5 bg-black/40">
+            <div class="mx-auto max-w-7xl px-6 py-12 lg:px-10">
+                <div class="flex flex-col items-center justify-between gap-8 md:flex-row">
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-8 w-8 items-center justify-center rounded bg-gradient-to-br from-primary to-secondary text-white">
+                            <span class="material-symbols-outlined text-sm">bolt</span>
+                        </div>
+                        <span class="text-sm font-black uppercase tracking-[0.2em] text-white">FP | AI Engineer</span>
                     </div>
-                </div>
-                <div class="certification-card">
-                    <div class="cert-year">2024</div>
-                    <div class="cert-content">
-                        <h4>Administrador de Salesforce</h4>
-                        <p>Administración, configuración e integración de ecosistemas CRM empresariales</p>
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <div class="cert-year">2024</div>
-                    <div class="cert-content">
-                        <h4>Hacking Ético y Ciberseguridad</h4>
-                        <p>Pruebas de seguridad, detección de vulnerabilidades y buenas prácticas en QA</p>
+                    <p class="text-xs text-slate-500 font-medium">
+                        © 2024 Ferdy Placencia (Vásquez). Engineering the future of work.
+                    </p>
+                    <div class="flex gap-6">
+                        <a class="h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-slate-400 hover:text-primary hover:border-primary transition-all" href="#"><span class="material-symbols-outlined text-lg">link</span></a>
+                        <a class="h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-slate-400 hover:text-primary hover:border-primary transition-all" href="#"><span class="material-symbols-outlined text-lg">terminal</span></a>
+                        <a class="h-10 w-10 flex items-center justify-center rounded-full border border-white/10 text-slate-400 hover:text-primary hover:border-primary transition-all" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contáctame</h2>
-            <p class="section-subtitle">¿Listo para automatizar tus procesos? Escríbeme por tu canal preferido</p>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <button class="contact-item contact-primary" data-action="whatsapp" data-value="https://wa.link/mkp1vl">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <h3>WhatsApp</h3>
-                            <p>Chatea conmigo ahora</p>
-                        </div>
-                        <span class="contact-badge">Recomendado</span>
-                    </button>
-                    <button class="contact-item contact-primary" data-action="email-compose" data-value="ferdyv59@gmail.com">
-                        <i class="fas fa-paper-plane"></i>
-                        <div>
-                            <h3>Redactar Email</h3>
-                            <p>ferdyv59@gmail.com</p>
-                        </div>
-                    </button>
-                    <button class="contact-item" data-action="phone" data-value="tel:+18094769759">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Teléfono</h3>
-                            <p>(809) 476-9759</p>
-                        </div>
-                    </button>
-                    <button class="contact-item" data-action="link" data-value="https://github.com/FerDVaz09">
-                        <i class="fab fa-github"></i>
-                        <div>
-                            <h3>GitHub</h3>
-                            <p>@FerDVaz09</p>
-                        </div>
-                    </button>
-                    <button class="contact-item" data-action="link" data-value="https://linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315/">
-                        <i class="fab fa-linkedin"></i>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p>Ferdy Vásquez</p>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
-            <p>Construido con <i class="fas fa-code"></i> pasión y <i class="fas fa-coffee"></i> café · Powered by <i class="fab fa-python"></i> Python & <i class="fas fa-robot"></i> Automation</p>
-        </div>
-    </footer>
-    <!-- Chatbot Widget -->
-    <div id="chatbot-widget">
-        <button id="chatbot-toggle" class="chatbot-toggle">
-            <i class="fas fa-comments"></i>
-        </button>
-        <div id="chatbot-window" class="chatbot-window">
-            <div class="chatbot-header">
-                <h3><i class="fas fa-robot"></i> Asistente Virtual</h3>
-                <button id="chatbot-close" class="chatbot-close">&times;</button>
-            </div>
-            <div class="chatbot-body">
-                <div class="chatbot-message bot-message">
-                    <p>👋 ¡Hola! Selecciona una opción del menú:</p>
-                </div>
-                <div class="chatbot-menu">
-                    <button class="menu-option" data-question="perfil">
-                        <i class="fas fa-user-circle"></i> 📄 Perfil Profesional Completo
-                    </button>
-                    <button class="menu-option" data-question="metodologia">
-                        <i class="fas fa-vial"></i> 🧪 ¿Cómo pruebas el software?
-                    </button>
-                    <button class="menu-option" data-question="bugs">
-                        <i class="fas fa-bug"></i> 🐞 Ejemplos de bugs detectados
-                    </button>
-                    <button class="menu-option" data-question="proyectos">
-                        <i class="fas fa-tasks"></i> ¿Qué proyectos he testeado?
-                    </button>
-                    <button class="menu-option" data-question="herramientas">
-                        <i class="fas fa-tools"></i> Herramientas QA y Automatización
-                    </button>
-                    <button class="menu-option" data-question="contacto">
-                        <i class="fas fa-envelope"></i> ¿Cómo contactarte?
-                    </button>
-                </div>
-                <div id="chatbot-response" class="chatbot-response"></div>
-            </div>
-            <div class="chatbot-footer">
-                <button id="chatbot-reset" class="chatbot-reset">
-                    <i class="fas fa-redo"></i> Volver al menú
-                </button>
-            </div>
-        </div>
+        </footer>
     </div>
-
-    <!-- Modal de Contacto -->
-    <div id="contactModal" class="contact-modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeContactModal()">&times;</button>
-            <h3><i class="fas fa-envelope"></i> Contáctame</h3>
-            <form id="contactForm" action="https://formsubmit.co/ferdyv59@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Consulta desde Portfolio Principal">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://ferdvaz09.github.io/FerDVaz09/?success=true">
-                
-                <div class="form-group">
-                    <label for="name">Nombre completo</label>
-                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone">Teléfono (opcional)</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+1234567890">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto o consulta..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn-submit">
-                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
-                </button>
-                
-                <div class="form-success" id="formSuccess">
-                    <i class="fas fa-check-circle"></i> ¡Mensaje enviado! Te responderé pronto.
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        function openContactModal() {
-            document.getElementById('contactModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeContactModal() {
-            document.getElementById('contactModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Cerrar modal al hacer clic fuera
-        document.getElementById('contactModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeContactModal();
-            }
-        });
-
-        // Si viene con success=true en URL, mostrar mensaje
-        if (window.location.search.includes('success=true')) {
-            openContactModal();
-            document.getElementById('formSuccess').classList.add('show');
-            setTimeout(() => {
-                closeContactModal();
-                window.history.replaceState({}, document.title, window.location.pathname);
-            }, 3000);
-        }
-
-        // Cerrar con tecla ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeContactModal();
-            }
-        });
-    </script>
-    <script src="script.js"></script>
 </body>
 </html>

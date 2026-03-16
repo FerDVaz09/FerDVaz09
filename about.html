@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Ferdy | AI & Automation Engineer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#00d9ff",
+                "secondary": "#7b2cbf",
+                "background-dark": "#0a0a0c",
+                "surface-dark": "#16161e",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary: #00d9ff;
+            --secondary: #7b2cbf;
+        }
+        @layer base {
+            .bg-gradient-primary {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            }
+            .text-gradient-primary {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-100 antialiased">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-800 px-6 md:px-20 lg:px-40 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+            <div class="flex items-center gap-4">
+                <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+                    <span class="material-symbols-outlined text-primary">hub</span>
+                </div>
+                <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Ferdy.AI</h2>
+            </div>
+            <div class="flex flex-1 justify-end gap-8">
+                <div class="hidden md:flex items-center gap-9">
+                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="index.html">Home</a>
+                    <a class="text-primary text-sm font-bold" href="about.html">About</a>
+                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="projects.html">Projects</a>
+                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="project-detail.html">Case Study</a>
+                </div>
+                <button class="flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-gradient-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-all shadow-[0_0_15px_rgba(0,217,255,0.3)]">
+                    <span>Contact</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-1">
+            <div class="px-6 md:px-20 lg:px-40 py-16 bg-surface-dark/50">
+                <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                    <div class="relative group">
+                        <div class="size-56 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-2xl bg-slate-800 transition-transform group-hover:scale-[1.02]" style="background-image: url('logo.jpg'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-xl shadow-lg flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">robot_2</span>
+                            <span class="text-xs font-bold uppercase tracking-wider">AI Engineer</span>
+                        </div>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-4">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            AVAILABLE FOR PROJECTS
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2 tracking-tight">Ferdy Placencia <span class="text-primary font-light">(Vásquez)</span></h1>
+                        <p class="text-xl font-medium text-slate-400 mb-6">AI & Automation Engineer <span class="mx-2 text-slate-700">|</span> Santo Domingo, RD</p>
+                        <p class="text-lg text-slate-400 mb-8 leading-relaxed max-w-2xl">
+                            Especializado en flujos de n8n, arquitectura de CRM y agentes autónomos de IA. Transformo cuellos de botella manuales en ecosistemas inteligentes y escalables.
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="projects.html" class="flex items-center gap-2 px-8 py-4 bg-gradient-primary text-white rounded-xl font-bold text-sm hover:scale-105 transition-all shadow-lg">
+                                <span class="material-symbols-outlined text-sm">rocket_launch</span>
+                                Ver Mi Trabajo
+                            </a>
+                            <button class="flex items-center gap-2 px-8 py-4 border border-slate-700 bg-slate-800/50 text-slate-300 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all">
+                                <span class="material-symbols-outlined text-sm">mail</span>
+                                Contactar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 md:px-20 lg:px-40 py-16">
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                <span class="size-2 w-8 bg-primary inline-block rounded-full"></span>
+                                Mi Filosofía
+                            </h2>
+                            <p class="text-slate-400 leading-relaxed text-lg mb-6">
+                                Me enfoco en <span class="text-primary font-semibold">IA Autónoma</span> y la creación de <span class="text-secondary font-semibold">ecosistemas de CRM integrales</span>. La automatización no es solo ahorrar tiempo; es construir sistemas que piensen, aprendan y se integren perfectamente en el flujo humano.
+                            </p>
+                            <p class="text-slate-400 leading-relaxed">
+                                Mi enfoque asegura que los datos fluyan sin esfuerzo entre marketing, ventas y soporte, impulsados por agentes inteligentes que manejan decisiones complejas sin supervisión manual constante.
+                            </p>
+                        </div>
+                        <div class="bg-surface-dark border border-slate-800 p-8 rounded-2xl">
+                            <h3 class="text-lg font-bold text-white mb-6">Career Timeline</h3>
+                            <div class="space-y-8">
+                                <div class="relative pl-6 border-l-2 border-primary/30">
+                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-primary shadow-[0_0_10px_#00d9ff]"></div>
+                                    <h4 class="text-sm font-bold text-primary uppercase tracking-wider">Presente</h4>
+                                    <p class="text-white font-bold">AI & Automation Engineer</p>
+                                    <p class="text-slate-400 text-sm">Abacus Exchange (Nov 2025 - Presente)</p>
+                                </div>
+                                <div class="relative pl-6 border-l-2 border-slate-800">
+                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-slate-700"></div>
+                                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider">2024 - 2025</h4>
+                                    <p class="text-slate-300 font-bold">IT Specialist / System Analyst</p>
+                                    <p class="text-slate-500 text-sm">Oct 2024 - Oct 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 md:px-20 lg:px-40 py-20 bg-surface-dark/30">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold text-white mb-4">Core Competencies</h2>
+                        <p class="text-slate-400">Technical expertise in the modern IA and automation stack.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-surface-dark p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all group">
+                            <div class="size-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                                <span class="material-symbols-outlined text-3xl">smart_toy</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">AI Agents</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3 text-slate-400">
+                                    <span class="material-symbols-outlined text-primary text-sm">memory</span> Recruitment Automation
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-400">
+                                    <span class="material-symbols-outlined text-primary text-sm">psychology</span> Sales Setters
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-400">
+                                    <span class="material-symbols-outlined text-primary text-sm">support_agent</span> 24/7 Intelligent Support
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-surface-dark p-8 rounded-2xl border border-slate-800 hover:border-secondary/50 transition-all group">
+                            <div class="size-14 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white transition-all">
+                                <span class="material-symbols-outlined text-3xl">account_tree</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Orchestration</h3>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 bg-slate-800 rounded-lg text-sm font-medium border border-slate-700 text-slate-300">n8n</span>
+                                <span class="px-3 py-1 bg-slate-800 rounded-lg text-sm font-medium border border-slate-700 text-slate-300">Python</span>
+                                <span class="px-3 py-1 bg-slate-800 rounded-lg text-sm font-medium border border-slate-700 text-slate-300">LangChain</span>
+                                <span class="px-3 py-1 bg-slate-800 rounded-lg text-sm font-medium border border-slate-700 text-slate-300">FastAPI</span>
+                            </div>
+                            <p class="text-sm text-slate-500">Focusing on high-concurrency event-driven workflows.</p>
+                        </div>
+                        <div class="bg-surface-dark p-8 rounded-2xl border border-slate-800 hover:border-primary/50 transition-all group">
+                            <div class="size-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                                <span class="material-symbols-outlined text-3xl">database</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">CRM Integration</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-center gap-3 text-slate-400">
+                                    <span class="material-symbols-outlined text-secondary text-sm">star</span> GoHighLevel (GHL)
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-400">
+                                    <span class="material-symbols-outlined text-secondary text-sm">cloud</span> Salesforce
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-400">
+                                    <span class="material-symbols-outlined text-secondary text-sm">filter_alt</span> HubSpot
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="px-6 md:px-20 lg:px-40 py-12 border-t border-slate-800 bg-background-dark">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex flex-col items-center md:items-start gap-2">
+                    <div class="flex items-center gap-2">
+                        <div class="size-6 bg-primary/20 rounded flex items-center justify-center">
+                            <span class="material-symbols-outlined text-xs text-primary">auto_fix_high</span>
+                        </div>
+                        <p class="text-sm font-bold text-white tracking-tight">Ferdy Placencia</p>
+                    </div>
+                    <p class="text-xs text-slate-600">© 2025 Autonomous Engineering. Designed for Scalability.</p>
+                </div>
+                <div class="flex items-center gap-8">
+                    <a class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors" href="#">n8n Templates</a>
+                    <a class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors" href="#">LinkedIn</a>
+                    <a class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors" href="#">GitHub</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
