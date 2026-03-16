@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Projects | AI & Automation Portfolio</title>
+    <title>Projects | Automation & QA Portfolio</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -15,7 +15,6 @@
                     colors: {
                         "primary": "#00d9ff",
                         "secondary": "#7b2cbf",
-                        "background-light": "#f5f7f8",
                         "background-dark": "#0a0a0c",
                         "card-dark": "#16161e",
                     },
@@ -39,111 +38,120 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .gradient-border {
-            position: relative;
-            background: linear-gradient(to bottom right, #00d9ff, #7b2cbf);
-            padding: 1px;
-        }
         .gradient-text {
             background: linear-gradient(90deg, #00d9ff, #7b2cbf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
-    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-        <div class="layout-container flex h-full grow flex-col">
-            <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-white/10 px-6 md:px-20 lg:px-40 py-4 bg-background-light dark:bg-background-dark sticky top-0 z-50">
-                <div class="flex items-center gap-8">
-                    <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-3xl text-primary">hub</span>
-                        <h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">FP.AI</h2>
-                    </div>
-                    <nav class="hidden md:flex items-center gap-8">
-                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="index.html">Home</a>
-                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
-                        <a class="text-primary text-sm font-semibold transition-colors" href="projects.html">Projects</a>
-                        <a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="project-detail.html">Case Study</a>
-                    </nav>
+<body class="bg-background-dark text-slate-100 min-h-screen">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-white/10 px-6 md:px-20 lg:px-40 py-4 bg-background-dark sticky top-0 z-50">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-3xl text-primary">hub</span>
+                    <h2 class="text-white text-lg font-bold leading-tight tracking-tight">FP.AI</h2>
                 </div>
-                <div class="flex flex-1 justify-end gap-4 items-center">
-                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" style='background-image: url("logo.jpg");'></div>
-                </div>
-            </header>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="index.html">Home</a>
+                    <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+                    <a class="text-primary text-sm font-semibold transition-colors" href="projects.html">Projects</a>
+                    <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="project-detail.html">Case Study</a>
+                </nav>
+            </div>
+            <div class="flex flex-1 justify-end gap-4 items-center">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" style='background-image: url("logo.jpg");'></div>
+            </div>
+        </header>
 
-            <main class="flex-1 px-6 md:px-20 lg:px-40 py-10">
-                <section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
-                    <div class="max-w-2xl">
-                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-4">
-                            AI & Automation <span class="gradient-text">Portfolio</span>
-                        </h1>
-                        <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed">
-                            Ingeniería de flujos n8n escalables, sistemas multi-agente de IA e integraciones de CRM para impulsar la eficiencia operativa.
+        <main class="flex-1 px-6 md:px-20 lg:px-40 py-10">
+            <section class="mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+                    Selected <span class="gradient-text">Projects</span>
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed max-w-2xl">
+                    Una colección de mis mejores trabajos en automatización de procesos, agentes de IA y herramientas de calidad de software (QA).
+                </p>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Case Study Project -->
+                <div class="group flex flex-col bg-card-dark rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-2xl hover:shadow-primary/10">
+                    <div class="relative h-48 w-full bg-slate-800 overflow-hidden">
+                        <img alt="Workflow automation" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxU957aubB8jRLPwrS_frujKUS7pbpAK24swTi_lHeYd_WnCg3XYmPc2IcCgftUd-PmnuzcaDMtgQq_1UfENijtUBIbUGZ6iM62aJXNNGAY3v3NjsyYFsdAgabh0BIatEYwpbHAEMrVcLiuji_xcJVJpJQlZfq7DhjbSMtAzRGSJYZ4CGFMzIhrfgDoRtcpADxnzdk3qu3larerlDGu8rGNmy1cer2WZW5rtmSAmW5bWPwbt9PjRrrXHALgV7z30_JsuuFHe4QxxJl"/>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-primary px-2 py-1 rounded text-xs font-black text-black">CASE STUDY</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-xl font-bold text-white mb-3">96% Faster Processing Breakthrough</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">
+                            Optimización de pipeline de datos masivo de 8 horas a 15 min usando n8n y Python.
                         </p>
-                    </div>
-                </section>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="group flex flex-col bg-slate-50 dark:bg-card-dark rounded-xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-2xl hover:shadow-primary/10">
-                        <div class="relative h-48 w-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 mix-blend-overlay"></div>
-                            <img alt="Workflow automation dashboard" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxU957aubB8jRLPwrS_frujKUS7pbpAK24swTi_lHeYd_WnCg3XYmPc2IcCgftUd-PmnuzcaDMtgQq_1UfENijtUBIbUGZ6iM62aJXNNGAY3v3NjsyYFsdAgabh0BIatEYwpbHAEMrVcLiuji_xcJVJpJQlZfq7DhjbSMtAzRGSJYZ4CGFMzIhrfgDoRtcpADxnzdk3qu3larerlDGu8rGNmy1cer2WZW5rtmSAmW5bWPwbt9PjRrrXHALgV7z30_JsuuFHe4QxxJl"/>
-                            <div class="absolute top-4 right-4">
-                                <span class="bg-primary/90 backdrop-blur-sm text-background-dark px-2 py-1 rounded text-xs font-black uppercase tracking-widest">Optimized</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-1">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="material-symbols-outlined text-primary text-2xl">speed</span>
-                                <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 leading-tight">96% Faster Processing with n8n + Python</h3>
-                            </div>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 flex-1">
-                                Re-ingeniería de un pipeline de datos de alto volumen usando n8n para orquestación y Python para cómputo pesado.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-2.5 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold rounded uppercase">n8n</span>
-                                <span class="px-2.5 py-1 bg-secondary/10 border border-secondary/20 text-secondary text-[10px] font-bold rounded uppercase">Python</span>
-                            </div>
-                            <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-200 dark:border-white/10">
-                                <a class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="project-detail.html">
-                                    Ver Caso de Estudio <span class="material-symbols-outlined text-sm">arrow_outward</span>
-                                </a>
-                            </div>
-                        </div>
+                        <a class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="project-detail.html">
+                            Leer Caso de Estudio <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </a>
                     </div>
                 </div>
-            </main>
 
-            <footer class="border-t border-slate-200 dark:border-white/5 px-6 md:px-20 lg:px-40 py-12 bg-background-light dark:bg-background-dark">
-                <div class="flex flex-col md:flex-row justify-between gap-12">
-                    <div class="flex flex-col gap-6">
-                        <div class="flex items-center gap-2 text-primary font-bold text-2xl">
-                            <span class="material-symbols-outlined">hub</span>
-                            FP.Automation
+                <!-- QA Log Sentinel -->
+                <div class="group flex flex-col bg-card-dark rounded-xl overflow-hidden border border-white/5 hover:border-secondary/50 transition-all duration-300 shadow-sm hover:shadow-2xl hover:shadow-secondary/10">
+                    <div class="relative h-48 w-full bg-slate-800 overflow-hidden">
+                        <div class="absolute inset-0 bg-secondary/20 mix-blend-overlay"></div>
+                        <img alt="QA Log monitoring" class="w-full h-full object-cover opacity-60" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"/>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-secondary px-2 py-1 rounded text-xs font-black text-white">LIVE DEMO</span>
                         </div>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xs leading-relaxed">
-                            Especializado en flujos n8n, automatización de CRM y sistemas multi-agente de IA.
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-xl font-bold text-white mb-3">QA Log Sentinel</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">
+                            Monitoreo de logs en tiempo real con interfaz de terminal y efectos CRT.
                         </p>
+                        <a class="text-secondary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="https://qa-log-sentinel.onrender.com" target="_blank">
+                            Ver Demo en Render <span class="material-symbols-outlined text-sm">open_in_new</span>
+                        </a>
                     </div>
                 </div>
-                <div class="mt-16 pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 dark:text-slate-600 text-[10px] font-bold uppercase tracking-widest">
-                    <div>© 2024 Ferdy Placencia. All Rights Reserved.</div>
-                    <div class="flex gap-4">
-                        <span>Built with Precision</span>
-                        <span class="text-primary">•</span>
-                        <span>Driven by AI</span>
+
+                <!-- Broken Link Checker -->
+                <div class="group flex flex-col bg-card-dark rounded-xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-2xl hover:shadow-primary/10">
+                    <div class="relative h-48 w-full bg-slate-800 overflow-hidden">
+                        <div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+                        <img alt="Broken link checker" class="w-full h-full object-cover opacity-60" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=1946&auto=format&fit=crop"/>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-primary px-2 py-1 rounded text-xs font-black text-black">QA TOOL</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-xl font-bold text-white mb-3">Exterminador de Enlaces Rotos</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">
+                            Auditoría automática de SEO y QA para detección masiva de errores 404.
+                        </p>
+                        <a class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="https://exterminador-enlaces-rotos.onrender.com" target="_blank">
+                            Ver Demo en Render <span class="material-symbols-outlined text-sm">open_in_new</span>
+                        </a>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </main>
+
+        <footer class="border-t border-white/5 px-6 md:px-20 lg:px-40 py-12 bg-background-dark">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2 text-primary font-bold text-xl">
+                    <span class="material-symbols-outlined">hub</span>
+                    FP.Automation
+                </div>
+                <div class="flex gap-8">
+                    <a class="text-slate-500 hover:text-primary transition-colors h-10 w-10 flex items-center justify-center rounded-full border border-white/10" href="https://github.com/FerDVaz09" target="_blank"><span class="material-symbols-outlined">terminal</span></a>
+                    <a class="text-slate-500 hover:text-primary transition-colors h-10 w-10 flex items-center justify-center rounded-full border border-white/10" href="https://www.linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315/" target="_blank"><span class="material-symbols-outlined">link</span></a>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-slate-700 text-xs">
+                © 2024 Ferdy Placencia. Engineered for Excellence.
+            </div>
+        </footer>
     </div>
 </body>
 </html>

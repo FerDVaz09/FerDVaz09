@@ -45,13 +45,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .border-gradient {
-            border-image: linear-gradient(to right, var(--cyan), var(--purple)) 1;
-        }
-        .code-container {
-            background: #0d0d12;
-            border: 1px solid #2d2d3d;
-        }
         .glow-cyan {
             box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
         }
@@ -62,11 +55,11 @@
         <header class="flex items-center justify-between whitespace-nowrap border-b border-white/10 px-6 py-4 lg:px-40 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
             <div class="flex items-center gap-4">
                 <div class="size-10 bg-gradient-to-br from-primary-cyan to-primary-purple rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-cyan/20">
-                    <span class="material-symbols-outlined font-bold">bolt</span>
+                    <span class="material-symbols-outlined font-bold">verified</span>
                 </div>
                 <div>
                     <h2 class="text-lg font-extrabold leading-tight tracking-tight">Ferdy Placencia</h2>
-                    <p class="text-[10px] uppercase tracking-[0.2em] text-primary-cyan font-bold">AI & Automation Engineer</p>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-primary-cyan font-bold">Automation & QA Engineer</p>
                 </div>
             </div>
             <div class="flex flex-1 justify-end gap-8 items-center">
@@ -76,9 +69,9 @@
                     <a class="text-sm font-medium hover:text-primary-cyan transition-colors" href="projects.html">Projects</a>
                 </nav>
                 <div class="flex gap-2">
-                    <button class="flex h-10 px-4 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:bg-primary-purple/20 hover:border-primary-purple/50 transition-all text-sm font-bold">
+                    <a href="mailto:ferdyv59@gmail.com" class="flex h-10 px-4 items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-300 hover:bg-primary-purple/20 hover:border-primary-purple/50 transition-all text-sm font-bold">
                         Let's Talk
-                    </button>
+                    </a>
                 </div>
             </div>
         </header>
@@ -91,28 +84,15 @@
                         <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-primary-purple/10 blur-[100px] rounded-full -ml-24 -mb-24"></div>
                         <div class="relative z-10 flex flex-col gap-6 text-left max-w-3xl">
                             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-cyan/10 border border-primary-cyan/30 text-primary-cyan text-xs font-black uppercase tracking-[0.15em]">
-                                <span class="relative flex h-2 w-2">
-                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-cyan opacity-75"></span>
-                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-cyan"></span>
-                                </span>
-                                Core Automation Case Study
+                                <span class="material-symbols-outlined text-xs">analytics</span>
+                                Core Case Study
                             </div>
                             <h1 class="text-white text-5xl font-black leading-[1.1] tracking-tight lg:text-7xl">
                                 The <span class="text-gradient">96% Efficiency</span> Breakthrough
                             </h1>
                             <p class="text-slate-400 text-xl font-medium leading-relaxed max-w-2xl">
-                                Cómo orquesté un ecosistema de n8n con auto-recuperación para reducir un ciclo de procesamiento manual de 8 horas a solo 15 minutos.
+                                Cómo orquesté un ecosistema de n8n con auto-recuperación para reducir un ciclo de procesamiento manual de 8 horas a solo 15 minutos con fiabilidad total (QA).
                             </p>
-                        </div>
-                        <div class="relative z-10 flex flex-wrap gap-4 mt-4">
-                            <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
-                                <span class="text-primary-cyan font-bold">Antes:</span>
-                                <span class="text-slate-300">8 Horas</span>
-                            </div>
-                            <div class="flex items-center gap-2 px-4 py-2 bg-primary-cyan/10 rounded-lg border border-primary-cyan/20">
-                                <span class="text-primary-cyan font-bold">Después:</span>
-                                <span class="text-white font-bold">15 Mins</span>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -121,75 +101,48 @@
                     <div class="lg:col-span-2 space-y-16">
                         <section>
                             <div class="flex items-center gap-4 mb-8">
-                                <div class="p-2 bg-red-500/10 rounded-lg">
-                                    <span class="material-symbols-outlined text-red-500">priority_high</span>
-                                </div>
-                                <h2 class="text-3xl font-extrabold tracking-tight">El Desafío</h2>
-                            </div>
-                            <div class="prose prose-invert max-w-none">
-                                <p class="text-slate-400 text-lg leading-relaxed mb-6">
-                                    Las operaciones del cliente estaban limitadas por un proceso de sincronización legado CRM-a-ERP que requería <span class="text-white font-semibold">revisión manual constante</span>. Cada mañana, el equipo perdía horas validando payloads de API y corrigiendo errores de formato.
-                                </p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="flex items-start gap-4 p-5 bg-white/5 rounded-2xl border border-white/10">
-                                        <span class="material-symbols-outlined text-primary-purple">running_with_errors</span>
-                                        <div>
-                                            <h4 class="font-bold text-white mb-1">Human Bottleneck</h4>
-                                            <p class="text-sm text-slate-400">8 horas diarias de capital humano desperdiciadas en tareas repetitivas.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start gap-4 p-5 bg-white/5 rounded-2xl border border-white/10">
-                                        <span class="material-symbols-outlined text-primary-cyan">sync_problem</span>
-                                        <div>
-                                            <h4 class="font-bold text-white mb-1">Data Fragmentation</h4>
-                                            <p class="text-sm text-slate-400">Mapeo inconsistente que causaba un 12% de errores en los registros.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section>
-                            <div class="flex items-center gap-4 mb-8">
                                 <div class="p-2 bg-primary-cyan/10 rounded-lg">
-                                    <span class="material-symbols-outlined text-primary-cyan">account_tree</span>
+                                    <span class="material-symbols-outlined text-primary-cyan">science</span>
                                 </div>
-                                <h2 class="text-3xl font-extrabold tracking-tight">Estrategia de Automatización</h2>
+                                <h2 class="text-3xl font-extrabold tracking-tight">Metodología QA</h2>
                             </div>
-                            <p class="text-slate-400 text-lg leading-relaxed mb-10">
-                                Utilizando <span class="text-white font-bold">n8n</span> como capa de orquestación, construí un flujo modular que trata los datos como un flujo continuo, usando nodos de Python personalizados para lógica compleja y manejo de errores impulsado por IA.
+                            <p class="text-slate-400 text-lg leading-relaxed mb-6">
+                                Este proyecto no solo se trató de velocidad, sino de <span class="text-white font-bold">integridad de datos</span>. Apliqué principios de QA Testing para validar cada nodo del flujo, implementando:
                             </p>
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary-cyan text-sm mt-1">check_circle</span>
+                                    <span class="text-slate-300"><span class="font-bold">Esquema de Validación JSON</span>: Validación automática de payloads de API antes de la inserción en base de datos.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="material-symbols-outlined text-primary-cyan text-sm mt-1">check_circle</span>
+                                    <span class="text-slate-300"><span class="font-bold">Error Handling con Fallback</span>: Rutas alternativas para casos de fallo, asegurando un tiempo de actividad del 99.9%.</span>
+                                </li>
+                            </ul>
                         </section>
 
                         <section class="relative bg-gradient-to-br from-primary-cyan/5 to-primary-purple/5 rounded-[2rem] p-10 border border-white/10 overflow-hidden">
-                            <div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-cyan/10 blur-[60px] rounded-full"></div>
                             <div class="flex items-center gap-4 mb-10">
                                 <div class="p-2 bg-white/10 rounded-lg">
                                     <span class="material-symbols-outlined text-white">analytics</span>
                                 </div>
-                                <h2 class="text-3xl font-extrabold tracking-tight">Resultados Clave</h2>
+                                <h2 class="text-3xl font-extrabold tracking-tight">Resultados Impactantes</h2>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div class="bg-surface-dark/60 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:border-primary-cyan/30 transition-all group">
-                                    <div class="text-primary-cyan text-4xl font-black mb-2 flex items-center gap-2">
-                                        99.9%
-                                        <span class="material-symbols-outlined text-primary-cyan text-xl group-hover:translate-y-[-4px] transition-transform">trending_up</span>
-                                    </div>
-                                    <div class="text-xs font-black uppercase tracking-widest text-slate-500 mb-3">Reliability Rate</div>
-                                    <p class="text-sm text-slate-400">Cero pérdida de datos desde el despliegue.</p>
+                                <div class="bg-surface-dark/60 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
+                                    <div class="text-primary-cyan text-4xl font-black mb-2">99.9%</div>
+                                    <div class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">Reliability</div>
+                                    <p class="text-sm text-slate-400">QA verificado en producción.</p>
                                 </div>
-                                <div class="bg-surface-dark/60 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:border-primary-purple/30 transition-all group">
-                                    <div class="text-primary-purple text-4xl font-black mb-2 flex items-center gap-2">
-                                        -96%
-                                        <span class="material-symbols-outlined text-primary-purple text-xl group-hover:translate-y-[-4px] transition-transform">speed</span>
-                                    </div>
-                                    <div class="text-xs font-black uppercase tracking-widest text-slate-500 mb-3">Processing Time</div>
-                                    <p class="text-sm text-slate-400">De 8 horas a 15 min diarios.</p>
+                                <div class="bg-surface-dark/60 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
+                                    <div class="text-primary-purple text-4xl font-black mb-2">-96%</div>
+                                    <div class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">Automation</div>
+                                    <p class="text-sm text-slate-400">8h manuales -> 15 min.</p>
                                 </div>
-                                <div class="bg-surface-dark/60 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:border-primary-cyan/30 transition-all group">
-                                    <div class="text-white text-4xl font-black mb-2">0</div>
-                                    <div class="text-xs font-black uppercase tracking-widest text-slate-500 mb-3">Manual Steps</div>
-                                    <p class="text-sm text-slate-400">Ejecución autónoma total.</p>
+                                <div class="bg-surface-dark/60 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
+                                    <div class="text-white text-4xl font-black mb-2">3+</div>
+                                    <div class="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">Integrations</div>
+                                    <p class="text-sm text-slate-400">Slack, CRM & Python Ops.</p>
                                 </div>
                             </div>
                         </section>
@@ -197,16 +150,12 @@
 
                     <aside class="space-y-8">
                         <div class="bg-surface-dark rounded-2xl p-8 border border-white/10">
-                            <h3 class="text-xl font-extrabold mb-8 flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary-cyan">terminal</span>
-                                Tech Stack
-                            </h3>
-                            <div class="flex flex-wrap gap-2.5">
-                                <span class="px-4 py-2 rounded-lg bg-primary-cyan/10 text-primary-cyan text-xs font-black border border-primary-cyan/20">n8n Workflow</span>
-                                <span class="px-4 py-2 rounded-lg bg-primary-purple/10 text-primary-purple text-xs font-black border border-primary-purple/20">Python 3.11</span>
-                                <span class="px-4 py-2 rounded-lg bg-white/5 text-slate-300 text-xs font-black border border-white/10">REST APIs</span>
-                                <span class="px-4 py-2 rounded-lg bg-white/5 text-slate-300 text-xs font-black border border-white/10">PostgreSQL</span>
-                                <span class="px-4 py-2 rounded-lg bg-white/5 text-slate-300 text-xs font-black border border-white/10">OpenAI API</span>
+                            <h3 class="text-xl font-extrabold mb-8">Technical Stack</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/5 rounded-md text-primary-cyan text-xs font-bold border border-primary-cyan/20">n8n</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-md text-primary-purple text-xs font-bold border border-primary-purple/20">Python</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-md text-slate-400 text-xs font-bold border border-white/10">Postman</span>
+                                <span class="px-3 py-1 bg-white/5 rounded-md text-slate-400 text-xs font-bold border border-white/10">QA Methodology</span>
                             </div>
                         </div>
                     </aside>
@@ -215,15 +164,14 @@
         </main>
 
         <footer class="border-t border-white/5 py-12 bg-background-dark">
-            <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="flex items-center gap-3">
-                    <div class="size-8 bg-gradient-to-br from-primary-cyan to-primary-purple rounded-lg flex items-center justify-center text-white text-xs">
-                        <span class="material-symbols-outlined text-[16px] font-bold">bolt</span>
-                    </div>
-                    <span class="font-black tracking-tight text-white">Ferdy Placencia</span>
+            <div class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8 text-slate-500 text-[10px] font-bold uppercase tracking-widest">
+                <div class="flex items-center gap-3 text-white">
+                    <span class="material-symbols-outlined text-primary-cyan">verified</span>
+                    <span>Ferdy Placencia | QA & Automation Engineer</span>
                 </div>
-                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">
-                    © 2024 Built with n8n & Python.
+                <div class="flex gap-6">
+                    <a href="https://github.com/FerDVaz09" target="_blank" class="hover:text-primary-cyan">GitHub</a>
+                    <a href="https://www.linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315/" target="_blank" class="hover:text-primary-cyan">LinkedIn</a>
                 </div>
             </div>
         </footer>
