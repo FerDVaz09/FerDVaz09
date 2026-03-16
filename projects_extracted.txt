@@ -1,0 +1,1 @@
+﻿REQUERIMIENTO PARA DESARROLLO / FULLSTACK / MOVILES /.NETNombre del ProyectoObjetivoProceso del SistemaLenguaje de ProgramaciónBase de DatosReportiadorLogro en la Implementación
