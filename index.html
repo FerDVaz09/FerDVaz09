@@ -29,23 +29,38 @@
     </script>
     <style type="text/tailwindcss">
         :root {
-            --primary: #00d9ff;
-            --secondary: #7b2cbf;
+            --primary: #00f2ff;
+            --secondary: #9d00ff;
+            --bg-dark: #050505;
         }
         @layer base {
-            .bg-gradient-primary {
-                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            .gradient-text {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
             }
-            .text-gradient-primary {
-                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+            .glass-panel {
+                @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
             }
-            .glass {
-                background: rgba(22, 22, 30, 0.7);
-                backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.05);
+            .glow-pulse {
+                animation: pulse-glow 4s ease-in-out infinite;
             }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3)); }
+            50% { filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.6)); }
+        }
+        .floating-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 20s infinite alternate linear;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100px, 50px) rotate(360deg); }
         }
     </style>
 </head>
@@ -59,10 +74,11 @@
       }"
       x-init="$watch('role', value => localStorage.setItem('ferdy_role', value))">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-        <!-- Decoration -->
-        <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
-            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[150px] rounded-full transition-all duration-1000" :class="role === 'qa' ? 'opacity-100' : 'opacity-20'"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 blur-[150px] rounded-full transition-all duration-1000" :class="role === 'ia' ? 'opacity-100' : 'opacity-20'"></div>
+        <!-- High-Fi Background Blobs -->
+        <div class="fixed inset-0 pointer-events-none -z-20 overflow-hidden bg-[#050505]">
+            <div class="floating-blob bg-primary -top-48 -left-48" :class="role === 'qa' ? 'opacity-20' : 'opacity-5'"></div>
+            <div class="floating-blob bg-secondary -bottom-48 -right-48" :class="role === 'ia' ? 'opacity-20' : 'opacity-5'"></div>
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] contrast-150 brightness-150"></div>
         </div>
 
         <header class="flex items-center justify-between whitespace-nowrap border-b border-white/5 px-6 md:px-20 lg:px-40 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
@@ -102,14 +118,14 @@
                         5+ YEARS OF TRACK RECORD
                     </div>
                     
-                    <h1 class="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-10">
+                    <h1 class="text-[clamp(3.5rem,15vw,10rem)] font-black leading-[0.85] tracking-[-0.05em] mb-12">
                         <template x-if="role === 'qa'">
-                            <span class="block">Elite <span class="text-gradient-primary">Quality</span></span>
+                            <span class="block text-white">ELITE <span class="gradient-text">QUALITY</span></span>
                         </template>
                         <template x-if="role === 'ia'">
-                            <span class="block">AI <span class="text-gradient-primary">Systems</span></span>
+                            <span class="block text-white">SYSTEMS <span class="gradient-text">AI OPS</span></span>
                         </template>
-                        <span class="block opacity-50">Engineering.</span>
+                        <span class="block text-white/20">ENGINEERING.</span>
                     </h1>
                     
                     <p class="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-14 font-medium">

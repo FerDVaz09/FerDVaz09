@@ -16,6 +16,8 @@
               colors: {
                 "primary": "#00d9ff",
                 "secondary": "#7b2cbf",
+                "primary": "#00f2ff",
+                "secondary": "#9d00ff",
                 "background-dark": "#0a0a0c",
                 "surface-dark": "#16161e",
               },
@@ -28,16 +30,17 @@
         }
     </script>
     <style type="text/tailwindcss">
-        body { font-family: 'Manrope', sans-serif; }
-        .gradient-text {
-            background: linear-gradient(90deg, #00d9ff, #7b2cbf);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        :root {
+            --primary: #00f2ff;
+            --secondary: #9d00ff;
         }
-        .glass-card {
-            background: rgba(22, 22, 30, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        @layer base {
+            .gradient-text {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
+            }
+            .glass-panel {
+                @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
+            }
         }
     </style>
 </head>
@@ -99,60 +102,6 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project 1: API Framework -->
-                    <div x-show="role === 'qa'" class="group glass-card rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 flex flex-col">
-                        <div class="h-48 bg-slate-800 relative overflow-hidden">
-                            <img src="project_mockup_api.png" alt="API Framework" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute top-4 right-4 px-2 py-1 rounded bg-primary/20 backdrop-blur-md border border-primary/30 text-[10px] font-black text-primary uppercase">API</div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <h3 class="text-xl font-bold text-white mb-3">API Test Automator</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">Scalable REST-assured framework using Cucumber for BDD. Supports automated reporting and CI/CD integration.</p>
-                            <div class="flex items-center justify-between mt-auto">
-                                <div class="flex gap-2">
-                                    <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold text-slate-500">Postman</span>
-                                    <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold text-slate-500">Newman</span>
-                                </div>
-                                <a href="#" class="text-primary text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all">View Project →</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: Performance Suite -->
-                    <div x-show="role === 'qa'" class="group glass-card rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 flex flex-col">
-                        <div class="h-48 bg-slate-800 relative overflow-hidden">
-                            <img src="project_mockup_load.png" alt="Performance Suite" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute top-4 right-4 px-2 py-1 rounded bg-primary/20 backdrop-blur-md border border-primary/30 text-[10px] font-black text-primary uppercase">LOAD</div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <h3 class="text-xl font-bold text-white mb-3">Performance Testing Suite</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">High-concurrency load testing suite simulating 10k+ concurrent users. Real-time monitoring with Grafana.</p>
-                            <div class="flex items-center justify-between mt-auto">
-                                <div class="flex gap-2">
-                                    <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold text-slate-500">JMeter</span>
-                                    <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold text-slate-500">K6</span>
-                                </div>
-                                <a href="#" class="text-primary text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all">View Project →</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3: E2E Suite -->
-                    <div x-show="role === 'qa'" class="group glass-card rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500 flex flex-col">
-                        <div class="h-48 bg-slate-800 relative overflow-hidden">
-                            <img src="project_mockup_ui.png" alt="E2E Suite" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute top-4 right-4 px-2 py-1 rounded bg-primary/20 backdrop-blur-md border border-primary/30 text-[10px] font-black text-primary uppercase">UI</div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <h3 class="text-xl font-bold text-white mb-3">E2E Regression Suite</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-1">Comprehensive UI regression suite with visual testing. Implemented POM and parallel execution on Selenium Grid.</p>
-                            <div class="flex items-center justify-between mt-auto">
-                                <div class="flex gap-2">
-                                    <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold text-slate-500">Selenium</span>
-                                    <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold text-slate-500">Cypress</span>
-                                </div>
-                                <a href="#" class="text-primary text-xs font-bold flex items-center gap-1 group-hover:gap-2 transition-all">View Project →</a>
                             </div>
                         </div>
                     </div>

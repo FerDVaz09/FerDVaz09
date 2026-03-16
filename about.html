@@ -29,23 +29,20 @@
     </script>
     <style type="text/tailwindcss">
         :root {
-            --primary: #00d9ff;
-            --secondary: #7b2cbf;
+            --primary: #00f2ff;
+            --secondary: #9d00ff;
         }
         @layer base {
-            .bg-gradient-primary {
-                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            .gradient-text {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
             }
-            .text-gradient-primary {
-                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
+            .glass-panel {
+                @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
             }
-            .glass {
-                background: rgba(22, 22, 30, 0.7);
-                backdrop-filter: blur(12px);
-                border: 1px solid rgba(255, 255, 255, 0.05);
-            }
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            filter: drop-shadow(0 0 8px var(--primary));
         }
     </style>
 </head>
@@ -135,12 +132,12 @@
                             <!-- Milestone 1: IA Role -->
                             <div class="relative pl-12 group">
                                 <div class="absolute left-[-5px] top-0 h-full w-px bg-slate-800"></div>
-                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'ia' ? 'bg-secondary ring-8 ring-secondary/20 shadow-[0_0_20px_rgba(123,44,191,0.6)]' : 'bg-slate-700'"></div>
+                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125 timeline-line" :class="role === 'ia' ? 'bg-secondary ring-8 ring-secondary/20' : 'bg-slate-700'"></div>
                                 <div class="mb-2">
                                     <span class="text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded bg-white/5" :class="role === 'ia' ? 'text-secondary' : 'text-slate-500'">2025 - Presente</span>
                                 </div>
-                                <h3 class="text-2xl font-black text-white mb-3 group-hover:text-secondary transition-colors">n8n & AI Solution Architect</h3>
-                                <p class="text-slate-400 leading-relaxed">Arquitectura de sistemas autónomos y orquestación de flujos ultra-complejos mediante n8n, maximizando la eficiencia operativa empresarial.</p>
+                                <h3 class="text-2xl font-black text-white mb-3 group-hover:text-secondary transition-colors">n8N & AI Solution Architect</h3>
+                                <p class="text-slate-400 leading-relaxed">Construcción de Chatbots de IA y automatización de flujos complejos n8n.</p>
                             </div>
 
                             <!-- Milestone 2: Senior QA -->
@@ -190,37 +187,36 @@
                             <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                                 <span class="size-2 w-8 bg-secondary inline-block rounded-full"></span>
                                 Stack Técnico
-                            </h2>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
-                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">terminal</span>
                                         n8n Orchestration
                                     </h4>
-                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Flujos complejos, webhooks, scheduling y chatbots autónomos.</p>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Flujos complejos, webhooks, scheduling y chatbots autónomos.</p>
                                 </div>
-                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
-                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">psychology</span>
                                         IA & Agentes
                                     </h4>
-                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Reclutamiento, Setters, Soporte y Prompt Engineering avanzado.</p>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Reclutamiento, Setters, Soporte y Prompt Engineering avanzado.</p>
                                 </div>
-                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
-                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">database</span>
                                         SQL / BD
                                     </h4>
-                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">PostgreSQL, MySQL, Airtable y Google Sheets como backend.</p>
+                                    <p class="text-slate-400 text-sm leading-relaxed">PostgreSQL, MySQL, Airtable y Google Sheets como backend.</p>
                                 </div>
-                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
-                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">api</span>
                                         APIs & Integración
                                     </h4>
-                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">REST, Webhooks, WhatsApp API e Instagram API Automation.</p>
+                                    <p class="text-slate-400 text-sm leading-relaxed">REST, Webhooks, WhatsApp API e Instagram API Automation.</p>
                                 </div>
-                            </div>
+                            </div>                          </div>
                         </div>
                     </div>
                 </div>
