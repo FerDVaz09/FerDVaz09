@@ -4,32 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Projects | Automation & QA Portfolio</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#00d9ff",
-                        "secondary": "#7b2cbf",
-                        "background-dark": "#0a0a0c",
-                        "card-dark": "#16161e",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope"]
-                    },
-                    borderRadius: {
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                    },
-                },
-            },
-        }
-    </script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style type="text/tailwindcss">
         body { font-family: 'Manrope', sans-serif; }
         .gradient-text {
@@ -37,15 +12,31 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .glass-card {
+            background: rgba(22, 22, 30, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
-<body class="bg-background-dark text-slate-100 min-h-screen">
+<body class="bg-background-dark text-slate-100 min-h-screen"
+      x-data="{ 
+        role: localStorage.getItem('ferdy_role') || 'qa',
+        setRole(newRole) {
+            this.role = newRole;
+            localStorage.setItem('ferdy_role', newRole);
+        }
+      }"
+      x-init="$watch('role', value => localStorage.setItem('ferdy_role', value))">
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
         <header class="flex items-center justify-between whitespace-nowrap border-b border-white/10 px-6 md:px-20 lg:px-40 py-4 bg-background-dark sticky top-0 z-50">
             <div class="flex items-center gap-8">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-3xl text-primary">hub</span>
-                    <h2 class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy.Dev</h2>
+                    <div>
+                        <h2 class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy.Dev</h2>
+                        <p class="text-[10px] uppercase tracking-widest text-primary font-bold" x-text="role === 'qa' ? 'QA Engineering' : 'IA Specialist'"></p>
+                    </div>
                 </div>
                 <nav class="hidden md:flex items-center gap-8">
                     <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="index.html">Home</a>
@@ -53,7 +44,11 @@
                     <a class="text-primary text-sm font-semibold transition-colors" href="projects.html">Projects</a>
                 </nav>
             </div>
-            <div class="flex flex-1 justify-end items-center">
+            <div class="flex flex-1 justify-end items-center gap-6">
+                <div class="flex bg-surface-dark p-1 rounded-full border border-white/10">
+                    <button @click="role = 'qa'" :class="role === 'qa' ? 'bg-primary text-black' : 'text-slate-400 hover:text-white'" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all">QA</button>
+                    <button @click="role = 'ia'" :class="role === 'ia' ? 'bg-secondary text-white' : 'text-slate-400 hover:text-white'" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all">IA</button>
+                </div>
                 <div class="size-10 border-2 border-primary/20 rounded-full bg-cover" style='background-image: url("logo.jpg");'></div>
             </div>
         </header>
@@ -64,13 +59,18 @@
                     Soluciones de <span class="gradient-text">Ingeniería</span>
                 </h1>
                 <p class="text-slate-500 text-lg max-w-2xl leading-relaxed">
-                    Un portfolio dual que integra más de 5 años de rigor en **QA Automation** con la innovación disruptiva de la **IA y Orquestación**.
+                    <template x-if="role === 'qa'">
+                        <span>Exhibiendo más de 5 años de rigor técnico en **QA Automation**, asegurando la estabilidad de sistemas complejos.</span>
+                    </template>
+                    <template x-if="role === 'ia'">
+                        <span>Frontera de innovación con **IA y Orquestación**, transformando flujos operativos mediante agentes autónomos.</span>
+                    </template>
                 </p>
             </section>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- QA Projects from Doc -->
-                <div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
+                <div x-show="role === 'qa'" x-transition class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
                     <div class="p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
                             <span class="material-symbols-outlined text-primary text-4xl">terminal</span>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
+                <div x-show="role === 'qa'" x-transition class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
                     <div class="p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
                             <span class="material-symbols-outlined text-primary text-4xl">api</span>
@@ -103,7 +103,7 @@
                 </div>
 
                 <!-- Case Study -->
-                <div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-secondary/50 transition-all duration-300">
+                <div x-show="role === 'ia'" x-transition class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-secondary/50 transition-all duration-300">
                     <div class="p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
                             <span class="material-symbols-outlined text-secondary text-4xl">hub</span>
@@ -120,7 +120,7 @@
                 </div>
 
                 <!-- Previous QA Tools -->
-                <div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
+                <div x-show="role === 'qa'" x-transition class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
                     <div class="p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
                             <span class="material-symbols-outlined text-primary text-4xl">bug_report</span>
@@ -136,7 +136,7 @@
                     </div>
                 </div>
 
-                <div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
+                <div x-show="role === 'qa'" x-transition class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300">
                     <div class="p-8 flex flex-col h-full">
                         <div class="flex justify-between items-start mb-6">
                             <span class="material-symbols-outlined text-primary text-4xl">search</span>
@@ -151,6 +151,7 @@
                         </a>
                     </div>
                 </div>
+            </div>
             </div>
         </main>
 

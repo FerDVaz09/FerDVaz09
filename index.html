@@ -49,7 +49,15 @@
         }
     </style>
 </head>
-<body class="bg-background-dark font-display text-slate-100 antialiased" x-data="{ role: 'qa' }">
+<body class="bg-background-dark font-display text-slate-100 antialiased" 
+      x-data="{ 
+        role: localStorage.getItem('ferdy_role') || 'qa',
+        setRole(newRole) {
+            this.role = newRole;
+            localStorage.setItem('ferdy_role', newRole);
+        }
+      }"
+      x-init="$watch('role', value => localStorage.setItem('ferdy_role', value))">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
         <!-- Decoration -->
         <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
