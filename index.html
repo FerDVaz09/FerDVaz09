@@ -92,26 +92,27 @@
 
         <main class="flex-1">
             <!-- Hero -->
-            <section class="relative px-6 md:px-20 lg:px-40 py-20 lg:py-32 overflow-hidden">
+            <section class="relative px-6 md:px-20 lg:px-40 py-24 lg:py-40 overflow-hidden">
                 <div class="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-bold mb-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-[10px] font-black tracking-widest mb-8 animate-fade-in">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                         </span>
-                        5+ YEARS OF EXPERIENCE
+                        5+ YEARS OF TRACK RECORD
                     </div>
                     
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] tracking-tight mb-8">
+                    <h1 class="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-10">
                         <template x-if="role === 'qa'">
-                            <span>Engineering <span class="text-gradient-primary">Elite Quality</span> & Systems</span>
+                            <span class="block">Elite <span class="text-gradient-primary">Quality</span></span>
                         </template>
                         <template x-if="role === 'ia'">
-                            <span>Autonomous <span class="text-gradient-primary">AI & Agent</span> Orchestrator</span>
+                            <span class="block">AI <span class="text-gradient-primary">Systems</span></span>
                         </template>
+                        <span class="block opacity-50">Engineering.</span>
                     </h1>
                     
-                    <p class="text-xl md:text-2xl text-slate-400 max-w-3xl leading-relaxed mb-12">
+                    <p class="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-14 font-medium">
                         <template x-if="role === 'qa'">
                             <span>Especialista en QA Automation con foco en robustez corporativa. Dominio de Selenium, Postman, SQL y arquitecturas de prueba escalables.</span>
                         </template>
@@ -120,13 +121,13 @@
                         </template>
                     </p>
 
-                    <div class="flex flex-wrap items-center justify-center gap-6">
-                        <a href="projects.html" class="flex h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-10 text-base font-bold text-black hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_20px_rgba(0,217,255,0.4)]">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a href="projects.html" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-10 text-base font-black text-black hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.4)]">
                             Explorar Proyectos
-                            <span class="material-symbols-outlined text-lg">trending_flat</span>
+                            <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                         </a>
-                        <a href="mailto:ferdyv59@gmail.com" class="flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-10 text-base font-bold text-white hover:bg-white/10 transition-all">
-                            Let's Talk
+                        <a href="#contact" class="flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-10 text-base font-bold text-white hover:bg-white/10 transition-all">
+                            Let's Connect
                         </a>
                     </div>
                 </div>
@@ -153,58 +154,31 @@
                 </div>
             </section>
 
-            <!-- Pillars -->
-            <section class="px-6 md:px-20 lg:px-40 py-24">
-                <div class="max-w-6xl mx-auto">
-                    <h2 class="text-3xl font-black text-white mb-12 flex items-center gap-4">
-                        <span class="h-px flex-1 bg-white/10"></span>
-                        <span x-text="role === 'qa' ? 'QA Core Pillars' : 'IA Core Pillars'"></span>
-                        <span class="h-px flex-1 bg-white/10"></span>
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <template x-if="role === 'qa'">
-                            <div class="bg-surface-dark border border-white/5 p-8 rounded-3xl hover:border-primary/30 transition-all">
-                                <span class="material-symbols-outlined text-primary text-4xl mb-4">bug_report</span>
-                                <h3 class="text-xl font-bold text-white mb-3">API & Web Automation</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Frameworks robustos con Selenium y Pytest para cobertura total E2E.</p>
+            <!-- Contact Section -->
+            <section id="contact" class="px-6 md:px-20 lg:px-40 py-32 bg-surface-dark/30">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight">Hablemos de tu <span class="text-gradient-primary">Próximo Nivel</span></h2>
+                    <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">¿Listo para automatizar el éxito? Hagamos que las cosas sucedan. Contacto directo abajo.</p>
+                    
+                    <div class="flex flex-col md:flex-row justify-center gap-6">
+                        <a href="mailto:ferdyv59@gmail.com" class="flex items-center justify-center gap-4 p-6 bg-surface-dark border border-white/5 rounded-3xl hover:border-primary/50 transition-all group">
+                            <div class="size-12 rounded-2xl bg-primary/10 flex items-center justify-center transition-transform group-hover:scale-110">
+                                <span class="material-symbols-outlined text-primary">mail</span>
                             </div>
-                        </template>
-                        <template x-if="role === 'qa'">
-                            <div class="bg-surface-dark border border-white/5 p-8 rounded-3xl hover:border-primary/30 transition-all">
-                                <span class="material-symbols-outlined text-primary text-4xl mb-4">database</span>
-                                <h3 class="text-xl font-bold text-white mb-3">SQL & Data Integrity</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Experiencia avanzada en SQL para validación de persistencia y reportaría.</p>
+                            <div class="text-left">
+                                <p class="text-slate-500 text-[10px] font-black tracking-widest uppercase">Email Directo</p>
+                                <p class="text-white font-bold">ferdyv59@gmail.com</p>
                             </div>
-                        </template>
-                        <template x-if="role === 'qa'">
-                            <div class="bg-surface-dark border border-white/5 p-8 rounded-3xl hover:border-primary/30 transition-all">
-                                <span class="material-symbols-outlined text-primary text-4xl mb-4">api</span>
-                                <h3 class="text-xl font-bold text-white mb-3">REST Specialist</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Pruebas avanzadas en Postman para asegurar la comunicación entre servicios.</p>
+                        </a>
+                        <a href="https://wa.me/18092147413" target="_blank" class="flex items-center justify-center gap-4 p-6 bg-surface-dark border border-white/5 rounded-3xl hover:border-[#00ff41]/50 transition-all group">
+                            <div class="size-12 rounded-2xl bg-[#00ff41]/10 flex items-center justify-center transition-transform group-hover:scale-110">
+                                <span class="material-symbols-outlined text-[#00ff41]">whatsapp</span>
                             </div>
-                        </template>
-
-                        <template x-if="role === 'ia'">
-                            <div class="bg-surface-dark border border-white/5 p-8 rounded-3xl hover:border-secondary/30 transition-all">
-                                <span class="material-symbols-outlined text-secondary text-4xl mb-4">hub</span>
-                                <h3 class="text-xl font-bold text-white mb-3">n8n Orchestration</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Diseño de flujos complejos que conectan todo tu stack tecnológico.</p>
+                            <div class="text-left">
+                                <p class="text-slate-500 text-[10px] font-black tracking-widest uppercase">WhatsApp</p>
+                                <p class="text-white font-bold">Contáctame ahora</p>
                             </div>
-                        </template>
-                        <template x-if="role === 'ia'">
-                            <div class="bg-surface-dark border border-white/5 p-8 rounded-3xl hover:border-secondary/30 transition-all">
-                                <span class="material-symbols-outlined text-secondary text-4xl mb-4">smart_toy</span>
-                                <h3 class="text-xl font-bold text-white mb-3">AI Agents</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Implementación de agentes autónomos para tareas críticas de negocio.</p>
-                            </div>
-                        </template>
-                        <template x-if="role === 'ia'">
-                            <div class="bg-surface-dark border border-white/5 p-8 rounded-3xl hover:border-secondary/30 transition-all">
-                                <span class="material-symbols-outlined text-secondary text-4xl mb-4">rocket_launch</span>
-                                <h3 class="text-xl font-bold text-white mb-3">Scale Ops</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Escalamiento de procesos mediante automatización inteligente.</p>
-                            </div>
-                        </template>
+                        </a>
                     </div>
                 </div>
             </section>

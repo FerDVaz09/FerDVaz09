@@ -131,49 +131,59 @@
                             <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                                 <span class="size-2 w-8 bg-primary inline-block rounded-full"></span>
                                 Mi Trayectoria
-                                                   <div class="space-y-12">
-                                <!-- IA Role Exposure (Always visible but highlighted in IA mode) -->
-                                <div class="relative pl-8 border-l-2 border-slate-800" :class="role === 'ia' ? 'border-secondary/50' : ''">
-                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full" :class="role === 'ia' ? 'bg-secondary' : 'bg-slate-700'"></div>
-                                    <h4 class="text-sm font-bold uppercase tracking-widest mb-1" :class="role === 'ia' ? 'text-secondary' : 'text-slate-500'">2025 - Presente</h4>
-                                    <h3 class="text-xl font-bold text-white mb-2">n8N & AI Solution Architect</h3>
-                                    <p class="text-slate-400">Construcción de Chatbots de IA y automatización de flujos complejos n8n.</p>
+                        <div class="space-y-16">
+                            <!-- Milestone 1: IA Role -->
+                            <div class="relative pl-12 group">
+                                <div class="absolute left-[-5px] top-0 h-full w-px bg-slate-800"></div>
+                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'ia' ? 'bg-secondary ring-8 ring-secondary/20 shadow-[0_0_20px_rgba(123,44,191,0.6)]' : 'bg-slate-700'"></div>
+                                <div class="mb-2">
+                                    <span class="text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded bg-white/5" :class="role === 'ia' ? 'text-secondary' : 'text-slate-500'">2025 - Presente</span>
                                 </div>
+                                <h3 class="text-2xl font-black text-white mb-3 group-hover:text-secondary transition-colors">n8n & AI Solution Architect</h3>
+                                <p class="text-slate-400 leading-relaxed">Arquitectura de sistemas autónomos y orquestación de flujos ultra-complejos mediante n8n, maximizando la eficiencia operativa empresarial.</p>
+                            </div>
 
-                                <!-- QA Role Timeline -->
-                                <div class="relative pl-8 border-l-2" :class="role === 'qa' ? 'border-primary/50' : 'border-slate-800'">
-                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full" :class="role === 'qa' ? 'bg-primary' : 'bg-slate-700'"></div>
-                                    <h4 class="text-sm font-bold uppercase tracking-widest mb-1" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Oct 2024 – Presente</h4>
-                                    <h3 class="text-xl font-bold text-white mb-2">Senior QA & Automation Engineer @ Abacus Exchange</h3>
-                                    <ul class="text-slate-400 text-sm space-y-1 ml-4 list-disc" x-show="role === 'qa'">
-                                        <li>Diseño de frameworks E2E con Cypress/Selenium para Angular/React.</li>
-                                        <li>Configuración de intercepts y mocks para validación de contratos API.</li>
-                                        <li>Pipelines CI/CD (GitHub Actions + Docker) integrando suites automáticas.</li>
-                                        <li>Reducción de ciclos de regresión de 8h a 15 min mediante paralelismo.</li>
+                            <!-- Milestone 2: Senior QA -->
+                            <div class="relative pl-12 group">
+                                <div class="absolute left-[-5px] top-0 h-full w-px bg-slate-800"></div>
+                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'qa' ? 'bg-primary ring-8 ring-primary/20 shadow-[0_0_20px_rgba(0,217,255,0.6)]' : 'bg-slate-700'"></div>
+                                <div class="mb-2">
+                                    <span class="text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded bg-white/5" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Oct 2024 – Presente</span>
+                                </div>
+                                <h3 class="text-2xl font-black text-white mb-3 group-hover:text-primary transition-colors">Senior QA Engineer @ Abacus Exchange</h3>
+                                <div class="space-y-4 text-slate-400" x-show="role === 'qa'" x-transition>
+                                    <p class="text-sm">Diseño de frameworks robustos E2E y optimización crítica de pipelines CI/CD.</p>
+                                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        <li class="flex items-center gap-2 text-xs"><span class="size-1 bg-primary rounded-full"></span> Frameworks Angular/React</li>
+                                        <li class="flex items-center gap-2 text-xs"><span class="size-1 bg-primary rounded-full"></span> API Contract Testing</li>
+                                        <li class="flex items-center gap-2 text-xs"><span class="size-1 bg-primary rounded-full"></span> Regresión 8h → 15min</li>
+                                        <li class="flex items-center gap-2 text-xs"><span class="size-1 bg-primary rounded-full"></span> Orquestación Docker</li>
                                     </ul>
                                 </div>
+                            </div>
 
-                                <div class="relative pl-8 border-l-2" :class="role === 'qa' ? 'border-primary/50' : 'border-slate-800'">
-                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full" :class="role === 'qa' ? 'bg-primary' : 'bg-slate-700'"></div>
-                                    <h4 class="text-sm font-bold uppercase tracking-widest mb-1" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Mar 2022 – Presente</h4>
-                                    <h3 class="text-xl font-bold text-white mb-2">QA Automation Engineer (Freelance)</h3>
-                                    <p class="text-slate-400 text-sm" x-show="role === 'qa'">Servicios internacionales de QA manual/automatizado (Angular, React, Vue) y validación de contratos OAuth2/JWT.</p>
+                            <!-- Milestone 3: Freelance -->
+                            <div class="relative pl-12 group">
+                                <div class="absolute left-[-5px] top-0 h-full w-px bg-slate-800"></div>
+                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'qa' ? 'bg-primary ring-8 ring-primary/20 shadow-[0_0_20px_rgba(0,217,255,0.6)]' : 'bg-slate-700'"></div>
+                                <div class="mb-2">
+                                    <span class="text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded bg-white/5" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Mar 2022 – Presente</span>
                                 </div>
+                                <h3 class="text-xl font-bold text-white mb-2">QA Automation (Freelance)</h3>
+                                <p class="text-slate-500 text-sm italic" x-show="role === 'qa'">Servicios internacionales de alta fidelidad y validación OAuth2/JWT.</p>
+                            </div>
 
-                                <div class="relative pl-8 border-l-2 border-slate-800">
-                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-slate-700"></div>
-                                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">Dic 2023 – Presente</h4>
-                                    <h3 class="text-xl font-bold text-white mb-2">Tester @ uTest (Crowdtesting)</h3>
-                                    <p class="text-slate-400 text-sm" x-show="role === 'qa'">Ciclos exploratorios y funcionales en apps web/móviles para clientes globales.</p>
+                            <!-- Milestone 4: uTest -->
+                            <div class="relative pl-12 group">
+                                <div class="absolute left-[-5px] top-0 h-full w-px bg-slate-800"></div>
+                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark bg-slate-700 transition-all duration-500 group-hover:scale-125 group-hover:bg-slate-500"></div>
+                                <div class="mb-2">
+                                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 px-2 py-1 rounded bg-white/5">Dic 2023 – Presente</span>
                                 </div>
-
-                                <div class="relative pl-8 border-l-2 border-slate-800">
-                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-slate-700"></div>
-                                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">Oct 2023 – May 2024</h4>
-                                    <h3 class="text-xl font-bold text-white mb-2">Pasantía QA Tester @ UNPHU</h3>
-                                    <p class="text-slate-400 text-sm" x-show="role === 'qa'">Automatización con Cypress/Selenium y validación de integridad SQL en plataformas educativas.</p>
-                                </div>
-                            </div>            </div>
+                                <h3 class="text-xl font-bold text-white">Tester @ uTest</h3>
+                                <p class="text-slate-500 text-sm mt-2">Exploración de fallos críticos para clientes Tier-1 a nivel global.</p>
+                            </div>
+                        </div>            </div>
                         </div>
 
                         <div>
@@ -181,28 +191,34 @@
                                 <span class="size-2 w-8 bg-secondary inline-block rounded-full"></span>
                                 Stack Técnico
                             </h2>
-                            <div class="grid grid-cols-2 gap-6">
-                                <div class="glass p-6 rounded-2xl" :class="role === 'qa' ? 'border-primary/50 ring-1 ring-primary/20 scale-105' : 'opacity-60 grayscale'">
-                                    <h4 class="text-primary font-bold text-xs uppercase tracking-widest mb-4">QA Optimization</h4>
-                                    <ul class="space-y-2 text-sm text-slate-300 font-medium">
-                                        <li>Cypress (E2E, Component, API)</li>
-                                        <li>Selenium WebDriver</li>
-                                        <li>JavaScript | TypeScript | Python</li>
-                                        <li>BDD: Cucumber & Gherkin</li>
-                                        <li>API: Postman & Cypress Intercept</li>
-                                        <li>CI/CD: GitHub Actions & Docker</li>
-                                        <li>SQL: PostgreSQL & MySQL</li>
-                                        <li>Reporte de Defectos (Jira)</li>
-                                    </ul>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
+                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">terminal</span>
+                                        n8n Orchestration
+                                    </h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Flujos complejos, webhooks, scheduling y chatbots autónomos.</p>
                                 </div>
-                                <div class="glass p-6 rounded-2xl" :class="role === 'ia' ? 'border-secondary/50 ring-1 ring-secondary/20 scale-105' : 'opacity-60 grayscale'">
-                                    <h4 class="text-secondary font-bold text-xs uppercase tracking-widest mb-4">IA & Orchestration</h4>
-                                    <ul class="space-y-2 text-sm text-slate-300 font-medium">
-                                        <li>n8n Orchestration</li>
-                                        <li>Autonomous AI Agents</li>
-                                        <li>Python Scripting</li>
-                                        <li>Process Optimization</li>
-                                    </ul>
+                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
+                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">psychology</span>
+                                        IA & Agentes
+                                    </h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">Reclutamiento, Setters, Soporte y Prompt Engineering avanzado.</p>
+                                </div>
+                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
+                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">database</span>
+                                        SQL / BD
+                                    </h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">PostgreSQL, MySQL, Airtable y Google Sheets como backend.</p>
+                                </div>
+                                <div class="bg-[#eef5ff] border border-[#d0e3ff] p-6 rounded-xl hover:shadow-xl hover:shadow-primary/5 transition-all group">
+                                    <h4 class="text-[#2563eb] font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">api</span>
+                                        APIs & Integración
+                                    </h4>
+                                    <p class="text-slate-600 text-sm leading-relaxed font-medium">REST, Webhooks, WhatsApp API e Instagram API Automation.</p>
                                 </div>
                             </div>
                         </div>
