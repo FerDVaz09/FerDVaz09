@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -401,7 +401,7 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🛡️ QA LOG SENTINEL</h1>
+            <h1>ðŸ›¡ï¸ QA LOG SENTINEL</h1>
             <p>[ LIVE MONITORING SYSTEM - REAL TIME LOGS ]</p>
         </div>
 
@@ -428,23 +428,23 @@
         <!-- Control Panel -->
         <div class="control-panel">
             <button class="btn btn-success" onclick="generateInfo()">
-                ✅ GENERAR TRÁFICO
+                âœ… GENERAR TRÃFICO
             </button>
             <button class="btn btn-danger" onclick="generateError()">
-                🚨 SIMULAR FALLO CRÍTICO
+                ðŸš¨ SIMULAR FALLO CRÃTICO
             </button>
             <button class="btn btn-warning" onclick="generateWarning()">
-                ⚠️ GENERAR ADVERTENCIA
+                âš ï¸ GENERAR ADVERTENCIA
             </button>
             <button class="btn btn-secondary" onclick="clearLogs()">
-                🗑️ LIMPIAR LOGS
+                ðŸ—‘ï¸ LIMPIAR LOGS
             </button>
         </div>
 
         <!-- Log Section -->
         <div class="log-section">
             <div class="log-header">
-                <div class="log-title">📊 CONSOLE OUTPUT</div>
+                <div class="log-title">ðŸ“Š CONSOLE OUTPUT</div>
                 <div class="status-indicator">
                     <span class="status-dot"></span>
                     <span>MONITORING ACTIVE</span>
@@ -457,7 +457,7 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>QA Log Sentinel v1.0 | Developed by Ferdy Placencia Vásquez</p>
+            <p>QA Log Sentinel v1.0 | Developed by Ferdy Placencia VÃ¡squez</p>
             <p style="font-size: 0.8em; margin-top: 5px;">Real-time log monitoring system for QA testing</p>
         </div>
     </div>
@@ -472,7 +472,7 @@
         let warningCount = 0;
         let infoCount = 0;
 
-        // Función para mostrar notificación
+        // FunciÃ³n para mostrar notificaciÃ³n
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
             notification.textContent = message;
@@ -483,7 +483,7 @@
             }, 3000);
         }
 
-        // Función para obtener logs del servidor
+        // FunciÃ³n para obtener logs del servidor
         async function fetchLogs() {
             try {
                 const response = await fetch('/get_logs');
@@ -499,12 +499,12 @@
             }
         }
 
-        // Función para renderizar logs en el DOM
+        // FunciÃ³n para renderizar logs en el DOM
         function renderLogs() {
             const container = document.getElementById('log-container');
             
             if (logs.length === 0) {
-                container.innerHTML = '<div class="log-line info">No hay logs disponibles. Genera tráfico para ver actividad...</div>';
+                container.innerHTML = '<div class="log-line info">No hay logs disponibles. Genera trÃ¡fico para ver actividad...</div>';
                 return;
             }
             
@@ -532,7 +532,7 @@
             container.scrollTop = container.scrollHeight;
         }
 
-        // Función para actualizar estadísticas
+        // FunciÃ³n para actualizar estadÃ­sticas
         function updateStats() {
             errorCount = logs.filter(log => log.includes('[ERROR]')).length;
             warningCount = logs.filter(log => log.includes('[WARNING]')).length;
@@ -544,7 +544,7 @@
             document.getElementById('info-count').textContent = infoCount;
         }
 
-        // Función para generar información
+        // FunciÃ³n para generar informaciÃ³n
         async function generateInfo() {
             try {
                 const response = await fetch('/simulate_info', {
@@ -555,17 +555,17 @@
                 });
                 
                 const data = await response.json();
-                showNotification('✅ Tráfico generado correctamente', 'success');
+                showNotification('âœ… TrÃ¡fico generado correctamente', 'success');
                 
                 // Actualizar logs inmediatamente
                 setTimeout(fetchLogs, 500);
             } catch (error) {
-                showNotification('❌ Error al generar tráfico', 'error');
+                showNotification('âŒ Error al generar trÃ¡fico', 'error');
                 console.error('Error:', error);
             }
         }
 
-        // Función para generar error
+        // FunciÃ³n para generar error
         async function generateError() {
             try {
                 const response = await fetch('/simulate_error', {
@@ -576,17 +576,17 @@
                 });
                 
                 const data = await response.json();
-                showNotification('🚨 Fallo crítico simulado', 'error');
+                showNotification('ðŸš¨ Fallo crÃ­tico simulado', 'error');
                 
                 // Actualizar logs inmediatamente
                 setTimeout(fetchLogs, 500);
             } catch (error) {
-                showNotification('❌ Error al simular fallo', 'error');
+                showNotification('âŒ Error al simular fallo', 'error');
                 console.error('Error:', error);
             }
         }
 
-        // Función para generar advertencia
+        // FunciÃ³n para generar advertencia
         async function generateWarning() {
             try {
                 const response = await fetch('/simulate_warning', {
@@ -597,19 +597,19 @@
                 });
                 
                 const data = await response.json();
-                showNotification('⚠️ Advertencia generada', 'success');
+                showNotification('âš ï¸ Advertencia generada', 'success');
                 
                 // Actualizar logs inmediatamente
                 setTimeout(fetchLogs, 500);
             } catch (error) {
-                showNotification('❌ Error al generar advertencia', 'error');
+                showNotification('âŒ Error al generar advertencia', 'error');
                 console.error('Error:', error);
             }
         }
 
-        // Función para limpiar logs
+        // FunciÃ³n para limpiar logs
         async function clearLogs() {
-            if (!confirm('¿Estás seguro de que deseas limpiar todos los logs?')) {
+            if (!confirm('Â¿EstÃ¡s seguro de que deseas limpiar todos los logs?')) {
                 return;
             }
             
@@ -622,12 +622,12 @@
                 });
                 
                 const data = await response.json();
-                showNotification('🗑️ Logs limpiados correctamente', 'success');
+                showNotification('ðŸ—‘ï¸ Logs limpiados correctamente', 'success');
                 
                 // Actualizar logs inmediatamente
                 setTimeout(fetchLogs, 500);
             } catch (error) {
-                showNotification('❌ Error al limpiar logs', 'error');
+                showNotification('âŒ Error al limpiar logs', 'error');
                 console.error('Error:', error);
             }
         }
@@ -639,7 +639,7 @@
         fetchLogs();
 
         // Mensaje de bienvenida
-        console.log('%c🛡️ QA LOG SENTINEL - SYSTEM ONLINE', 'color: #0f0; font-size: 20px; font-weight: bold;');
+        console.log('%cðŸ›¡ï¸ QA LOG SENTINEL - SYSTEM ONLINE', 'color: #0f0; font-size: 20px; font-weight: bold;');
         console.log('%cMonitoring logs in real-time...', 'color: #0a0; font-size: 14px;');
     </script>
 </body>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -14,8 +14,6 @@
           theme: {
             extend: {
               colors: {
-                "primary": "#00d9ff",
-                "secondary": "#7b2cbf",
                 "primary": "#00f2ff",
                 "secondary": "#9d00ff",
                 "background-dark": "#0a0a0c",
@@ -59,7 +57,7 @@
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-3xl text-primary">hub</span>
                     <div>
-                        <h2 class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy Placencia Vasquez</h2>
+                        <h2 class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy Placencia VÃ¡squez</h2>
                         <p class="text-[10px] uppercase tracking-widest text-primary font-bold" x-text="role === 'qa' ? 'QA Engineering' : 'IA Specialist'"></p>
                     </div>
                 </div>
@@ -87,39 +85,293 @@
                         </h1>
                         <p class="text-slate-500 text-lg max-w-2xl leading-relaxed">
                             <template x-if="role === 'qa'">
-                                <span>Exhibiendo más de 5 años de rigor técnico en **QA Automation**, asegurando la estabilidad de sistemas complejos.</span>
+                                <span>Exhibiendo mÃ¡s de 5 aÃ±os de rigor tÃ©cnico en **QA Automation**, asegurando la estabilidad de sistemas complejos.</span>
                             </template>
                             <template x-if="role === 'ia'">
-                                <span>Frontera de innovación con **IA y Orquestación**, transformando flujos operativos mediante agentes autónomos.</span>
+                                <span>Frontera de innovaciÃ³n con **IA y OrquestaciÃ³n**, transformando flujos operativos mediante agentes autÃ³nomos.</span>
                             </template>
                         </p>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <button class="px-4 py-2 rounded-lg bg-primary text-black text-xs font-bold transition-all">All Projects</button>
-                        <button class="px-4 py-2 rounded-lg bg-surface-dark border border-white/5 text-slate-400 text-xs font-bold hover:text-white transition-all">UI Automation</button>
-                        <button class="px-4 py-2 rounded-lg bg-surface-dark border border-white/5 text-slate-400 text-xs font-bold hover:text-white transition-all">API Testing</button>
-                        <button class="px-4 py-2 rounded-lg bg-surface-dark border border-white/5 text-slate-400 text-xs font-bold hover:text-white transition-all">Performance</button>
-                    </div>
                 </div>
 
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                    <!-- [QA] Project 1: Broken Link Exterminator -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50" x-show="role === 'qa'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <img src="project_mockup_api.png" alt="Broken Link Exterminator" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/30">Python Audit</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-primary transition-colors">Broken Link Exterminator</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">AuditorÃ­a automÃ¡tica para detecciÃ³n masiva de enlaces rotos en sitios web complejos.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/broken-link-checker.html" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                                <a href="https://exterminador-enlaces-rotos.onrender.com" target="_blank" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">rocket_launch</span> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [QA] Project 2: QA Log Sentinel -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50" x-show="role === 'qa'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <img src="project_mockup_load.png" alt="QA Log Sentinel" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/30">Monitoring</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-primary transition-colors">QA Log Sentinel</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Monitoreo de logs en tiempo real con interfaz estilo terminal Matrix para testing.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/qa-log-sentinel.html" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                                <a href="https://qa-log-sentinel.onrender.com" target="_blank" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">terminal</span> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [QA] Project 3: Ecommerce Bot -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50" x-show="role === 'qa'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-primary/20 transition-colors">shopping_cart</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/30">E-commerce</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-primary transition-colors">Automated Shop Bot</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Pruebas end-to-end automatizadas para flujos de compra complejos y pasarelas.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/qa-ecommerce-bot.html" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [QA] Project 4: QA Ghost Shopper -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50" x-show="role === 'qa'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-primary/20 transition-colors">visibility_off</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/30">Ghost Testing</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-primary transition-colors">Ghost Shopper QA</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">SimulaciÃ³n de usuarios reales para detecciÃ³n de fallos en producciÃ³n sin impacto.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/qa-ghost-shopper.html" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [QA] Project 5: QA Fuzz Master -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50" x-show="role === 'qa'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-primary/20 transition-colors">bug_report</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/30">Fuzz Testing</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-primary transition-colors">QA Fuzz Master</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Pruebas de estrÃ©s y fuzzing para robustez extrema de APIs y aplicaciones.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/qa-fuzz-master.html" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [QA] Project 6: QA Portfolio Architecture -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-primary/50" x-show="role === 'qa'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-primary/20 transition-colors">architecture</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-black uppercase tracking-widest border border-primary/30">Infrastructure</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-primary transition-colors">Portfolio Architecture</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">DiseÃ±o y desarrollo de la infraestructura de presentaciÃ³n de este portfolio.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/qa-portfolio.html" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [IA] Project 7: WhatsApp AI -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-secondary/50" x-show="role === 'ia'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <img src="project_mockup_ui.png" alt="WhatsApp AI" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70">
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">Generative AI</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-secondary transition-colors">WhatsApp AI Support</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Bot con GPT-4, Supabase y Evolution API para soporte automatizado 24/7.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/whatsapp-bot.html" class="text-white hover:text-secondary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [IA] Project 8: Discord Ticket System -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-secondary/50" x-show="role === 'ia'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-secondary/20 transition-colors">confirmation_number</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">Discord Ops</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-secondary transition-colors">Discord Ticket System</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">GestiÃ³n automÃ¡tica de soporte vÃ­a hilos privados con IA para respuestas rÃ¡pidas.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/discord-tickets.html" class="text-white hover:text-secondary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [IA] Project 9: Trading Assistant -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-secondary/50" x-show="role === 'ia'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-secondary/20 transition-colors">trending_up</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">Fintech</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-secondary transition-colors">Trading Journal Bot</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Registro automÃ¡tico de trades y anÃ¡lisis performance vÃ­a Telegram y Excel.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/trading-assistant.html" class="text-white hover:text-secondary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [IA] Project 10: n8n Academy Support -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-secondary/50" x-show="role === 'ia'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-secondary/20 transition-colors">school</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">EduTech</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-secondary transition-colors">n8n Academy Support</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Agente inteligente para resoluciÃ³n de dudas y orquestaciÃ³n de recursos educativos.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/agente-academico.html" class="text-white hover:text-secondary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [IA] Project 11: Slack & Thinkific -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-secondary/50" x-show="role === 'ia'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-secondary/20 transition-colors">hub</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">LMS Ops</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-secondary transition-colors">Slack & Thinkific</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">SincronizaciÃ³n masiva de estudiantes y automatizaciÃ³n de accesos a cursos.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/slack-thinkific.html" class="text-white hover:text-secondary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [IA] Project 12: Smart Booking Agent -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-secondary/50" x-show="role === 'ia'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-secondary/20 transition-colors">event_available</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">Scheduling</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-secondary transition-colors">Smart Booking Agent</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Agente IA para gestiÃ³n de citas y consultas integrando Google Calendar y GHL.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/agente-citas.html" class="text-white hover:text-secondary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver Proyecto
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>v>
-            </div>
-            </div>
+            </section>
         </main>
 
         <footer class="border-t border-white/5 px-6 md:px-20 lg:px-40 py-12 bg-background-dark">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-slate-500 text-[10px] font-bold uppercase tracking-widest">
                 <div class="flex items-center gap-3 text-white">
                     <span class="material-symbols-outlined text-primary">verified</span>
-                    <span>Ferdy Placencia Vasquez | QA & IA Excellence</span>
+                    <span>Ferdy Placencia VÃ¡squez | QA & IA Excellence</span>
                 </div>
                 <div class="flex gap-8">
                     <a href="https://github.com/FerDVaz09" target="_blank" class="hover:text-white transition-colors">GitHub</a>
-                    <a href="https://www.linkedin.com/in/ferdy-vasquez-placencia-vasquez-7b0338315/" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+                    <a href="https://wa.me/18096769759" target="_blank" class="hover:text-white transition-colors">WhatsApp</a>
                 </div>
             </div>
         </footer>
