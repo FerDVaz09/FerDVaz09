@@ -10,25 +10,21 @@
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#00d9ff",
-                        "secondary": "#7b2cbf",
-                        "background-dark": "#0a0a0c",
-                        "card-dark": "#16161e",
-                    },
-                    fontFamily: {
-                        "display": ["Manrope"]
-                    },
-                    borderRadius: {
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                    },
-                },
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#00d9ff",
+                "secondary": "#7b2cbf",
+                "background-dark": "#0a0a0c",
+                "surface-dark": "#16161e",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
             },
+          },
         }
     </script>
     <style type="text/tailwindcss">
@@ -45,7 +41,7 @@
         }
     </style>
 </head>
-<body class="bg-background-dark text-slate-100 min-h-screen"
+<body class="bg-background-dark font-display text-slate-100 antialiased min-h-screen"
       x-data="{ 
         role: localStorage.getItem('ferdy_role') || 'qa',
         setRole(newRole) {
