@@ -104,9 +104,9 @@
                         </div>
                         <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2 tracking-tight">Ferdy Placencia</h1>
                         <p class="text-xl font-medium text-slate-400 mb-6 font-bold" x-text="role === 'qa' ? 'QA & Automation Specialist' : 'IA & Automation Specialist'"></p>
-                        <p class="text-lg text-slate-400 mb-8 leading-relaxed max-w-2xl">
+                        <p class="text-lg text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto md:mx-0">
                             <template x-if="role === 'qa'">
-                                <span>Especialista en QA Automation con más de 5 años asegurando la calidad de software corporativo y sistemas críticos de facturación.</span>
+                                <span>Desarrollador de Pruebas Automatizadas con mas de 5 años de experiencia en QA manual y automatizado para aplicaciones web, APIs REST y plataformas móviles. Dominio sólido de JavaScript/TypeScript orientado a frameworks de testing modernos (Cypress, Selenium) e integración de pipelines CI/CD. Experto en BDD con Cucumber/Gherkin y gestión de entornos Docker. Reducción récord de ciclos de regresión de 8 horas a 15 minutos con 99.9% de fiabilidad en producción.</span>
                             </template>
                             <template x-if="role === 'ia'">
                                 <span>Liderando la orquestación avanzada de procesos con IA, agentes autónomos y n8n para maximizar la eficiencia operativa.</span>
@@ -131,21 +131,49 @@
                             <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
                                 <span class="size-2 w-8 bg-primary inline-block rounded-full"></span>
                                 Mi Trayectoria
-                            </h2>
-                            <div class="space-y-12">
-                                <div class="relative pl-8 border-l-2 border-primary/20" x-show="role === 'ia'">
-                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-primary ring-4 ring-primary/10"></div>
-                                    <h4 class="text-sm font-bold text-primary uppercase tracking-widest mb-1">2025 - Presente</h4>
-                                    <h3 class="text-xl font-bold text-white mb-2">Automation Engineer @ Abacus Exchange</h3>
-                                    <p class="text-slate-400">Liderando la integración de agentes de IA y flujos n8n para optimizar operaciones críticas.</p>
+                                                   <div class="space-y-12">
+                                <!-- IA Role Exposure (Always visible but highlighted in IA mode) -->
+                                <div class="relative pl-8 border-l-2 border-slate-800" :class="role === 'ia' ? 'border-secondary/50' : ''">
+                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full" :class="role === 'ia' ? 'bg-secondary' : 'bg-slate-700'"></div>
+                                    <h4 class="text-sm font-bold uppercase tracking-widest mb-1" :class="role === 'ia' ? 'text-secondary' : 'text-slate-500'">2025 - Presente</h4>
+                                    <h3 class="text-xl font-bold text-white mb-2">n8N & AI Solution Architect</h3>
+                                    <p class="text-slate-400">Construcción de Chatbots de IA y automatización de flujos complejos n8n.</p>
                                 </div>
+
+                                <!-- QA Role Timeline -->
+                                <div class="relative pl-8 border-l-2" :class="role === 'qa' ? 'border-primary/50' : 'border-slate-800'">
+                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full" :class="role === 'qa' ? 'bg-primary' : 'bg-slate-700'"></div>
+                                    <h4 class="text-sm font-bold uppercase tracking-widest mb-1" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Oct 2024 – Presente</h4>
+                                    <h3 class="text-xl font-bold text-white mb-2">Senior QA & Automation Engineer @ Abacus Exchange</h3>
+                                    <ul class="text-slate-400 text-sm space-y-1 ml-4 list-disc" x-show="role === 'qa'">
+                                        <li>Diseño de frameworks E2E con Cypress/Selenium para Angular/React.</li>
+                                        <li>Configuración de intercepts y mocks para validación de contratos API.</li>
+                                        <li>Pipelines CI/CD (GitHub Actions + Docker) integrando suites automáticas.</li>
+                                        <li>Reducción de ciclos de regresión de 8h a 15 min mediante paralelismo.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="relative pl-8 border-l-2" :class="role === 'qa' ? 'border-primary/50' : 'border-slate-800'">
+                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full" :class="role === 'qa' ? 'bg-primary' : 'bg-slate-700'"></div>
+                                    <h4 class="text-sm font-bold uppercase tracking-widest mb-1" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Mar 2022 – Presente</h4>
+                                    <h3 class="text-xl font-bold text-white mb-2">QA Automation Engineer (Freelance)</h3>
+                                    <p class="text-slate-400 text-sm" x-show="role === 'qa'">Servicios internacionales de QA manual/automatizado (Angular, React, Vue) y validación de contratos OAuth2/JWT.</p>
+                                </div>
+
                                 <div class="relative pl-8 border-l-2 border-slate-800">
                                     <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-slate-700"></div>
-                                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">5+ Años de Experiencia</h4>
-                                    <h3 class="text-xl font-bold text-white mb-2">QA & Software Specialist</h3>
-                                    <p class="text-slate-400" x-text="role === 'qa' ? 'Desarrollo de scripts de automatización con Selenium, pruebas de API con Postman y mantenimiento de sistemas robustos en .NET y SQL.' : 'Gestión y mantenimiento de sistemas empresariales críticos con un enfoque en la mejora de procesos técnicos.'"></p>
+                                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">Dic 2023 – Presente</h4>
+                                    <h3 class="text-xl font-bold text-white mb-2">Tester @ uTest (Crowdtesting)</h3>
+                                    <p class="text-slate-400 text-sm" x-show="role === 'qa'">Ciclos exploratorios y funcionales en apps web/móviles para clientes globales.</p>
                                 </div>
-                            </div>
+
+                                <div class="relative pl-8 border-l-2 border-slate-800">
+                                    <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-slate-700"></div>
+                                    <h4 class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">Oct 2023 – May 2024</h4>
+                                    <h3 class="text-xl font-bold text-white mb-2">Pasantía QA Tester @ UNPHU</h3>
+                                    <p class="text-slate-400 text-sm" x-show="role === 'qa'">Automatización con Cypress/Selenium y validación de integridad SQL en plataformas educativas.</p>
+                                </div>
+                            </div>            </div>
                         </div>
 
                         <div>
@@ -157,10 +185,14 @@
                                 <div class="glass p-6 rounded-2xl" :class="role === 'qa' ? 'border-primary/50 ring-1 ring-primary/20 scale-105' : 'opacity-60 grayscale'">
                                     <h4 class="text-primary font-bold text-xs uppercase tracking-widest mb-4">QA Optimization</h4>
                                     <ul class="space-y-2 text-sm text-slate-300 font-medium">
+                                        <li>Cypress (E2E, Component, API)</li>
                                         <li>Selenium WebDriver</li>
-                                        <li>Postman / API Testing</li>
-                                        <li>SQL Server / .NET</li>
-                                        <li>QA Regression / E2E</li>
+                                        <li>JavaScript | TypeScript | Python</li>
+                                        <li>BDD: Cucumber & Gherkin</li>
+                                        <li>API: Postman & Cypress Intercept</li>
+                                        <li>CI/CD: GitHub Actions & Docker</li>
+                                        <li>SQL: PostgreSQL & MySQL</li>
+                                        <li>Reporte de Defectos (Jira)</li>
                                     </ul>
                                 </div>
                                 <div class="glass p-6 rounded-2xl" :class="role === 'ia' ? 'border-secondary/50 ring-1 ring-secondary/20 scale-105' : 'opacity-60 grayscale'">
