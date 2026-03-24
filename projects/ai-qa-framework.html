@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered QA Framework - Ferdy Vásquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            padding: 6rem 0 3rem;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        .project-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-box h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        .project-details {
+            padding: 4rem 0;
+        }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: var(--dark-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .project-hero {
+                grid-template-columns: 1fr;
+            }
+        }
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .contact-modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--dark-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+        .modal-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(0, 217, 255, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+        .form-success {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 10px;
+            color: var(--primary-color);
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+        .form-success.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Inicio</a></li>
+                    <li><a href="../projects.html">Proyectos</a></li>
+                </ul>
+                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Contáctame Ya
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="../projects.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a Proyectos
+            </a>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://github.com/FerDVaz09/ai-qa-framework" target="_blank" style="display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #00f2ff, #7b2cbf); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 10px 30px rgba(0, 242, 255, 0.3); transition: all 0.3s;">
+                    <i class="fab fa-github"></i> VER REPOSITORIO <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            
+            <div class="project-hero">
+                <div>
+                    <div class="project-icon" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h1 class="project-title">AI-Powered QA Framework</h1>
+                    <p class="project-subtitle">
+                        Framework E2E de próxima generación que integra Gemini AI para generación de tests.
+                    </p>
+                    <div class="tech-stack" style="margin: 2rem 0;">
+                        <span>Playwright</span>
+                        <span>Gemini AI</span>
+                        <span>Docker</span>
+                        <span>GitHub Actions</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="stat-box">
+                        <h3>100%</h3>
+                        <p>IA Driven</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>CI/CD</h3>
+                        <p>Automated</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>HTML</h3>
+                        <p>Reports</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="detail-section">
+                <h2>🔧 &iquest;Qué es este proyecto?</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Framework de automatización de pruebas E2E de próxima generación que integra inteligencia artificial para generar test cases en segundos. Ingresa cualquier URL y Gemini AI analiza la interfaz y produce scripts de Playwright listos para ejecutar.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    Incluye pipeline CI/CD con GitHub Actions que corre automáticamente en cada commit, generando reportes HTML con screenshots y videos de fallos. Arquitectura dockerizada garantiza ejecución consistente en cualquier entorno.
+                </p>
+            </div>
+
+            <div class="detail-section">
+                <h2>🎯 Características Principales</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>IA Generation</h3>
+                        <p>Uso de Gemini AI para analizar el DOM y generar selectores y flujos de prueba automáticamente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-vial"></i>
+                        <h3>Playwright Engine</h3>
+                        <p>Basado en el motor de Playwright para una ejecución ultrarrápida y soporte multiplataforma.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fab fa-docker"></i>
+                        <h3>Dockerized</h3>
+                        <p>Entorno de ejecución aislado con Docker para evitar problemas de dependencias en diferentes sistemas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-file-code"></i>
+                        <h3>Reports HTML</h3>
+                        <p>Reportes detallados con trazas de error, fotos y videos de cada ejecución fallida.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-infinity"></i>
+                        <h3>CI/CD Integration</h3>
+                        <p>Pipeline completo en GitHub Actions para ejecución en cada push y pull request.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-layer-group"></i>
+                        <h3>Scale Ready</h3>
+                        <p>Diseñado para escalar de una sola prueba a cientos con orquestación eficiente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>🧪 Arquitectura Relevante</h2>
+                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                    <ul style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem; list-style: none; padding-left: 0;">
+                        <li>🚀 <strong>IA Analyzer:</strong> Módulo que conecta con Gemini Pro API para entender la estructura de la página.</li>
+                        <li>⚙️ <strong>Test Generator:</strong> Motor que transforma el análisis en código Playwright (.spec.js).</li>
+                        <li>📦 <strong>Execution Engine:</strong> Ejecutor dockerizado que corre los tests en paralelo.</li>
+                        <li>📊 <strong>Report Dispatcher:</strong> Publicación automática de reportes en GitHub Pages o alertas vía Slack.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-section" style="text-align: center;">
+                <h2>🚀 &iquest;Quieres implementar IA en tu flujo de QA?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Puedo ayudarte a integrar agentes de IA para acelerar tus ciclos de testing y reducir el mantenimiento manual.
+                </p>
+                <button onclick="openContactModal()" class="btn btn-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Hablemos de QA + IA
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h3><i class="fas fa-envelope"></i> Contáctame</h3>
+            <form id="contactForm" action="https://formsubmit.co/ferdyv59@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Consulta desde AI QA Framework - Portfolio">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        window.onclick = function(event) {
+            let modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                closeContactModal();
+            }
+        }
+    </script>
+</body>
+</html>
