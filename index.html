@@ -144,7 +144,7 @@
                             Explore Projects
                             <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                         </a>
-                        <a href="../CV_Ferdy_Placencia (1).pdf" download class="group flex h-14 items-center justify-center gap-2 rounded-2xl border border-secondary/30 bg-secondary/5 px-10 text-base font-bold text-white hover:bg-secondary/10 transition-all">
+                        <a href="CV_Ferdy_Placencia.pdf" download class="group flex h-14 items-center justify-center gap-2 rounded-2xl border border-secondary/30 bg-secondary/5 px-10 text-base font-bold text-white hover:bg-secondary/10 transition-all">
                             <span class="material-symbols-outlined text-lg">download</span>
                             Download CV
                         </a>
@@ -160,17 +160,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <div class="glass p-8 rounded-[2rem] text-center group hover:border-primary/30 transition-all">
                         <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Experience</p>
-                        <p class="text-5xl font-black text-white mb-2 group-hover:text-primary transition-colors">5+ Years</p>
+                        <p class="text-5xl font-black text-white mb-2 group-hover:text-primary transition-colors"><span data-count="5" data-suffix="+">5+</span> Years</p>
                         <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'QA & Automation' : 'AI Systems'"></p>
                     </div>
                     <div class="glass p-8 rounded-[2rem] text-center group hover:border-secondary/30 transition-all">
                         <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Efficiency</p>
-                        <p class="text-5xl font-black text-white mb-2 group-hover:text-secondary transition-colors">96%</p>
+                        <p class="text-5xl font-black text-white mb-2 group-hover:text-secondary transition-colors"><span data-count="96" data-suffix="%">96%</span></p>
                         <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'Regression Reduction (8h→15min)' : 'Operational Savings'"></p>
                     </div>
                     <div class="glass p-8 rounded-[2rem] text-center group hover:border-primary/30 transition-all">
                         <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Reliability</p>
-                        <p class="text-5xl font-black text-white mb-2 group-hover:text-primary transition-colors">99.9%</p>
+                        <p class="text-5xl font-black text-white mb-2 group-hover:text-primary transition-colors"><span data-count="99.9" data-suffix="%">99.9%</span></p>
                         <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'Production Uptime (Abacus)' : 'Architecture Stability'"></p>
                     </div>
                 </div>
@@ -179,10 +179,20 @@
             <!-- Contact Section -->
             <section id="contact" class="px-6 md:px-20 lg:px-40 py-32 bg-surface-dark/30">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight">Let's <span class="text-gradient-primary">Level Up</span></h2>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight">Let's <span class="gradient-text">Level Up</span></h2>
                     <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">Ready to automate success? Let's build the future together. Get in touch below.</p>
-                    
-                            </div>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 flex-wrap">
+                        <a href="mailto:ferdyv59@gmail.com" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-10 text-base font-black text-black hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.4)]">
+                            <span class="material-symbols-outlined text-xl">mail</span>
+                            ferdyv59@gmail.com
+                        </a>
+                        <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" class="group flex h-14 items-center justify-center gap-3 rounded-2xl border border-primary/30 bg-primary/5 px-10 text-base font-bold text-white hover:bg-primary/10 transition-all">
+                            <span class="material-symbols-outlined text-lg">work</span>
+                            LinkedIn
+                        </a>
+                        <a href="https://wa.me/18096769759" target="_blank" class="group flex h-14 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-10 text-base font-bold text-white hover:bg-white/10 transition-all">
+                            <span class="material-symbols-outlined text-lg">chat</span>
+                            WhatsApp
                         </a>
                     </div>
                 </div>
@@ -207,5 +217,30 @@
             </div>
         </footer>
     </div>
+    <script>
+        // Animated counters on scroll
+        const counters = document.querySelectorAll('[data-count]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const el = entry.target;
+                const target = parseFloat(el.dataset.count);
+                const suffix = el.dataset.suffix || '';
+                const isDecimal = !Number.isInteger(target);
+                const duration = 1800;
+                const start = performance.now();
+                const animate = (now) => {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = target * eased;
+                    el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+                    if (progress < 1) requestAnimationFrame(animate);
+                };
+                requestAnimationFrame(animate);
+                observer.unobserve(el);
+            });
+        }, { threshold: 0.6 });
+        counters.forEach(c => observer.observe(c));
+    </script>
 </body>
 </html>

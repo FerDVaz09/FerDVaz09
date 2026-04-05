@@ -106,7 +106,7 @@
                                 <span>Desarrollador de Pruebas Automatizadas con mas de 5 años de experiencia en QA manual y automatizado para aplicaciones web, APIs REST y plataformas móviles. Dominio sólido de JavaScript/TypeScript orientado a frameworks de testing modernos (Cypress, Selenium) e integración de pipelines CI/CD. Experto en BDD con Cucumber/Gherkin y gestión de entornos Docker. Reducción récord de ciclos de regresión de 8 horas a 15 minutos con 99.9% de fiabilidad en producción.</span>
                             </template>
                             <template x-if="role === 'ia'">
-                                <span>Liderando la orquestación avanzada de procesos con IA, agentes autónomos y n8n para maximizar la eficiencia operativa.</span>
+                                <span>AI Solutions Architect especializado en orquestación inteligente de procesos con n8n, GPT-4 y agentes autónomos. Diseño e implemento sistemas de automatización end-to-end — desde chatbots 24/7 para WhatsApp y Discord, hasta agentes de reclutamiento, soporte académico y gestión de citas. Trabajo con clientes en fintech, edtech y e-commerce logrando un 96% de mejora en eficiencia operativa. Experto en integración de APIs, bases de datos y LLMs para construir flujos que operan sin intervención humana.</span>
                             </template>
                         </p>
                         <div class="flex flex-wrap justify-center md:justify-start gap-4">
@@ -115,6 +115,14 @@
                             </a>
                             <a href="mailto:ferdyv59@gmail.com" class="flex items-center gap-2 px-8 py-4 border border-slate-700 bg-slate-800/50 text-slate-300 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all">
                                 Contact
+                            </a>
+                            <a x-show="role === 'qa'" href="CV_Ferdy_Pruebas_Automatizadas.docx" download class="flex items-center gap-2 px-8 py-4 border border-primary/30 bg-primary/5 text-white rounded-xl font-bold text-sm hover:bg-primary/10 transition-all">
+                                <span class="material-symbols-outlined text-base">download</span>
+                                Download CV — QA
+                            </a>
+                            <a x-show="role === 'ia'" href="CV_Ferdy_Placencia.pdf" download class="flex items-center gap-2 px-8 py-4 border border-secondary/30 bg-secondary/5 text-white rounded-xl font-bold text-sm hover:bg-secondary/10 transition-all">
+                                <span class="material-symbols-outlined text-base">download</span>
+                                Download CV — IA
                             </a>
                         </div>
                     </div>
@@ -188,28 +196,58 @@
                                 <span class="size-2 w-8 bg-secondary inline-block rounded-full"></span>
                                 Tech Stack
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                <!-- QA Tech Stack -->
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'qa'" x-transition>
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">web</span>
+                                        Cypress & Selenium
+                                    </h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed">E2E testing for Angular/React apps. Regression cycles: 8h → 15min.</p>
+                                </div>
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'qa'" x-transition>
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">api</span>
+                                        API Testing & Postman
+                                    </h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed">REST/GraphQL contract testing, OAuth2/JWT validation, schema checks.</p>
+                                </div>
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'qa'" x-transition>
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">deployed_code</span>
+                                        CI/CD & Docker
+                                    </h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed">GitHub Actions, Jenkins pipelines, Docker containerized test environments.</p>
+                                </div>
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'qa'" x-transition>
+                                    <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">description</span>
+                                        BDD / Cucumber / Gherkin
+                                    </h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Behavior-driven testing with Gherkin specs. TypeScript/JavaScript.</p>
+                                </div>
+                                <!-- IA Tech Stack -->
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'ia'" x-transition>
                                     <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">terminal</span>
                                         n8n Orchestration
                                     </h4>
                                     <p class="text-slate-400 text-sm leading-relaxed">Flujos complejos, webhooks, scheduling y chatbots autónomos.</p>
                                 </div>
-                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'ia'" x-transition>
                                     <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">psychology</span>
                                         AI & Agents
                                     </h4>
                                     <p class="text-slate-400 text-sm leading-relaxed">Recruitment bots, Setters, Support agents, and advanced Prompt Engineering.</p>
                                 </div>
-                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'ia'" x-transition>
                                     <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">database</span>
                                         SQL / Databases
                                     </h4>
                                     <p class="text-slate-400 text-sm leading-relaxed">PostgreSQL, MySQL, Airtable, and Google Sheets as backends.</p>
                                 </div>
-                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group">
+                                <div class="glass-panel p-6 rounded-2xl hover:border-primary/50 transition-all group" x-show="role === 'ia'" x-transition>
                                     <h4 class="text-primary font-black text-xs uppercase tracking-widest mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-sm">api</span>
                                         APIs & Integration
