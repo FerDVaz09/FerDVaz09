@@ -2,7 +2,7 @@
 
 ## 🤖 Automation Engineer | QA Tester Junior | Python Developer Junior
 
-Especializado en automatización de procesos, integración de APIs y desarrollo de bots inteligentes para optimizar operaciones empresariales. Con 4 años de experiencia en testing de aplicaciones web y APIs, combino desarrollo y calidad de software para crear soluciones robustas y confiables.
+Especializado en automatización de procesos, integración de APIs y desarrollo de bots inteligentes para optimizar operaciones empresariales. Con 5 años de experiencia en testing de aplicaciones web y APIs, combino desarrollo y calidad de software para crear soluciones robustas y confiables.
 
 ---
 
