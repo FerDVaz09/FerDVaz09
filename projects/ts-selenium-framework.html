@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Selenium Framework - Ferdy Vásquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 100%);
+            padding: 6rem 0 3rem;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        .project-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-box h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        .project-details {
+            padding: 4rem 0;
+        }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: var(--dark-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .project-hero {
+                grid-template-columns: 1fr;
+            }
+        }
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .contact-modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--dark-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Inicio</a></li>
+                    <li><a href="../projects.html">Proyectos</a></li>
+                </ul>
+                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Contáctame Ya
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="../projects.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a Proyectos
+            </a>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://github.com/FerDVaz09/ts-selenium-framewor" target="_blank" style="display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #2b3a8f, #3178c6); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 10px 30px rgba(49, 120, 198, 0.3); transition: all 0.3s;">
+                    <i class="fab fa-github"></i> VER REPOSITORIO <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <div class="project-hero">
+                <div>
+                    <div class="project-icon" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h1 class="project-title">TypeScript Selenium Framework</h1>
+                    <p class="project-subtitle">
+                        Framework de automatización web en TypeScript con tipado estático, Selenium y CI/CD integrado.
+                    </p>
+                    <div class="tech-stack" style="margin: 2rem 0;">
+                        <span>TypeScript</span>
+                        <span>Selenium</span>
+                        <span>Node.js</span>
+                        <span>npm</span>
+                        <span>GitHub Actions</span>
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="stat-box">
+                        <h3>100%</h3>
+                        <p>TypeScript</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>CI/CD</h3>
+                        <p>Automated</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Type</h3>
+                        <p>Safe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="detail-section">
+                <h2>🔧 &iquest;Qué es este proyecto?</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Framework de automatización web moderno construido completamente en TypeScript, que combina el poder de Selenium WebDriver con las ventajas del tipado estático para crear tests más robustos y fáciles de mantener. Diseñado desde cero con buenas prácticas de ingeniería de software aplicadas al QA.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    La estructura del proyecto separa claramente el código fuente, los tests y la configuración, con un pipeline CI/CD mediante GitHub Actions que garantiza la ejecución automática de la suite en cada cambio. El tipado estricto de TypeScript previene errores en tiempo de compilación antes de que lleguen a ejecución.
+                </p>
+            </div>
+
+            <div class="detail-section">
+                <h2>🎯 Características Principales</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Tipado Estático</h3>
+                        <p>TypeScript garantiza que los selectores, payloads y respuestas estén correctamente tipados, reduciendo bugs en tiempo de ejecución.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Selenium WebDriver</h3>
+                        <p>Automatización cross-browser completa para simular interacciones reales de usuario en múltiples entornos de navegación.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-folder-open"></i>
+                        <h3>Estructura Modular</h3>
+                        <p>Organización en /src, /tests y /config que permite escalar el framework con nuevos módulos sin afectar el código existente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-code-branch"></i>
+                        <h3>CI/CD con GitHub Actions</h3>
+                        <p>Workflows configurados para ejecutar la suite de tests automáticamente en cada pull request, asegurando la calidad del código.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-box"></i>
+                        <h3>Gestión con npm</h3>
+                        <p>Dependencias y scripts centralizados en package.json para un setup rápido y reproducible en cualquier entorno de desarrollo.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-wrench"></i>
+                        <h3>Configuración Flexible</h3>
+                        <p>Directorio /config dedicado para manejar entornos, URLs base y opciones de WebDriver sin hardcodear valores en los tests.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>🧪 Tecnologías Críticas</h2>
+                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                    <ul style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem; list-style: none; padding-left: 0;">
+                        <li>📘 <strong>TypeScript:</strong> Tipado estricto para mayor robustez y detección temprana de errores.</li>
+                        <li>🌐 <strong>Selenium WebDriver:</strong> Automatización de navegadores para tests E2E de interfaz de usuario.</li>
+                        <li>📦 <strong>Node.js / npm:</strong> Entorno de ejecución y gestión de dependencias del ecosistema JavaScript moderno.</li>
+                        <li>⚙️ <strong>tsconfig.json:</strong> Configuración de compilación TypeScript para output optimizado y estricto.</li>
+                        <li>🏗️ <strong>GitHub Actions:</strong> Pipelines de CI/CD para ejecución automática en entornos de integración.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-section" style="text-align: center;">
+                <h2>🚀 &iquest;Quieres un framework de QA en TypeScript?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Puedo implementar un framework de automatización moderno con TypeScript y Selenium adaptado a las necesidades de tu equipo.
+                </p>
+                <button onclick="openContactModal()" class="btn btn-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Hablemos de tu Framework QA
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h3><i class="fas fa-envelope"></i> Contáctame</h3>
+            <form id="contactForm" action="https://formsubmit.co/ferdyv59@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Consulta desde TypeScript Selenium Framework - Portfolio">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto de automatización..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
