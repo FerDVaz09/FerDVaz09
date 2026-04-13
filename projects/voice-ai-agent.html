@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice AI Agent – Sofia MedCare - Ferdy Vásquez</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, #0a0a1e 0%, #2a0a3e 100%);
+            padding: 6rem 0 3rem;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        .project-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .project-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .project-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-box h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        .project-details {
+            padding: 4rem 0;
+        }
+        .detail-section {
+            margin-bottom: 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: var(--dark-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(123, 44, 191, 0.2);
+        }
+        .feature-card i {
+            font-size: 2rem;
+            color: #7b2cbf;
+            margin-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+            .project-hero {
+                grid-template-columns: 1fr;
+            }
+        }
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .contact-modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: var(--dark-card);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid #7b2cbf;
+            box-shadow: 0 20px 60px rgba(123, 44, 191, 0.3);
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Inicio</a></li>
+                    <li><a href="../projects.html">Proyectos</a></li>
+                </ul>
+                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Contáctame Ya
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="../projects.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a Proyectos
+            </a>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://github.com/FerDVaz09/voice-ai-agent" target="_blank" style="display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #4a1a7a, #7b2cbf); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 10px 30px rgba(123, 44, 191, 0.3); transition: all 0.3s;">
+                    <i class="fab fa-github"></i> VER REPOSITORIO <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <div class="project-hero">
+                <div>
+                    <div class="project-icon" style="font-size: 4rem; color: #7b2cbf; margin-bottom: 1rem;">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h1 class="project-title">Voice AI Agent – Sofia MedCare</h1>
+                    <p class="project-subtitle">
+                        Agente de voz autónomo para clínicas médicas que gestiona llamadas y agenda citas con IA.
+                    </p>
+                    <div class="tech-stack" style="margin: 2rem 0;">
+                        <span>FastAPI</span>
+                        <span>Groq Llama 3</span>
+                        <span>Vapi.ai</span>
+                        <span>ElevenLabs</span>
+                        <span>PostgreSQL</span>
+                        <span>Docker</span>
+                    </div>
+                </div>
+                <div class="project-stats">
+                    <div class="stat-box">
+                        <h3>24/7</h3>
+                        <p>Disponibilidad</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Llama 3</h3>
+                        <p>70B Model</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Real</h3>
+                        <p>Time Voice</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="detail-section">
+                <h2>🔧 ¿Qué es este proyecto?</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Sofia es un agente de voz autónomo diseñado para entornos de salud. Gestiona llamadas telefónicas entrantes y salientes, mantiene conversaciones naturales en tiempo real y agenda citas médicas directamente en la base de datos, sin intervención humana.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    Construido con FastAPI como backend, utiliza Vapi.ai para la gestión de llamadas, Deepgram para transcripción de voz a texto, ElevenLabs para síntesis de voz natural y Groq Llama 3 70B como modelo de lenguaje principal por su velocidad y eficiencia de costo. Todo orquestado con Docker Compose y respaldado por PostgreSQL 16.
+                </p>
+            </div>
+
+            <div class="detail-section">
+                <h2>🎯 Características Principales</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Llamadas Autónomas</h3>
+                        <p>Gestión completa de llamadas entrantes y salientes vía Vapi.ai sin intervención humana, disponible 24/7 para pacientes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Groq Llama 3 70B</h3>
+                        <p>Modelo de lenguaje de alta velocidad para respuestas naturales y coherentes durante conversaciones médicas en tiempo real.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Agendamiento de Citas</h3>
+                        <p>Herramientas custom con integración directa a base de datos PostgreSQL para consultar disponibilidad y registrar citas automáticamente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-microphone"></i>
+                        <h3>Voz Ultra-Realista</h3>
+                        <p>ElevenLabs genera síntesis de voz de alta calidad y Deepgram convierte la voz del paciente a texto con gran precisión.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Webhooks en Tiempo Real</h3>
+                        <p>FastAPI procesa eventos de llamada al instante mediante webhooks, manteniendo el flujo conversacional sin latencia perceptible.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-docker"></i>
+                        <h3>Infraestructura Containerizada</h3>
+                        <p>Docker Compose orquesta la base de datos PostgreSQL y el servidor para un despliegue reproducible en cualquier entorno.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h2>🧪 Tecnologías Críticas</h2>
+                <div style="background: rgba(123, 44, 191, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid #7b2cbf;">
+                    <ul style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem; list-style: none; padding-left: 0;">
+                        <li>⚡ <strong>FastAPI (Python):</strong> Backend de alto rendimiento con webhooks para procesamiento de eventos en tiempo real.</li>
+                        <li>📞 <strong>Vapi.ai:</strong> Plataforma de telefonía IA para gestión de llamadas entrantes y salientes.</li>
+                        <li>🎙️ <strong>Deepgram:</strong> Speech-to-text de alta precisión para transcribir la voz del paciente.</li>
+                        <li>🔊 <strong>ElevenLabs:</strong> Text-to-speech ultra-realista para la voz de Sofia.</li>
+                        <li>🤖 <strong>Groq Llama 3 70B:</strong> Modelo LLM de inferencia rápida para respuestas conversacionales naturales.</li>
+                        <li>🗄️ <strong>PostgreSQL 16:</strong> Base de datos relacional para registro de interacciones y citas médicas.</li>
+                        <li>🐳 <strong>Docker Compose:</strong> Orquestación de servicios para despliegue consistente y portable.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-section" style="text-align: center;">
+                <h2>🚀 ¿Quieres un agente de voz para tu negocio?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                    Puedo implementar un agente de voz IA personalizado que atienda a tus clientes 24/7, gestione citas y automatice la atención telefónica.
+                </p>
+                <button onclick="openContactModal()" class="btn btn-cta" style="border: none; cursor: pointer; background: linear-gradient(135deg, #4a1a7a, #7b2cbf);">
+                    <i class="fas fa-comments"></i> Hablemos de Voice AI
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h3><i class="fas fa-envelope"></i> Contáctame</h3>
+            <form id="contactForm" action="https://formsubmit.co/ferdyv59@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Consulta desde Voice AI Agent – Portfolio">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntame sobre tu proyecto de voz IA..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
