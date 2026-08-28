@@ -21,6 +21,7 @@
 - Create a complete `projects/qa-portfolio.html` page for manual QA evidence.
 - Update the QA project card in `projects.html` so it accurately describes the manual QA showcase.
 - Add a visible QA-only block on `index.html` so users landing on the homepage can find the manual QA dossier immediately.
+- Make the manual QA dossier the primary entry point in the QA experience without changing the IA Automation experience.
 - Validate the edited HTML for broken obvious markup and confirm files changed.
 
 ## To Do
@@ -28,9 +29,11 @@
 - [x] Build the QA Manual Portfolio project page.
 - [x] Update the projects listing card.
 - [x] Add homepage entry point for the QA Manual Portfolio.
+- [x] Make the QA Manual Portfolio the primary QA card and hero CTA.
 - [ ] Optional: add screenshots or real redacted evidence images if available later.
 
 ## Work Log
 - 2026-08-27: Started branch log. User requested improving the portfolio QA section using attached QA manual material so recruiters see a high-quality manual QA showcase.
 - 2026-08-27: User clarified that the IA Automation focus must remain unchanged; QA manual content should only affect the QA section/project.
 - 2026-08-28: User checked `index.html` and did not see the change; added a QA-only homepage block linking directly to the manual QA dossier while preserving IA mode.
+- 2026-08-28: User requested the manual QA dossier become the main QA entry point; updated the QA-mode hero CTA and moved the QA Manual Portfolio card to the first QA project position.

@@ -140,8 +140,12 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a href="projects.html" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-10 text-base font-black text-black hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.4)]">
-                            Explore Projects
+                        <a x-show="role === 'qa'" href="projects/qa-portfolio.html" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-10 text-base font-black text-black hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.4)]">
+                            Ver QA Manual Portfolio
+                            <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+                        </a>
+                        <a x-show="role === 'ia'" href="projects.html" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-secondary px-10 text-base font-black text-white hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(123,44,191,0.4)]">
+                            Explore IA Projects
                             <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                         </a>
                         <a href="CV_Ferdy_Placencia.pdf" download class="group flex h-14 items-center justify-center gap-2 rounded-2xl border border-secondary/30 bg-secondary/5 px-10 text-base font-bold text-white hover:bg-secondary/10 transition-all">
@@ -171,7 +175,7 @@
                     <div class="glass p-8 rounded-[2rem] text-center group hover:border-primary/30 transition-all">
                         <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Reliability</p>
                         <p class="text-5xl font-black text-white mb-2 group-hover:text-primary transition-colors"><span data-count="99.9" data-suffix="%">99.9%</span></p>
-                        <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'Production Uptime (Abacus)' : 'Architecture Stability'"></p>
+                        <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'Production Stability' : 'Architecture Stability'"></p>
                     </div>
                 </div>
             </section>
