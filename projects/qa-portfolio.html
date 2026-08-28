@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Manual Portfolio - Ferdy Placencia</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .manual-qa-header {
+            background:
+                linear-gradient(135deg, rgba(10, 10, 12, 0.92), rgba(12, 30, 42, 0.92)),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700' viewBox='0 0 1200 700'%3E%3Crect width='1200' height='700' fill='%230a0a0c'/%3E%3Cg fill='none' stroke='%2300d9ff' stroke-opacity='.16'%3E%3Cpath d='M120 140h260v130H120zM460 140h260v130H460zM800 140h260v130H800zM120 390h260v130H120zM460 390h260v130H460zM800 390h260v130H800z'/%3E%3Cpath d='M380 205h80M720 205h80M250 270v120M590 270v120M930 270v120M380 455h80M720 455h80'/%3E%3C/g%3E%3Cg fill='%2300d9ff' fill-opacity='.22'%3E%3Ccircle cx='250' cy='205' r='8'/%3E%3Ccircle cx='590' cy='205' r='8'/%3E%3Ccircle cx='930' cy='205' r='8'/%3E%3Ccircle cx='250' cy='455' r='8'/%3E%3Ccircle cx='590' cy='455' r='8'/%3E%3Ccircle cx='930' cy='455' r='8'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            padding: 7rem 0 4rem;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+        .manual-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+            gap: 3rem;
+            align-items: end;
+        }
+        .eyebrow {
+            color: var(--primary-color);
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            margin-bottom: 1rem;
+        }
+        .manual-title {
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            line-height: 1;
+            margin-bottom: 1.25rem;
+        }
+        .manual-title span {
+            background: linear-gradient(135deg, var(--primary-color), #ffffff, var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .manual-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            max-width: 760px;
+        }
+        .hero-panel {
+            background: rgba(16, 18, 26, 0.86);
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .hero-panel h2 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .metric-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .metric-box strong {
+            display: block;
+            color: var(--primary-color);
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .metric-box span {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+        }
+        .qa-section {
+            padding: 4rem 0;
+        }
+        .section-kicker {
+            color: var(--primary-color);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.78rem;
+            margin-bottom: 0.5rem;
+        }
+        .section-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        .section-copy {
+            color: var(--text-secondary);
+            max-width: 880px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .evidence-grid,
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .evidence-tile,
+        .qa-card-manual,
+        .bug-card,
+        .trace-card,
+        .product-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(0, 217, 255, 0.12);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .evidence-tile i,
+        .qa-card-manual i {
+            color: var(--primary-color);
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+        .evidence-tile h3,
+        .qa-card-manual h3,
+        .bug-card h3,
+        .trace-card h3,
+        .product-card h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+        .evidence-tile p,
+        .qa-card-manual p,
+        .bug-card p,
+        .trace-card p,
+        .product-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .product-card {
+            background: linear-gradient(180deg, rgba(0, 217, 255, 0.08), rgba(255, 255, 255, 0.03));
+        }
+        .product-card h3 {
+            color: var(--primary-color);
+        }
+        .product-stats {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .pill {
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            color: #dffbff;
+            border-radius: 999px;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.78rem;
+            background: rgba(0, 217, 255, 0.06);
+        }
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+        .workflow-step {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 8px;
+            padding: 1rem;
+            min-height: 150px;
+        }
+        .workflow-step strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 0.65rem;
+        }
+        .workflow-step span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .trace-grid,
+        .qa-card-grid,
+        .bug-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+        .trace-id {
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .trace-card ul,
+        .bug-card ul,
+        .qa-card-manual ol {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-left: 1.2rem;
+            margin-top: 0.75rem;
+        }
+        .status-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .status-badge {
+            display: inline-flex;
+            border-radius: 999px;
+            padding: 0.3rem 0.7rem;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .status-badge.fail {
+            background: rgba(224, 82, 82, 0.16);
+            color: #ff8b8b;
+        }
+        .status-badge.pass {
+            background: rgba(47, 174, 96, 0.16);
+            color: #78e5a8;
+        }
+        .status-badge.bug {
+            background: rgba(224, 162, 82, 0.16);
+            color: #ffd08a;
+        }
+        .cta-band {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12), rgba(123, 44, 191, 0.1));
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        .cta-band p {
+            color: var(--text-secondary);
+            max-width: 760px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+        @media (max-width: 960px) {
+            .manual-hero,
+            .evidence-grid,
+            .product-grid,
+            .workflow,
+            .trace-grid,
+            .qa-card-grid,
+            .bug-grid {
+                grid-template-columns: 1fr;
+            }
+            .workflow-step {
+                min-height: auto;
+            }
+        }
+        @media (max-width: 640px) {
+            .manual-qa-header {
+                padding-top: 6rem;
+            }
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="../index.html#home">Inicio</a></li>
+                    <li><a href="../projects.html">Proyectos</a></li>
+                </ul>
+                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Contáctame Ya
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="manual-qa-header">
+        <div class="container">
+            <a href="../projects.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Volver a Proyectos
+            </a>
+            <div class="manual-hero">
+                <div>
+                    <p class="eyebrow">QA Manual Portfolio</p>
+                    <h1 class="manual-title">Evidencia real de <span>calidad manual</span></h1>
+                    <p class="manual-subtitle">
+                        Trazabilidad completa desde historias de usuario hasta casos de prueba y bugs reportados.
+                        Este dossier muestra cómo analizo producto, diseño escenarios, ejecuto pruebas, documento fallos
+                        y convierto hallazgos en decisiones claras para negocio y desarrollo.
+                    </p>
+                    <div class="tech-stack" style="margin-top: 2rem;">
+                        <span>Test Design</span>
+                        <span>UAT</span>
+                        <span>API Validation</span>
+                        <span>Regression</span>
+                        <span>Bug Reports</span>
+                    </div>
+                </div>
+                <aside class="hero-panel">
+                    <h2>Resumen del dossier</h2>
+                    <div class="metric-grid">
+                        <div class="metric-box"><strong>35</strong><span>casos de prueba manual</span></div>
+                        <div class="metric-box"><strong>14</strong><span>bugs documentados</span></div>
+                        <div class="metric-box"><strong>3</strong><span>productos auditados</span></div>
+                        <div class="metric-box"><strong>100%</strong><span>trazabilidad HU-CP-BUG</span></div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="qa-section">
+            <div class="container">
+                <p class="section-kicker">Lo que un reclutador ve rápido</p>
+                <h2 class="section-heading">Manual QA con criterio técnico y de negocio</h2>
+                <p class="section-copy">
+                    El objetivo no es solo listar casos de prueba. La pieza demuestra pensamiento QA: identificar riesgos,
+                    priorizar flujos críticos, diseñar pruebas positivas y negativas, validar integraciones, reconciliar datos
+                    y explicar el impacto de cada bug con pasos reproducibles.
+                </p>
+                <div class="evidence-grid">
+                    <article class="evidence-tile">
+                        <i class="fas fa-sitemap"></i>
+                        <h3>Trazabilidad completa</h3>
+                        <p>Historias de usuario conectadas con casos de prueba, hallazgos y reportes de bug accionables.</p>
+                    </article>
+                    <article class="evidence-tile">
+                        <i class="fas fa-vial-circle-check"></i>
+                        <h3>Diseño formal de pruebas</h3>
+                        <p>Clases de equivalencia, valores límite, volumen, idempotencia, regresión, integración y manejo de errores.</p>
+                    </article>
+                    <article class="evidence-tile">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Impacto medible</h3>
+                        <p>Priorización por severidad, riesgo de negocio y bloqueo real sobre accesos, correo, autenticación y datos.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="qa-section" style="background: rgba(255,255,255,0.02);">
+            <div class="container">
+                <p class="section-kicker">Cobertura</p>
+                <h2 class="section-heading">Productos evaluados</h2>
+                <div class="product-grid">
+                    <article class="product-card">
+                        <h3>Traders Hub</h3>
+                        <p>Control de acceso por flags, incorporación masiva de usuarios vía API, Magic Link y entregabilidad de correos.</p>
+                        <div class="product-stats">
+                            <span class="pill">12 casos</span>
+                            <span class="pill">6 hallazgos</span>
+                            <span class="pill">6 bugs</span>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <h3>Market Open</h3>
+                        <p>Google OAuth, análisis de 7 Principios, sincronización de broker, journal e insights de portafolio con IA.</p>
+                        <div class="product-stats">
+                            <span class="pill">16 casos</span>
+                            <span class="pill">11 hallazgos</span>
+                            <span class="pill">6 bugs</span>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <h3>Abacus Academy</h3>
+                        <p>Citas por integración GHL, confirmaciones por email, estado de asistencia, billing e infraestructura de correo.</p>
+                        <div class="product-stats">
+                            <span class="pill">7 casos</span>
+                            <span class="pill">2 hallazgos</span>
+                            <span class="pill">2 bugs</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="qa-section">
+            <div class="container">
+                <p class="section-kicker">Proceso</p>
+                <h2 class="section-heading">Cómo ejecuto QA manual</h2>
+                <div class="workflow">
+                    <div class="workflow-step"><strong>1. Requisitos</strong><span>Convierto requerimientos y reglas de negocio en historias verificables.</span></div>
+                    <div class="workflow-step"><strong>2. Riesgo</strong><span>Priorizo autenticación, accesos, pagos, sincronización de datos y notificaciones.</span></div>
+                    <div class="workflow-step"><strong>3. Diseño</strong><span>Defino escenarios positivos, negativos, límites, volumen, integración y regresión.</span></div>
+                    <div class="workflow-step"><strong>4. Ejecución</strong><span>Registro resultado esperado, resultado actual, evidencia y ambiente probado.</span></div>
+                    <div class="workflow-step"><strong>5. Defecto</strong><span>Reporto bugs con reproducción, impacto, severidad y posible causa técnica.</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="qa-section" style="background: rgba(255,255,255,0.02);">
+            <div class="container">
+                <p class="section-kicker">Matriz de trazabilidad</p>
+                <h2 class="section-heading">De historia a bug reportado</h2>
+                <p class="section-copy">
+                    Estos ejemplos muestran cómo conecto necesidad de usuario, caso de prueba, resultado real y defecto.
+                </p>
+                <div class="trace-grid">
+                    <article class="trace-card">
+                        <div class="trace-id">HU-002 → CP-003 / CP-006 → BUG-002</div>
+                        <h3>Carga masiva de usuarios</h3>
+                        <p>La API debía incorporar cerca de 130 usuarios de Abacus Pro y dejar trazabilidad individual de fallos.</p>
+                        <ul>
+                            <li>Resultado: solo eran visibles aproximadamente 20 usuarios.</li>
+                            <li>Riesgo: usuarios elegibles sin acceso a Traders Hub.</li>
+                        </ul>
+                    </article>
+                    <article class="trace-card">
+                        <div class="trace-id">HU-MO-001 → CP-MO-001 → BUG-MO-001</div>
+                        <h3>Google Sign-In para cuentas nuevas</h3>
+                        <p>El flujo OAuth debía crear usuario, sesión y dashboard sin errores de autenticación.</p>
+                        <ul>
+                            <li>Resultado: sesión no encontrada y respuestas 401.</li>
+                            <li>Riesgo: bloqueo completo para usuarios nuevos.</li>
+                        </ul>
+                    </article>
+                    <article class="trace-card">
+                        <div class="trace-id">HU-MO-005 → CP-MO-013 / CP-MO-014 → BUG-MO-005</div>
+                        <h3>Insights de portafolio obsoletos</h3>
+                        <p>El análisis debía usar posiciones actualizadas tras sincronizar el portafolio.</p>
+                        <ul>
+                            <li>Resultado: se mostraba un análisis de hace siete meses como vigente.</li>
+                            <li>Riesgo: decisiones financieras basadas en información desactualizada.</li>
+                        </ul>
+                    </article>
+                    <article class="trace-card">
+                        <div class="trace-id">HU-010 → CP-010 / CP-011 → BUG-004 / BUG-006</div>
+                        <h3>Entregabilidad de correos</h3>
+                        <p>Los correos debían llegar correctamente a Gmail, Hotmail y otros proveedores.</p>
+                        <ul>
+                            <li>Resultado: Hotmail quedaba en Deferred y el dominio no tenía validación completa.</li>
+                            <li>Riesgo: usuarios sin notificaciones críticas.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="qa-section">
+            <div class="container">
+                <p class="section-kicker">Casos seleccionados</p>
+                <h2 class="section-heading">Ejemplos de test cases manuales</h2>
+                <div class="qa-card-grid">
+                    <article class="qa-card-manual">
+                        <div class="status-row"><span class="status-badge fail">Fail</span><span class="pill">Prueba de volumen</span></div>
+                        <h3>CP-003: procesamiento masivo de usuarios</h3>
+                        <p><strong>Precondición:</strong> carga preparada de aproximadamente 130 usuarios válidos.</p>
+                        <ol>
+                            <li>Ejecutar el envío masivo desde el sistema origen.</li>
+                            <li>Esperar confirmación de procesamiento.</li>
+                            <li>Contar usuarios visibles en Traders Hub.</li>
+                        </ol>
+                        <p><strong>Esperado:</strong> todos los usuarios se procesan o los fallidos quedan identificados. <strong>Actual:</strong> solo se visualizan cerca de 20.</p>
+                    </article>
+                    <article class="qa-card-manual">
+                        <div class="status-row"><span class="status-badge fail">Fail</span><span class="pill">OAuth / autenticación</span></div>
+                        <h3>CP-MO-001: registro con Google</h3>
+                        <p><strong>Precondición:</strong> correo de Google nunca registrado.</p>
+                        <ol>
+                            <li>Abrir pantalla de inicio de sesión.</li>
+                            <li>Presionar Continue with Google.</li>
+                            <li>Seleccionar cuenta nueva y aceptar permisos.</li>
+                        </ol>
+                        <p><strong>Esperado:</strong> sesión creada y dashboard abierto. <strong>Actual:</strong> Session not found y endpoints de sesión responden 401.</p>
+                    </article>
+                    <article class="qa-card-manual">
+                        <div class="status-row"><span class="status-badge pass">Pass</span><span class="pill">Prueba negativa</span></div>
+                        <h3>CP-008: Magic Link inválido o expirado</h3>
+                        <p><strong>Precondición:</strong> Magic Link vencido o ya usado.</p>
+                        <ol>
+                            <li>Abrir el enlace inválido.</li>
+                            <li>Validar mensaje y estado de acceso.</li>
+                        </ol>
+                        <p><strong>Esperado y actual:</strong> el sistema muestra un error controlado y no otorga acceso.</p>
+                    </article>
+                    <article class="qa-card-manual">
+                        <div class="status-row"><span class="status-badge fail">Fail</span><span class="pill">Regresión / caché</span></div>
+                        <h3>CP-MO-014: insights actualizados</h3>
+                        <p><strong>Precondición:</strong> existe un análisis antiguo almacenado.</p>
+                        <ol>
+                            <li>Entrar al módulo de Insights.</li>
+                            <li>Solicitar insights nuevos.</li>
+                            <li>Comparar fecha, contenido y posiciones utilizadas.</li>
+                        </ol>
+                        <p><strong>Esperado:</strong> análisis nuevo. <strong>Actual:</strong> se conserva un análisis de hace siete meses.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="qa-section" style="background: rgba(255,255,255,0.02);">
+            <div class="container">
+                <p class="section-kicker">Bug reporting</p>
+                <h2 class="section-heading">Defectos documentados con impacto</h2>
+                <div class="bug-grid">
+                    <article class="bug-card">
+                        <div class="status-row"><span class="status-badge bug">Crítica</span><span class="pill">Authentication</span></div>
+                        <h3>BUG-MO-001: Google Sign-In falla para cuentas nuevas</h3>
+                        <p>Las cuentas nuevas terminan sin sesión válida luego del callback OAuth.</p>
+                        <ul>
+                            <li>Esperado: usuario creado, sesión establecida y acceso al dashboard.</li>
+                            <li>Actual: Session not found, /api/auth/me 401 y broker-mode 401.</li>
+                            <li>Impacto: bloquea el registro y acceso de usuarios nuevos.</li>
+                        </ul>
+                    </article>
+                    <article class="bug-card">
+                        <div class="status-row"><span class="status-badge bug">Alta</span><span class="pill">API / data</span></div>
+                        <h3>BUG-002: carga masiva de 130 usuarios solo muestra 20</h3>
+                        <p>La integración no deja trazabilidad suficiente para entender usuarios procesados contra faltantes.</p>
+                        <ul>
+                            <li>Esperado: procesamiento completo o fallos individuales identificados.</li>
+                            <li>Actual: discrepancia entre enviados y usuarios visibles.</li>
+                            <li>Impacto: accesos incompletos para usuarios de Abacus Pro.</li>
+                        </ul>
+                    </article>
+                    <article class="bug-card">
+                        <div class="status-row"><span class="status-badge bug">Crítica</span><span class="pill">AI insights</span></div>
+                        <h3>BUG-MO-005: análisis de portafolio obsoleto</h3>
+                        <p>El módulo presenta un análisis antiguo como si fuera vigente.</p>
+                        <ul>
+                            <li>Esperado: insight nuevo basado en portafolio actualizado.</li>
+                            <li>Actual: análisis de hace siete meses reutilizado.</li>
+                            <li>Impacto: riesgo directo sobre decisiones de inversión.</li>
+                        </ul>
+                    </article>
+                    <article class="bug-card">
+                        <div class="status-row"><span class="status-badge bug">Alta</span><span class="pill">Email infrastructure</span></div>
+                        <h3>BUG-006: dominio sin validación completa</h3>
+                        <p>El dominio estaba configurado solo con sender de soporte, sin validación completa SPF/DKIM/DMARC.</p>
+                        <ul>
+                            <li>Esperado: dominio autenticado para mejorar entregabilidad.</li>
+                            <li>Actual: configuración incompleta vinculada a Deferred y correos no recibidos.</li>
+                            <li>Impacto: notificaciones críticas no confiables.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div class="container">
+                <h2 class="section-heading">QA manual que reduce incertidumbre</h2>
+                <p>
+                    Puedo tomar un producto con reglas incompletas, integraciones frágiles o bugs intermitentes y convertirlo
+                    en una matriz clara de riesgos, pruebas, evidencia y defectos priorizados.
+                </p>
+                <button onclick="openContactModal()" class="btn btn-cta" style="border: none; cursor: pointer;">
+                    <i class="fas fa-comments"></i> Hablemos de QA Manual
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="contactModal" class="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h3><i class="fas fa-envelope"></i> Contáctame</h3>
+            <form id="contactForm" action="https://formsubmit.co/ferdyv59@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Consulta desde QA Manual Portfolio">
+                <input type="hidden" name="_captcha" value="false">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntame sobre tu necesidad de QA..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
