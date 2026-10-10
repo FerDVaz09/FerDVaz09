@@ -132,7 +132,7 @@ Automatización de acceso a cursos con comandos `/acceso` y `/fix`. Procesamient
   <img src="https://streak-stats.demolab.com/?user=FerDVaz09&theme=tokyonight&hide_border=true&background=0D1117&stroke=00d4ff&ring=00d4ff&fire=ff6b6b&currStreakLabel=00d4ff&sideLabels=00d4ff" width="70%"/>
 </div>
 
----
+--- aaa
 
 ## 🏆 GitHub Trophies
 
