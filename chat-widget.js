@@ -7,6 +7,10 @@
   'use strict';
 
   var WEBHOOK_URL = 'https://n8n.ferdyplacencia.com/webhook/portfolio-lead';
+  // Clave pública de la Header Auth del webhook en n8n (autorizado por Ferdy).
+  // Es visible en el navegador: filtra escáneres y pedidos al azar; n8n además
+  // valida origen, límite por IP, honeypot y tiempo mínimo.
+  var WEBHOOK_KEY = '_6SN9PAUFKBDd6Ut4Nw09GOnz_oGKD43';
   var AVATAR = '/logo.jpg';
   var WHATSAPP = 'https://wa.me/18096769759';
   var EMAIL = 'ferdyv59@gmail.com';
@@ -231,7 +235,7 @@
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 12000);
     fetch(WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'X-Portfolio-Key': WEBHOOK_KEY },
       body: JSON.stringify(payload),
       signal: ctrl ? ctrl.signal : undefined
     }).then(function (r) {
