@@ -11,11 +11,11 @@
 <br/>
 
 <div align="center">
-  <a href="https://linkedin.com/in/ferdvaz09">
+  <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
   &nbsp;
-  <a href="https://ferdvaz09.github.io/FerDVaz09">
+  <a href="https://ferdyplacencia.com">
     <img src="https://img.shields.io/badge/Portfolio-00D4FF?style=for-the-badge&logo=firefox-browser&logoColor=white"/>
   </a>
   &nbsp;
@@ -100,7 +100,7 @@ Monitor de logs en tiempo real con interfaz estilo Matrix/Terminal. Polling cada
 
 ---
 
-### 🎯 [QA Fuzz Master](https://ferdvaz09.github.io/FerDVaz09/projects/qa-fuzz-master.html)
+### 🎯 [QA Fuzz Master](https://ferdyplacencia.com/projects/qa-fuzz-master.html)
 Herramienta de fuzzing para pruebas de seguridad automatizadas: SQL Injection, XSS, Buffer Overflow con screenshots automáticos.
 - **Stack:** Python · Flask · Selenium · Faker
 
