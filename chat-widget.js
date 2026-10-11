@@ -1,12 +1,14 @@
 /*
- * Asistente de contacto de ferdyplacencia.com
- * Chat guiado de 3 pasos que envía el contacto a un webhook de n8n.
- * Sin dependencias. Para cambiar el destino, edita WEBHOOK_URL.
+ * Asistente de ferdyplacencia.com
+ * - Modo IA: responde preguntas sobre Ferdy con un agente en n8n (Groq).
+ * - Modo contacto: chat guiado de 3 pasos que envía el contacto a n8n y avisa por Telegram.
+ * Sin dependencias.
  */
 (function () {
   'use strict';
 
   var WEBHOOK_URL = 'https://n8n.ferdyplacencia.com/webhook/portfolio-lead';
+  var AI_URL = 'https://n8n.ferdyplacencia.com/webhook/portfolio-ai';
   // Clave pública de la Header Auth del webhook en n8n (autorizado por Ferdy).
   // Es visible en el navegador: filtra escáneres y pedidos al azar; n8n además
   // valida origen, límite por IP, honeypot y tiempo mínimo.
@@ -33,7 +35,9 @@
     other: 'Cuéntame en una o dos frases qué necesitas.'
   };
 
-  var state = { step: 'need', need: null, message: '', startedAt: Date.now(), sending: false, done: false };
+  var SUGGESTIONS = ['¿Qué servicios ofreces?', '¿Qué experiencia tienes en QA?', '¿Cómo automatizas con IA?'];
+
+  var state = { step: 'ai', need: null, message: '', startedAt: Date.now(), sending: false, done: false };
 
   function store(kind, key, value) {
     try {
@@ -68,6 +72,15 @@
     '.fp-opts{display:flex;flex-direction:column;gap:8px;align-self:stretch}',
     '.fp-opt{text-align:left;background:transparent;border:1px solid rgba(0,242,255,.3);color:var(--fp-text);padding:10px 14px;border-radius:12px;font:inherit;font-size:14px;cursor:pointer;transition:background .15s,border-color .15s}',
     '.fp-opt:hover{background:rgba(0,242,255,.08);border-color:var(--fp-cyan)}',
+    '.fp-chips{display:flex;flex-wrap:wrap;gap:6px;align-self:stretch}',
+    '.fp-chip{background:rgba(255,255,255,.04);border:1px solid var(--fp-line);color:var(--fp-text);padding:7px 11px;border-radius:9999px;font:inherit;font-size:12.5px;cursor:pointer}',
+    '.fp-chip:hover{border-color:var(--fp-cyan)}',
+    '.fp-actions{display:flex;gap:8px;padding:8px 12px 0;background:var(--fp-bg)}',
+    '.fp-contact{flex:1;background:transparent;border:1px solid rgba(157,0,255,.5);color:#e9d5ff;padding:8px 12px;border-radius:10px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}',
+    '.fp-contact:hover{background:rgba(157,0,255,.12)}',
+    '.fp-contact[hidden]{display:none}',
+    '.fp-retry{align-self:flex-start;background:transparent;border:1px solid var(--fp-cyan);color:var(--fp-cyan);padding:8px 14px;border-radius:10px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}',
+    '.fp-chip:focus-visible,.fp-contact:focus-visible,.fp-retry:focus-visible{outline:2px solid #fff;outline-offset:2px}',
     '.fp-typing{align-self:flex-start;display:flex;gap:4px;padding:12px 14px;background:var(--fp-surface);border:1px solid var(--fp-line);border-radius:16px;border-bottom-left-radius:4px}',
     '.fp-typing span{width:6px;height:6px;border-radius:50%;background:var(--fp-muted);animation:fp-dot 1s infinite}',
     '.fp-typing span:nth-child(2){animation-delay:.15s}.fp-typing span:nth-child(3){animation-delay:.3s}',
@@ -92,21 +105,22 @@
   var root = document.createElement('div');
   root.id = 'fp-chat-root';
   root.innerHTML =
-    '<div class="fp-teaser" hidden>¿Necesitas QA o automatizar algo? Te ayudo en 2 minutos 👋</div>' +
+    '<div class="fp-teaser" hidden>¿Preguntas sobre QA o automatización con IA? Pregúntame 👋</div>' +
     '<section class="fp-panel" role="dialog" aria-modal="false" aria-labelledby="fp-title" hidden>' +
       '<header class="fp-head">' +
         '<img alt="" src="' + AVATAR + '">' +
-        '<div><h2 id="fp-title">Asistente de Ferdy</h2><p>Respondo en menos de 24 h</p></div>' +
+        '<div><h2 id="fp-title">Asistente de Ferdy</h2><p>Asistente con IA · en línea</p></div>' +
         '<button class="fp-close" type="button" aria-label="Cerrar chat">×</button>' +
       '</header>' +
       '<div class="fp-log" aria-live="polite"></div>' +
+      '<div class="fp-actions"><button class="fp-contact" type="button">✉ Contactar a Ferdy</button></div>' +
       '<form class="fp-form" novalidate>' +
         '<input class="fp-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
         '<label for="fp-input" class="fp-hp">Mensaje</label>' +
-        '<textarea id="fp-input" rows="1" maxlength="600" placeholder="Elige una opción arriba…" disabled></textarea>' +
+        '<textarea id="fp-input" rows="1" maxlength="500" placeholder="Escribe tu pregunta…" disabled></textarea>' +
         '<button class="fp-send" type="submit" disabled>Enviar</button>' +
       '</form>' +
-      '<p class="fp-note">Tus datos solo se usan para responderte.</p>' +
+      '<p class="fp-note">Respuestas generadas con IA. Tus datos solo se usan para responderte.</p>' +
     '</section>' +
     '<button class="fp-launch" type="button" aria-label="Abrir chat de contacto" aria-expanded="false">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4.2 21.4c-.1.4.3.7.7.5l4-2.1c1 .3 2 .4 3.1.4 5.5 0 10-3.9 10-8.7S17.5 3 12 3z"/></svg>' +
@@ -122,6 +136,12 @@
   var input = root.querySelector('#fp-input');
   var sendBtn = root.querySelector('.fp-send');
   var honeypot = root.querySelector('input[name="website"]');
+  var contactBtn = root.querySelector('.fp-contact');
+  var sessionId = store('session', 'fp_ai_sid');
+  if (!sessionId) {
+    sessionId = 's' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+    store('session', 'fp_ai_sid', sessionId);
+  }
   var started = false;
 
   function scrollDown() { log.scrollTop = log.scrollHeight; }
@@ -187,12 +207,96 @@
     if (first) first.focus();
   }
 
+  function showChips() {
+    var wrap = document.createElement('div');
+    wrap.className = 'fp-chips';
+    SUGGESTIONS.forEach(function (q) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'fp-chip';
+      b.textContent = q;
+      b.addEventListener('click', function () { wrap.remove(); askAI(q); });
+      wrap.appendChild(b);
+    });
+    log.appendChild(wrap);
+    scrollDown();
+  }
+
+  // Quita el formato markdown que a veces devuelve el modelo.
+  function plain(t) {
+    return String(t || '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/^#+\s*/gm, '').replace(/`/g, '').trim();
+  }
+
+  function showTyping() {
+    var t = document.createElement('div');
+    t.className = 'fp-typing';
+    t.setAttribute('aria-label', 'Escribiendo');
+    t.innerHTML = '<span></span><span></span><span></span>';
+    log.appendChild(t);
+    scrollDown();
+    return t;
+  }
+
+  function askAI(q) {
+    if (state.sending) return;
+    var chips = log.querySelector('.fp-chips');
+    if (chips) chips.remove();
+    addMsg(q, 'user');
+    input.value = '';
+    state.sending = true;
+    setInput(false, 'Pensando…');
+    var typing = showTyping();
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 25000);
+    fetch(AI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Portfolio-Key': WEBHOOK_KEY },
+      body: JSON.stringify({ message: q, sessionId: sessionId, page: location.pathname, lang: navigator.language || '', website: honeypot.value }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (d) { return { status: r.status, data: d }; });
+    }).then(function (res) {
+      clearTimeout(timer);
+      typing.remove();
+      state.sending = false;
+      if (res.status === 200 && res.data && res.data.reply) {
+        addMsg(plain(res.data.reply), 'bot');
+      } else if (res.status === 429) {
+        addMsg('Recibí muchas preguntas en poco tiempo. Puedes dejarle tus datos a Ferdy con el botón "Contactar a Ferdy" y te responde en menos de 24 horas.', 'bot');
+      } else {
+        addMsg('No pude responder ahora mismo. Intenta de nuevo en un momento o usa el botón "Contactar a Ferdy".', 'bot');
+      }
+      if (state.step === 'ai') setInput(true, 'Escribe tu pregunta…');
+    }).catch(function () {
+      clearTimeout(timer);
+      typing.remove();
+      state.sending = false;
+      addMsg('No pude conectarme ahora mismo. Intenta de nuevo o usa el botón "Contactar a Ferdy".', 'bot');
+      if (state.step === 'ai') setInput(true, 'Escribe tu pregunta…');
+    });
+  }
+
+  function startContact() {
+    if (state.sending || state.done || state.step !== 'ai') return;
+    var chips = log.querySelector('.fp-chips');
+    if (chips) chips.remove();
+    contactBtn.hidden = true;
+    state.step = 'need';
+    state.startedAt = Date.now();
+    setInput(false, 'Elige una opción arriba…');
+    addMsg('Quiero que Ferdy me contacte', 'user');
+    botSay('¡Perfecto! ¿Qué necesitas?', showOptions);
+  }
+
   function start() {
     if (started) return;
     started = true;
     state.startedAt = Date.now();
-    botSay('¡Hola! Soy el asistente de Ferdy, QA & Automation Engineer.', function () {
-      botSay('¿En qué te puedo ayudar?', showOptions);
+    botSay('¡Hola! Soy el asistente con IA de Ferdy, QA & AI Automation Engineer.', function () {
+      botSay('Pregúntame sobre sus servicios o su experiencia. Si quieres que Ferdy te contacte, usa el botón "Contactar a Ferdy".', function () {
+        showChips();
+        setInput(true, 'Escribe tu pregunta…');
+      });
     });
   }
 
@@ -250,7 +354,14 @@
       clearTimeout(timer);
       state.sending = false;
       fallbackContact();
-      setInput(true, 'tu@correo.com');
+      var retry = document.createElement('button');
+      retry.type = 'button';
+      retry.className = 'fp-retry';
+      retry.textContent = '↻ Reintentar envío';
+      retry.addEventListener('click', function () { retry.remove(); submitLead(email); });
+      log.appendChild(retry);
+      scrollDown();
+      setInput(false, 'Pulsa "Reintentar envío"');
     });
   }
 
@@ -259,6 +370,8 @@
     if (state.sending || state.done) return;
     var v = input.value.trim();
     if (!v) return;
+
+    if (state.step === 'ai') { askAI(v); return; }
 
     if (state.step === 'message') {
       if (v.length < 5) { botSay('Cuéntame un poco más, por favor.'); return; }
@@ -286,6 +399,7 @@
   launch.addEventListener('click', function () { panel.hidden ? open() : close(); });
   teaser.addEventListener('click', open);
   closeBtn.addEventListener('click', close);
+  contactBtn.addEventListener('click', startContact);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) close(); });
 
   // Invitación discreta una vez por sesión, sin abrir el chat solo.
