@@ -86,10 +86,10 @@
                         </h1>
                         <p class="text-slate-500 text-lg max-w-2xl leading-relaxed">
                             <template x-if="role === 'qa'">
-                                <span>Exhibiendo más de 5 años de rigor técnico en **QA Automation**, asegurando la estabilidad de sistemas complejos.</span>
+                                <span>Exhibiendo más de 5 años de rigor técnico en <strong class="text-white">QA Automation</strong>, asegurando la estabilidad de sistemas complejos.</span>
                             </template>
                             <template x-if="role === 'ia'">
-                                <span>Frontera de innovación con **IA y Orquestación**, transformando flujos operativos mediante agentes autónomos.</span>
+                                <span>Frontera de innovación con <strong class="text-white">IA y Orquestación</strong>, transformando flujos operativos mediante agentes autónomos.</span>
                             </template>
                         </p>
                     </div>
@@ -354,6 +354,29 @@
                                 </a>
                                 <a href="https://github.com/FerDVaz09/ts-selenium-framewor" target="_blank" class="text-white hover:text-primary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
                                     <span class="material-symbols-outlined text-sm">open_in_new</span> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- [IA] Project 0: Asistente IA del portafolio -->
+                    <div class="glass-panel group rounded-[2rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-secondary/50" x-show="role === 'ia'">
+                        <div class="aspect-video relative overflow-hidden bg-background-dark">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-6xl text-white/10 group-hover:text-secondary/20 transition-colors">smart_toy</span>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80"></div>
+                            <div class="absolute bottom-4 left-4 flex gap-2">
+                                <span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">AI Agent</span>
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-[10px] font-black uppercase tracking-widest border border-emerald-400/30">En vivo</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-black text-white mb-4 group-hover:text-secondary transition-colors">Asistente IA del Portafolio</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-6">Chat con IA en este sitio: n8n, Groq y memoria en Postgres sobre mi propio VPS, con 5 capas de seguridad y aviso de contactos por Telegram.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="projects/portfolio-ai-assistant.html" class="text-white hover:text-secondary transition-colors flex items-center gap-2 text-xs font-bold uppercase tracking-widest">
+                                    <span class="material-symbols-outlined text-sm">visibility</span> Ver caso de estudio
                                 </a>
                             </div>
                         </div>
