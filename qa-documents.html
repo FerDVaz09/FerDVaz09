@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Documentos QA | Ferdy Placencia Vásquez</title>
+    <meta name="description" content="Muestras de documentación QA: plan de pruebas, matriz de trazabilidad, reporte de incidencias, checklist de regresión y reporte de ejecución."/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+          darkMode: "class",
+          theme: { extend: {
+              colors: { "primary": "#00f2ff", "secondary": "#9d00ff", "background-dark": "#0a0a0c", "surface-dark": "#16161e" },
+              fontFamily: { "display": ["Manrope"] },
+          } },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            html { scroll-behavior: smooth; }
+            .gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
+            .glass-panel { @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)]; }
+            .eyebrow { @apply text-[11px] font-black uppercase tracking-[0.2em] text-primary; }
+            .chip { @apply inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border; }
+            .doc-table { @apply w-full min-w-[620px] text-sm text-left; }
+            .doc-table th { @apply px-4 py-3 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-white/10 whitespace-nowrap; }
+            .doc-table td { @apply px-4 py-3 border-b border-white/5 text-slate-300 align-top; }
+            section[id] { scroll-margin-top: 6rem; }
+            details > summary { list-style: none; }
+            details > summary::-webkit-details-marker { display: none; }
+            details[open] .chev { transform: rotate(180deg); }
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-100 antialiased min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+
+    <header class="flex items-center justify-between gap-4 border-b border-white/10 px-6 md:px-20 lg:px-40 py-4 bg-background-dark/90 backdrop-blur sticky top-0 z-50">
+        <a href="index.html" class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-3xl text-primary">hub</span>
+            <div>
+                <p class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy Placencia Vásquez</p>
+                <p class="text-[10px] uppercase tracking-widest text-primary font-bold">QA Engineering</p>
+            </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="index.html">Home</a>
+            <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
+            <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="projects.html">Projects</a>
+            <a class="text-primary text-sm font-semibold" href="qa-documents.html">QA Docs</a>
+        </nav>
+        <a href="projects.html" class="md:hidden text-slate-300 text-sm font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-base">arrow_back</span>Proyectos</a>
+    </header>
+
+    <main class="flex-1 px-6 md:px-20 lg:px-40 py-16">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Hero -->
+            <section class="mb-16">
+                <p class="eyebrow mb-4">Portafolio QA · Documentación</p>
+                <h1 class="text-5xl md:text-7xl font-black tracking-tight text-white mb-6">Documentos <span class="gradient-text">QA</span></h1>
+                <p class="text-slate-400 text-lg max-w-3xl leading-relaxed mb-8">
+                    Así documento la calidad de un producto: desde el plan y la trazabilidad hasta el reporte de incidencias,
+                    la regresión y el cierre con evidencia. Cada documento muestra cómo pienso un caso, no solo qué probé.
+                </p>
+                <div class="glass-panel rounded-2xl p-5 flex gap-4 items-start max-w-3xl border-primary/20">
+                    <span class="material-symbols-outlined text-primary">shield</span>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        <strong class="text-white">Muestras no confidenciales.</strong> Los documentos usan <strong class="text-white">Reservia</strong>,
+                        un producto ficticio creado para este portafolio (app web de reservas con integración de calendario, login con Google
+                        y resúmenes generados con IA). La estructura y los criterios son los que aplico en mi trabajo; ningún dato pertenece a un cliente o empleador.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Artefactos -->
+            <section class="mb-20">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="#plan" class="glass-panel rounded-2xl p-6 group hover:border-primary/40 transition-all">
+                        <p class="text-primary/60 text-xs font-black mb-3">01</p>
+                        <h3 class="text-white font-bold text-lg mb-1 flex items-center gap-2">Plan de pruebas <span class="material-symbols-outlined text-base text-slate-500 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span></h3>
+                        <p class="text-slate-400 text-sm">Alcance, riesgos, ambientes y criterios de entrada y salida.</p>
+                    </a>
+                    <a href="#trazabilidad" class="glass-panel rounded-2xl p-6 group hover:border-primary/40 transition-all">
+                        <p class="text-primary/60 text-xs font-black mb-3">02</p>
+                        <h3 class="text-white font-bold text-lg mb-1 flex items-center gap-2">Matriz de trazabilidad <span class="material-symbols-outlined text-base text-slate-500 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span></h3>
+                        <p class="text-slate-400 text-sm">Requisito → caso de prueba → resultado → defecto.</p>
+                    </a>
+                    <a href="#incidencias" class="glass-panel rounded-2xl p-6 group hover:border-primary/40 transition-all">
+                        <p class="text-primary/60 text-xs font-black mb-3">03</p>
+                        <h3 class="text-white font-bold text-lg mb-1 flex items-center gap-2">Reporte de incidencias <span class="material-symbols-outlined text-base text-slate-500 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span></h3>
+                        <p class="text-slate-400 text-sm">Fichas con ambiente, seguimiento, escenarios y criterio de cierre.</p>
+                    </a>
+                    <a href="#criterios" class="glass-panel rounded-2xl p-6 group hover:border-primary/40 transition-all">
+                        <p class="text-primary/60 text-xs font-black mb-3">04</p>
+                        <h3 class="text-white font-bold text-lg mb-1 flex items-center gap-2">Severidad y evidencia <span class="material-symbols-outlined text-base text-slate-500 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span></h3>
+                        <p class="text-slate-400 text-sm">Cómo clasifico el triage y qué debe contener la evidencia.</p>
+                    </a>
+                    <a href="#regresion" class="glass-panel rounded-2xl p-6 group hover:border-primary/40 transition-all">
+                        <p class="text-primary/60 text-xs font-black mb-3">05</p>
+                        <h3 class="text-white font-bold text-lg mb-1 flex items-center gap-2">Checklist de regresión <span class="material-symbols-outlined text-base text-slate-500 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span></h3>
+                        <p class="text-slate-400 text-sm">Flujos críticos que verifico antes de cada release.</p>
+                    </a>
+                    <a href="#ejecucion" class="glass-panel rounded-2xl p-6 group hover:border-primary/40 transition-all">
+                        <p class="text-primary/60 text-xs font-black mb-3">06</p>
+                        <h3 class="text-white font-bold text-lg mb-1 flex items-center gap-2">Reporte de ejecución <span class="material-symbols-outlined text-base text-slate-500 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span></h3>
+                        <p class="text-slate-400 text-sm">Resultado del ciclo y recomendación de salida.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Principios -->
+            <section class="mb-20">
+                <p class="eyebrow mb-3">Cómo trabajo</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-8">Cinco reglas que aplico en cada caso</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="glass-panel rounded-2xl p-5"><span class="material-symbols-outlined text-primary mb-3">fact_check</span><h3 class="text-white font-bold mb-2">Hecho ≠ supuesto</h3><p class="text-slate-400 text-sm">Si el ambiente o la causa no están confirmados, lo escribo como pendiente. No asigno causa raíz, SLA ni versión que nadie confirmó.</p></div>
+                    <div class="glass-panel rounded-2xl p-5"><span class="material-symbols-outlined text-primary mb-3">verified</span><h3 class="text-white font-bold mb-2">Corregido ≠ aprobado</h3><p class="text-slate-400 text-sm">Que desarrollo informe un arreglo no cierra el caso. Lo cierra un retest con evidencia.</p></div>
+                    <div class="glass-panel rounded-2xl p-5"><span class="material-symbols-outlined text-primary mb-3">rule</span><h3 class="text-white font-bold mb-2">No todo es bug</h3><p class="text-slate-400 text-sm">Separo defectos de reglas de negocio y comportamientos esperados. Si la regla no está definida, la pido antes de clasificar.</p></div>
+                    <div class="glass-panel rounded-2xl p-5"><span class="material-symbols-outlined text-primary mb-3">alt_route</span><h3 class="text-white font-bold mb-2">Flujo feliz + falla</h3><p class="text-slate-400 text-sm">Cada caso lleva al menos un escenario normal y uno de error o recuperación.</p></div>
+                    <div class="glass-panel rounded-2xl p-5"><span class="material-symbols-outlined text-primary mb-3">lock</span><h3 class="text-white font-bold mb-2">Evidencia segura</h3><p class="text-slate-400 text-sm">Cuentas enmascaradas, tokens ocultos y datos de prueba controlados. Nunca datos reales de usuarios.</p></div>
+                </div>
+            </section>
+
+            <!-- 01 Plan -->
+            <section id="plan" class="mb-20">
+                <p class="eyebrow mb-3">01 · Plan de pruebas</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-8">Release 2.4 de Reservia</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <div class="glass-panel rounded-2xl p-6 lg:col-span-2">
+                        <h3 class="text-white font-bold mb-4">Alcance</h3>
+                        <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                            <div>
+                                <p class="text-primary text-xs font-black uppercase tracking-widest mb-2">Dentro</p>
+                                <ul class="space-y-2 text-slate-300">
+                                    <li>• Login con correo y con Google (OAuth)</li>
+                                    <li>• Recuperación de contraseña</li>
+                                    <li>• Sincronización con calendario externo</li>
+                                    <li>• Resumen semanal generado con IA</li>
+                                    <li>• Historial de reservas y filtros</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="text-slate-500 text-xs font-black uppercase tracking-widest mb-2">Fuera</p>
+                                <ul class="space-y-2 text-slate-400">
+                                    <li>• Pagos (sin cambios en esta release)</li>
+                                    <li>• Pruebas de carga</li>
+                                    <li>• App móvil nativa</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-6">
+                        <h3 class="text-white font-bold mb-4">Ambientes</h3>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li><span class="text-white font-semibold">QA</span>: ejecución y simulación de fallos</li>
+                            <li><span class="text-white font-semibold">UAT</span>: validación con negocio</li>
+                            <li><span class="text-white font-semibold">Navegadores</span>: Chrome, Safari, Firefox (laptop y móvil)</li>
+                            <li><span class="text-white font-semibold">Dependencias</span>: calendario externo y proveedor de IA en modo de prueba</li>
+                        </ul>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-6 lg:col-span-2">
+                        <h3 class="text-white font-bold mb-4">Riesgos priorizados</h3>
+                        <div class="overflow-x-auto">
+                            <table class="doc-table">
+                                <thead><tr><th>Riesgo</th><th>Impacto</th><th>Mitigación</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Reservas omitidas o duplicadas al sincronizar</td><td><span class="chip border-red-400/40 text-red-300 bg-red-400/10">Alto</span></td><td>Conciliación contra la fuente externa y segunda sincronización</td></tr>
+                                    <tr><td>Usuario sin sesión válida tras OAuth</td><td><span class="chip border-red-400/40 text-red-300 bg-red-400/10">Alto</span></td><td>Cuenta habilitada vs. inexistente, según la regla de alta vigente</td></tr>
+                                    <tr><td>Pantalla vacía si falla una dependencia</td><td><span class="chip border-amber-400/40 text-amber-300 bg-amber-400/10">Medio</span></td><td>Simular fallo y verificar mensaje con reintento</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-6">
+                        <h3 class="text-white font-bold mb-4">Entrada y salida</h3>
+                        <p class="text-primary text-xs font-black uppercase tracking-widest mb-2">Entrada</p>
+                        <p class="text-sm text-slate-300 mb-4">Build desplegado en QA, notas de release y datos de prueba listos.</p>
+                        <p class="text-primary text-xs font-black uppercase tracking-widest mb-2">Salida</p>
+                        <p class="text-sm text-slate-300">0 defectos altos abiertos, regresión crítica aprobada y riesgos residuales aceptados por negocio.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 02 Trazabilidad -->
+            <section id="trazabilidad" class="mb-20">
+                <p class="eyebrow mb-3">02 · Matriz de trazabilidad</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-3">Del requisito al defecto</h2>
+                <p class="text-slate-400 mb-8 max-w-3xl">Cada requisito tiene casos asociados y cada fallo apunta a un defecto. Así se ve de un vistazo qué está cubierto y qué bloquea la salida.</p>
+                <div class="glass-panel rounded-2xl overflow-x-auto">
+                    <table class="doc-table">
+                        <thead><tr><th>Requisito</th><th>Descripción</th><th>Casos</th><th>Resultado</th><th>Defecto</th></tr></thead>
+                        <tbody>
+                            <tr><td class="font-mono text-primary">RQ-01</td><td>Reservas del calendario externo aparecen sin omisiones ni duplicados</td><td class="font-mono">TC-01-A, TC-01-B</td><td><span class="chip border-red-400/40 text-red-300 bg-red-400/10">Fallido</span></td><td class="font-mono">RV-001</td></tr>
+                            <tr><td class="font-mono text-primary">RQ-02</td><td>Login con Google crea una sesión válida para cuentas habilitadas</td><td class="font-mono">TC-02-A, TC-02-B</td><td><span class="chip border-slate-400/40 text-slate-300 bg-white/5">Bloqueado</span></td><td class="font-mono">RV-002</td></tr>
+                            <tr><td class="font-mono text-primary">RQ-03</td><td>El resumen con IA se genera o muestra un error recuperable</td><td class="font-mono">TC-03-A, TC-03-B</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">Aprobado</span></td><td class="font-mono">RV-003 (cerrado)</td></tr>
+                            <tr><td class="font-mono text-primary">RQ-04</td><td>Enlace de recuperación válido completa el flujo; uno usado o expirado se rechaza con mensaje claro</td><td class="font-mono">TC-04-A, TC-04-B</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">Aprobado</span></td><td>—</td></tr>
+                            <tr><td class="font-mono text-primary">RQ-05</td><td>La disponibilidad muestra la hora del dato y avisa si viene con retraso</td><td class="font-mono">TC-05-A</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">Aprobado</span></td><td>— (comportamiento esperado)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 03 Incidencias -->
+            <section id="incidencias" class="mb-20">
+                <p class="eyebrow mb-3">03 · Reporte de incidencias</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-3">Fichas para diagnóstico, retest y regresión</h2>
+                <p class="text-slate-400 mb-8 max-w-3xl">Cada ficha separa lo reportado, lo esperado y lo confirmado, y define cuándo el caso puede cerrarse. Abre una para ver el detalle.</p>
+
+                <div class="space-y-4">
+                    <!-- RV-001 -->
+                    <details class="glass-panel rounded-2xl group" open>
+                        <summary class="cursor-pointer p-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                            <span class="font-mono text-primary font-bold">RV-001</span>
+                            <span class="text-white font-bold flex-1">Reservas recientes ausentes tras sincronizar el calendario</span>
+                            <span class="flex flex-wrap gap-2">
+                                <span class="chip border-red-400/40 text-red-300 bg-red-400/10">Alta · P1</span>
+                                <span class="chip border-amber-400/40 text-amber-300 bg-amber-400/10">Retest pendiente</span>
+                            </span>
+                            <span class="material-symbols-outlined chev text-slate-500 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 text-sm">
+                            <div class="space-y-4">
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Ambiente</p><p class="text-slate-300">Reportado por un usuario; producción <em>inferida, pendiente de confirmar</em>. Navegador y versión por registrar.</p></div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Reportado</p><p class="text-slate-300">Las reservas de los últimos dos días no aparecen en el historial.</p></div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Esperado</p><p class="text-slate-300">Todas las reservas del intervalo aparecen una sola vez, dentro del tiempo de sincronización acordado.</p></div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Seguimiento</p><p class="text-slate-300">Desarrollo sugirió reconectar el calendario. No hay confirmación de que las reservas se recuperaran.</p></div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="rounded-xl bg-black/30 border border-white/5 p-4">
+                                    <p class="font-mono text-xs text-primary mb-2">TC-01-A · Conciliación con la fuente</p>
+                                    <ol class="list-decimal list-inside text-slate-300 space-y-1"><li>Confirmar cuenta y estado de conexión.</li><li>Consultar los dos días en el calendario externo.</li><li>Comparar identificadores, fechas y cantidades con el historial.</li></ol>
+                                    <p class="text-slate-400 mt-2"><span class="text-white">Esperado:</span> cada reserva aparece una vez; cualquier retraso queda medido.</p>
+                                </div>
+                                <div class="rounded-xl bg-black/30 border border-white/5 p-4">
+                                    <p class="font-mono text-xs text-primary mb-2">TC-01-B · Reconexión sin duplicados</p>
+                                    <ol class="list-decimal list-inside text-slate-300 space-y-1"><li>Registrar el estado inicial en QA.</li><li>Desconectar y reconectar la cuenta de prueba.</li><li>Sincronizar dos veces y repetir la consulta.</li></ol>
+                                    <p class="text-slate-400 mt-2"><span class="text-white">Esperado:</span> se recuperan los faltantes y la segunda sincronización no duplica.</p>
+                                </div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Criterio de cierre</p><p class="text-slate-300">Cerrar al conciliar los días afectados y comprobar que una nueva sincronización conserva el historial.</p></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- RV-002 -->
+                    <details class="glass-panel rounded-2xl group">
+                        <summary class="cursor-pointer p-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                            <span class="font-mono text-primary font-bold">RV-002</span>
+                            <span class="text-white font-bold flex-1">Login con Google sin sesión (401) para una cuenta nueva</span>
+                            <span class="flex flex-wrap gap-2">
+                                <span class="chip border-red-400/40 text-red-300 bg-red-400/10">P1 condicionada</span>
+                                <span class="chip border-slate-400/40 text-slate-300 bg-white/5">Regla por validar</span>
+                            </span>
+                            <span class="material-symbols-outlined chev text-slate-500 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 text-sm">
+                            <div class="space-y-4">
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Reportado</p><p class="text-slate-300">Tras completar Google OAuth aparece "sesión no encontrada" y los servicios de sesión responden 401.</p></div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Por qué no es bug todavía</p><p class="text-slate-300">La cuenta no existía. Si la regla de negocio exige alta previa, el rechazo es correcto y el defecto real sería el mensaje genérico. Primero se confirma la regla, después se clasifica.</p></div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Esperado</p><p class="text-slate-300">Cuenta habilitada: sesión válida. Cuenta inexistente: aplicar la política de alta con un mensaje claro.</p></div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="rounded-xl bg-black/30 border border-white/5 p-4">
+                                    <p class="font-mono text-xs text-primary mb-2">TC-02-A · OAuth con cuenta habilitada</p>
+                                    <p class="text-slate-300">Completar el login y consultar la sesión. <span class="text-white">Esperado:</span> acceso al área autorizada y respuestas de sesión válidas.</p>
+                                </div>
+                                <div class="rounded-xl bg-black/30 border border-white/5 p-4">
+                                    <p class="font-mono text-xs text-primary mb-2">TC-02-B · Cuenta inexistente vs. política</p>
+                                    <p class="text-slate-300">Documentar la política y comparar el resultado. <span class="text-white">Esperado:</span> creación o rechazo según la regla, sin sesión inconsistente.</p>
+                                </div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Evidencia</p><p class="text-slate-300">Recorrido OAuth, códigos HTTP y presencia de sesión, <strong class="text-white">sin exportar tokens</strong>.</p></div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- RV-003 -->
+                    <details class="glass-panel rounded-2xl group">
+                        <summary class="cursor-pointer p-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                            <span class="font-mono text-primary font-bold">RV-003</span>
+                            <span class="text-white font-bold flex-1">Resumen con IA vacío cuando falla un servicio dependiente</span>
+                            <span class="flex flex-wrap gap-2">
+                                <span class="chip border-red-400/40 text-red-300 bg-red-400/10">Alta · P1</span>
+                                <span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">Retest aprobado</span>
+                            </span>
+                            <span class="material-symbols-outlined chev text-slate-500 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 text-sm">
+                            <div class="space-y-4">
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Reportado</p><p class="text-slate-300">Al pulsar Generar, la pantalla se queda en la instrucción inicial. Dos servicios responden 500 y uno 404.</p></div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Seguimiento</p><p class="text-slate-300">Desarrollo informó la corrección. <strong class="text-white">No se cerró con ese aviso</strong>: se ejecutó el retest del flujo normal y del fallo simulado.</p></div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="rounded-xl bg-black/30 border border-white/5 p-4">
+                                    <p class="font-mono text-xs text-primary mb-2">TC-03-A · Generación normal</p>
+                                    <p class="text-slate-300"><span class="text-white">Esperado:</span> contenido coherente y servicios respondiendo según contrato. <span class="text-emerald-300 font-semibold">Aprobado.</span></p>
+                                </div>
+                                <div class="rounded-xl bg-black/30 border border-white/5 p-4">
+                                    <p class="font-mono text-xs text-primary mb-2">TC-03-B · Dependencia caída</p>
+                                    <p class="text-slate-300"><span class="text-white">Esperado:</span> mensaje útil y reintento funcional, sin pantalla vacía. <span class="text-emerald-300 font-semibold">Aprobado.</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- RV-004 -->
+                    <details class="glass-panel rounded-2xl group">
+                        <summary class="cursor-pointer p-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+                            <span class="font-mono text-primary font-bold">RV-004</span>
+                            <span class="text-white font-bold flex-1">Disponibilidad distinta a la de la fuente externa</span>
+                            <span class="flex flex-wrap gap-2">
+                                <span class="chip border-sky-400/40 text-sky-300 bg-sky-400/10">No es defecto</span>
+                                <span class="chip border-slate-400/40 text-slate-300 bg-white/5">P2 · mejora</span>
+                            </span>
+                            <span class="material-symbols-outlined chev text-slate-500 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 text-sm">
+                            <div class="space-y-4">
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Análisis</p><p class="text-slate-300">El widget usa una fuente con retraso documentado. Comparar contra una vista en tiempo real no prueba un defecto: hay que alinear el instante del dato.</p></div>
+                                <div><p class="text-primary text-xs font-black uppercase tracking-widest mb-1">Resultado</p><p class="text-slate-300">Comportamiento aceptado. Se abre una <strong class="text-white">mejora</strong>: mostrar un aviso de datos con retraso.</p></div>
+                            </div>
+                            <div class="rounded-xl bg-black/30 border border-white/5 p-4 h-fit">
+                                <p class="font-mono text-xs text-primary mb-2">TC-05-A · Comparación con corte temporal</p>
+                                <p class="text-slate-300"><span class="text-white">Esperado:</span> la diferencia se evalúa según la fuente y su retraso, no se registra automáticamente como bug.</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- 04 Criterios -->
+            <section id="criterios" class="mb-20">
+                <p class="eyebrow mb-3">04 · Severidad y evidencia</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-8">Criterios del triage</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div class="glass-panel rounded-2xl p-6">
+                        <h3 class="text-white font-bold mb-4">Severidad y prioridad</h3>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li><span class="chip border-red-400/40 text-red-300 bg-red-400/10 mr-2">Alta</span>Bloquea un flujo principal o pone en riesgo la integridad de los datos.</li>
+                            <li><span class="chip border-amber-400/40 text-amber-300 bg-amber-400/10 mr-2">Media</span>Afecta un flujo con alternativa disponible.</li>
+                            <li><span class="chip border-primary/40 text-primary bg-primary/10 mr-2">P1</span>Acceso, sincronización y cálculos.</li>
+                            <li><span class="chip border-slate-400/40 text-slate-300 bg-white/5 mr-2">P2</span>Diagnóstico acotado, comunicación al usuario y regresión.</li>
+                        </ul>
+                        <p class="text-slate-500 text-xs mt-4">Son propuestas de triage: se confirman al reproducir y medir el alcance.</p>
+                    </div>
+                    <div class="glass-panel rounded-2xl p-6">
+                        <h3 class="text-white font-bold mb-4">Qué debe tener la evidencia</h3>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li><span class="text-white font-semibold">Identificación:</span> caso, escenario, ejecutor, fecha, hora, zona horaria, ambiente, URL y build.</li>
+                            <li><span class="text-white font-semibold">Datos de prueba:</span> cuenta enmascarada, permisos, plan y período consultado.</li>
+                            <li><span class="text-white font-semibold">Resultado:</span> pasos ejecutados, esperado vs. obtenido y estado Aprobado, Fallido o Bloqueado.</li>
+                            <li><span class="text-white font-semibold">Soporte técnico:</span> capturas o video, códigos HTTP, tiempos y consola, sin credenciales.</li>
+                            <li><span class="text-white font-semibold">Cierre:</span> conclusión del retest y regresión relacionada.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 05 Regresión -->
+            <section id="regresion" class="mb-20">
+                <p class="eyebrow mb-3">05 · Checklist de regresión</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-8">Flujos críticos antes de cada release</h2>
+                <div class="glass-panel rounded-2xl overflow-x-auto">
+                    <table class="doc-table">
+                        <thead><tr><th>Área</th><th>Verificación</th><th>Estado</th></tr></thead>
+                        <tbody>
+                            <tr><td class="text-white font-semibold">Acceso</td><td>Login con correo y con Google; cierre de sesión; sesión expirada</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">OK</span></td></tr>
+                            <tr><td class="text-white font-semibold">Cuenta</td><td>Recuperación con enlace válido, usado y expirado</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">OK</span></td></tr>
+                            <tr><td class="text-white font-semibold">Integración</td><td>Sincronizar, reconectar y sincronizar de nuevo sin duplicados</td><td><span class="chip border-red-400/40 text-red-300 bg-red-400/10">Falla · RV-001</span></td></tr>
+                            <tr><td class="text-white font-semibold">IA</td><td>Generación normal, dependencia caída y reintento</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">OK</span></td></tr>
+                            <tr><td class="text-white font-semibold">Historial</td><td>Filtros por período y cuenta; recarga sin pérdida de filtros</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">OK</span></td></tr>
+                            <tr><td class="text-white font-semibold">Interfaz</td><td>Sin pantallas vacías ante errores en laptop y móvil</td><td><span class="chip border-emerald-400/40 text-emerald-300 bg-emerald-400/10">OK</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 06 Ejecución -->
+            <section id="ejecucion" class="mb-20">
+                <p class="eyebrow mb-3">06 · Reporte de ejecución</p>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-8">Resultado del ciclo</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div class="glass-panel rounded-2xl p-6"><p class="text-4xl font-black text-white">9</p><p class="text-slate-400 text-sm mt-1">escenarios ejecutados</p></div>
+                    <div class="glass-panel rounded-2xl p-6"><p class="text-4xl font-black text-emerald-300">6</p><p class="text-slate-400 text-sm mt-1">aprobados</p></div>
+                    <div class="glass-panel rounded-2xl p-6"><p class="text-4xl font-black text-red-300">2</p><p class="text-slate-400 text-sm mt-1">fallidos</p></div>
+                    <div class="glass-panel rounded-2xl p-6"><p class="text-4xl font-black text-slate-300">1</p><p class="text-slate-400 text-sm mt-1">bloqueado por regla de negocio</p></div>
+                </div>
+                <div class="glass-panel rounded-2xl p-6 border-amber-400/20">
+                    <p class="text-amber-300 text-xs font-black uppercase tracking-widest mb-2">Recomendación</p>
+                    <p class="text-slate-300 leading-relaxed">
+                        <strong class="text-white">No liberar todavía.</strong> RV-001 compromete la integridad del historial (2 escenarios fallidos).
+                        Definir con negocio la política de alta para desbloquear RV-002. RV-003 queda cerrado con retest aprobado y RV-004 pasa al backlog como mejora.
+                    </p>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="glass-panel rounded-[2rem] p-10 text-center mb-8">
+                <h2 class="text-3xl font-black text-white mb-3">¿Necesitas este nivel de detalle en tu producto?</h2>
+                <p class="text-slate-400 mb-8 max-w-2xl mx-auto">Diseño el plan, ejecuto las pruebas y te entrego evidencia clara para decidir si sale o no a producción.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="projects/qa-portfolio.html" class="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-primary px-8 font-black text-black hover:scale-[1.03] transition-all">Ver portafolio QA <span class="material-symbols-outlined">arrow_forward</span></a>
+                    <a href="mailto:ferdyv59@gmail.com" class="inline-flex h-12 items-center justify-center gap-2 rounded-2xl border border-white/15 px-8 font-bold text-white hover:bg-white/5 transition-all">Escríbeme</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 px-6 md:px-20 lg:px-40 py-12 bg-background-dark">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-slate-500 text-[10px] font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-3 text-white">
+                <span class="material-symbols-outlined text-primary">verified</span>
+                <span>Ferdy Placencia Vásquez | QA & IA Excellence</span>
+            </div>
+            <div class="flex gap-8">
+                <a href="https://github.com/FerDVaz09" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://wa.me/18096769759" target="_blank" rel="noopener" class="hover:text-white transition-colors">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
