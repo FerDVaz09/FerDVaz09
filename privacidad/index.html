@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Política de privacidad | Ferdy Placencia Vásquez</title>
+    <meta name="description" content="Política de privacidad de ferdyplacencia.com y de las automatizaciones conectadas a este sitio."/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+          darkMode: "class",
+          theme: { extend: {
+              colors: { "primary": "#00f2ff", "secondary": "#9d00ff", "background-dark": "#0a0a0c", "surface-dark": "#16161e" },
+              fontFamily: { "display": ["Manrope"] },
+          } },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            html { scroll-behavior: smooth; }
+            .gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary; }
+            .glass-panel { @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)]; }
+            .eyebrow { @apply text-[11px] font-black uppercase tracking-[0.2em] text-primary; }
+            .policy h2 { @apply text-white text-2xl font-bold mt-12 mb-4; }
+            .policy p { @apply text-slate-300 leading-relaxed mb-4; }
+            .policy ul { @apply list-disc pl-6 space-y-2 text-slate-300 mb-4; }
+            .policy strong { @apply text-white; }
+            .policy a { @apply text-primary hover:underline; }
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-100 antialiased min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+
+    <header class="flex items-center justify-between gap-4 border-b border-white/10 px-6 md:px-20 lg:px-40 py-4 bg-background-dark/90 backdrop-blur sticky top-0 z-50">
+        <a href="/index.html" class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-3xl text-primary">hub</span>
+            <div>
+                <p class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy Placencia Vásquez</p>
+                <p class="text-[10px] uppercase tracking-widest text-primary font-bold">QA Engineering</p>
+            </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="/index.html">Home</a>
+            <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="/about.html">About</a>
+            <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="/projects.html">Projects</a>
+            <a class="text-slate-400 hover:text-primary text-sm font-medium transition-colors" href="/qa-documents.html">QA Docs</a>
+        </nav>
+        <a href="/index.html" class="md:hidden text-slate-300 text-sm font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-base">arrow_back</span>Inicio</a>
+    </header>
+
+    <main class="flex-1 px-6 md:px-20 lg:px-40 py-16">
+        <div class="max-w-3xl mx-auto">
+
+            <section class="mb-10">
+                <p class="eyebrow mb-4">Legal</p>
+                <h1 class="text-5xl md:text-6xl font-black tracking-tight text-white mb-6">Política de <span class="gradient-text">privacidad</span></h1>
+                <p class="text-slate-400 text-sm">Última actualización: 11 de octubre de 2026</p>
+            </section>
+
+            <article class="policy glass-panel rounded-2xl p-6 md:p-10">
+                <p>
+                    Esta política explica qué datos se recogen en <strong>ferdyplacencia.com</strong> y en las automatizaciones
+                    personales conectadas a este sitio, para qué se usan y cómo puedes pedir que se borren.
+                    El responsable es <strong>Ferdy Placencia Vásquez</strong>, en Santo Domingo, República Dominicana.
+                </p>
+
+                <h2>1. Chat y formulario de contacto</h2>
+                <p>Cuando me escribes desde el chat del sitio puedo recibir:</p>
+                <ul>
+                    <li>El tipo de necesidad que seleccionas, tu mensaje y tu correo electrónico, si lo das.</li>
+                    <li>Datos técnicos mínimos para evitar abuso, como la dirección IP, usada para limitar la cantidad de solicitudes.</li>
+                </ul>
+                <p>
+                    Uso esta información solo para responderte. Se procesa en mi propio servidor y me llega como notificación privada.
+                    No la vendo ni la uso para publicidad.
+                </p>
+                <p>
+                    El asistente con IA del chat genera sus respuestas con un proveedor externo de modelos de lenguaje (Groq).
+                    El texto que escribes en ese modo se envía a ese proveedor para generar la respuesta, y el historial de la conversación
+                    se guarda en mi servidor para mantener el contexto. No escribas datos sensibles en el chat.
+                </p>
+
+                <h2>2. Integración con Google Calendar</h2>
+                <p>
+                    Este dominio también se usa para una automatización personal que lee eventos de Google Calendar con el permiso
+                    explícito del dueño de la cuenta, con el único fin de enviar recordatorios de esas citas por WhatsApp.
+                </p>
+                <ul>
+                    <li><strong>Qué datos se leen:</strong> título, fecha, hora y ubicación de los eventos del calendario autorizado.</li>
+                    <li><strong>Para qué:</strong> armar y enviar el recordatorio a la persona dueña de la agenda. No se usan para nada más.</li>
+                    <li><strong>Con quién se comparten:</strong> con nadie. Los datos no se venden, no se usan para publicidad y no se transfieren a terceros, salvo el envío del propio recordatorio por WhatsApp.</li>
+                    <li><strong>Almacenamiento:</strong> no se guarda una copia de los eventos. Solo se conserva por unos días un identificador interno del evento para no repetir el mismo aviso.</li>
+                </ul>
+                <p>
+                    El uso y la transferencia de información recibida de las API de Google cumple con la
+                    <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Política de datos de usuario de los servicios de API de Google</a>,
+                    incluidos los requisitos de uso limitado.
+                </p>
+                <p>
+                    Puedes retirar el acceso en cualquier momento desde
+                    <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.
+                </p>
+
+                <h2>3. Cookies y analítica</h2>
+                <p>
+                    Este sitio no usa cookies de publicidad ni herramientas de seguimiento de terceros. El navegador puede guardar
+                    datos locales mínimos para que el chat funcione durante tu visita.
+                </p>
+
+                <h2>4. Seguridad</h2>
+                <p>
+                    El sitio funciona con HTTPS y los servicios internos no están expuestos públicamente. Ningún sistema es
+                    100&nbsp;% seguro, pero aplico medidas razonables para proteger la información.
+                </p>
+
+                <h2>5. Tus derechos</h2>
+                <p>
+                    Puedes pedir ver, corregir o borrar los datos que tenga sobre ti. Escríbeme por
+                    <a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a> o por
+                    <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a>
+                    y lo atiendo lo antes posible.
+                </p>
+
+                <h2>6. Cambios</h2>
+                <p class="mb-0">
+                    Si esta política cambia, publicaré la nueva versión en esta misma página con su fecha de actualización.
+                </p>
+            </article>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 px-6 md:px-20 lg:px-40 py-12 bg-background-dark">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-slate-500 text-[10px] font-bold uppercase tracking-widest">
+            <div class="flex items-center gap-3 text-white">
+                <span class="material-symbols-outlined text-primary">verified</span>
+                <span>Ferdy Placencia Vásquez | QA & IA Excellence</span>
+            </div>
+            <div class="flex gap-8">
+                <a href="https://github.com/FerDVaz09" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://wa.me/18096769759" target="_blank" rel="noopener" class="hover:text-white transition-colors">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
