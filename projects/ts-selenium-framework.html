@@ -66,7 +66,7 @@
             background: var(--dark-card);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(41, 211, 192, 0.1);
         }
         .feature-card i {
             font-size: 2rem;
@@ -101,7 +101,7 @@
             max-width: 500px;
             width: 90%;
             border: 2px solid var(--primary-color);
-            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(41, 211, 192, 0.3);
             position: relative;
         }
         .modal-close {
@@ -126,24 +126,11 @@
             transform: rotate(90deg);
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/brand.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="../index.html" class="logo">
-                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
-            </a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="../index.html#home">Inicio</a></li>
-                    <li><a href="../projects.html">Proyectos</a></li>
-                </ul>
-                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
-                    <i class="fas fa-comments"></i> Contáctame Ya
-                </button>
-            </div>
-        </div>
-    </nav>
+    <header class="fp-header"><div class="fp-wrap fp-nav"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><nav class="fp-menu" id="fpMenu"><a href="../index.html">Inicio</a><a href="../about.html">Sobre mí</a><a href="../projects.html" class="on">Proyectos</a><a href="../about.html#experience">Experiencia</a><a href="../qa-documents.html">QA Docs</a><a href="../index.html#contact">Contacto</a></nav><a class="fp-btn fp-btn-p fp-dl" href="../CV_Ferdy_Placencia.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg><span>Descargar CV</span></a><button class="fp-burger" id="fpBurger" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 
     <section class="project-header">
         <div class="container">
@@ -152,7 +139,7 @@
             </a>
 
             <div style="text-align: center; margin: 30px 0;">
-                <a href="https://github.com/FerDVaz09/ts-selenium-framewor" target="_blank" style="display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #2b3a8f, #3178c6); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 10px 30px rgba(49, 120, 198, 0.3); transition: all 0.3s;">
+                <a href="https://github.com/FerDVaz09/ts-selenium-framewor" target="_blank" style="display: inline-flex; align-items: center; gap: 15px; background: #29D3C0; color: #06231F; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 10px 30px rgba(41, 211, 192, 0.3); transition: all 0.3s;">
                     <i class="fab fa-github"></i> VER REPOSITORIO <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
@@ -242,7 +229,7 @@
 
             <div class="detail-section">
                 <h2>🧪 Tecnologías Críticas</h2>
-                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                <div style="background: rgba(41, 211, 192, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
                     <ul style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem; list-style: none; padding-left: 0;">
                         <li>📘 <strong>TypeScript:</strong> Tipado estricto para mayor robustez y detección temprana de errores.</li>
                         <li>🌐 <strong>Selenium WebDriver:</strong> Automatización de navegadores para tests E2E de interfaz de usuario.</li>
@@ -291,11 +278,7 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <footer class="fp-footer"><div class="fp-wrap fp-foot"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><span>© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</span><nav><a href="https://github.com/FerDVaz09" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a><a href="../privacidad/">Privacidad</a></nav></div></footer>
 
     <script>
         function openContactModal() {
@@ -307,5 +290,6 @@
             document.body.style.overflow = 'auto';
         }
     </script>
+<script src="../assets/brand.js" defer></script>
 </body>
 </html>

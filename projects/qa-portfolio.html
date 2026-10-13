@@ -60,7 +60,7 @@
         }
         .hero-panel {
             background: rgba(16, 18, 26, 0.86);
-            border: 1px solid rgba(0, 217, 255, 0.22);
+            border: 1px solid rgba(41, 211, 192, 0.22);
             border-radius: 8px;
             padding: 1.5rem;
         }
@@ -124,7 +124,7 @@
         .trace-card,
         .product-card {
             background: var(--dark-card);
-            border: 1px solid rgba(0, 217, 255, 0.12);
+            border: 1px solid rgba(41, 211, 192, 0.12);
             border-radius: 8px;
             padding: 1.5rem;
         }
@@ -152,7 +152,7 @@
             line-height: 1.7;
         }
         .product-card {
-            background: linear-gradient(180deg, rgba(0, 217, 255, 0.08), rgba(255, 255, 255, 0.03));
+            background: linear-gradient(180deg, rgba(41, 211, 192, 0.08), rgba(255, 255, 255, 0.03));
         }
         .product-card h3 {
             color: var(--primary-color);
@@ -164,12 +164,12 @@
             margin-top: 1rem;
         }
         .pill {
-            border: 1px solid rgba(0, 217, 255, 0.22);
+            border: 1px solid rgba(41, 211, 192, 0.22);
             color: #dffbff;
             border-radius: 999px;
             padding: 0.35rem 0.7rem;
             font-size: 0.78rem;
-            background: rgba(0, 217, 255, 0.06);
+            background: rgba(41, 211, 192, 0.06);
         }
         .workflow {
             display: grid;
@@ -246,9 +246,9 @@
             color: #ffd08a;
         }
         .cta-band {
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12), rgba(123, 44, 191, 0.1));
-            border-top: 1px solid rgba(0, 217, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            background: linear-gradient(135deg, rgba(41, 211, 192, 0.12), rgba(41, 211, 192, 0.1));
+            border-top: 1px solid rgba(41, 211, 192, 0.2);
+            border-bottom: 1px solid rgba(41, 211, 192, 0.2);
             padding: 4rem 0;
             text-align: center;
         }
@@ -281,24 +281,11 @@
             }
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/brand.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="../index.html" class="logo">
-                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
-            </a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="../index.html#home">Inicio</a></li>
-                    <li><a href="../projects.html">Proyectos</a></li>
-                </ul>
-                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
-                    <i class="fas fa-comments"></i> Contáctame Ya
-                </button>
-            </div>
-        </div>
-    </nav>
+    <header class="fp-header"><div class="fp-wrap fp-nav"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><nav class="fp-menu" id="fpMenu"><a href="../index.html">Inicio</a><a href="../about.html">Sobre mí</a><a href="../projects.html" class="on">Proyectos</a><a href="../about.html#experience">Experiencia</a><a href="../qa-documents.html">QA Docs</a><a href="../index.html#contact">Contacto</a></nav><a class="fp-btn fp-btn-p fp-dl" href="../CV_Ferdy_Placencia.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg><span>Descargar CV</span></a><button class="fp-burger" id="fpBurger" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 
     <header class="manual-qa-header">
         <div class="container">
@@ -604,11 +591,7 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <footer class="fp-footer"><div class="fp-wrap fp-foot"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><span>© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</span><nav><a href="https://github.com/FerDVaz09" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a><a href="../privacidad/">Privacidad</a></nav></div></footer>
 
     <script>
         function openContactModal() {
@@ -621,5 +604,6 @@
             document.body.style.overflow = 'auto';
         }
     </script>
+<script src="../assets/brand.js" defer></script>
 </body>
 </html>

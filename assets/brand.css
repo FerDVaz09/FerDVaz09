@@ -1,0 +1,83 @@
+/* =========================================================
+   Marca Ferdy Placencia — tokens, header y footer compartidos
+   Navy + Teal (firma) · Lila solo para IA
+   ========================================================= */
+:root{
+  --fp-bg:#0A101C; --fp-bg2:#0D1524; --fp-card:#101A2B; --fp-card2:#132036;
+  --fp-line:#1E2C44; --fp-border:#26385A;
+  --fp-teal:#29D3C0; --fp-teal-d:#1BA897; --fp-teal-soft:rgba(41,211,192,.12);
+  --fp-lilac:#B5A3F4; --fp-lilac-soft:rgba(181,163,244,.14);
+  --fp-white:#F3F5F8; --fp-text:#C9D2DF; --fp-muted:#8B98AD; --fp-slate:#66758D;
+  --fp-green:#34D399; --fp-amber:#FFB547;
+  --fp-font:'Inter',system-ui,sans-serif; --fp-display:'Outfit','Inter',sans-serif; --fp-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+
+/* Base */
+html{scroll-behavior:smooth}
+body{background-color:var(--fp-bg)!important;font-family:var(--fp-font)!important;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(900px 500px at 80% 0%,rgba(41,211,192,.08),transparent 60%),
+             linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px) 0 0/40px 40px,
+             linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px) 0 0/40px 40px}
+h1,h2,h3,h4,h5{font-family:var(--fp-display)!important;letter-spacing:-.01em}
+code,pre,kbd,.mono,.font-mono{font-family:var(--fp-mono)!important}
+::selection{background:rgba(41,211,192,.3);color:var(--fp-white)}
+
+/* Header */
+.fp-header{position:sticky;top:0;z-index:60;background:rgba(10,16,28,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--fp-line);font-family:var(--fp-font)}
+.fp-wrap{max-width:1440px;margin:0 auto;padding:0 32px}
+.fp-nav{display:flex;align-items:center;gap:20px;height:72px}
+.fp-logo{font-family:var(--fp-display);font-weight:800;font-size:28px;color:var(--fp-white)!important;letter-spacing:-.5px;text-decoration:none;line-height:1}
+.fp-logo span{color:var(--fp-teal)}
+.fp-menu{display:flex;gap:4px;margin:0 auto}
+.fp-menu a{padding:24px 13px;font-size:15px;color:var(--fp-text);text-decoration:none;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap}
+.fp-menu a:hover,.fp-menu a.on{color:var(--fp-teal);border-color:var(--fp-teal)}
+.fp-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px var(--fp-font);border-radius:10px;padding:11px 18px;transition:.2s;cursor:pointer;border:1.5px solid transparent;white-space:nowrap;text-decoration:none}
+.fp-btn svg{width:18px;height:18px;flex:none}
+.fp-btn-p{background:var(--fp-teal);color:#06231F!important}
+.fp-btn-p:hover{background:#3EE6D3;box-shadow:0 8px 30px rgba(41,211,192,.3)}
+.fp-btn-o{border-color:var(--fp-teal);color:var(--fp-white)!important}
+.fp-btn-o:hover{background:var(--fp-teal-soft)}
+.fp-role{display:flex;border:1px solid var(--fp-border);border-radius:10px;overflow:hidden;flex:none}
+.fp-role button{background:none;border:0;color:var(--fp-muted);font:600 13px var(--fp-font);padding:9px 14px;cursor:pointer;transition:.2s}
+.fp-role button.on{background:var(--fp-teal-soft);color:var(--fp-teal)}
+.fp-role button.ia.on{background:var(--fp-lilac-soft);color:var(--fp-lilac)}
+.fp-burger{display:none;background:none;border:1px solid var(--fp-border);border-radius:10px;color:var(--fp-white);padding:8px;cursor:pointer;line-height:0}
+.fp-burger svg{width:20px;height:20px}
+
+/* Footer */
+.fp-footer{border-top:1px solid var(--fp-line);background:rgba(10,16,28,.6);margin-top:48px;font-family:var(--fp-font)}
+.fp-foot{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:28px;padding-bottom:28px;font-size:13px;color:var(--fp-muted)}
+.fp-foot .fp-logo{font-size:22px}
+.fp-foot nav{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
+.fp-foot nav a{color:var(--fp-text);text-decoration:none;transition:.2s}
+.fp-foot nav a:hover{color:var(--fp-teal)}
+
+/* Etiquetas reutilizables */
+.fp-tag{display:inline-block;font:700 10.5px var(--fp-font);letter-spacing:.8px;text-transform:uppercase;border-radius:6px;padding:4px 9px;background:var(--fp-teal);color:#06231F}
+.fp-tag.ia{background:var(--fp-lilac);color:#1A1838}
+
+@media (max-width:1100px){
+  .fp-menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--fp-bg2);border-bottom:1px solid var(--fp-line);padding:8px 16px}
+  .fp-menu.open{display:flex}
+  .fp-menu a{padding:12px 6px;border:0}
+  .fp-burger{display:block}
+  .fp-nav{gap:12px}
+  .fp-role{margin-left:auto}
+  .fp-nav > .fp-dl{margin-left:auto}
+  .fp-role + .fp-dl{margin-left:0}
+}
+@media (max-width:640px){
+  .fp-wrap{padding:0 16px}
+  .fp-dl{display:none}
+  .fp-role{margin-left:auto}
+  .fp-foot nav{margin-left:0}
+}
+
+/* Páginas de proyecto (styles.css): cabecera con el header sticky */
+.project-header{padding-top:3.5rem!important;background:linear-gradient(180deg,#0D1524 0%,#0A101C 100%)!important;border-bottom:1px solid var(--fp-line)}
+.project-title{color:var(--fp-white)}
+.footer{display:none}
+pre{max-width:100%;overflow-x:auto}
+.project-title{line-height:1.12!important}
+@media (max-width:640px){.fp-burger{margin-left:auto}.fp-role ~ .fp-burger{margin-left:0}}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .project-header { background: linear-gradient(135deg, #0a0a1e 0%, #2a0a3e 100%); padding: 6rem 0 3rem; }
+        .project-header { background: linear-gradient(135deg, #0D1524 0%, #101A2B 100%); padding: 6rem 0 3rem; }
         .back-button { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary-color); text-decoration: none; margin-bottom: 2rem; transition: all 0.3s; }
         .back-button:hover { transform: translateX(-5px); }
         .project-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
@@ -21,29 +21,29 @@
         .detail-section { margin-bottom: 3.5rem; }
         .detail-section > p { color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.2rem; }
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0; }
-        .feature-card { background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 1px solid rgba(123, 44, 191, 0.2); }
-        .feature-card i { font-size: 2rem; color: #7b2cbf; margin-bottom: 1rem; }
+        .feature-card { background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 1px solid rgba(181, 163, 244, 0.2); }
+        .feature-card i { font-size: 2rem; color: #B5A3F4; margin-bottom: 1rem; }
         .feature-card p { color: var(--text-secondary); line-height: 1.7; }
 
         /* Diagrama de arquitectura */
         .flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: .75rem; margin: 2rem 0; }
-        .flow-step { flex: 1 1 150px; background: var(--dark-card); border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 14px; padding: 1.1rem; text-align: center; }
+        .flow-step { flex: 1 1 150px; background: var(--dark-card); border: 1px solid rgba(41, 211, 192, 0.25); border-radius: 14px; padding: 1.1rem; text-align: center; }
         .flow-step i { color: var(--primary-color); font-size: 1.5rem; margin-bottom: .5rem; display: block; }
         .flow-step strong { display: block; margin-bottom: .35rem; }
         .flow-step span { color: var(--text-secondary); font-size: .9rem; line-height: 1.5; }
         .flow-arrow { display: flex; align-items: center; color: var(--text-secondary); font-size: 1.2rem; }
-        .flow-step.ai { border-color: rgba(123, 44, 191, 0.5); }
+        .flow-step.ai { border-color: rgba(181, 163, 244, 0.5); }
         .flow-step.ai i { color: #b57bff; }
 
         /* Capas de seguridad */
         .layers { list-style: none; padding: 0; margin: 2rem 0; counter-reset: layer; }
         .layers li { counter-increment: layer; display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; align-items: start; background: var(--dark-card); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: .75rem; border-left: 4px solid var(--primary-color); }
-        .layers li::before { content: counter(layer); width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center; background: rgba(0, 217, 255, 0.12); color: var(--primary-color); font-weight: 800; }
+        .layers li::before { content: counter(layer); width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center; background: rgba(41, 211, 192, 0.12); color: var(--primary-color); font-weight: 800; }
         .layers strong { display: block; margin-bottom: .2rem; }
         .layers span { color: var(--text-secondary); line-height: 1.6; }
 
         /* Decisiones */
-        .decision { background: rgba(123, 44, 191, 0.05); border-left: 4px solid #7b2cbf; border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 1.25rem; }
+        .decision { background: rgba(181, 163, 244, 0.05); border-left: 4px solid #B5A3F4; border-radius: 12px; padding: 1.5rem 1.75rem; margin-bottom: 1.25rem; }
         .decision h3 { margin-bottom: .6rem; }
         .decision p { color: var(--text-secondary); line-height: 1.8; }
         .compare { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: .95rem; }
@@ -60,31 +60,18 @@
         .test span { color: var(--text-secondary); font-size: .92rem; line-height: 1.6; }
         .test .ok { color: #34d399; font-weight: 700; }
 
-        .cta-try { border: none; cursor: pointer; background: linear-gradient(135deg, #4a1a7a, #7b2cbf); }
+        .cta-try { border: none; cursor: pointer; background: linear-gradient(135deg, #6E5BB8, #B5A3F4); }
         @media (max-width: 768px) {
             .project-hero { grid-template-columns: 1fr; }
             .project-title { font-size: 2.2rem; }
             .flow-arrow { transform: rotate(90deg); width: 100%; justify-content: center; }
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/brand.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="../index.html" class="logo">
-                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
-            </a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="../index.html#home">Inicio</a></li>
-                    <li><a href="../projects.html">Proyectos</a></li>
-                </ul>
-                <button onclick="openAssistant()" class="btn-nav-cta" style="border: none; cursor: pointer;">
-                    <i class="fas fa-comments"></i> Contáctame
-                </button>
-            </div>
-        </div>
-    </nav>
+    <header class="fp-header"><div class="fp-wrap fp-nav"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><nav class="fp-menu" id="fpMenu"><a href="../index.html">Inicio</a><a href="../about.html">Sobre mí</a><a href="../projects.html" class="on">Proyectos</a><a href="../about.html#experience">Experiencia</a><a href="../qa-documents.html">QA Docs</a><a href="../index.html#contact">Contacto</a></nav><a class="fp-btn fp-btn-p fp-dl" href="../CV_Ferdy_Placencia.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg><span>Descargar CV</span></a><button class="fp-burger" id="fpBurger" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 
     <section class="project-header">
         <div class="container">
@@ -97,6 +84,7 @@
                     <div style="font-size: 4rem; color: #25d366; margin-bottom: 1rem;">
                         <i class="fab fa-whatsapp"></i>
                     </div>
+                    <span class="fp-tag ia" style="margin-bottom:14px">IA</span>
                     <h1 class="project-title">WhatsApp AI Support</h1>
                     <p class="project-subtitle">
                         Agente de soporte 24/7 por WhatsApp que responde con la base de conocimiento de la empresa, recuerda cada conversación y pasa el caso a una persona cuando hace falta.
@@ -218,11 +206,7 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <footer class="fp-footer"><div class="fp-wrap fp-foot"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><span>© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</span><nav><a href="https://github.com/FerDVaz09" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a><a href="../privacidad/">Privacidad</a></nav></div></footer>
 
     <script>
         function openAssistant() {
@@ -232,5 +216,6 @@
         }
     </script>
     <script src="../chat-widget.js" defer></script>
+<script src="../assets/brand.js" defer></script>
 </body>
 </html>

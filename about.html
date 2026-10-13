@@ -1,11 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="es">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>About Ferdy | Automation & QA Engineer</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script id="tailwind-config">
@@ -14,13 +13,13 @@
           theme: {
             extend: {
               colors: {
-                "primary": "#00d9ff",
-                "secondary": "#7b2cbf",
-                "background-dark": "#0a0a0c",
-                "surface-dark": "#16161e",
+                "primary": "#29D3C0",
+                "secondary": "#B5A3F4",
+                "background-dark": "#0A101C",
+                "surface-dark": "#101A2B",
               },
               fontFamily: {
-                "display": ["Manrope"]
+                "display": ["Inter", "system-ui", "sans-serif"]
               },
               borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
             },
@@ -29,12 +28,11 @@
     </script>
     <style type="text/tailwindcss">
         :root {
-            --primary: #00f2ff;
-            --secondary: #9d00ff;
+            --primary: #29D3C0;
+            --secondary: #B5A3F4;
         }
         @layer base {
-            .gradient-text {
-                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
+            .gradient-text { color:#29D3C0;
             }
             .glass-panel {
                 @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
@@ -42,9 +40,9 @@
         }
 /* Platforms grid */
         .pf-tab{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:9999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:#94a3b8;font-size:13px;font-weight:700;transition:all .2s}
-        .pf-tab:hover{color:#fff;border-color:rgba(0,217,255,.4)}
-        .pf-tab:focus-visible{outline:2px solid #00d9ff;outline-offset:2px}
-        .pf-tab-on{background:linear-gradient(135deg,#00d9ff,#7b2cbf);color:#05060a;border-color:transparent}
+        .pf-tab:hover{color:#fff;border-color:rgba(41, 211, 192,.4)}
+        .pf-tab:focus-visible{outline:2px solid #29D3C0;outline-offset:2px}
+        .pf-tab-on{background:#29D3C0;color:#06231F;border-color:transparent}
         .pf-count{font-size:11px;padding:0 .45rem;border-radius:9999px;background:rgba(255,255,255,.12)}
         .pf-tab-on .pf-count{background:rgba(5,6,10,.25)}
         .pf-tile{min-height:112px;transition:transform .2s,border-color .2s,box-shadow .2s}
@@ -52,10 +50,12 @@
         .pf-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:color-mix(in srgb,var(--brand) 12%,transparent)}
         @media (prefers-reduced-motion:reduce){.pf-tile,.pf-tab{transition:none}.pf-tile:hover{transform:none}}
         .timeline-line {
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            background: linear-gradient(to bottom, var(--primary), #1BA897);
             filter: drop-shadow(0 0 8px var(--primary));
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/brand.css">
 </head>
 <body class="bg-background-dark font-display text-slate-100 antialiased"
       x-data="{ 
@@ -67,34 +67,7 @@
       }"
       x-init="$watch('role', value => localStorage.setItem('ferdy_role', value))">
     <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-800 px-6 md:px-20 lg:px-40 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
-            <div class="flex items-center gap-4">
-                <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
-                    <span class="material-symbols-outlined text-primary">verified</span>
-                </div>
-                <div>
-                    <h2 class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy.Dev</h2>
-                    <p class="text-[10px] uppercase tracking-widest text-primary font-bold" x-text="role === 'qa' ? 'QA Engineering' : 'IA Specialist'"></p>
-                </div>
-            </div>
-            <div class="flex flex-1 justify-end gap-8">
-                <div class="hidden md:flex items-center gap-9">
-                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="index.html">Home</a>
-                    <a class="text-primary text-sm font-bold" href="about.html">About</a>
-                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="projects.html">Projects</a>
-                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="qa-documents.html">QA Docs</a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="flex bg-surface-dark p-1 rounded-full border border-white/5">
-                        <button @click="role = 'qa'" :class="role === 'qa' ? 'bg-primary text-black' : 'text-slate-400 hover:text-white'" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all">QA</button>
-                        <button @click="role = 'ia'" :class="role === 'ia' ? 'bg-secondary text-white' : 'text-slate-400 hover:text-white'" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all">IA</button>
-                    </div>
-                </div>
-                <a href="mailto:ferdyv59@gmail.com" class="flex min-w-[100px] items-center justify-center rounded-lg h-10 px-6 bg-gradient-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-all shadow-[0_0_15px_rgba(0,217,255,0.3)]">
-                    <span>Contact</span>
-                </a>
-            </div>
-        </header>
+        <header class="fp-header"><div class="fp-wrap fp-nav"><a href="index.html" class="fp-logo">FERDY<span>.</span></a><nav class="fp-menu" id="fpMenu"><a href="index.html">Inicio</a><a href="about.html" class="on">Sobre mí</a><a href="projects.html">Proyectos</a><a href="about.html#experience">Experiencia</a><a href="qa-documents.html">QA Docs</a><a href="index.html#contact">Contacto</a></nav><div class="fp-role" role="group" aria-label="Perfil"><button type="button" @click="role = 'qa'" :class="role === 'qa' ? 'on' : ''">QA</button><button type="button" class="ia" @click="role = 'ia'" :class="role === 'ia' ? 'on' : ''">IA</button></div><a class="fp-btn fp-btn-p fp-dl" href="CV_Ferdy_Placencia.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg><span>Descargar CV</span></a><button class="fp-burger" id="fpBurger" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 
         <main class="flex-1">
             <div class="px-6 md:px-20 lg:px-40 py-16 bg-surface-dark/50">
@@ -102,7 +75,7 @@
                     <div class="relative group">
                         <div class="size-56 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-2xl bg-slate-800 transition-transform group-hover:scale-[1.02]" style="background-image: url('logo.jpg'); background-size: cover; background-position: center;">
                         </div>
-                        <div class="absolute -bottom-4 -right-4 bg-secondary text-white p-3 rounded-xl shadow-lg flex items-center gap-2">
+                        <div class="absolute -bottom-4 -right-4 p-3 rounded-xl shadow-lg flex items-center gap-2" :class="role === 'ia' ? 'bg-secondary text-[#1A1838]' : 'bg-primary text-[#06231F]'">
                             <span class="material-symbols-outlined text-sm" x-text="role === 'qa' ? 'verified' : 'robot_2'"></span>
                             <span class="text-xs font-bold uppercase tracking-wider" x-text="role === 'qa' ? 'QA Expert' : 'IA Engineer'"></span>
                         </div>
@@ -122,7 +95,7 @@
                             </template>
                         </p>
                         <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                            <a href="projects.html" class="flex items-center gap-2 px-8 py-4 bg-gradient-primary text-white rounded-xl font-bold text-sm hover:scale-105 transition-all shadow-lg">
+                            <a href="projects.html" class="flex items-center gap-2 px-8 py-4 bg-primary text-[#06231F] rounded-xl font-bold text-sm hover:scale-105 transition-all shadow-lg">
                                 View Portfolio
                             </a>
                             <a href="mailto:ferdyv59@gmail.com" class="flex items-center gap-2 px-8 py-4 border border-slate-700 bg-slate-800/50 text-slate-300 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all">
@@ -184,7 +157,7 @@
                             <!-- Milestone 2: Senior QA -->
                             <div class="relative pl-12 group">
                                 <div class="absolute left-[-5px] top-0 h-full w-px bg-slate-800"></div>
-                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'qa' ? 'bg-primary ring-8 ring-primary/20 shadow-[0_0_20px_rgba(0,217,255,0.6)]' : 'bg-slate-700'"></div>
+                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'qa' ? 'bg-primary ring-8 ring-primary/20 shadow-[0_0_20px_rgba(41, 211, 192,0.6)]' : 'bg-slate-700'"></div>
                                 <div class="mb-2">
                                     <span class="text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded bg-white/5" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Oct 2024 — Presente</span>
                                 </div>
@@ -207,7 +180,7 @@
                             <!-- Milestone 3: Freelance -->
                             <div class="relative pl-12 group">
                                 <div class="absolute left-[-5px] top-0 h-full w-px bg-slate-800"></div>
-                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'qa' ? 'bg-primary ring-8 ring-primary/20 shadow-[0_0_20px_rgba(0,217,255,0.6)]' : 'bg-slate-700'"></div>
+                                <div class="absolute left-[-11px] top-0 size-5 rounded-full border-4 border-background-dark transition-all duration-500 group-hover:scale-125" :class="role === 'qa' ? 'bg-primary ring-8 ring-primary/20 shadow-[0_0_20px_rgba(41, 211, 192,0.6)]' : 'bg-slate-700'"></div>
                                 <div class="mb-2">
                                     <span class="text-[10px] font-black uppercase tracking-[0.2em] px-2 py-1 rounded bg-white/5" :class="role === 'qa' ? 'text-primary' : 'text-slate-500'">Mar 2022 — Presente</span>
                                 </div>
@@ -230,7 +203,7 @@
 
                         <div>
                             <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                                <span class="size-2 w-8 bg-secondary inline-block rounded-full"></span>
+                                <span class="size-2 w-8 bg-primary inline-block rounded-full"></span>
                                 Tech Stack
                             </h2>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -496,21 +469,9 @@
             </section>
         </main>
 
-        <footer class="px-6 md:px-20 lg:px-40 py-12 border-t border-slate-800 bg-background-dark">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div>
-                    <p class="text-white font-black text-xl mb-2">Ferdy Placencia Vásquez</p>
-                    <p class="text-slate-500 text-sm">Automation Engineer & QA Professional</p>
-                </div>
-                <div class="flex gap-6">
-                    <a href="https://github.com/FerDVaz09" target="_blank" class="text-slate-400 hover:text-white transition-colors">GitHub</a>
-                    <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" class="text-slate-400 hover:text-white transition-colors">LinkedIn</a>
-                    <a href="https://wa.me/18096769759" target="_blank" class="text-slate-400 hover:text-white transition-colors">WhatsApp</a>
-                    <a href="/privacidad/" class="text-slate-400 hover:text-white transition-colors">Privacidad</a>
-                </div>
-            </div>
-        </footer>
+        <footer class="fp-footer"><div class="fp-wrap fp-foot"><a href="index.html" class="fp-logo">FERDY<span>.</span></a><span>© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</span><nav><a href="https://github.com/FerDVaz09" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a><a href="privacidad/">Privacidad</a></nav></div></footer>
     </div>
     <script src="chat-widget.js" defer></script>
+<script src="assets/brand.js" defer></script>
 </body>
 </html>

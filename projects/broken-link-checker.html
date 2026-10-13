@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .project-header {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+            background: linear-gradient(135deg, #0A101C 0%, #0D1524 100%);
             padding: 6rem 0 3rem;
         }
         .back-button {
@@ -66,7 +66,7 @@
             background: var(--dark-card);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(41, 211, 192, 0.1);
         }
         .feature-card i {
             font-size: 2rem;
@@ -102,7 +102,7 @@
             max-width: 500px;
             width: 90%;
             border: 2px solid var(--primary-color);
-            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(41, 211, 192, 0.3);
             position: relative;
             animation: modalSlideIn 0.3s ease;
         }
@@ -149,8 +149,8 @@
         .form-group textarea {
             width: 100%;
             padding: 0.8rem;
-            background: rgba(0, 217, 255, 0.05);
-            border: 1px solid rgba(0, 217, 255, 0.2);
+            background: rgba(41, 211, 192, 0.05);
+            border: 1px solid rgba(41, 211, 192, 0.2);
             border-radius: 8px;
             color: var(--text-primary);
             font-family: inherit;
@@ -161,7 +161,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            background: rgba(0, 217, 255, 0.1);
+            background: rgba(41, 211, 192, 0.1);
         }
         .form-group textarea {
             resize: vertical;
@@ -185,10 +185,10 @@
         }
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(41, 211, 192, 0.4);
         }
         .form-success {
-            background: rgba(0, 217, 255, 0.1);
+            background: rgba(41, 211, 192, 0.1);
             border: 1px solid var(--primary-color);
             padding: 1rem;
             border-radius: 10px;
@@ -201,24 +201,11 @@
             display: block;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/brand.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="../index.html" class="logo">
-                <img src="../logo.jpg" alt="FPV Logo" class="logo-img">
-            </a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="../index.html#home">Inicio</a></li>
-                    <li><a href="../index.html#projects">Proyectos</a></li>
-                </ul>
-                <button onclick="openContactModal()" class="btn-nav-cta" style="border: none; cursor: pointer;">
-                    <i class="fas fa-comments"></i> Contáctame Ya
-                </button>
-            </div>
-        </div>
-    </nav>
+    <header class="fp-header"><div class="fp-wrap fp-nav"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><nav class="fp-menu" id="fpMenu"><a href="../index.html">Inicio</a><a href="../about.html">Sobre mí</a><a href="../projects.html" class="on">Proyectos</a><a href="../about.html#experience">Experiencia</a><a href="../qa-documents.html">QA Docs</a><a href="../index.html#contact">Contacto</a></nav><a class="fp-btn fp-btn-p fp-dl" href="../CV_Ferdy_Placencia.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg><span>Descargar CV</span></a><button class="fp-burger" id="fpBurger" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 
     <section class="project-header">
         <div class="container">
@@ -227,7 +214,7 @@
             </a>
             
             <div style="text-align: center; margin: 30px 0;">
-                <a href="https://exterminador-enlaces-rotos.onrender.com" target="_blank" style="display: inline-flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5); transition: all 0.3s;">
+                <a href="https://exterminador-enlaces-rotos.onrender.com" target="_blank" style="display: inline-flex; align-items: center; gap: 15px; background: #29D3C0; color: #06231F; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.3em; box-shadow: 0 10px 30px rgba(41, 211, 192, 0.5); transition: all 0.3s;">
                     <i class="fas fa-rocket"></i> VER DEMO EN VIVO <i class="fas fa-external-link-alt"></i>
                 </a>
                 <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.9em;">⚡ Versión web funcionando 24/7 en Render.com</p>
@@ -317,7 +304,7 @@
 
             <div class="detail-section">
                 <h2>🧪 Flujo de Auditoría QA</h2>
-                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                <div style="background: rgba(41, 211, 192, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
                     <ol style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem; padding-left: 1.5rem;">
                         <li><strong>Ingreso de URL:</strong> El usuario proporciona la URL del sitio a auditar</li>
                         <li><strong>Extracción:</strong> BeautifulSoup parsea el HTML y extrae todos los enlaces</li>
@@ -331,7 +318,7 @@
 
             <div class="detail-section">
                 <h2>💡 Casos de Uso en QA</h2>
-                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+                <div style="background: rgba(41, 211, 192, 0.05); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
                     <ul style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem;">
                         <li><strong>Testing Pre-Producción:</strong> Validar que no hay enlaces rotos antes del lanzamiento</li>
                         <li><strong>Auditorías Periódicas:</strong> Verificación continua de sitios en producción</li>
@@ -372,9 +359,9 @@
             <div class="detail-section">
                 <h2>📊 Output del Reporte</h2>
                 <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
-                    El script genera un archivo <code style="background: rgba(0, 217, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 5px;">reporte_errores.csv</code> con las siguientes columnas:
+                    El script genera un archivo <code style="background: rgba(41, 211, 192, 0.1); padding: 0.2rem 0.5rem; border-radius: 5px;">reporte_errores.csv</code> con las siguientes columnas:
                 </p>
-                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px;">
+                <div style="background: rgba(41, 211, 192, 0.05); padding: 2rem; border-radius: 15px;">
                     <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.1rem; list-style: none; padding-left: 0;">
                         <li>🔹 <strong>URL_Origen:</strong> La página web auditada</li>
                         <li>🔹 <strong>Link_Roto:</strong> El enlace específico que presentó error</li>
@@ -385,7 +372,7 @@
 
             <div class="detail-section">
                 <h2>✨ Ventajas para QA Testers</h2>
-                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
+                <div style="background: rgba(41, 211, 192, 0.05); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--primary-color);">
                     <ul style="color: var(--text-secondary); line-height: 2; font-size: 1.1rem; list-style: none; padding-left: 0;">
                         <li>✅ <strong>Ahorro de Tiempo:</strong> Automatiza lo que tomaría horas hacer manualmente</li>
                         <li>✅ <strong>Precisión Total:</strong> Elimina errores humanos en verificación manual</li>
@@ -402,28 +389,28 @@
                 <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
                     El script utiliza tecnologías de scraping y validación HTTP para realizar auditorías completas de enlaces:
                 </p>
-                <div style="background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 1px solid rgba(0, 217, 255, 0.2); margin-bottom: 2rem;">
+                <div style="background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 1px solid rgba(41, 211, 192, 0.2); margin-bottom: 2rem;">
                     <h3 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-cog"></i> Proceso Interno:</h3>
                     <div style="color: var(--text-secondary); line-height: 2; font-size: 1.05rem;">
                         <p><strong>1. Configuración de Headers:</strong></p>
-                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #00d9ff;">headers = {
+                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #29D3C0;">headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
 }</code></pre>
                         <p style="margin-top: 1rem;">Simula un navegador real para evitar bloqueos anti-bot.</p>
 
                         <p style="margin-top: 1.5rem;"><strong>2. Obtención del HTML:</strong></p>
-                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #00d9ff;">response = requests.get(url_objetivo, headers=headers, timeout=10)
+                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #29D3C0;">response = requests.get(url_objetivo, headers=headers, timeout=10)
 soup = BeautifulSoup(response.content, 'html.parser')</code></pre>
                         <p style="margin-top: 1rem;">Descarga la página y parsea el HTML con BeautifulSoup.</p>
 
                         <p style="margin-top: 1.5rem;"><strong>3. Extracción de Enlaces:</strong></p>
-                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #00d9ff;">enlaces = soup.find_all('a', href=True)
+                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #29D3C0;">enlaces = soup.find_all('a', href=True)
 for enlace in enlaces:
     url_completa = urljoin(url_objetivo, enlace['href'])</code></pre>
                         <p style="margin-top: 1rem;">Encuentra todos los elementos &lt;a&gt; y construye URLs absolutas.</p>
 
                         <p style="margin-top: 1.5rem;"><strong>4. Verificación Individual:</strong></p>
-                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #00d9ff;">try:
+                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #29D3C0;">try:
     r = requests.head(url, timeout=5)
     if r.status_code == 200:
         print(f"{Fore.GREEN}✓ OK - {url}")
@@ -436,7 +423,7 @@ except requests.exceptions.Timeout:
                         <p style="margin-top: 1rem;">Verifica cada enlace y captura errores HTTP, timeouts y problemas SSL.</p>
 
                         <p style="margin-top: 1.5rem;"><strong>5. Generación de Reporte:</strong></p>
-                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #00d9ff;">df = pd.DataFrame({
+                        <pre style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0;"><code style="color: #29D3C0;">df = pd.DataFrame({
     'URL_Origen': [url_objetivo] * len(enlaces_rotos),
     'Link_Roto': enlaces_rotos,
     'Status_Code': status_codes
@@ -453,7 +440,7 @@ df.to_csv('reporte_errores.csv', index=False)</code></pre>
                 <div style="background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 2px solid var(--primary-color); margin-bottom: 2rem;">
                     <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;"><i class="fas fa-download"></i> 1. Instalación de Dependencias</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">Primero, instala las librerías necesarias:</p>
-                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code style="color: #00d9ff; font-size: 1rem;">pip install requests beautifulsoup4 colorama pandas</code></pre>
+                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code style="color: #29D3C0; font-size: 1rem;">pip install requests beautifulsoup4 colorama pandas</code></pre>
                     <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.95rem;">
                         <strong>requests:</strong> Para hacer peticiones HTTP<br>
                         <strong>beautifulsoup4:</strong> Para parsear HTML<br>
@@ -465,48 +452,48 @@ df.to_csv('reporte_errores.csv', index=False)</code></pre>
                 <div style="background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 2px solid var(--primary-color); margin-bottom: 2rem;">
                     <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;"><i class="fas fa-play"></i> 2. Ejecución del Script</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">Ejecuta el script desde la terminal:</p>
-                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code style="color: #00d9ff; font-size: 1rem;">python broken_link_checker.py</code></pre>
+                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code style="color: #29D3C0; font-size: 1rem;">python broken_link_checker.py</code></pre>
                     <p style="color: var(--text-secondary); margin-top: 1rem;">El script te pedirá la URL a auditar:</p>
-                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin-top: 1rem;"><code style="color: #00d9ff; font-size: 1rem;">Ingresa la URL del sitio web a auditar: https://ejemplo.com</code></pre>
+                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin-top: 1rem;"><code style="color: #29D3C0; font-size: 1rem;">Ingresa la URL del sitio web a auditar: https://ejemplo.com</code></pre>
                 </div>
 
                 <div style="background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 2px solid var(--primary-color); margin-bottom: 2rem;">
                     <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;"><i class="fas fa-terminal"></i> 3. Salida en Consola</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">Verás el progreso en tiempo real con colores:</p>
                     <div style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; font-family: monospace; line-height: 1.8;">
-                        <p style="color: #00d9ff;">🔍 Iniciando escaneo en: https://ejemplo.com...</p>
+                        <p style="color: #29D3C0;">🔍 Iniciando escaneo en: https://ejemplo.com...</p>
                         <p style="color: #0f0;">✓ OK (200) - https://ejemplo.com/about</p>
                         <p style="color: #0f0;">✓ OK (200) - https://ejemplo.com/contact</p>
                         <p style="color: #f00;">✗ ERROR (404) - https://ejemplo.com/old-page</p>
                         <p style="color: #f00;">✗ TIMEOUT - https://ejemplo.com/slow-server</p>
                         <p style="color: #0f0;">✓ OK (200) - https://ejemplo.com/services</p>
-                        <p style="color: #00d9ff; margin-top: 1rem;">📊 Escaneo completado: 2 enlaces rotos encontrados</p>
-                        <p style="color: #00d9ff;">💾 Reporte guardado: reporte_errores.csv</p>
+                        <p style="color: #29D3C0; margin-top: 1rem;">📊 Escaneo completado: 2 enlaces rotos encontrados</p>
+                        <p style="color: #29D3C0;">💾 Reporte guardado: reporte_errores.csv</p>
                     </div>
                 </div>
 
                 <div style="background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 2px solid var(--primary-color); margin-bottom: 2rem;">
                     <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;"><i class="fas fa-file-csv"></i> 4. Análisis del Reporte CSV</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">El archivo <code style="background: rgba(0, 217, 255, 0.1); padding: 0.2rem 0.5rem; border-radius: 5px;">reporte_errores.csv</code> contiene:</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">El archivo <code style="background: rgba(41, 211, 192, 0.1); padding: 0.2rem 0.5rem; border-radius: 5px;">reporte_errores.csv</code> contiene:</p>
                     <div style="overflow-x: auto;">
                         <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                             <thead>
-                                <tr style="background: rgba(0, 217, 255, 0.2);">
-                                    <th style="padding: 1rem; text-align: left; border: 1px solid rgba(0, 217, 255, 0.3);">URL_Origen</th>
-                                    <th style="padding: 1rem; text-align: left; border: 1px solid rgba(0, 217, 255, 0.3);">Link_Roto</th>
-                                    <th style="padding: 1rem; text-align: left; border: 1px solid rgba(0, 217, 255, 0.3);">Status_Code</th>
+                                <tr style="background: rgba(41, 211, 192, 0.2);">
+                                    <th style="padding: 1rem; text-align: left; border: 1px solid rgba(41, 211, 192, 0.3);">URL_Origen</th>
+                                    <th style="padding: 1rem; text-align: left; border: 1px solid rgba(41, 211, 192, 0.3);">Link_Roto</th>
+                                    <th style="padding: 1rem; text-align: left; border: 1px solid rgba(41, 211, 192, 0.3);">Status_Code</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td style="padding: 1rem; border: 1px solid rgba(0, 217, 255, 0.1); color: var(--text-secondary);">https://ejemplo.com</td>
-                                    <td style="padding: 1rem; border: 1px solid rgba(0, 217, 255, 0.1); color: var(--text-secondary);">https://ejemplo.com/old-page</td>
-                                    <td style="padding: 1rem; border: 1px solid rgba(0, 217, 255, 0.1); color: #f00; font-weight: bold;">404</td>
+                                    <td style="padding: 1rem; border: 1px solid rgba(41, 211, 192, 0.1); color: var(--text-secondary);">https://ejemplo.com</td>
+                                    <td style="padding: 1rem; border: 1px solid rgba(41, 211, 192, 0.1); color: var(--text-secondary);">https://ejemplo.com/old-page</td>
+                                    <td style="padding: 1rem; border: 1px solid rgba(41, 211, 192, 0.1); color: #f00; font-weight: bold;">404</td>
                                 </tr>
-                                <tr style="background: rgba(0, 217, 255, 0.05);">
-                                    <td style="padding: 1rem; border: 1px solid rgba(0, 217, 255, 0.1); color: var(--text-secondary);">https://ejemplo.com</td>
-                                    <td style="padding: 1rem; border: 1px solid rgba(0, 217, 255, 0.1); color: var(--text-secondary);">https://ejemplo.com/slow-server</td>
-                                    <td style="padding: 1rem; border: 1px solid rgba(0, 217, 255, 0.1); color: #f00; font-weight: bold;">TIMEOUT</td>
+                                <tr style="background: rgba(41, 211, 192, 0.05);">
+                                    <td style="padding: 1rem; border: 1px solid rgba(41, 211, 192, 0.1); color: var(--text-secondary);">https://ejemplo.com</td>
+                                    <td style="padding: 1rem; border: 1px solid rgba(41, 211, 192, 0.1); color: var(--text-secondary);">https://ejemplo.com/slow-server</td>
+                                    <td style="padding: 1rem; border: 1px solid rgba(41, 211, 192, 0.1); color: #f00; font-weight: bold;">TIMEOUT</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -517,7 +504,7 @@ df.to_csv('reporte_errores.csv', index=False)</code></pre>
                 <div style="background: var(--dark-card); padding: 2rem; border-radius: 15px; border: 2px solid var(--primary-color);">
                     <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;"><i class="fab fa-github"></i> 5. Repositorio y Control de Versiones</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">Para subir el proyecto a GitHub:</p>
-                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto; line-height: 1.8;"><code style="color: #00d9ff; font-size: 1rem;"># Inicializa el repositorio Git
+                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto; line-height: 1.8;"><code style="color: #29D3C0; font-size: 1rem;"># Inicializa el repositorio Git
 git init
 
 # Añade todos los archivos
@@ -532,7 +519,7 @@ git remote add origin https://github.com/FerDVaz09/broken-link-checker.git
 # Sube los cambios
 git push -u origin main</code></pre>
                     <p style="color: var(--text-secondary); margin-top: 1.5rem;"><strong>Estructura de archivos recomendada:</strong></p>
-                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin-top: 1rem;"><code style="color: #00d9ff; font-size: 1rem;">broken-link-checker/
+                    <pre style="background: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin-top: 1rem;"><code style="color: #29D3C0; font-size: 1rem;">broken-link-checker/
 ├── broken_link_checker.py
 ├── requirements.txt
 ├── README.md
@@ -543,7 +530,7 @@ git push -u origin main</code></pre>
 
             <div class="detail-section">
                 <h2>🧪 Sitios de Prueba Recomendados</h2>
-                <div style="background: rgba(0, 217, 255, 0.05); padding: 2rem; border-radius: 15px;">
+                <div style="background: rgba(41, 211, 192, 0.05); padding: 2rem; border-radius: 15px;">
                     <ul style="color: var(--text-secondary); line-height: 2.2; font-size: 1.1rem;">
                         <li><strong>🔗 http://the-internet.herokuapp.com/status_codes</strong> - Sitio diseñado para testing con errores intencionales</li>
                         <li><strong>🔗 https://httpstat.us/</strong> - Simula diferentes códigos de estado HTTP para pruebas</li>
@@ -609,11 +596,7 @@ git push -u origin main</code></pre>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Ferdy Placencia Vásquez. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <footer class="fp-footer"><div class="fp-wrap fp-foot"><a href="../index.html" class="fp-logo">FERDY<span>.</span></a><span>© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</span><nav><a href="https://github.com/FerDVaz09" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a><a href="../privacidad/">Privacidad</a></nav></div></footer>
 
     <script>
         function openContactModal() {
@@ -647,5 +630,6 @@ git push -u origin main</code></pre>
             }
         });
     </script>
+<script src="../assets/brand.js" defer></script>
 </body>
 </html>
