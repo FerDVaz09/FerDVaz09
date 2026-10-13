@@ -1,304 +1,439 @@
-﻿<!DOCTYPE html>
-<html class="dark" lang="es">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Ferdy Placencia | QA & IA Automation Engineer</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              colors: {
-                "primary": "#00d9ff",
-                "secondary": "#7b2cbf",
-                "background-dark": "#0a0a0c",
-                "surface-dark": "#16161e",
-              },
-              fontFamily: {
-                "display": ["Manrope"]
-              },
-              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
-            },
-          },
-        }
-    </script>
-    <style type="text/tailwindcss">
-        :root {
-            --primary: #00f2ff;
-            --secondary: #9d00ff;
-            --bg-dark: #050505;
-        }
-        @layer base {
-            .gradient-text {
-                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-secondary;
-            }
-            .glass-panel {
-                @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
-            }
-            .glow-pulse {
-                animation: pulse-glow 4s ease-in-out infinite;
-            }
-        }
-        @keyframes pulse-glow {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3)); }
-            50% { filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.6)); }
-        }
-        .floating-blob {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.15;
-            z-index: -1;
-            animation: float 20s infinite alternate linear;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(100px, 50px) rotate(360deg); }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferdy Placencia | QA, Automatización e IA</title>
+<meta name="description" content="Ferdy Placencia Vásquez — QA Engineer y AI Automation Engineer. Más de 5 años en QA, con enfoque en fintech.">
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A101C; --bg2:#0D1524; --card:#101A2B; --card2:#132036; --line:#1E2C44; --line2:#26385A;
+  --teal:#29D3C0; --teal-d:#1BA897; --teal-soft:rgba(41,211,192,.12);
+  --lilac:#B5A3F4; --lilac-soft:rgba(181,163,244,.14);
+  --white:#F3F5F8; --text:#C9D2DF; --muted:#8B98AD; --slate:#66758D;
+  --green:#34D399; --red:#F87171; --amber:#FFB547;
+  --r:14px;
+  --font:'Inter',system-ui,sans-serif; --display:'Outfit','Inter',sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(900px 500px at 75% 10%,rgba(41,211,192,.10),transparent 60%),
+             radial-gradient(700px 400px at 95% 25%,rgba(181,163,244,.08),transparent 60%),
+             linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px) 0 0/40px 40px,
+             linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px) 0 0/40px 40px}
+a{color:inherit;text-decoration:none}
+img{display:block}
+.wrap{max-width:1440px;margin:0 auto;padding:0 32px}
+.teal{color:var(--teal)}
+svg.i{width:20px;height:20px;flex:none}
+
+/* NAV */
+header{position:sticky;top:0;z-index:50;background:rgba(10,16,28,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:24px;height:72px}
+.logo{font-family:var(--display);font-weight:800;font-size:28px;color:var(--white);letter-spacing:-.5px}
+.logo span{color:var(--teal)}
+.menu{display:flex;gap:6px;margin:0 auto}
+.menu a{padding:24px 14px;font-size:15px;color:var(--text);border-bottom:2px solid transparent;transition:.2s}
+.menu a:hover,.menu a.on{color:var(--teal);border-color:var(--teal)}
+.lang{display:flex;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--muted);font:600 14px var(--font);padding:9px 14px;cursor:pointer}
+.lang button.on{background:var(--teal-soft);color:var(--teal)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15px var(--font);border-radius:10px;padding:12px 20px;transition:.2s;cursor:pointer;border:1.5px solid transparent;white-space:nowrap}
+.btn-p{background:var(--teal);color:#06231F}
+.btn-p:hover{background:#3EE6D3;box-shadow:0 8px 30px rgba(41,211,192,.3)}
+.btn-o{border-color:var(--teal);color:var(--white)}
+.btn-o:hover{background:var(--teal-soft)}
+.burger{display:none;background:none;border:1px solid var(--line2);border-radius:10px;color:var(--white);padding:8px;cursor:pointer}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:.85fr 1.35fr;gap:36px;padding:56px 0 36px;align-items:center}
+.eyebrow{font:600 13px var(--font);letter-spacing:4px;color:var(--teal);text-transform:uppercase;margin-bottom:14px}
+h1{font-family:var(--display);font-weight:700;color:var(--white);font-size:clamp(34px,3.4vw,56px);line-height:1.04;letter-spacing:-1.5px;margin-bottom:22px}
+h1 .ln{white-space:nowrap}
+.lead{font-size:18px;color:var(--text);max-width:520px;margin-bottom:28px}
+.lead b{color:var(--white);font-weight:500;display:block}
+.ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.ctas .btn{padding:15px 28px;font-size:17px;min-width:200px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text);border:1px solid var(--line2);background:rgba(16,26,43,.6);border-radius:8px;padding:7px 11px}
+.chip svg{width:17px;height:17px;color:var(--muted)}
+
+.visual{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;padding-top:24px}
+.panel{background:linear-gradient(180deg,#0F1828,#0B1321);border:1px solid var(--line2);border-radius:var(--r);box-shadow:0 20px 60px rgba(0,0,0,.45);overflow:hidden;position:relative}
+.dots{display:flex;gap:6px;padding:12px 14px 22px;border-bottom:1px solid var(--line)}
+.dots i{width:10px;height:10px;border-radius:50%;background:#F87171}.dots i:nth-child(2){background:#FBBF24}.dots i:nth-child(3){background:#34D399}
+.sel{display:grid;grid-template-columns:112px minmax(0,1fr);font-size:12px}
+.tree{min-width:0;overflow:hidden;border-right:1px solid var(--line);padding:10px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tree div{padding:4px 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tree .root{color:var(--white);margin-bottom:4px}
+.tree .py{padding-left:12px;color:var(--text)}
+.tree .py::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;background:linear-gradient(135deg,#3776AB 50%,#FFD43B 50%);margin-right:6px}
+.res{padding:10px 12px;min-width:0}
+.res-h{display:flex;align-items:center;gap:10px;padding:8px 0 10px;border-bottom:1px solid var(--line);font-size:13px}
+.res-h .ok{color:var(--green);font-weight:600}.res-h .fail{color:var(--red)}.res-h .t{margin-left:auto;color:var(--white)}
+.test{display:flex;align-items:center;gap:8px;padding:5px 0;font-family:var(--mono);font-size:10.5px;color:var(--text);min-width:0}
+.test .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.test em{font-style:normal;margin-left:auto;color:var(--muted)}
+.ck{width:14px;height:14px;border-radius:50%;background:var(--green);display:grid;place-items:center;flex:none}
+.ck::after{content:"";width:5px;height:3px;border-left:1.6px solid #06231F;border-bottom:1.6px solid #06231F;transform:rotate(-45deg) translate(1px,-1px)}
+.term{border-top:1px solid var(--line);padding:10px 12px;font-family:var(--mono);font-size:10.5px;color:var(--muted);background:rgba(0,0,0,.2)}
+.term .g{color:var(--green)}.term .c{color:var(--teal)}
+.badge-f{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--white);background:#0F1A2E;border:1px solid var(--teal);border-radius:10px;padding:9px 13px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.badge-f .bx{width:28px;height:28px;border-radius:7px;background:var(--teal);display:grid;place-items:center;color:#06231F}
+.badge-f.lil{border-color:var(--lilac);background:#1A1838}
+.badge-f.lil .bx{background:var(--lilac);color:#1A1838}
+.b1{top:0;left:30%}.b2{top:0;right:-4px}
+
+.n8n{padding:40px 14px 16px}
+.n8n-h{display:flex;align-items:center;gap:10px;font:600 18px var(--display);color:var(--white);margin-bottom:16px}
+.flow{display:flex;align-items:flex-start;justify-content:space-between;gap:4px;margin-bottom:16px}
+.node{flex:1;text-align:center;font-size:10.5px;color:var(--text);line-height:1.3;position:relative}
+.node .nb{width:44px;height:44px;margin:0 auto 6px;border-radius:9px;border:1.5px solid var(--teal);background:var(--teal-soft);display:grid;place-items:center}
+.node .nb.l{border-color:var(--lilac);background:var(--lilac-soft)}
+.node:not(:last-child)::after{content:"";position:absolute;top:22px;left:calc(50% + 24px);right:calc(-50% + 24px);border-top:1.5px dashed var(--slate)}
+.chat{border:1px solid var(--line2);border-radius:12px;background:#0B1422;overflow:hidden}
+.chat-h{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line);font-size:13px;color:var(--white);font-weight:600}
+.chat-h small{display:block;color:var(--green);font-weight:400;font-size:11px}
+.av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#1E88E5,#29D3C0);display:grid;place-items:center;color:#fff;font:700 12px var(--display);flex:none}
+.msgs{padding:12px;display:flex;flex-direction:column;gap:8px;font-size:12px}
+.m-out{align-self:flex-end;background:#BDF3E9;color:#073B33;border-radius:10px 10px 2px 10px;padding:7px 10px;max-width:80%}
+.m-in{align-self:flex-start;background:#1A263B;color:var(--white);border-radius:10px 10px 10px 2px;padding:8px 11px;max-width:88%}
+.m-in ul{padding-left:16px;margin:3px 0}
+.tm{font-size:9.5px;opacity:.6;margin-left:8px}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:12px 0 44px}
+.stat{display:flex;align-items:center;gap:20px;background:rgba(16,26,43,.75);border:1px solid var(--line2);border-radius:var(--r);padding:22px 24px}
+.ico{width:60px;height:60px;border-radius:50%;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;flex:none}
+.ico svg{width:28px;height:28px}
+.stat b{display:block;font:700 28px var(--display);color:var(--white);line-height:1.1;margin-bottom:4px}
+.stat span{font-size:14.5px;color:var(--text);line-height:1.35;display:block}
+
+/* SECTIONS */
+.sec-h{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:20px}
+.sec-h h2{font:700 28px var(--display);color:var(--white);display:flex;align-items:center;gap:14px}
+.sec-h h2::before{content:"";width:28px;height:3px;background:var(--teal);border-radius:2px}
+.sec-h p{font-size:14px;color:var(--muted)}
+.sec-h .more{margin-left:auto;color:var(--teal);font-size:14px;display:flex;gap:6px;align-items:center}
+
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:44px}
+.proj{display:grid;grid-template-columns:42% 1fr;gap:18px;background:rgba(16,26,43,.75);border:1px solid var(--line2);border-radius:var(--r);padding:14px;transition:.25s}
+.proj:hover{border-color:var(--teal);transform:translateY(-3px)}
+.proj.ai:hover{border-color:var(--lilac)}
+.thumb{border-radius:10px;overflow:hidden;background:#0B1422;border:1px solid var(--line);min-height:170px;display:flex;flex-direction:column}
+.pbody{display:flex;flex-direction:column}
+.tag{align-self:flex-start;font:700 10.5px var(--font);letter-spacing:.8px;text-transform:uppercase;border-radius:6px;padding:4px 9px;margin-bottom:10px;background:var(--teal);color:#06231F}
+.tag.l{background:var(--lilac);color:#1A1838}
+.proj h3{font:600 19px var(--display);color:var(--white);line-height:1.25;margin-bottom:8px}
+.proj p{font-size:13.5px;color:var(--text);margin-bottom:14px}
+.pfoot{margin-top:auto;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pill{font-size:11px;color:var(--text);border:1px solid var(--line2);border-radius:6px;padding:3px 8px}
+.go{margin-left:auto;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--teal);color:var(--teal);display:grid;place-items:center;flex:none}
+.proj.ai .go{border-color:var(--lilac);color:var(--lilac)}
+/* thumbs */
+.rep{background:#F5F7FA;color:#1F2937;flex:1;padding:10px;font-size:9px}
+.rep h5{font-size:10px;margin-bottom:8px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:8px}
+.kpis div{background:#fff;border:1px solid #E5E7EB;border-radius:5px;text-align:center;padding:5px 2px;font-size:7.5px;color:#6B7280}
+.kpis b{display:block;font-size:13px;color:#059669}.kpis div:nth-child(2) b{color:#DC2626}.kpis div:nth-child(3) b{color:#111827;font-size:11px}
+.rep .row{display:flex;align-items:center;gap:5px;padding:3px 0;border-top:1px solid #E5E7EB;font-family:var(--mono);font-size:7.5px}
+.rep .row .ck{width:9px;height:9px}.rep .row .ck::after{width:3px;height:2px}
+.rep .row em{margin-left:auto;font-style:normal;color:#059669}
+.phone{flex:1;display:flex;flex-direction:column;font-size:9.5px}
+.phone .chat-h{font-size:10px;padding:8px}
+.phone .av{width:22px;height:22px;font-size:9px}
+.phone .msgs{font-size:9.5px;padding:9px;flex:1;background:#0A111D}
+.app{flex:1;display:grid;grid-template-columns:34% 1fr;background:#F5F7FA;color:#1F2937;font-size:8px}
+.app .sb{background:#fff;border-right:1px solid #E5E7EB;padding:8px 6px}
+.app .sb b{color:#2563EB;font-size:9px;display:block;margin-bottom:8px}
+.app .sb div{padding:3px 0;color:#6B7280}
+.app .fm{padding:10px 8px}
+.app .fm b{display:block;font-size:9px;margin-bottom:7px}
+.app .in{border:1px solid #D1D5DB;border-radius:4px;padding:4px 5px;margin-bottom:5px;color:#9CA3AF;background:#fff}
+.app .cta{background:#2563EB;color:#fff;border-radius:4px;text-align:center;padding:5px;margin-top:4px}
+.call{position:relative;display:grid;grid-template-columns:42% 1fr;gap:18px}
+
+/* TOOLS */
+.tools-row{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;margin-bottom:28px}
+.tools-row .sec-h{margin:0;flex-direction:column;gap:6px}
+.tools-row .sec-h h2{font-size:23px;line-height:1.2}
+.tools-row .sec-h h2::before{display:none}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px}
+.tool{background:rgba(16,26,43,.75);border:1px solid var(--line2);border-radius:10px;padding:12px 4px 8px;text-align:center;font-size:11.5px;color:var(--text);transition:.2s}
+.tool:hover{border-color:var(--teal);color:var(--white)}
+.tool svg,.tool .fb{width:28px;height:28px;margin:0 auto 7px;display:block}
+.tool span:last-child{display:block}
+.tool .fb{display:grid;place-items:center;border-radius:7px;font:800 10px var(--display);background:#188BF6;color:#fff}
+
+/* CONTACT */
+.contact{display:flex;align-items:center;gap:24px;flex-wrap:wrap;background:linear-gradient(90deg,rgba(41,211,192,.08),rgba(16,26,43,.75) 40%);border:1px solid var(--line2);border-radius:var(--r);padding:24px 28px;margin-bottom:24px}
+.contact .big{width:60px;height:60px;border-radius:50%;border:2px solid var(--teal);color:var(--teal);display:grid;place-items:center;flex:none}
+.contact .txt{flex:1 1 380px;min-width:0}
+.contact h3{font:700 22px var(--display);color:var(--white);margin-bottom:2px}
+.contact p{font-size:14.5px;color:var(--text)}
+.contact .acts{margin-left:auto;display:flex;align-items:center;gap:12px}
+.contact .acts .btn{padding:14px 32px}
+.sep{width:1px;height:40px;background:var(--line2);margin:0 10px}
+.soc{width:46px;height:46px;border-radius:10px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--white);transition:.2s}
+.soc:hover{border-color:var(--teal);color:var(--teal)}
+footer{text-align:center;font-size:13px;color:var(--muted);padding:6px 0 28px}
+
+/* RESPONSIVE */
+@media (max-width:1200px){
+  .hero{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .projects{grid-template-columns:1fr}
+  .proj{grid-template-columns:260px 1fr}
+}
+@media (max-width:980px){
+  .menu{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--bg2);border-bottom:1px solid var(--line);padding:8px 16px}
+  .menu.open{display:flex}
+  .menu a{padding:12px 6px;border:0}
+  .burger{display:block}
+  .nav .dl{display:none}
+  .nav{gap:12px}
+  .lang{margin-left:auto}
+  .tools-row{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .wrap{padding:0 16px}
+  .visual{grid-template-columns:1fr}
+  .b1{left:12px}.b2{display:none}
+  .stats{grid-template-columns:1fr}
+  .proj{grid-template-columns:1fr}
+  .ctas .btn{flex:1;min-width:0}
+  .contact .acts{margin-left:0;flex-wrap:wrap}
+  .sep{display:none}
+  .sec-h .more{margin-left:0}
+}
+</style>
 </head>
-<body class="bg-background-dark font-display text-slate-100 antialiased" 
-      x-data="{ 
-        role: localStorage.getItem('ferdy_role') || 'qa',
-        setRole(newRole) {
-            this.role = newRole;
-            localStorage.setItem('ferdy_role', newRole);
-        }
-      }"
-      x-init="$watch('role', value => localStorage.setItem('ferdy_role', value))">
-    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-        <!-- High-Fi Background Blobs -->
-        <div class="fixed inset-0 pointer-events-none -z-20 overflow-hidden bg-[#050505]">
-            <div class="floating-blob bg-primary -top-48 -left-48" :class="role === 'qa' ? 'opacity-20' : 'opacity-5'"></div>
-            <div class="floating-blob bg-secondary -bottom-48 -right-48" :class="role === 'ia' ? 'opacity-20' : 'opacity-5'"></div>
-            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] contrast-150 brightness-150"></div>
-        </div>
+<body id="top">
 
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-white/5 px-6 md:px-20 lg:px-40 py-4 bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
-            <div class="flex items-center gap-4">
-                <div class="size-10 flex items-center justify-center bg-primary/10 rounded-xl">
-                    <span class="material-symbols-outlined text-primary font-bold">verified</span>
-                </div>
-                <div>
-                    <h2 class="text-white text-lg font-bold leading-tight tracking-tight">Ferdy Placencia V&aacute;squez</h2>
-                    <p class="text-[10px] uppercase tracking-widest text-primary font-bold" x-text="role === 'qa' ? 'QA Engineering' : 'IA Specialist'"></p>
-                </div>
-            </div>
-            
-            <nav class="hidden md:flex items-center gap-9">
-                <a class="text-primary text-sm font-bold" href="index.html">Home</a>
-                <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="about.html">About</a>
-                <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="projects.html">Projects</a>
-                <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors" href="qa-documents.html">QA Docs</a>
-            </nav>
-
-            <div class="flex items-center gap-4">
-                <div class="flex bg-surface-dark p-1 rounded-full border border-white/5">
-                    <button @click="role = 'qa'" :class="role === 'qa' ? 'bg-primary text-black' : 'text-slate-400 hover:text-white'" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all">QA</button>
-                    <button @click="role = 'ia'" :class="role === 'ia' ? 'bg-secondary text-white' : 'text-slate-400 hover:text-white'" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all">IA</button>
-                </div>
-            </div>
-        </header>
-
-        <main class="flex-1">
-            <!-- Hero -->
-            <section class="relative px-6 md:px-20 lg:px-40 py-24 lg:py-40 overflow-hidden">
-                <div class="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-[10px] font-black tracking-widest mb-8 animate-fade-in">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                        </span>
-                        5+ YEARS OF TRACK RECORD
-                    </div>
-                    
-                    <h1 class="text-[clamp(3.5rem,15vw,10rem)] font-black leading-[0.85] tracking-[-0.05em] mb-12">
-                        <template x-if="role === 'qa'">
-                            <span class="block text-white">QA <span class="gradient-text">AUTOMATION</span></span>
-                        </template>
-                        <template x-if="role === 'ia'">
-                            <span class="block text-white">AI <span class="gradient-text">SYSTEMS</span></span>
-                        </template>
-                        <span class="block text-white/20">ENGINEER.</span>
-                    </h1>
-                    
-                    <p class="text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed mb-14 font-medium">
-                        <template x-if="role === 'qa'">
-                            <span class="block font-bold text-white mb-2" x-text="'QA Automation Engineer | Cypress · Selenium · API Testing'"></span>
-                            <span>5+ years reducing regression cycles from 8h to 15min. Expert in Cypress, Selenium, Postman, and CI/CD pipelines with 99.9% reliability.</span>
-                        </template>
-                        <template x-if="role === 'ia'">
-                            <span class="block font-bold text-white mb-2" x-text="'AI Systems Builder | n8n · GPT-4 · Autonomous Agents'"></span>
-                            <span>Building intelligent automation with n8n orchestration, multi-agent systems, and voice AI. 96% operational efficiency gains.</span>
-                        </template>
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a x-show="role === 'qa'" href="projects/qa-portfolio.html" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-10 text-base font-black text-black hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.4)]">
-                            Ver QA Manual Portfolio
-                            <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
-                        </a>
-                        <a x-show="role === 'ia'" href="projects.html" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-secondary px-10 text-base font-black text-white hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(123,44,191,0.4)]">
-                            Explore IA Projects
-                            <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
-                        </a>
-                        <a href="CV_Ferdy_Placencia.pdf" download class="group flex h-14 items-center justify-center gap-2 rounded-2xl border border-secondary/30 bg-secondary/5 px-10 text-base font-bold text-white hover:bg-secondary/10 transition-all">
-                            <span class="material-symbols-outlined text-lg">download</span>
-                            Download CV
-                        </a>
-                        <a href="#contact" class="flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-10 text-base font-bold text-white hover:bg-white/10 transition-all">
-                            Let's Connect
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Stats -->
-            <section class="px-6 md:px-20 lg:px-40 py-12">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <div class="glass p-8 rounded-[2rem] text-center group hover:border-primary/30 transition-all">
-                        <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Experience</p>
-                        <p class="text-5xl font-black text-white mb-2 group-hover:text-primary transition-colors"><span data-count="5" data-suffix="+">5+</span> Years</p>
-                        <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'QA & Automation' : 'AI Systems'"></p>
-                    </div>
-                    <div class="glass p-8 rounded-[2rem] text-center group hover:border-secondary/30 transition-all">
-                        <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Efficiency</p>
-                        <p class="text-5xl font-black text-white mb-2 group-hover:text-secondary transition-colors"><span data-count="96" data-suffix="%">96%</span></p>
-                        <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'Regression Reduction (8h→15min)' : 'Operational Savings'"></p>
-                    </div>
-                    <div class="glass p-8 rounded-[2rem] text-center group hover:border-primary/30 transition-all">
-                        <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mb-2">Reliability</p>
-                        <p class="text-5xl font-black text-white mb-2 group-hover:text-primary transition-colors"><span data-count="99.9" data-suffix="%">99.9%</span></p>
-                        <p class="text-xs text-slate-500 font-bold" x-text="role === 'qa' ? 'Production Stability' : 'Architecture Stability'"></p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- QA Manual Showcase -->
-            <section x-show="role === 'qa'" class="px-6 md:px-20 lg:px-40 py-20">
-                <div class="max-w-6xl mx-auto glass-panel rounded-2xl p-8 md:p-12 border-primary/20">
-                    <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
-                        <div>
-                            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-primary mb-4">Manual QA Evidence</p>
-                            <h2 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">
-                                QA manual documentado para reclutadores
-                            </h2>
-                            <p class="text-slate-400 text-base md:text-lg leading-relaxed mb-8">
-                                Dossier con historias de usuario, matriz de trazabilidad, casos de prueba manuales,
-                                bugs reportados e impacto de negocio sobre autenticación, APIs, correo, sincronización
-                                e insights con IA.
-                            </p>
-                            <div class="flex flex-wrap gap-3 mb-8">
-                                <span class="rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-bold text-primary">35 test cases</span>
-                                <span class="rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-bold text-primary">14 bugs</span>
-                                <span class="rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-bold text-primary">HU → CP → BUG</span>
-                                <span class="rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-bold text-primary">UAT + Regression</span>
-                            </div>
-                            <a href="projects/qa-portfolio.html" class="inline-flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-8 text-base font-black text-black hover:scale-[1.03] active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.35)]">
-                                Ver QA Manual Portfolio
-                                <span class="material-symbols-outlined text-xl">arrow_right_alt</span>
-                            </a>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">fact_check</span>
-                                <p class="text-white font-black mb-2">Test design</p>
-                                <p class="text-slate-500 text-sm leading-relaxed">Clases de equivalencia, límites, volumen e integración.</p>
-                            </div>
-                            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">account_tree</span>
-                                <p class="text-white font-black mb-2">Trazabilidad</p>
-                                <p class="text-slate-500 text-sm leading-relaxed">Historias conectadas con casos, resultados y defectos.</p>
-                            </div>
-                            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">bug_report</span>
-                                <p class="text-white font-black mb-2">Bug reports</p>
-                                <p class="text-slate-500 text-sm leading-relaxed">Pasos reproducibles, severidad, prioridad e impacto.</p>
-                            </div>
-                            <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">insights</span>
-                                <p class="text-white font-black mb-2">Riesgo</p>
-                                <p class="text-slate-500 text-sm leading-relaxed">Priorización sobre flujos críticos de producto.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="px-6 md:px-20 lg:px-40 py-32 bg-surface-dark/30">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tight">Let's <span class="gradient-text">Level Up</span></h2>
-                    <p class="text-slate-400 text-lg mb-12 max-w-2xl mx-auto">Ready to automate success? Let's build the future together. Get in touch below.</p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 flex-wrap">
-                        <a href="mailto:ferdyv59@gmail.com" class="group flex h-14 items-center justify-center gap-3 rounded-2xl bg-primary px-10 text-base font-black text-black hover:scale-[1.05] active:scale-95 transition-all shadow-[0_0_30px_rgba(0,217,255,0.4)]">
-                            <span class="material-symbols-outlined text-xl">mail</span>
-                            ferdyv59@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" class="group flex h-14 items-center justify-center gap-3 rounded-2xl border border-primary/30 bg-primary/5 px-10 text-base font-bold text-white hover:bg-primary/10 transition-all">
-                            <span class="material-symbols-outlined text-lg">work</span>
-                            LinkedIn
-                        </a>
-                        <a href="https://wa.me/18096769759" target="_blank" class="group flex h-14 items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-10 text-base font-bold text-white hover:bg-white/10 transition-all">
-                            <span class="material-symbols-outlined text-lg">chat</span>
-                            WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="px-6 md:px-20 lg:px-40 py-16 border-t border-white/5 bg-background-dark">
-            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-                <div class="flex flex-col items-center md:items-start gap-4">
-                    <div class="flex items-center gap-3">
-                        <div class="size-8 bg-primary/10 rounded-lg flex items-center justify-center">
-                            <span class="material-symbols-outlined text-sm text-primary">auto_fix_high</span>
-                        </div>
-                        <p class="text-lg font-bold text-white tracking-tight">Ferdy Placencia V&aacute;squez</p>
-                    </div>
-                    <p class="text-xs text-slate-600 max-w-xs text-center md:text-left leading-relaxed">© 2026 Autonomous Engineering. All rights reserved. Santo Domingo, Dominican Republic.</p>
-                </div>
-                <div class="flex flex-wrap justify-center gap-8">
-                    <a class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-primary transition-all" href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank">LinkedIn</a>
-                    <a class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-primary transition-all" href="https://github.com/FerDVaz09" target="_blank">GitHub</a>
-                    <a class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-primary transition-all" href="/privacidad/">Privacidad</a>
-                </div>
-            </div>
-        </footer>
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">FERDY<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#top" class="on" data-en="Home">Inicio</a>
+      <a href="about.html" data-en="About">Sobre mí</a>
+      <a href="#projects" data-en="Projects">Proyectos</a>
+      <a href="about.html" data-en="Experience">Experiencia</a>
+      <a href="#tools" data-en="Tools">Herramientas</a>
+      <a href="about.html" data-en="Certifications">Certificaciones</a>
+      <a href="#contact" data-en="Contact">Contacto</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma">
+      <button id="es" class="on">ES</button><button id="en">EN</button>
     </div>
-    <script>
-        // Animated counters on scroll
-        const counters = document.querySelectorAll('[data-count]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const target = parseFloat(el.dataset.count);
-                const suffix = el.dataset.suffix || '';
-                const isDecimal = !Number.isInteger(target);
-                const duration = 1800;
-                const start = performance.now();
-                const animate = (now) => {
-                    const progress = Math.min((now - start) / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const current = target * eased;
-                    el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
-                    if (progress < 1) requestAnimationFrame(animate);
-                };
-                requestAnimationFrame(animate);
-                observer.unobserve(el);
-            });
-        }, { threshold: 0.6 });
-        counters.forEach(c => observer.observe(c));
-    </script>
-    <script src="chat-widget.js" defer></script>
+    <a class="btn btn-p dl" href="CV_Ferdy_Placencia.pdf" download>
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>
+      <span data-en="Download CV">Descargar CV</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menú">
+      <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Ferdy Placencia Vásquez</div>
+      <h1 data-en='<span class="ln">QA, Automation</span><br>&amp; <span class="teal">Artificial Intelligence.</span>'><span class="ln">QA, Automatización</span><br>e <span class="teal">Inteligencia Artificial.</span></h1>
+      <p class="lead" data-en="<b>5+ years in QA, with a focus on fintech.</b>I design and run tests, build automations and create AI agents that improve processes, cut turnaround times and deliver more reliable digital experiences."><b>Más de 5 años en QA, con enfoque en fintech.</b>Diseño y ejecuto pruebas, desarrollo automatizaciones y construyo agentes de IA que mejoran procesos, reducen tiempos y generan experiencias digitales más confiables.</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="CV_Ferdy_Placencia.pdf" download>
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>
+          <span data-en="Download CV">Descargar CV</span>
+        </a>
+        <a class="btn btn-o" href="https://github.com/FerDVaz09" target="_blank" rel="noopener">
+          <svg class="i" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          <span data-en="View GitHub">Ver GitHub</span>
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+        </a>
+      </div>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span data-en="Manual &amp; Automated QA">QA Manual y Automatización</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="12" cy="12" r="3"/></svg><span data-en="AI Agents &amp; n8n">Agentes de IA y n8n</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg><span data-en="APIs &amp; Microservices">APIs y Microservicios</span></span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 20v-6M12 20V8M18 20V4"/></svg>Fintech</span>
+      </div>
+    </div>
+
+    <div class="visual" aria-hidden="true">
+      <div class="badge-f b1"><span class="bx"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m5 12 5 5 9-10"/></svg></span><span data-en="Selenium E2E Suite<br>(Python)">Suite E2E con Selenium<br>(Python)</span></div>
+      <div class="badge-f lil b2"><span class="bx"><svg class="i" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></span><span data-en="AI support agent<br>in production">Agente de soporte con IA<br>en producción</span></div>
+
+      <div class="panel">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <div class="sel">
+          <div class="tree">
+            <div class="root">selenium-e2e-suite</div>
+            <div>› tests</div><div>› pages</div><div>› utils</div><div>› data</div><div>› reports</div>
+            <div class="py">login_test.py</div><div class="py">transfer_test.py</div><div class="py">payments_test.py</div><div class="py">conftest.py</div>
+          </div>
+          <div class="res">
+            <div class="res-h"><span class="ck"></span><span class="ok">12 passed</span><span class="fail">0 failed</span><span class="t">2m 34s</span></div>
+            <div class="test"><span class="ck"></span><span class="nm">test_login_valid_credentials</span><em>2.1s</em></div>
+            <div class="test"><span class="ck"></span><span class="nm">test_navigate_to_transfers</span><em>3.4s</em></div>
+            <div class="test"><span class="ck"></span><span class="nm">test_transfer_third_party</span><em>5.2s</em></div>
+            <div class="test"><span class="ck"></span><span class="nm">test_payment_tax</span><em>4.1s</em></div>
+            <div class="test"><span class="ck"></span><span class="nm">test_invalid_amount</span><em>2.8s</em></div>
+            <div class="test"><span class="ck"></span><span class="nm">test_transaction_history</span><em>3.0s</em></div>
+            <div class="test"><span class="ck"></span><span class="nm">test_logout</span><em>1.6s</em></div>
+          </div>
+        </div>
+        <div class="term">
+          <div><span class="c">$</span> pytest -v</div>
+          <div class="g">===== 12 passed in 2m 34s =====</div>
+          <div>› Generating HTML report...</div>
+          <div>› Report: <span class="g">./reports/selenium-report/index.html</span></div>
+        </div>
+      </div>
+
+      <div class="panel n8n">
+        <div class="n8n-h">
+          <svg width="30" height="18" viewBox="0 0 40 24" fill="none" stroke="#EA4B71" stroke-width="2.6"><circle cx="5" cy="12" r="3.5"/><circle cx="20" cy="12" r="3.5"/><circle cx="35" cy="5" r="3.5"/><circle cx="35" cy="19" r="3.5"/><path d="M8.5 12h8M23.5 12c4 0 4-7 8-7M23.5 12c4 0 4 7 8 7"/></svg>
+          n8n
+        </div>
+        <div class="flow">
+          <div class="node"><div class="nb"><svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg></div>Webhook<br>(WhatsApp)</div>
+          <div class="node"><div class="nb l"><svg width="20" height="20" viewBox="0 0 24 24" fill="#B5A3F4"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div><span data-en="Process<br>query">Procesar<br>consulta</span></div>
+          <div class="node"><div class="nb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#29D3C0" stroke-width="2"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div><span data-en="Get daily<br>rate (API)">Consultar<br>tasa del día (API)</span></div>
+          <div class="node"><div class="nb l"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B5A3F4" stroke-width="2"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6M9 13h6"/></svg></div><span data-en="Format<br>reply">Formatear<br>respuesta</span></div>
+          <div class="node"><div class="nb"><svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg></div><span data-en="Reply to<br>customer">Responder<br>al cliente</span></div>
+        </div>
+        <div class="chat">
+          <div class="chat-h"><span class="av">AE</span><div>Abacus Exchange – Soporte IA<small data-en="Online">En línea</small></div></div>
+          <div class="msgs">
+            <div class="m-out"><span data-en="Hi, what's today's USD rate?">Hola, ¿cuál es la tasa del día para USD?</span><span class="tm">10:24</span></div>
+            <div class="m-in"><span data-en="Here are today's exchange rates:">Estas son nuestras tasas de cambio de hoy:</span><br>USD 🇺🇸<ul><li><span data-en="Buy">Compra</span>: RD$ 57.10</li><li><span data-en="Sell">Venta</span>: RD$ 58.20</li></ul><span data-en="Would you like to make a transaction?">¿Te gustaría realizar una operación?</span><span class="tm">10:24</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></div><div><b data-en="5+ years">5+ años</b><span data-en="in QA, with a focus<br>on fintech">en QA, con enfoque<br>en fintech</span></div></div>
+    <div class="stat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><div><b>8 h → 15 min</b><span data-en="Report automation<br>(Slack + Thinkific)">Automatización de reportes<br>(Slack + Thinkific)</span></div></div>
+    <div class="stat"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M15 14.5c3 0 6.5 1.5 6.5 5"/></svg></div><div><b>700+</b><span data-en="users processed<br>in automation flows">usuarios procesados<br>en flujos de automatización</span></div></div>
+    <div class="stat"><div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="13" width="4" height="8" rx="1"/><rect x="10" y="8" width="4" height="13" rx="1"/><rect x="16" y="3" width="4" height="18" rx="1"/></svg></div><div><b>+80%</b><span data-en="of inquiries resolved<br>by AI agents">consultas resueltas<br>por agentes de IA</span></div></div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-h">
+      <h2 data-en="Featured projects">Proyectos destacados</h2>
+      <p data-en="Real cases and demos of QA, automation and AI applied in business environments.">Casos reales y demostraciones de QA, automatización e IA aplicadas en entornos empresariales.</p>
+      <a class="more" href="projects.html"><span data-en="View all projects">Ver todos los proyectos</span> →</a>
+    </div>
+    <div class="projects">
+      <a class="proj" href="projects/selenium-e2e-suite.html">
+        <div class="thumb"><div class="rep">
+          <h5>Selenium Test Report</h5>
+          <div class="kpis"><div><b>12</b>Passed</div><div><b>0</b>Failed</div><div><b>2m 34s</b>Duration</div></div>
+          <div class="row"><span class="ck"></span>test_login_valid_credentials<em>2.1s</em></div>
+          <div class="row"><span class="ck"></span>test_navigate_to_transfers<em>3.4s</em></div>
+          <div class="row"><span class="ck"></span>test_transfer_third_party<em>5.2s</em></div>
+          <div class="row"><span class="ck"></span>test_payment_tax<em>4.1s</em></div>
+          <div class="row"><span class="ck"></span>test_transaction_history<em>3.0s</em></div>
+        </div></div>
+        <div class="pbody">
+          <span class="tag" data-en="Automation + QA">Automatización + QA</span>
+          <h3>Selenium E2E Suite (Demo)</h3>
+          <p data-en="End-to-end test automation for critical flows, with automatic reports and CI/CD execution.">Automatización de pruebas end-to-end para flujos críticos, con reportes automáticos y ejecución en CI/CD.</p>
+          <div class="pfoot"><span class="pill">Selenium</span><span class="pill">Python</span><span class="pill">PyTest</span><span class="pill">GitHub Actions</span><span class="go">→</span></div>
+        </div>
+      </a>
+
+      <a class="proj ai" href="projects/whatsapp-bot.html">
+        <div class="thumb"><div class="phone">
+          <div class="chat-h"><span class="av">AE</span><div>Abacus Exchange<small data-en="Online">En línea</small></div></div>
+          <div class="msgs">
+            <div class="m-out" data-en="What's today's USD rate?">¿Cuál es la tasa del día para USD?</div>
+            <div class="m-in"><span data-en="Today's rates:">Tasas de hoy:</span> USD<ul><li><span data-en="Buy">Compra</span>: RD$ 57.10</li><li><span data-en="Sell">Venta</span>: RD$ 58.20</li></ul></div>
+          </div>
+        </div></div>
+        <div class="pbody">
+          <span class="tag l" data-en="Support agent + AI">Agente de soporte + IA</span>
+          <h3 data-en="WhatsApp support bot with GPT &amp; n8n (Abacus Exchange)">Bot de soporte en WhatsApp con GPT y n8n (Abacus Exchange)</h3>
+          <p data-en="AI agent that answers customer questions, checks daily rates and transfer status, and integrates with internal systems.">Agente de IA que responde consultas de clientes, consulta tasas del día, estado de transferencias y se integra con sistemas internos.</p>
+          <div class="pfoot"><span class="pill">n8n</span><span class="pill">OpenAI</span><span class="pill">WhatsApp API</span><span class="pill">Zoho</span><span class="go">→</span></div>
+        </div>
+      </a>
+
+      <a class="proj ai" href="projects/voice-ai-agent.html">
+        <div class="thumb"><div class="app">
+          <div class="sb"><b>MedCare</b><div data-en="Appointments">Citas</div><div data-en="Patients">Pacientes</div><div data-en="Calendar">Calendario</div><div data-en="History">Historial</div></div>
+          <div class="fm"><b data-en="New appointment">Nueva cita</b><div class="in" data-en="Patient">Paciente</div><div class="in" data-en="Specialty">Especialidad</div><div class="in" data-en="Date">Fecha</div><div class="in" data-en="Time">Hora</div><div class="cta" data-en="Book">Agendar cita</div></div>
+        </div></div>
+        <div class="pbody">
+          <span class="tag l" data-en="Voice agent + AI">Agente de voz + IA</span>
+          <h3 data-en="Sofía / MedCare<br>AI voice agent">Sofía / MedCare<br>Agente de voz con IA</h3>
+          <p data-en="Voice assistant that books appointments, answers medical inquiries and integrates with calendars and CRM.">Asistente de voz que agenda citas, responde consultas médicas y se integra con calendarios y CRM.</p>
+          <div class="pfoot"><span class="pill">Vapi</span><span class="pill">OpenAI</span><span class="pill" data-en="Calendars">Calendarios</span><span class="pill">CRM</span><span class="go">→</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="tools" class="tools-row">
+    <div class="sec-h">
+      <h2 data-en="Core tools">Herramientas principales</h2>
+      <p data-en="Technologies I use day to day.">Tecnologías que uso en mi día a día.</p>
+    </div>
+    <div class="tools"><div class="tool"><svg viewBox="0 0 24 24" fill="#FF6C37"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-.307-.307-.643-.643c4.389-4.376 5.18-4.418 5.996-3.753zm-4.863 4.861l4.44-4.44a.62.62 0 1 1 .847.903l-4.699 4.125-.588-.588zm.33.694l-1.1.238a.06.06 0 0 1-.067-.032.06.06 0 0 1 .01-.073l.645-.645.512.512zm-2.803-.459l1.172-1.172.879.878-1.979.426a.074.074 0 0 1-.085-.039.072.072 0 0 1 .013-.093zm-3.646 6.058a.076.076 0 0 1-.069-.083.077.077 0 0 1 .022-.046h.002l.946-.946 1.222 1.222-2.123-.147zm2.425-1.256a.228.228 0 0 0-.117.256l.203.865a.125.125 0 0 1-.211.117h-.003l-.934-.934-.294-.295 3.762-3.758 1.82-.393.874.874c-1.255 1.102-2.971 2.201-5.1 3.268zm5.279-3.428h-.002l-.839-.839 4.699-4.125a.952.952 0 0 0 .119-.127c-.148 1.345-2.029 3.245-3.977 5.091zm3.657-6.46l-.003-.002a1.822 1.822 0 0 1 2.459-2.684l-1.61 1.613a.119.119 0 0 0 0 .169l1.247 1.247a1.817 1.817 0 0 1-2.093-.343zm2.578 0a1.714 1.714 0 0 1-.271.218h-.001l-1.207-1.207 1.533-1.533c.661.72.637 1.832-.054 2.522zM18.855 6.05a.143.143 0 0 0-.053.157.416.416 0 0 1-.053.45.14.14 0 0 0 .023.197.141.141 0 0 0 .084.03.14.14 0 0 0 .106-.05.691.691 0 0 0 .087-.751.138.138 0 0 0-.194-.033z"/></svg><span>Postman</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#85EA2D"><path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12c6.616 0 12-5.383 12-12S18.616 0 12 0zm0 1.144c5.995 0 10.856 4.86 10.856 10.856 0 5.995-4.86 10.856-10.856 10.856-5.996 0-10.856-4.86-10.856-10.856C1.144 6.004 6.004 1.144 12 1.144zM8.37 5.868a6.707 6.707 0 0 0-.423.005c-.983.056-1.573.517-1.735 1.472-.115.665-.096 1.348-.143 2.017-.013.35-.05.697-.115 1.038-.134.609-.397.798-1.016.83a2.65 2.65 0 0 0-.244.042v1.463c1.126.055 1.278.452 1.37 1.629.033.429-.013.858.015 1.287.018.406.073.808.156 1.2.259 1.075 1.307 1.435 2.575 1.218v-1.283c-.203 0-.383.005-.558 0-.43-.013-.591-.12-.632-.535-.056-.535-.042-1.08-.075-1.62-.064-1.001-.175-1.988-1.153-2.625.503-.37.868-.812.983-1.398.083-.41.134-.821.166-1.237.028-.415-.023-.84.014-1.25.06-.665.102-.937.9-.91.12 0 .235-.017.369-.027v-1.31c-.16 0-.31-.004-.454-.006zm7.593.009a4.247 4.247 0 0 0-.813.06v1.274c.245 0 .434 0 .623.005.328.004.577.13.61.494.032.332.031.669.064 1.006.065.669.101 1.347.217 2.007.102.544.475.95.941 1.283-.817.549-1.057 1.333-1.098 2.215-.023.604-.037 1.213-.069 1.822-.028.554-.222.734-.78.748-.157.004-.31.018-.484.028v1.305c.327 0 .627.019.927 0 .932-.055 1.495-.507 1.68-1.412.078-.498.124-1 .138-1.504.032-.461.028-.927.074-1.384.069-.715.397-1.01 1.112-1.057a.972.972 0 0 0 .199-.046v-1.463c-.12-.014-.204-.027-.291-.032-.536-.023-.804-.203-.937-.71a5.146 5.146 0 0 1-.152-.993c-.037-.618-.033-1.241-.074-1.86-.08-1.192-.794-1.753-1.887-1.786zm-6.89 5.28a.844.844 0 0 0-.083 1.684h.055a.83.83 0 0 0 .877-.78v-.046a.845.845 0 0 0-.83-.858zm2.911 0a.808.808 0 0 0-.834.78c0 .027 0 .05.004.078 0 .503.342.826.859.826.507 0 .826-.332.826-.853-.005-.503-.342-.836-.855-.831zm2.963 0a.861.861 0 0 0-.876.835c0 .47.378.849.849.849h.009c.425.074.853-.337.881-.83.023-.457-.392-.854-.863-.854z"/></svg><span>Swagger</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#43B02A"><path d="M23.174 3.468l-7.416 8.322a.228.228 0 0 1-.33 0l-3.786-3.9a.228.228 0 0 1 0-.282L12.872 6a.228.228 0 0 1 .366 0l2.106 2.346a.228.228 0 0 0 .342 0l5.94-8.094A.162.162 0 0 0 21.5 0H.716a.174.174 0 0 0-.174.174v23.652A.174.174 0 0 0 .716 24h22.566a.174.174 0 0 0 .174-.174V3.6a.162.162 0 0 0-.282-.132zM6.932 21.366a5.706 5.706 0 0 1-4.05-1.44.222.222 0 0 1 0-.288l.882-1.236a.222.222 0 0 1 .33-.036 4.338 4.338 0 0 0 2.964 1.158c1.158 0 1.722-.534 1.722-1.098 0-1.752-5.7-.552-5.7-4.278 0-1.65 1.428-3 3.756-3a5.568 5.568 0 0 1 3.708 1.242.222.222 0 0 1 0 .3l-.906 1.2a.222.222 0 0 1-.318.036 4.29 4.29 0 0 0-2.706-.936c-.906 0-1.41.402-1.41.996 0 1.572 5.688.522 5.688 4.2.006 1.812-1.284 3.18-3.96 3.18zm12.438-3.432a.192.192 0 0 1-.192.192h-5.202a.06.06 0 0 0-.06.066 1.986 1.986 0 0 0 2.106 1.638 3.264 3.264 0 0 0 1.8-.6.192.192 0 0 1 .276.042l.636.93a.198.198 0 0 1-.042.264 4.71 4.71 0 0 1-2.892.9 3.726 3.726 0 0 1-3.93-3.87 3.744 3.744 0 0 1 3.81-3.852c2.196 0 3.684 1.644 3.684 4.05zm-3.684-2.748a1.758 1.758 0 0 0-1.8 1.56.06.06 0 0 0 .06.066h3.492a.06.06 0 0 0 .06-.066 1.698 1.698 0 0 0-1.812-1.56Z"/></svg><span>Selenium</span></div><div class="tool"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><linearGradient id="python-original-a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#5A9FD4"/><stop offset="1" stop-color="#306998"/></linearGradient><linearGradient id="python-original-b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)"><stop offset="0" stop-color="#FFD43B"/><stop offset="1" stop-color="#FFE873"/></linearGradient><path fill="url(#python-original-a)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" transform="translate(0 10.26)"/><path fill="url(#python-original-b)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" transform="translate(0 10.26)"/><radialGradient id="python-original-c" cx="1825.678" cy="444.45" r="26.743" gradientTransform="matrix(0 -.24 -1.055 0 532.979 557.576)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#B8B8B8" stop-opacity=".498"/><stop offset="1" stop-color="#7F7F7F" stop-opacity="0"/></radialGradient><path opacity=".444" fill="url(#python-original-c)" d="M97.309 119.597c0 3.543-14.816 6.416-33.091 6.416-18.276 0-33.092-2.873-33.092-6.416 0-3.544 14.815-6.417 33.092-6.417 18.275 0 33.091 2.872 33.091 6.417z"/></svg><span>Python</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#EA4B71"><path d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"/></svg><span>n8n</span></div><div class="tool"><svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path d="M43.662 70.898c-4.124 1.17-6.829 3.222-8.611 5.272 1.707-1.494 3.993-2.865 7.077-3.739 3.155-.894 5.846-.888 8.069-.459v-1.739c-1.897-.173-4.072-.035-6.536.664ZM34.863 56.28l-15.314 4.035s.279.394.796.92l12.984-3.421s-.184 2.371-1.782 4.492c3.022-2.287 3.316-6.025 3.316-6.025Zm12.819 35.991C26.131 98.076 14.729 73.1 11.277 60.137 9.682 54.153 8.986 49.621 8.8 46.697a4.955 4.955 0 0 1 .011-.794c-1.118.068-1.653.649-1.544 2.328.186 2.923.882 7.454 2.477 13.44 3.45 12.961 14.854 37.937 36.405 32.132 4.691-1.264 8.215-3.565 10.86-6.504-2.438 2.202-5.49 3.937-9.327 4.972Zm4.05-51.276v1.534h8.453c-.173-.543-.348-1.032-.522-1.534h-7.932Z" fill="#2D4552"/><path d="M62.074 53.627c3.802 1.08 5.812 3.745 6.875 6.104l4.239 1.204s-.578-8.255-8.045-10.376c-6.985-1.985-11.284 3.881-11.807 4.64 2.032-1.448 4.999-2.633 8.738-1.572Zm33.741 6.142c-6.992-1.994-11.289 3.884-11.804 4.633 2.034-1.446 4.999-2.632 8.737-1.566 3.796 1.081 5.804 3.743 6.87 6.104l4.245 1.208s-.588-8.257-8.048-10.379Zm-4.211 21.766-35.261-9.858s.382 1.935 1.846 4.441l29.688 8.3c2.444-1.414 3.726-2.883 3.726-2.883Zm-24.446 21.218c-27.92-7.485-24.544-43.059-20.027-59.916 1.86-6.947 3.772-12.11 5.358-15.572-.946-.195-1.73.304-2.504 1.878-1.684 3.415-3.837 8.976-5.921 16.76-4.516 16.857-7.892 52.429 20.027 59.914 13.159 3.525 23.411-1.833 31.053-10.247-7.254 6.57-16.515 10.253-27.986 7.182Z" fill="#2D4552"/><path d="M51.732 83.935v-7.179l-19.945 5.656s1.474-8.563 11.876-11.514c3.155-.894 5.846-.888 8.069-.459V40.995h9.987c-1.087-3.36-2.139-5.947-3.023-7.744-1.461-2.975-2.96-1.003-6.361 1.842-2.396 2.001-8.45 6.271-17.561 8.726-9.111 2.457-16.476 1.805-19.55 1.273-4.357-.752-6.636-1.708-6.422 1.605.186 2.923.882 7.455 2.477 13.44 3.45 12.962 14.854 37.937 36.405 32.132 5.629-1.517 9.603-4.515 12.357-8.336h-8.309v.002Zm-32.185-23.62 15.316-4.035s-.446 5.892-6.188 7.405c-5.743 1.512-9.128-3.371-9.128-3.371Z" fill="#E2574C"/><path d="M109.372 41.336c-3.981.698-13.532 1.567-25.336-1.596-11.807-3.162-19.64-8.692-22.744-11.292-4.4-3.685-6.335-6.246-8.24-2.372-1.684 3.417-3.837 8.977-5.921 16.762-4.516 16.857-7.892 52.429 20.027 59.914 27.912 7.479 42.772-25.017 47.289-41.875 2.084-7.783 2.998-13.676 3.25-17.476.287-4.305-2.67-3.055-8.324-2.064ZM53.28 55.282s4.4-6.843 11.862-4.722c7.467 2.121 8.045 10.376 8.045 10.376L53.28 55.282Zm18.215 30.706c-13.125-3.845-15.15-14.311-15.15-14.311l35.259 9.858c0-.002-7.117 8.25-20.109 4.453Zm12.466-21.51s4.394-6.838 11.854-4.711c7.46 2.124 8.048 10.379 8.048 10.379l-19.902-5.668Z" fill="#2EAD33"/><path d="M44.762 78.733 31.787 82.41s1.41-8.029 10.968-11.212l-7.347-27.573-.635.193c-9.111 2.457-16.476 1.805-19.55 1.273-4.357-.751-6.636-1.708-6.422 1.606.186 2.923.882 7.454 2.477 13.44 3.45 12.961 14.854 37.937 36.405 32.132l.635-.199-3.555-13.337ZM19.548 60.315l15.316-4.035s-.446 5.892-6.188 7.405c-5.743 1.512-9.128-3.371-9.128-3.371Z" fill="#D65348"/><path d="m72.086 86.132-.594-.144c-13.125-3.844-15.15-14.311-15.15-14.311l18.182 5.082L84.15 39.77l-.116-.031c-11.807-3.162-19.64-8.692-22.744-11.292-4.4-3.685-6.335-6.246-8.24-2.372-1.682 3.417-3.836 8.977-5.92 16.762-4.516 16.857-7.892 52.429 20.027 59.914l.572.129 4.357-16.748Zm-18.807-30.85s4.4-6.843 11.862-4.722c7.467 2.121 8.045 10.376 8.045 10.376l-19.907-5.654Z" fill="#1D8D22"/><path d="m45.423 78.544-3.48.988c.822 4.634 2.271 9.082 4.545 13.011.396-.087.788-.163 1.192-.273a25.224 25.224 0 0 0 2.98-1.023c-2.541-3.771-4.222-8.114-5.237-12.702Zm-1.359-32.64c-1.788 6.674-3.388 16.28-2.948 25.915a20.061 20.061 0 0 1 2.546-.923l.644-.144c-.785-10.292.912-20.78 2.825-27.915a139.404 139.404 0 0 1 1.455-5.05 45.171 45.171 0 0 1-2.578 1.53 132.234 132.234 0 0 0-1.944 6.587Z" fill="#C04B41"/></svg><span>Playwright</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#2684FF"><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.005-1.005zm5.723-5.756H5.736a5.215 5.215 0 0 0 5.215 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.758a1.001 1.001 0 0 0-1.001-1.001zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.057A5.215 5.215 0 0 0 24 12.483V1.005A1.001 1.001 0 0 0 23.013 0Z"/></svg><span>Jira</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#2684FF"><path d="M.87 18.257c-.248.382-.53.875-.763 1.245a.764.764 0 0 0 .255 1.04l4.965 3.054a.764.764 0 0 0 1.058-.26c.199-.332.454-.763.733-1.221 1.967-3.247 3.945-2.853 7.508-1.146l4.957 2.337a.764.764 0 0 0 1.028-.382l2.364-5.346a.764.764 0 0 0-.382-1 599.851 599.851 0 0 1-4.965-2.361C10.911 10.97 5.224 11.185.87 18.257zM23.131 5.743c.249-.405.531-.875.764-1.25a.764.764 0 0 0-.256-1.034L18.675.404a.764.764 0 0 0-1.058.26c-.195.335-.451.763-.734 1.225-1.966 3.246-3.945 2.85-7.508 1.146L4.437.694a.764.764 0 0 0-1.027.382L1.046 6.422a.764.764 0 0 0 .382 1c1.039.49 3.105 1.467 4.965 2.361 6.698 3.246 12.392 3.029 16.738-4.04z"/></svg><span>Confluence</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#4169E1"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698zM2.371 11.8765c-.7435-2.4358-1.1779-4.8851-1.2123-5.5719-.1086-2.1714.4171-3.6829 1.5623-4.4927 1.8367-1.2986 4.8398-.5408 6.108-.13-.0032.0032-.0066.0061-.0098.0094-2.0238 2.044-1.9758 5.536-1.9708 5.7495-.0002.0823.0066.1989.0162.3593.0348.5873.0996 1.6804-.0735 2.9184-.1609 1.1504.1937 2.2764.9728 3.0892.0806.0841.1648.1631.2518.2374-.3468.3714-1.1004 1.1926-1.9025 2.1576-.5677.6825-.9597.5517-1.0886.5087-.3919-.1307-.813-.5871-1.2381-1.3223-.4796-.839-.9635-2.0317-1.4155-3.5126zm6.0072 5.0871c-.1711-.0428-.3271-.1132-.4322-.1772.0889-.0394.2374-.0902.4833-.1409 1.2833-.2641 1.4815-.4506 1.9143-1.0002.0992-.126.2116-.2687.3673-.4426a.3549.3549 0 0 0 .0737-.1298c.1708-.1513.2724-.1099.4369-.0417.156.0646.3078.26.3695.4752.0291.1016.0619.2945-.0452.4444-.9043 1.2658-2.2216 1.2494-3.1676 1.0128zm2.094-3.988-.0525.141c-.133.3566-.2567.6881-.3334 1.003-.6674-.0021-1.3168-.2872-1.8105-.8024-.6279-.6551-.9131-1.5664-.7825-2.5004.1828-1.3079.1153-2.4468.079-3.0586-.005-.0857-.0095-.1607-.0122-.2199.2957-.2621 1.6659-.9962 2.6429-.7724.4459.1022.7176.4057.8305.928.5846 2.7038.0774 3.8307-.3302 4.7363-.084.1866-.1633.3629-.2311.5454zm7.3637 4.5725c-.0169.1768-.0358.376-.0618.5959l-.146.4383a.3547.3547 0 0 0-.0182.1077c-.0059.4747-.054.6489-.115.8693-.0634.2292-.1353.4891-.1794 1.0575-.11 1.4143-.8782 2.2267-2.4172 2.5565-1.5155.3251-1.7843-.4968-2.0212-1.2217a6.5824 6.5824 0 0 0-.0769-.2266c-.2154-.5858-.1911-1.4119-.1574-2.5551.0165-.5612-.0249-1.9013-.3302-2.6462.0044-.2932.0106-.5909.019-.8918a.3529.3529 0 0 0-.0153-.1126 1.4927 1.4927 0 0 0-.0439-.208c-.1226-.4283-.4213-.7866-.7797-.9351-.1424-.059-.4038-.1672-.7178-.0869.067-.276.1831-.5875.309-.9249l.0529-.142c.0595-.16.134-.3257.213-.5012.4265-.9476 1.0106-2.2453.3766-5.1772-.2374-1.0981-1.0304-1.6343-2.2324-1.5098-.7207.0746-1.3799.3654-1.7088.5321a5.6716 5.6716 0 0 0-.1958.1041c.0918-1.1064.4386-3.1741 1.7357-4.4823a4.0306 4.0306 0 0 1 .3033-.276.3532.3532 0 0 0 .1447-.0644c.7524-.5706 1.6945-.8506 2.802-.8325.4091.0067.8017.0339 1.1742.081 1.939.3544 3.2439 1.4468 4.0359 2.3827.8143.9623 1.2552 1.9315 1.4312 2.4543-1.3232-.1346-2.2234.1268-2.6797.779-.9926 1.4189.543 4.1729 1.2811 5.4964.1353.2426.2522.4522.2889.5413.2403.5825.5515.9713.7787 1.2552.0696.087.1372.1714.1885.245-.4008.1155-1.1208.3825-1.0552 1.717-.0123.1563-.0423.4469-.0834.8148-.0461.2077-.0702.4603-.0994.7662zm.8905-1.6211c-.0405-.8316.2691-.9185.5967-1.0105a2.8566 2.8566 0 0 0 .135-.0406 1.202 1.202 0 0 0 .1342.103c.5703.3765 1.5823.4213 3.0068.1344-.2016.1769-.5189.3994-.9533.6011-.4098.1903-1.0957.333-1.7473.3636-.7197.0336-1.0859-.0807-1.1721-.151zm.5695-9.2712c-.0059.3508-.0542.6692-.1054 1.0017-.055.3576-.112.7274-.1264 1.1762-.0142.4368.0404.8909.0932 1.3301.1066.887.216 1.8003-.2075 2.7014a3.5272 3.5272 0 0 1-.1876-.3856c-.0527-.1276-.1669-.3326-.3251-.6162-.6156-1.1041-2.0574-3.6896-1.3193-4.7446.3795-.5427 1.3408-.5661 2.1781-.463zm.2284 7.0137a12.3762 12.3762 0 0 0-.0853-.1074l-.0355-.0444c.7262-1.1995.5842-2.3862.4578-3.4385-.0519-.4318-.1009-.8396-.0885-1.2226.0129-.4061.0666-.7543.1185-1.0911.0639-.415.1288-.8443.1109-1.3505.0134-.0531.0188-.1158.0118-.1902-.0457-.4855-.5999-1.938-1.7294-3.253-.6076-.7073-1.4896-1.4972-2.6889-2.0395.5251-.1066 1.2328-.2035 2.0244-.1859 2.0515.0456 3.6746.8135 4.8242 2.2824a.908.908 0 0 1 .0667.1002c.7231 1.3556-.2762 6.2751-2.9867 10.5405zm-8.8166-6.1162c-.025.1794-.3089.4225-.6211.4225a.5821.5821 0 0 1-.0809-.0056c-.1873-.026-.3765-.144-.5059-.3156-.0458-.0605-.1203-.178-.1055-.2844.0055-.0401.0261-.0985.0925-.1488.1182-.0894.3518-.1226.6096-.0867.3163.0441.6426.1938.6113.4186zm7.9305-.4114c.0111.0792-.049.201-.1531.3102-.0683.0717-.212.1961-.4079.2232a.5456.5456 0 0 1-.075.0052c-.2935 0-.5414-.2344-.5607-.3717-.024-.1765.2641-.3106.5611-.352.297-.0414.6111.0088.6356.1851z"/></svg><span>SQL</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#F3F5F8"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg><span>OpenAI</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#E42527"><path d="M8.66 6.897a1.299 1.299 0 0 0-1.205.765l-.642 1.44-.062-.385A1.291 1.291 0 0 0 5.27 7.648l-4.185.678A1.291 1.291 0 0 0 .016 9.807l.678 4.18a1.293 1.293 0 0 0 1.27 1.087c.074 0 .143-.01.216-.017l4.18-.678c.436-.07.784-.351.96-.723l2.933 1.307a1.304 1.304 0 0 0 .988.026c.321-.12.575-.365.716-.678l.28-.629.038.276a1.297 1.297 0 0 0 1.455 1.103l3.712-.501a1.29 1.29 0 0 0 1.03.514h4.236c.713 0 1.29-.58 1.291-1.291V9.545c0-.712-.58-1.291-1.291-1.291h-4.236c-.079 0-.155.008-.23.022a1.309 1.309 0 0 0-.275-.288c-.275-.21-.614-.3-.958-.253l-4.197.571c-.155.021-.3.07-.432.14L9.159 7.01a1.27 1.27 0 0 0-.499-.113zm-.025.705c.077 0 .159.013.24.052l2.971 1.324c-.128.238-.18.508-.142.782l.357 2.596h.002l-.745 1.672a.59.59 0 0 1-.777.296l-3.107-1.385-.004-.041-.41-2.526L8.1 7.95a.589.589 0 0 1 .536-.348zm-3.159.733c.125 0 .245.039.343.112.13.09.21.227.237.382l.234 1.446-.56 1.259a1.27 1.27 0 0 0-.026.987c.12.322.364.575.678.717l.295.131a.585.585 0 0 1-.428.314l-4.185.678a.59.59 0 0 1-.674-.485l-.678-4.18a.588.588 0 0 1 .485-.674l4.185-.678c.03-.004.064-.01.094-.01zm11.705.09a.59.59 0 0 1 .415.173 1.287 1.287 0 0 0-.416.947v4.237c0 .033.003.065.005.097l-3.55.482a.586.586 0 0 1-.66-.502l-.191-1.403.899-2.017a1.29 1.29 0 0 0-.333-1.5l3.754-.51c.026-.004.051-.004.077-.004zm1.3.532h4.227c.326 0 .588.266.588.588v4.237a.589.589 0 0 1-.588.588h-4.237a.564.564 0 0 1-.12-.013c.47-.246.758-.765.684-1.318zm-5.988.309.254.113c.296.133.43.48.296.777l-.432.97-.207-1.465a.58.58 0 0 1 .09-.395zm5.39.538.453 3.325a.583.583 0 0 1-.453.65zM6.496 11.545l.17 1.052a.588.588 0 0 1-.293-.776zm3.985 4.344a.588.588 0 0 0-.612.603c0 .358.244.61.601.61a.582.582 0 0 0 .607-.608c0-.35-.242-.605-.596-.605zm5.545 0a.588.588 0 0 0-.612.603c0 .358.245.61.602.61a.582.582 0 0 0 .606-.608c0-.35-.24-.605-.596-.605zm-8.537.018a.047.047 0 0 0-.048.047v.085c0 .026.021.047.048.047h.52l-.623.9a.052.052 0 0 0-.009.027v.027c0 .026.021.047.048.047h.815a.047.047 0 0 0 .047-.047v-.085a.047.047 0 0 0-.047-.047h-.55l.606-.9a.05.05 0 0 0 .008-.026v-.028a.047.047 0 0 0-.047-.047zm5.303 0a.047.047 0 0 0-.047.047v1.086c0 .026.02.047.047.047h.135a.047.047 0 0 0 .047-.047v-.454h.545v.454c0 .026.02.047.047.047h.134a.047.047 0 0 0 .047-.047v-1.086a.047.047 0 0 0-.047-.047h-.134a.047.047 0 0 0-.047.047v.453h-.545v-.453a.047.047 0 0 0-.047-.047zm-2.324.164c.25 0 .372.194.372.425 0 .219-.109.425-.358.426-.242 0-.375-.197-.375-.419 0-.235.108-.432.36-.432zm5.545 0c.25 0 .372.194.372.425 0 .219-.108.425-.358.426-.242 0-.374-.197-.374-.419 0-.235.108-.432.36-.432z"/></svg><span>Zoho</span></div><div class="tool"><span class="fb">GHL</span><span>GHL</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#FFCA28"><path d="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371m-7.083 6.695c.328 1.244.264 2.44-.191 3.558-1.135-1.12-1.967-2.352-2.475-3.665-.543-1.404-.87-2.74-.974-3.975.48.157.922.366 1.315.622 1.132.737 1.914 1.902 2.325 3.461zm.207 6.022c.482.368.99.712 1.513 1.028-.771.21-1.565.302-2.369.273a8 8 0 0 1-.373-.022c.458-.394.869-.823 1.228-1.279zm1.347-6.431c-.516-1.957-1.527-3.437-3.002-4.398-.647-.421-1.385-.741-2.194-.95.011-.134.026-.268.043-.4.014-.113.03-.216.046-.313.133-.689.332-1.37.589-2.025.099-.25.206-.499.321-.74l.004-.008c.177-.358.376-.719.61-1.105l.092-.152-.003-.001c.544-.851 1.197-1.627 1.942-2.311l.288.341c.672.796 1.304 1.548 1.878 2.237 1.291 1.549 2.966 3.583 3.612 4.48 1.277 1.771 1.893 3.579 1.83 5.375-.049 1.395-.461 2.755-1.195 3.933-.694 1.116-1.661 2.05-2.8 2.708-.636-.318-1.559-.839-2.539-1.599.79-1.575.952-3.28.479-5.072zm-2.575 5.397c-.725.939-1.587 1.55-2.09 1.856-.081-.029-.163-.06-.243-.093l-.065-.026c-1.49-.616-2.747-1.656-3.635-3.01-.907-1.384-1.356-2.993-1.298-4.653.041-1.19.338-2.327.882-3.379.316-.07.638-.114.96-.131l.084-.002c.162-.003.324-.003.478 0 .227.011.454.035.677.07.073 1.513.445 3.145 1.105 4.852.637 1.644 1.694 3.162 3.144 4.515z"/></svg><span>Firebase</span></div><div class="tool"><svg viewBox="0 0 24 24" fill="#F3F5F8"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span></div></div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="big"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.5A9 9 0 1 1 21 12Z"/><path d="M8 11h.01M12 11h.01M16 11h.01" stroke-width="3" stroke-linecap="round"/></svg></div>
+    <div class="txt">
+      <h3 data-en="Let's talk about your next project">Hablemos de tu próximo proyecto</h3>
+      <p data-en="Always open to new opportunities, collaborations or just a conversation about QA, automation and AI.">Siempre abierto a nuevas oportunidades, colaboraciones o simplemente a conversar sobre QA, automatización e IA.</p>
+    </div>
+    <div class="acts">
+      <a class="btn btn-p" href="mailto:ferdyv59@gmail.com">
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <span data-en="Send message">Enviar mensaje</span>
+      </a>
+      <span class="sep"></span>
+      <a class="soc" href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></a>
+      <a class="soc" href="https://github.com/FerDVaz09" target="_blank" rel="noopener" aria-label="GitHub"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+      <a class="soc" href="https://wa.me/18096769759" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg></a>
+    </div>
+  </section>
+
+  <footer>© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</footer>
+</main>
+
+<script>
+
+// Idioma ES / EN
+const nodes = document.querySelectorAll('[data-en]');
+nodes.forEach(n => n.dataset.es = n.innerHTML);
+function setLang(l){
+  nodes.forEach(n => n.innerHTML = n.dataset[l]);
+  document.documentElement.lang = l;
+  document.getElementById('es').classList.toggle('on', l==='es');
+  document.getElementById('en').classList.toggle('on', l==='en');
+  try { localStorage.setItem('lang', l); } catch(e){}
+}
+document.getElementById('es').onclick = () => setLang('es');
+document.getElementById('en').onclick = () => setLang('en');
+try { const s = localStorage.getItem('lang'); if (s === 'en') setLang('en'); } catch(e){}
+
+// Menú móvil
+const menu = document.getElementById('menu');
+document.getElementById('burger').onclick = () => menu.classList.toggle('open');
+menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.classList.remove('open'));
+</script>
+<script src="chat-widget.js" defer></script>
 </body>
 </html>
