@@ -52,15 +52,13 @@
       }"
       x-init="$watch('role', value => localStorage.setItem('ferdy_role', value))">
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-        <header class="fp-header"><div class="fp-wrap fp-nav"><a href="index.html" class="fp-logo">FERDY<span>.</span></a><nav class="fp-menu" id="fpMenu"><a href="index.html">Inicio</a><a href="about.html">Sobre mí</a><a href="projects.html" class="on">Proyectos</a><a href="about.html#experience">Experiencia</a><a href="qa-documents.html">QA Docs</a><a href="index.html#contact">Contacto</a></nav><div class="fp-role" role="group" aria-label="Perfil"><button type="button" @click="role = 'qa'" :class="role === 'qa' ? 'on' : ''">QA</button><button type="button" class="ia" @click="role = 'ia'" :class="role === 'ia' ? 'on' : ''">IA</button></div><a class="fp-btn fp-btn-p fp-dl" href="CV_Ferdy_Placencia.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg><span>Descargar CV</span></a><button class="fp-burger" id="fpBurger" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
+        <header class="fp-header"><div class="fp-wrap fp-nav"><a href="index.html" class="fp-logo">FERDY<span>.</span></a><nav class="fp-menu" id="fpMenu"><a href="index.html" data-en="Home">Inicio</a><a href="about.html" data-en="About">Sobre mí</a><a href="projects.html" class="on" data-en="Projects">Proyectos</a><a href="about.html#experience" data-en="Experience">Experiencia</a><a href="qa-documents.html" data-en="QA Docs">QA Docs</a><a href="index.html#contact" data-en="Contact">Contacto</a></nav><div class="fp-role" role="group" aria-label="Perfil"><button type="button" @click="role = 'qa'" :class="role === 'qa' ? 'on' : ''">QA</button><button type="button" class="ia" @click="role = 'ia'" :class="role === 'ia' ? 'on' : ''">IA</button></div><div class="fp-lang" role="group" aria-label="Idioma"><button type="button" data-lang="es">ES</button><button type="button" data-lang="en">EN</button></div><a class="fp-btn fp-btn-p fp-dl" href="CV_Ferdy_Placencia.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg><span data-en="Download CV">Descargar CV</span></a><button class="fp-burger" id="fpBurger" type="button" aria-label="Menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 
         <main class="flex-1 px-6 md:px-20 lg:px-40 py-16">
             <section class="max-w-6xl mx-auto mb-16">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
                     <div>
-                        <h1 class="text-5xl md:text-7xl font-black tracking-tight text-white mb-6">
-                            Automation <span class="gradient-text">Projects</span>
-                        </h1>
+                        <h1 class="text-5xl md:text-7xl font-black tracking-tight text-white mb-6" data-en='Automation <span class="gradient-text">Projects</span>'>Proyectos de <span class="gradient-text">automatización</span></h1>
                         <p class="text-slate-500 text-lg max-w-2xl leading-relaxed">
                             <template x-if="role === 'qa'">
                                 <span>Exhibiendo más de 5 años de rigor técnico en <strong class="text-white">QA Automation</strong>, asegurando la estabilidad de sistemas complejos.</span>
@@ -518,9 +516,10 @@
             </section>
         </main>
 
-        <footer class="fp-footer"><div class="fp-wrap fp-foot"><a href="index.html" class="fp-logo">FERDY<span>.</span></a><span>© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</span><nav><a href="https://github.com/FerDVaz09" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a><a href="privacidad/">Privacidad</a></nav></div></footer>
+        <footer class="fp-footer"><div class="fp-wrap fp-foot"><a href="index.html" class="fp-logo">FERDY<span>.</span></a><span data-en="© 2026 Ferdy Placencia Vásquez · Santo Domingo, Dominican Republic">© 2026 Ferdy Placencia Vásquez · Santo Domingo, República Dominicana</span><nav><a href="https://github.com/FerDVaz09" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/ferdy-placencia-vasquez-7b0338315/" target="_blank" rel="noopener">LinkedIn</a><a href="https://wa.me/18096769759" target="_blank" rel="noopener">WhatsApp</a><a href="privacidad/" data-en="Privacy">Privacidad</a></nav></div></footer>
     </div>
     <script src="chat-widget.js" defer></script>
+<script src="assets/i18n/projects.js"></script>
 <script src="assets/brand.js" defer></script>
 </body>
 </html>
